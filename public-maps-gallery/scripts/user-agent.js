@@ -92,18 +92,9 @@ function checkMobileCookie(){
 			title: pmgConfig.mobileAppDialogTitle,
 			resizable: false,
 			position: 'center',
-			height: pmgConfig.mobileAppDialogSize.height,
-			width: pmgConfig.mobileAppDialogSize.width,
+			height: 'auto',
+			width: 'auto',
 			modal: true,
-			/* close: function(event, ui) {
-				// if button wasnt clicked. assume disable
-				if(!pmgConfig.appCookie){
-					// set cookie to opt out of app
-					$.cookie('ArcGISAppInstalled', 'disabled', { expires: 365 }); // 365 days
-					// update config value to optout
-					pmgConfig.appCookie = 'disable';
-				}
-			}, */
 			buttons: [
 				{
 					text: pmgConfig.mobileAppButtons.notinstalled,

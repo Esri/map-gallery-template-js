@@ -55,12 +55,6 @@ pmgConfig.showPagination = true;
 // Mobile App Dialog Settings
 /*------------------------------------*/
 
-// Dialog size
-pmgConfig.mobileAppDialogSize = {
-	width:500,
-	height:200
-};
-
 // Dialog title
 pmgConfig.mobileAppDialogTitle = "Open Maps in the ArcGIS App?";
 
