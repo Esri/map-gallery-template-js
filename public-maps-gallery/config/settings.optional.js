@@ -69,7 +69,7 @@ pmgConfig.mobileAppDialogContent = "Did you know there's an ArcGIS app for your 
 
 // Dialog Buttons
 pmgConfig.mobileAppButtons = {
-	noinstall: "Don't Install",
+	noinstall: "Don't Show Again",
 	installed: "Already Installed",
 	notinstalled: "Install now"	
 };
