@@ -21,7 +21,8 @@
 	background: linear-gradient(top, #d86932 0%, #aa1f0c 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d86932', endColorstr='#aa1f0c', GradientType=0 ); /* IE6-9 */
 }
-.redPMG .mapButton {
+.redPMG .mapButton, .redPMG .ui-dialog .ui-dialog-buttonpane button, .redPMG .ui-dialog .ui-dialog-buttonpane button.ui-state-focus {
+	border:0;
 	border-bottom:1px solid #901b01;
 	background: #db652c; /* Old browsers */
 	background: -moz-linear-gradient(top, #db652c 0%, #c54417 44%, #af2302 100%); /* FF3.6+ */
@@ -32,7 +33,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d86932', end
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db652c', endColorstr='#af2302', GradientType=0 ); /* IE6-9 */
 	background: linear-gradient(top, #db652c 0%, #c54417 44%, #af2302 100%); /* W3C */
 }
-.redPMG .mapButton:hover, .redPMG .ui-tabs-selected .toggleButton, .redPMG .ui-tabs-selected .toggleButton:hover, .redPMG .buttonSelected, .redPMG .buttonSelected:hover {
+.redPMG .mapButton:hover, .redPMG .ui-tabs-selected .toggleButton, .redPMG .ui-tabs-selected .toggleButton:hover, .redPMG .buttonSelected, .redPMG .buttonSelected:hover, .redPMG .ui-dialog .ui-dialog-buttonpane button.ui-state-hover {
+	border:0;
 	border-top:1px solid #901b01;
 	background: #af2302; /* Old browsers */
 	background: -moz-linear-gradient(top, #af2302 0%, #c54417 56%, #db652c 100%); /* FF3.6+ */
@@ -76,7 +78,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db652c', end
 	background: linear-gradient(top, #1478c3 0%, #081b3e 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1478c3', endColorstr='#081b3e', GradientType=0 ); /* IE6-9 */
 }
-.bluePMG .mapButton {
+.bluePMG .mapButton, .bluePMG .ui-dialog .ui-dialog-buttonpane button, .bluePMG .ui-dialog .ui-dialog-buttonpane button.ui-state-focus {
+	border:0;
 	border-bottom:1px solid #0f8bf6;
 	background: #1393ff; /* Old browsers */
 	background: -moz-linear-gradient(top, #1393ff 0%, #004e9a 100%); /* FF3.6+ */
@@ -87,7 +90,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1478c3', end
 	background: linear-gradient(top, #1393ff 0%, #004e9a 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1393ff', endColorstr='#004e9a', GradientType=0 ); /* IE6-9 */
 }
-.bluePMG .mapButton:hover, .bluePMG .ui-tabs-selected .toggleButton, .bluePMG .ui-tabs-selected .toggleButton:hover, .bluePMG .buttonSelected, .bluePMG .buttonSelected:hover {
+.bluePMG .mapButton:hover, .bluePMG .ui-tabs-selected .toggleButton, .bluePMG .ui-tabs-selected .toggleButton:hover, .bluePMG .buttonSelected, .bluePMG .buttonSelected:hover, .bluePMG .ui-dialog .ui-dialog-buttonpane button.ui-state-hover {
+	border:0;
 	border-top:1px solid #0f8bf6;
 	background: #004e9a; /* Old browsers */
 	background: -moz-linear-gradient(top, #004e9a 0%, #1393ff 100%); /* FF3.6+ */
@@ -131,7 +135,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#105c9b', end
 	background: linear-gradient(top, #339340 0%, #07440c 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#339340', endColorstr='#07440c', GradientType=0 ); /* IE6-9 */
 }
-.greenPMG .mapButton {
+.greenPMG .mapButton, .greenPMG .ui-dialog .ui-dialog-buttonpane button, .greenPMG .ui-dialog .ui-dialog-buttonpane button.ui-state-focus {
+	border:0;
 	border-bottom:1px solid #6FBF7D;
 	background: #6fbf7d; /* Old browsers */
 	background: -moz-linear-gradient(top, #6fbf7d 0%, #0f5314 100%); /* FF3.6+ */
@@ -142,7 +147,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#339340', end
 	background: linear-gradient(top, #6fbf7d 0%, #0f5314 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fbf7d', endColorstr='#0f5314', GradientType=0 ); /* IE6-9 */
 }
-.greenPMG .mapButton:hover, .greenPMG .ui-tabs-selected .toggleButton, .greenPMG .ui-tabs-selected .toggleButton:hover, .greenPMG .buttonSelected, .greenPMG .buttonSelected:hover {
+.greenPMG .mapButton:hover, .greenPMG .ui-tabs-selected .toggleButton, .greenPMG .ui-tabs-selected .toggleButton:hover, .greenPMG .buttonSelected, .greenPMG .buttonSelected:hover, .greenPMG .ui-dialog .ui-dialog-buttonpane button.ui-state-hover {
+	border:0;
 	border-top:1px solid #6FBF7D;
 	background: #0f5314; /* Old browsers */
 	background: -moz-linear-gradient(top, #0f5314 0%, #6fbf7d 100%); /* FF3.6+ */
@@ -151,7 +157,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fbf7d', end
 	background: -o-linear-gradient(top, #0f5314 0%, #6fbf7d 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top, #0f5314 0%, #6fbf7d 100%); /* IE10+ */
 	background: linear-gradient(top, #0f5314 0%, #6fbf7d 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f5314', endColorstr='#6fbf7d', GradientType=0 ); /* IE6-9 */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0f5314', endColorstr='#6fbf7d', GradientType=0 ); /* IE6-9 */
 }
 .greenPMG .ui-dialog .ui-dialog-titlebar {
 	background: #125a19; /* Old browsers */
@@ -175,7 +181,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#125a19', end
 }
 .custom #header {
 }
-.custom .mapButton {
+.custom .mapButton, .custom .ui-dialog .ui-dialog-buttonpane button, .custom .ui-dialog .ui-dialog-buttonpane button.ui-state-focus {
 }
 .custom .mapButton:hover, .custom .ui-tabs-selected .toggleButton, .custom .ui-tabs-selected .toggleButton:hover, .custom .buttonSelected, .custom .buttonSelected:hover {
 }
