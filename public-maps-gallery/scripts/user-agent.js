@@ -142,4 +142,3 @@ var tmp_theme = URLLookup('theme');
 if(tmp_theme){
 	pmgConfig.theme = tmp_theme;
 }
-f
