@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+<title>Public Maps Gallery</title>
+<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+<meta name="Keywords" content="PMG, Public Maps Gallery, PMG Home, Esri Public Maps Gallery">
+<meta name="Description" content="Public Maps Gallery.">
+<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+<!-- STYLES -->
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.5/js/dojo/dijit/themes/tundra/tundra.css">
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.5/js/esri/dijit/css/Popup.css">
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.14/themes/ui-lightness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="styles/popup.css">
+<link rel="stylesheet" type="text/css" href="styles/global.css">
+<link rel="stylesheet" type="text/css" href="styles/themes.css">
+<link rel="stylesheet" type="text/css" href="styles/embedded.css">
+<!-- END STYLES -->
+<!-- JAVASCRIPT -->
+<script type="text/javascript">var djConfig={parseOnLoad:true};</script>
+<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.14/jquery-ui.min.js"></script>
+<script type="text/javascript" src="scripts/query.arcgis.js"></script>
+<script type="text/javascript" src="config/settings.required.js"></script>
+<script type="text/javascript" src="config/settings.optional.js"></script>
+<script type="text/javascript" src="config/settings.content.js"></script>
+<script type="text/javascript" src="scripts/user-agent.js"></script>
+<script type="text/javascript" src="scripts/embed/local.js"></script>
+<!-- END JAVASCRIPT -->
+</head>
+<body>
+<div class="mapContainerEmbed" id="mapContainer">
+	<div class="groupCon" id="groupCon">
+		<div class="Pad">
+			<div id="groupMenu" class="alignCenter"><span onClick="showLegend();" id="legend_btn" class="toggleButton buttonLeft buttonSelected">Legend</span><span onClick="showAbout();" id="about_btn" class="toggleButton buttonRight">About</span></div>
+			<div id="legend" class="legend"></div>
+			<div class="description" id="description"></div>
+			<div class="clear"></div>
+		</div>
+	</div>
+	<div class="tundra" id="map">
+		<div class="zoomSliderBG" id="zoomSliderBG">
+			<div class="zoomSliderPlus" id="zoomSliderPlus" title="Zoom in"></div>
+			<div class="zoomSliderCustom" id="zoomSliderCustom" title="Drag to zoom"></div>
+			<div class="zoomSliderMinus" id="zoomSliderMinus" title="Zoom out"></div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

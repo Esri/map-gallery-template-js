@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<title>ArcGIS Map Carousel</title>
+<!-- REMOVE IF YOU WANT YOUR WEBSITE TO BE INDEXED -->
+<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
+<!-- END REMOVE -->
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<!-- ABOUT THIS TEMPLATE -->
+<link type="text/plain" rel="author" href="humans.txt" />
+<!-- END ABOUT -->
+<!-- iOS -->
+<meta name="viewport" content="width=1024, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<link rel="apple-touch-icon" href="graphics/apple-touch-icon.png" />
+<!-- END iOS -->
+<!-- FAVORITE ICON -->
+<link rel="icon" type="image/ico" href="favicon.ico">
+<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+<!-- END FAVORITE ICON -->
+<!-- STYLES -->
+<link rel="stylesheet" type="text/css" href="styles/reset.css">
+<link rel="stylesheet" type="text/css" href="styles/960.css">
+<link rel="stylesheet" type="text/css" href="styles/global.css">
+<link rel="stylesheet" type="text/css" href="styles/carousel/application.css">
+<link rel="stylesheet" type="text/css" href="styles/carousel/carousel.css" />
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.3/js/dojo/dijit/themes/tundra/tundra.css">
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.4/js/esri/dijit/css/Popup.css">
+<link rel="stylesheet" type="text/css" href="styles/map/popup.css">
+<!-- END STYLES -->
+<!-- JAVASCRIPT -->
+<script type="text/javascript">djConfig = { parseOnLoad:true };</script>
+<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.4"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.0.6/modernizr.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.14/jquery-ui.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="scripts/query.arcgis.js"></script>
+<script type="text/javascript" src="scripts/config.js"></script>
+<script type="text/javascript" src="scripts/user-agent.js"></script>
+<script type="text/javascript" src="scripts/carousel/local.js"></script>
+<script type="text/javascript" src="scripts/active-link.js"></script>
+<!-- END JAVASCRIPT -->
+</head>
+<body>
+<div id="header">
+	<div class="container_12 headerContainer">
+		<div class="grid_12">
+			<ul>
+				<li id="homeItem"><a title="Home" href="index.html"><span>Public Maps Gallery</span></a></li>
+				<li><a href="index2.html">Index 2</a></li>
+				<li><a href="index3.html">Index 3</a></li>
+				<li><a href="group-finder.html">Group ID Finder</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div id="content">
+	<div class="container_12">
+		<div class="grid_12 contentLeft">
+			<div id="parentLink"><a href="index.html">Home</a></div>
+			<h1>Available Maps (Carousel View)</h1>
+			<div id="mapButtons" class="carouselButtons"></div>
+			<h2 id="shareLogo">Web Maps</h2>
+			<div class="clear"></div>
+			<div id="mapcon" class="soria">
+				<div class="mapPad">
+					<div class="overFlow" id="overFlow">
+						<div id="featureMenu">
+							<div class="container">
+								<div id="toggleButton" class="toggleButton" data-hidden="0">
+									<div class="iconToggle"></div>
+								</div>
+								<div class="toggleArea">
+									<div id="featureTabs">
+										<div id="tabsHeight">
+											<ul>
+												<li><a id="legendTab" href="#legend_tab">Legend</a></li>
+												<li><a id="aboutTab" href="#about_tab">About</a></li>
+											</ul>
+											<div class="clear"></div>
+										</div>
+										<div id="legend_tab">
+											<div id="legendDiv" class="scrollArea"></div>
+										</div>
+										<div id="about_tab">
+											<div id="aboutDiv" class="scrollArea">
+												<h3 class="first">Map Description</h3>
+												<div id="descDiv"></div>
+												<h3>Keywords</h3>
+												<div id="keyDiv"></div>
+												<h3>Owner</h3>
+												<div id="ownerDiv"></div>
+												<h3>Created</h3>
+												<div id="pubDiv"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div id="map">
+							<div id="esriLogo">
+								<div id="logo" class="logo"> </div>
+							</div>
+							<div id="zoomSliderBG">
+								<div id="zoomSliderPlus" title="Zoom in"></div>
+								<div id="zoomSliderCustom" title="Drag to zoom"></div>
+								<div id="zoomSliderMinus" title="Zoom out"></div>
+							</div>
+							<div id="osmCopy"></div>
+						</div>
+					</div>
+				</div>
+				<div id="carousel"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container_12">
+		<div class="grid_9"> &nbsp; </div>
+		<div class="grid_3">
+			<div class="logoDiv footBorder"><a title="Your Logo" href="#" class="hostedBy"></a><a href="mailto:email@yourorg">email@yourorg</a></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+</body>
+</html>

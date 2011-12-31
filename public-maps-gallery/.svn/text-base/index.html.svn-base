@@ -1,0 +1,138 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+<title>Public Maps Gallery</title>
+<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+<meta name="Keywords" content="PMG, Public Maps Gallery, PMG Home, Esri Public Maps Gallery">
+<meta name="Description" content="Public Maps Gallery.">
+<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+<!-- ABOUT THIS TEMPLATE -->
+<link type="text/plain" rel="author" href="humans.txt" />
+<!-- END ABOUT -->
+<!-- iOS -->
+<meta name="viewport" content="width=1024, user-scalable=yes">
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<link rel="apple-touch-icon" href="graphics/apple/apple-touch-icon.png" />
+<!-- END iOS -->
+<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+<!-- FAVORITE ICON -->
+<link rel="icon" type="image/ico" href="favicon.ico">
+<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+<!-- END FAVORITE ICON -->
+<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+<!-- STYLES -->
+<link rel="stylesheet" type="text/css" href="styles/reset.css">
+<link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.14/themes/ui-lightness/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="styles/960.css">
+<link rel="stylesheet" type="text/css" href="styles/global.css">
+<link rel="stylesheet" type="text/css" href="styles/themes.css">
+<!-- END STYLES -->
+<!-- JAVASCRIPT -->
+<script type="text/javascript" src="scripts/plugins/modernizr.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.8.14/jquery-ui.min.js"></script>
+<script type="text/javascript" src="scripts/plugins/jquery.cookie.js"></script>
+<script type="text/javascript" src="scripts/query.arcgis.js"></script>
+<script type="text/javascript" src="config/settings.required.js"></script>
+<script type="text/javascript" src="config/settings.optional.js"></script>
+<script type="text/javascript" src="config/settings.content.js"></script>
+<script type="text/javascript" src="scripts/user-agent.js"></script>
+<script type="text/javascript" src="scripts/pmg.content.js"></script>
+<script type="text/javascript" src="scripts/home/local.js"></script>
+<script type="text/javascript" src="scripts/active-link.js"></script>
+<!-- END JAVASCRIPT -->
+</head>
+<body >
+<div id="header">
+	<div class="container_12 headerContainer">
+		<div class="grid_12"> 
+			<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+			<ul id="pmgNav">
+				<li id="homeItem"><a title="Home" href="index.html" id="siteTitle"></a></li>
+			</ul>
+			<!-- END CUSTOMIZE FOR YOUR ORGANIZATION --> 
+		</div>
+	</div>
+</div>
+<div id="content">
+	<div class="container_12">
+		<div class="grid_9 contentLeft"> 
+			<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+			<h1 id="siteHeading"></h1>
+			<p id="siteIntro"></p>
+			<!-- END CUSTOMIZE FOR YOUR ORGANIZATION -->
+			<div id="layoutAndSearch"></div>
+			<div id="featuredMaps">
+				<p class="featuredLoading">Loading Maps&hellip;</p>
+			</div>
+			<div id="maps_pagination" class="pagination"></div>
+			<div class="socialButtons">
+				<div class="item first"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> </div>
+				<div class="item">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=154863967938949&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+					<div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
+				</div>
+				<div class="item"> 
+					<!-- Place this tag where you want the +1 button to render -->
+					<div class="g-plusone" data-size="medium" data-annotation="none"></div>
+					<!-- Place this render call where appropriate --> 
+					<script type="text/javascript">
+					  (function() {
+						var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+						po.src = 'https://apis.google.com/js/plusone.js';
+						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					  })();
+					</script> 
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="clear"></div>
+		</div>
+		<div class="grid_3 dataLayers">
+			<div class="Pad">
+				<h1>&nbsp;</h1>
+				<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+				<h2 id="rightHeading"></h2>
+				<p id="rightContent"></p>
+				<h2 id="rightSideLinksTitle"></h2>
+				<div id="rightSideLinks"></div>
+				<h2 id="rightHeading2"></h2>
+				<p id="rightContent2"></p>
+				<!-- END CUSTOMIZE FOR YOUR ORGANIZATION --> 
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div id="footer">
+	<div class="container_12">
+		<div class="grid_6">
+			<div class="Pad"> 
+				<!-- CUSTOMIZE FOR YOUR ORGANIZATION -->
+				<h2 id="footerHeading"></h2>
+				<p id="footerDescription"></p>
+				<!-- END  CUSTOMIZE FOR YOUR ORGANIZATION --> 
+			</div>
+		</div>
+		<div class="grid_3">&nbsp;</div>
+		<div class="grid_3">
+			<div id="footerLogoDiv" class="logoDiv footBorder"></div>
+		</div>
+		<div class="clear"></div>
+	</div>
+</div>
+<div id="mobile-app-dialog"></div>
+</body>
+</html>

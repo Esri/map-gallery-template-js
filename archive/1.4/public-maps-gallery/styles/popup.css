@@ -1,0 +1,65 @@
+/*-------------------------------------------------- */
+/* POP UP */
+/*-------------------------------------------------- */
+.esriPopup.pimPopup .titleButton, .esriPopup.pimPopup .pointer, .esriPopup.pimPopup .esriViewPopup .gallery .mediaHandle, .esriPopup.pimPopup .esriViewPopup .gallery .mediaIcon {
+	background-image: url(../graphics/ui/popup.png);
+}
+.esriPopup.pimPopup .titleButton {
+	top: 2px;
+}
+.esriPopup.pimPopup .titleButton.maximize, .esriPopup.pimPopup .titleButton.restore {
+	top: 6px;
+}
+.esriPopup.pimPopup .pointer.top {
+	left: 50%;
+	top: -24px;
+	background-position: 0 -616px;
+	width: 50px;
+	height: 26px;
+	margin-left: -25px;
+}
+.esriPopup.pimPopup .pointer.topLeft {
+	left: 0px;
+	top: -43px;
+	background-position: 0 -525px;
+	width: 51px;
+	height: 45px;
+}
+.esriPopup.pimPopup .pointer.topRight {
+	right: 0px;
+	top: -43px;
+	background-position: 0 -707px;
+	width: 51px;
+	height: 45px;
+}
+.esriPopup.pimPopup .pointer.bottom {
+	bottom: -25px;
+}
+.esriPopup.pimPopup .pointer.bottomLeft, .esriPopup.pimPopup .pointer.bottomRight {
+	bottom: -44px;
+}
+.esriPopup.pimPopup .contentPane, .esriPopup.pimPopup .actionsPane {
+	border:0;
+	background:#EEF7FD;
+}
+.esriPopup.pimPopup .actionsPane {
+	border-top: none;
+}
+.esriPopup.pimPopup .contentPane {
+	border-bottom: none;
+}
+.esriPopup.pimPopup .titlePane, .dj_ie7 .esriPopup.pimPopup .titlePane .title {
+	background: #114562;
+	border:0;
+	color: #fff;
+	font-weight: bold;
+}
+.esriPopup.pimPopup .titlePane {
+	border-bottom: none;
+}
+.esriPopup.pimPopup a {
+	color: #404040;
+}
+.maximized {
+	z-index:999 !important;
+}

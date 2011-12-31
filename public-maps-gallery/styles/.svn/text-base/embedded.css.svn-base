@@ -1,0 +1,70 @@
+body, html {
+	margin:0;
+	padding:0;
+	background:#fff;
+}
+.clear {
+	clear:both;
+}
+#groupMenu {
+	width:175px;
+	margin-bottom:10px;
+}
+.mapContainerEmbed {
+	overflow:hidden;
+	position:relative;
+	font-size: 12px;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+	color:#000;
+	line-height:18px;
+	background:#fff;
+}
+.mapContainerEmbed .tundra {
+	position:absolute;
+	top:0;
+	z-index:1;
+	left:0;
+	background:#fff;
+}
+.mapContainerEmbed .groupCon {
+	position:absolute;
+	top:0;
+	background:#fff;
+	overflow:auto;
+	z-index:5;
+	background:#fff;
+	color:#000;
+}
+.mapContainerEmbed .groupCon .Pad {
+	padding:8px;
+}
+.mapContainerEmbed .alignCenter {
+	text-align:center;
+}
+.mapContainerEmbed .legend {
+	overflow:hidden;
+	width:auto;
+	padding:0;
+	float:none;
+}
+.mapContainerEmbed .description {
+	overflow:hidden;
+	width:auto;
+	padding:0;
+	float:none;
+	display:none;
+}
+.mapContainerEmbed .esriScalebar {
+	padding-left:15px;
+}
+.mapContainerEmbed .bingLogo-lg {
+	left:18px !important;
+}
+#AboutHeading, #LegendHeading {
+	font-size:13px;
+	font-weight:bold;
+	color:#333;
+	border-bottom:1px solid #333;
+	padding-bottom:2px;
+	margin-bottom:10px;
+}
