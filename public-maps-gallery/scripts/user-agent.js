@@ -81,56 +81,59 @@ function geoLocateMap(position) {
 // Check Mobile Cookie
 /*------------------------------------*/
 function checkMobileCookie(){
-	// get cookie
-	pmgConfig.appCookie = $.cookie('ArcGISAppInstalled');
-	// if mobile user and mobile enabled
-	if(isMobileUser() && !pmgConfig.appCookie){
-		// set modal content
-		$("#mobile-app-dialog").html(pmgConfig.mobileAppDialogContent);
-		// prompt for decision
-		$("#mobile-app-dialog").dialog({
-			title: pmgConfig.mobileAppDialogTitle,
-			resizable: false,
-			position: 'center',
-			height: 'auto',
-			width: 'auto',
-			modal: true,
-			buttons: [
-				{
-					text: pmgConfig.mobileAppButtons.notinstalled,
-					click: function(){
-						// open mobile app store link
-						openMobileAppLink();
-						// close dialog
-						$(this).dialog("close");
+	// if disable mobile dialog is false
+	if(!pmgConfig.disableMobileDialog){
+		// get cookie
+		pmgConfig.appCookie = $.cookie('ArcGISAppInstalled');
+		// if mobile user and mobile enabled
+		if(isMobileUser() && !pmgConfig.appCookie){
+			// set modal content
+			$("#mobile-app-dialog").html(pmgConfig.mobileAppDialogContent);
+			// prompt for decision
+			$("#mobile-app-dialog").dialog({
+				title: pmgConfig.mobileAppDialogTitle,
+				resizable: false,
+				position: 'center',
+				height: 'auto',
+				width: 'auto',
+				modal: true,
+				buttons: [
+					{
+						text: pmgConfig.mobileAppButtons.notinstalled,
+						click: function(){
+							// open mobile app store link
+							openMobileAppLink();
+							// close dialog
+							$(this).dialog("close");
+						}
+					},
+					{
+						text: pmgConfig.mobileAppButtons.installed,
+						click: function(){
+							// set cookie to installed
+							$.cookie('ArcGISAppInstalled', 'installed', { expires: 365 }); // 365 days
+							// update config value to installed
+							pmgConfig.appCookie = 'installed';
+							// requery data
+							document.location.reload(true);
+							// close dialog
+							$(this).dialog("close");
+						}
+					},
+					{
+						text: pmgConfig.mobileAppButtons.noinstall,
+						click: function(){
+							// set cookie to opt out of app
+							$.cookie('ArcGISAppInstalled', 'disabled', { expires: 365 }); // 365 days
+							// update config value to optout
+							pmgConfig.appCookie = 'disabled';
+							// close dialog
+							$(this).dialog("close");
+						}
 					}
-				},
-				{
-					text: pmgConfig.mobileAppButtons.installed,
-					click: function(){
-						// set cookie to installed
-						$.cookie('ArcGISAppInstalled', 'installed', { expires: 365 }); // 365 days
-						// update config value to installed
-						pmgConfig.appCookie = 'installed';
-						// requery data
-						document.location.reload(true);
-						// close dialog
-						$(this).dialog("close");
-					}
-				},
-				{
-					text: pmgConfig.mobileAppButtons.noinstall,
-					click: function(){
-						// set cookie to opt out of app
-						$.cookie('ArcGISAppInstalled', 'disabled', { expires: 365 }); // 365 days
-						// update config value to optout
-						pmgConfig.appCookie = 'disabled';
-						// close dialog
-						$(this).dialog("close");
-					}
-				}
-			]
-		});
+				]
+			});
+		}
 	}	
 }
 /*------------------------------------*/

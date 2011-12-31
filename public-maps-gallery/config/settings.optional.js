@@ -45,8 +45,11 @@ pmgConfig.showOverviewMap = true;
 // SHOW MORE INFO UNDER ABOUT ON MAP.HTML PAGE. Default: true.
 pmgConfig.showMoreInfo = true;
 
-// USE ARCGIS App links instead of viewer page. Default: true. False will use viewer
+// USE ARCGIS App links instead of viewer page. Otherwise, will go to viewer page and open into app from there. Default: true.
 pmgConfig.mobileAppLink = true;
+
+// Will not show mobile dialog at all. Therefore, no app links. Default: false.
+pmgConfig.disableMobileDialog = false;
 
 // SHOW PAGINATION LINKS. Default: true.
 pmgConfig.showPagination = true;
@@ -59,13 +62,13 @@ pmgConfig.showPagination = true;
 pmgConfig.mobileAppDialogTitle = "Open Maps in the ArcGIS App?";
 
 // Dialog Content
-pmgConfig.mobileAppDialogContent = "Did you know there's an ArcGIS app for your device?";
+pmgConfig.mobileAppDialogContent = "Did you know there's an ArcGIS app for your mobile device?";
 
 // Dialog Buttons
 pmgConfig.mobileAppButtons = {
 	noinstall: "Don't Show Again",
 	installed: "Already Installed",
-	notinstalled: "Install now"	
+	notinstalled: "Install Now"
 };
 
 /*------------------------------------*/
