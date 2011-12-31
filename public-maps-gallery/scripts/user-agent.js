@@ -54,6 +54,17 @@ function zoomToLocation(x, y, IPAccuracy){
 	var lod = 14;
 	// set point
 	var pt = esri.geometry.geographicToWebMercator(new esri.geometry.Point(x, y));
+	// IF LOCATE RESULTS
+	if(locateResultLayer) {
+		locateResultLayer.clear();
+	}
+	else{
+		locateResultLayer = new esri.layers.GraphicsLayer();
+		map.addLayer(locateResultLayer);
+	}
+	var pointSymbol = new esri.symbol.PictureMarkerSymbol("graphics/ui/bluepoint-21x25.png", 21, 25).setOffset(0,12);
+	var locationGraphic = new esri.Graphic(pt,pointSymbol);
+	locateResultLayer.add(locationGraphic);
 	// zoom and center
 	map.centerAndZoom(pt,lod);
 }
