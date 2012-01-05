@@ -103,8 +103,6 @@ function checkMobileCookie(){
 						click: function(){
 							// open mobile app store link
 							openMobileAppLink();
-							// close dialog
-							$(this).dialog("close");
 						}
 					},
 					{
