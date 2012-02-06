@@ -20,6 +20,13 @@ http://www.arcgis.com/home/item.html?id=2b158c0d94b64f208f45bcae801c2fa0
 // YOUR GROUP'S ID
 pmgConfig.groupID = "69b91f7b857b40a484c4aacbd1b243a7";
 
+//token if secured
+//to generate token using the ArcGIS.COM sharing API:
+// https://www.arcgis.com/sharing/generateToken?f=json&request=gettoken&username={arcgis.com username}&password={arcgis.com password}&Referer={base url where template is hosted}&expiration=525600
+// token will expire after 1 year
+//pmgConfig.token = "RzI6BXBuDlINY04fwXcljXns4cobDUwLg8-99U3uZv_vFnVB5aX67Ud_LE48P87i";
+pmgConfig.token = "";
+
 // DEFAULT WEB MAP ID. THIS WEBMAP LOADS WHEN NO WEBMAP IS SPECIFIED ON MAP.HTML
 pmgConfig.defaultWebmap = "3fbfbf82b8d84409a60186b135eaa1ca";
 

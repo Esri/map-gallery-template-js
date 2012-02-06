@@ -26,7 +26,7 @@ function queryArcGISGroupInfo(obj){
 		// JQUERY AJAX FUNCTION CALL
 		$.ajax({
 			// AJAX URL
-			url: pmgConfig.arcgisPortalURL + 'sharing/community/groups/' + settings.id_group,
+			url: pmgConfig.arcgisPortalURL + 'sharing/community/groups/' + settings.id_group + '/?token=' + pmgConfig.token,
 			// DATA STRING WITH PARAMETERS
 			data: dataString,
 			// DATA TYPE
@@ -90,6 +90,8 @@ function queryArcGISGroup(obj){
 		layout: 'grid',
 		// USE ARCGIS MOBILE APP LINKS WHEN ON A MOBILE DEVICE
 		mobileAppLink: false,
+		//token if needed
+		token: pmgConfig.token,
 		// CALLBACK FUNCTION WITH OBJECT
 		callback: null
     };
@@ -130,6 +132,9 @@ function queryArcGISGroup(obj){
 		}
 		if(settings.searchStart > 1){
 			dataString += '&start='+(((settings.searchStart - 1) * settings.perPage) + 1);
+		}
+		if(settings.token != ''){
+			dataString += '&token=' + settings.token;
 		}
 		// JQUERY AJAX FUNCTION CALL
 		$.ajax({
