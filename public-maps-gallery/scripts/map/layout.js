@@ -177,24 +177,24 @@ function createBasemapGallery() {
 	basemapGallery.startup();
 	dojo.connect(basemapGallery, "onError", function(msg) {console.log(msg)});
 }
-
+/*------------------------------------*/
 // APPEND TOKEN TO ARCGIS.COM CALLS
+/*------------------------------------*/
 function appendToken(ioArgs) {
-  if (pmgConfig.token) {
-	if (ioArgs.url.search('www.arcgis.com') > 0) {
-	  ioArgs.content = ioArgs.content || {};
-	  ioArgs.content.token = pmgConfig.token;
+	if (pmgConfig.token) {
+		if (ioArgs.url.search('www.arcgis.com') > 0) {
+			ioArgs.content = ioArgs.content || {};
+			ioArgs.content.token = pmgConfig.token;
+		}
 	}
-  }
-  return ioArgs;
+	return ioArgs;
 }
-
 /*------------------------------------*/
 // INIT
 /*------------------------------------*/
 function initMap() {
+	// Set REQUEST PRE CALLBACK FOR TOKENS
 	esri.setRequestPreCallback(appendToken);
-	
 	// ARCGIS URL
 	if(!pmgConfig.arcgisURL){
 		pmgConfig.arcgisURL = location.protocol + '//' + location.host + "/sharing/content/items";

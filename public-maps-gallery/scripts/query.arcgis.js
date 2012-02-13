@@ -90,7 +90,7 @@ function queryArcGISGroup(obj){
 		layout: 'grid',
 		// USE ARCGIS MOBILE APP LINKS WHEN ON A MOBILE DEVICE
 		mobileAppLink: false,
-		//token if needed
+		// TOKEN IF NEEDED
 		token: pmgConfig.token,
 		// CALLBACK FUNCTION WITH OBJECT
 		callback: null
