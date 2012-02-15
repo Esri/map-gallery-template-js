@@ -27,6 +27,7 @@ Token Generator Tool:
 pmgConfig.groupID = "69b91f7b857b40a484c4aacbd1b243a7";
 
 // Token if your group or map is not set to public.
+// http://www.esri.com/public-maps-gallery/token-tool/index.html
 pmgConfig.token = "";
 
 // Default WebMap ID. This WebMap loads when no webmap query string parameter is specified on map.html
