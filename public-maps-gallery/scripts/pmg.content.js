@@ -5,7 +5,7 @@
 // SOCIAL MEDIA HTML
 function insertSocialHTML(){
 	var html = '';
-	html += '<div class="addthis_toolbox addthis_default_style addthis_32x32_style">';
+	html += '<div class="addthis_toolbox addthis_default_style">';
 	html += '<a class="addthis_button_facebook"></a>';
 	html += '<a class="addthis_button_twitter"></a>';
 	html += '<a class="addthis_button_linkedin"></a>';
@@ -20,24 +20,28 @@ function insertSocialHTML(){
 // Place Footer HTML
 function insertFooterHTML(){
 	var html = '';
-	html += '<div class="container_12">';
-		if(pmgConfig.indexPage){
-			html += '<div class="grid_6">';
-				html += '<div class="Pad"> ';
-					html += '<h2 id="footerHeading"></h2>';
-					html += '<p id="footerDescription"></p>';
+	html += '<div id="footerCon">';
+		html += '<div class="container_12">';
+			if(pmgConfig.indexPage){
+				html += '<div class="grid_6">';
+					html += '<div class="Pad"> ';
+						html += '<h2 id="footerHeading"></h2>';
+						html += '<p id="footerDescription"></p>';
+					html += '</div>';
 				html += '</div>';
+				html += '<div class="prefix_3 grid_3">';
+			}
+			else{
+				html += '<div class="prefix_9 grid_3">';
+			}
+					html += '<div id="footerLogoDiv" class="logoDiv footBorder"></div>';
+				html += '</div>';
+				html += '<div class="clear"></div>';
 			html += '</div>';
-			html += '<div class="prefix_3 grid_3">';
-		}
-		else{
-			html += '<div class="prefix_9 grid_3">';
-		}
-				html += '<div id="footerLogoDiv" class="logoDiv footBorder"></div>';
-			html += '</div>';
-			html += '<div class="clear"></div>';
 		html += '</div>';
 	$('#footer').html(html);
+	// set BG color to footer BG color
+	$('body').css('background-color',$('#footerCon').css('background-color'));
 }
 
 // SET PAGE TITLE

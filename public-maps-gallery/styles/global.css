@@ -12,7 +12,7 @@ html, body {
 }
 body {
 	color:#fff;
-	background-color:#4d4d4d;
+	background-color:#E5E5E5;
 }
 h1, h2 {
 	line-height:normal;
@@ -210,13 +210,12 @@ input[type=search] {
 }
 .socialButtons .item {
 	float:left;
-	margin-left:10px;
-}
-.socialButtons .first {
-	margin-left:0;
 }
 .socialButtons .itemRight {
 	float:right;
+}
+.socialButtons .homeButtons {
+	margin-right:10px;
 }
 /*-------------------------------------------------- */
 /* FEATURED MAPS */
@@ -533,6 +532,8 @@ input[type=search] {
 /* FOOTER */
 /*-------------------------------------------------- */
 #footer {
+}
+#footer #footerCon {
 	color:#fff;
 	background:#4d4d4d url(../graphics/ui/footerBG.jpg) repeat-x top left;
 	_background-image:none;
