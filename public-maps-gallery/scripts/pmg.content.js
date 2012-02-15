@@ -1,6 +1,45 @@
 /*------------------------------------*/
 // INSERT CONTENT
 /*------------------------------------*/
+
+// SOCIAL MEDIA HTML
+function insertSocialHTML(){
+	var html = '';
+	html += '<div class="addthis_toolbox addthis_default_style addthis_32x32_style">';
+	html += '<a class="addthis_button_facebook"></a>';
+	html += '<a class="addthis_button_twitter"></a>';
+	html += '<a class="addthis_button_linkedin"></a>';
+	html += '<a class="addthis_button_email"></a>';
+	html += '<a class="addthis_button_compact"></a>';
+	html += '<a class="addthis_counter addthis_bubble_style"></a>';
+	html += '</div>';
+	html += '<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid=' + pmgConfig.addThisProfileId + '"></script>';
+	$('#socialHTML').html(html);
+}
+
+// Place Footer HTML
+function insertFooterHTML(){
+	var html = '';
+	html += '<div class="container_12">';
+		if(pmgConfig.indexPage){
+			html += '<div class="grid_6">';
+				html += '<div class="Pad"> ';
+					html += '<h2 id="footerHeading"></h2>';
+					html += '<p id="footerDescription"></p>';
+				html += '</div>';
+			html += '</div>';
+			html += '<div class="prefix_3 grid_3">';
+		}
+		else{
+			html += '<div class="prefix_9 grid_3">';
+		}
+				html += '<div id="footerLogoDiv" class="logoDiv footBorder"></div>';
+			html += '</div>';
+			html += '<div class="clear"></div>';
+		html += '</div>';
+	$('#footer').html(html);
+}
+
 // SET PAGE TITLE
 function setPageTitle(){
 	if(pmgConfig.pmgSubTitle){
@@ -47,6 +86,17 @@ function insertPMGContent(){
 	if(pmgConfig.siteIntro){
 		$('#siteIntro').html(pmgConfig.siteIntro);
 	}
+	
+	// Social Media Buttons
+	if(pmgConfig.showSocialButtons){
+		insertSocialHTML();	
+	}
+	
+	// FOOTER
+	if(pmgConfig.showFooter){
+		insertFooterHTML();
+	}
+	
 	// FOOTER HEADING
 	if(pmgConfig.footerHeading){
 		$('#footerHeading').html(pmgConfig.footerHeading);
