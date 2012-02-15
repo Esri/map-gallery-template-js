@@ -26,7 +26,7 @@ Token Generator Tool:
 // Your Group's ID
 pmgConfig.groupID = "69b91f7b857b40a484c4aacbd1b243a7";
 
-// Token if your group or map is secured.
+// Token if your group or map is not set to public.
 pmgConfig.token = "";
 
 // Default WebMap ID. This WebMap loads when no webmap query string parameter is specified on map.html
