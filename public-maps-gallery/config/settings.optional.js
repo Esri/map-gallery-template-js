@@ -24,6 +24,9 @@ pmgConfig.galleryPerPage = 9; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL. Defa
 // HOW MANY ROWS PER PAGE
 pmgConfig.galleryPerRow = 3; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL Default: 3.
 
+// Open gallery thumbnail links in a new window/tab
+pmgConfig.openGalleryNewWindow = true;
+
 // SHOW SOCIAL BUTTONS SUCH AS TWITTER, FACEBOOK, EMAIL, SHARE. Default: true.
 pmgConfig.showSocialButtons = true;
 
