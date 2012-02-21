@@ -16,13 +16,25 @@ pmgConfig.sortField = 'uploaded'; // SORTING COLUMN= The allowed field names are
 pmgConfig.sortOrder = 'desc'; // SORTING ORDER: Values: 'asc' or 'desc'. Default: 'desc'.
 
 // CHANGES THE MAP VIEWER TO USE 'simple' (map.html), 'explorer' (ArcGIS Explorer) or 'arcgis' (ArcGIS Javascript)
-pmgConfig.mapViewer = 'simple'; // values: 'simple', 'explorer' or 'arcgis'. default: 'simple'.
+pmgConfig.mapViewer = 'simple'; // values: 'simple', 'explorer', 'explorer_present' or 'arcgis'. default: 'simple'.
 
 // HOW MANY THUMBNAILS TO DISPLAY PER PAGE
 pmgConfig.galleryPerPage = 9; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL. Default: 9.
 
 // HOW MANY ROWS PER PAGE
 pmgConfig.galleryPerRow = 3; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL Default: 3.
+
+// Open gallery thumbnail links in a new window/tab
+pmgConfig.openGalleryNewWindow = true;
+
+// SHOW SOCIAL BUTTONS SUCH AS TWITTER, FACEBOOK, EMAIL, SHARE. Default: true.
+pmgConfig.showSocialButtons = true;
+
+// addthis.com profile ID for sharing analytics. Default: (unregistered).
+pmgConfig.addThisProfileId = 'xa-4f3bf72958320e9e';
+
+// SHOW FOOTER. Default: true.
+pmgConfig.showFooter = true;
 
 // SHOW BASEMAP GALLERY DIJIT. Default: true.
 pmgConfig.showBasemapGallery = true;

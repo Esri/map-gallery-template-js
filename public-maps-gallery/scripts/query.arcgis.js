@@ -2,8 +2,9 @@
 // CONFIG VARIABLE
 /*------------------------------------*/
 var pmgConfig = {};
-pmgConfig.version = 1.4;
+pmgConfig.version = '1.4.1';
 pmgConfig.toolURL = 'http://www.esri.com/public-maps-gallery/group-id-tool/index.html';
+pmgConfig.tokenToolURL = 'http://www.esri.com/public-maps-gallery/token-tool/index.html';
 pmgConfig.showVersion = false;
 /*------------------------------------*/
 // QUERY ARCGIS GROUP INFO
@@ -90,7 +91,7 @@ function queryArcGISGroup(obj){
 		layout: 'grid',
 		// USE ARCGIS MOBILE APP LINKS WHEN ON A MOBILE DEVICE
 		mobileAppLink: false,
-		//token if needed
+		// TOKEN IF NEEDED
 		token: pmgConfig.token,
 		// CALLBACK FUNCTION WITH OBJECT
 		callback: null
@@ -272,6 +273,9 @@ function getViewerURL(){
 			break;
 		case 'explorer':
 			return 'http://explorer.arcgis.com/?open=';
+			break;
+		case 'explorer_present':
+			return 'http://explorer.arcgis.com/?present=';
 			break;
 		case 'simple':
 			return 'map.html?webmap=';

@@ -31,8 +31,8 @@
 <link rel="stylesheet" type="text/css" href="styles/960.css">
 <link rel="stylesheet" type="text/css" href="styles/global.css">
 <link rel="stylesheet" type="text/css" href="styles/themes.css">
-<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.6/js/dojo/dijit/themes/tundra/tundra.css">
-<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.6/js/esri/dijit/css/Popup.css">
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.7/js/dojo/dijit/themes/tundra/tundra.css">
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.7/js/esri/dijit/css/Popup.css">
 <link rel="stylesheet" type="text/css" href="styles/popup.css">
 <!-- END STYLES -->
 <!-- JAVASCRIPT -->
@@ -42,7 +42,7 @@
 <script type="text/javascript" src="scripts/plugins/jquery.ui.touch-punch.min.js"></script>
 <script type="text/javascript" src="scripts/plugins/jquery.cookie.js"></script>
 <script type="text/javascript">djConfig = { parseOnLoad:true };</script>
-<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.6"></script>
+<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.7"></script>
 <script type="text/javascript" src="scripts/query.arcgis.js"></script>
 <script type="text/javascript" src="config/settings.required.js"></script>
 <script type="text/javascript" src="config/settings.optional.js"></script>
@@ -108,31 +108,7 @@
 				</div>
 			</div>
 			<div class="socialButtons">
-				<div class="item first"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script> 
-				</div>
-				<div class="item">
-					<div id="fb-root"></div>
-					<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) {return;}
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#appId=154863967938949&xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-					<div class="fb-like" data-send="false" data-layout="button_count" data-width="100" data-show-faces="false" data-font="arial"></div>
-				</div>
-				<div class="item"> 
-					<!-- Place this tag where you want the +1 button to render -->
-					<div class="g-plusone" data-size="medium" data-annotation="none"></div>
-					<!-- Place this render call where appropriate --> 
-					<script type="text/javascript">
-					  (function() {
-						var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-						po.src = 'https://apis.google.com/js/plusone.js';
-						var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-					  })();
-					</script> 
-				</div>
+				<div id="socialHTML" class="item"></div>
 				<div class="itemRight" id="mapButtons"></div>
 				<div class="clear"></div>
 			</div>
@@ -162,15 +138,7 @@
 		<div class="clear"></div>
 	</div>
 </div>
-<div id="footer">
-	<div class="container_12">
-		<div class="grid_9">&nbsp;</div>
-		<div class="grid_3">
-			<div id="footerLogoDiv" class="logoDiv footBorder"></div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
+<div id="footer"></div>
 <div id="mobile-app-dialog"></div>
 </body>
 </html>

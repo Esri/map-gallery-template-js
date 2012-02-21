@@ -149,8 +149,12 @@ function buildMapPlaylist(obj,data){
 				if(data.results[i].snippet){
 					snippet = data.results[i].snippet;
 				}
+				var linkTarget = '';
+				if(pmgConfig.openGalleryNewWindow){
+					linkTarget = 'target="_blank"';
+				}
 				// BUILD LIST ITEM
-				html += '<li class="item ' + appClass + '"><a class="block" id="mapItem'+i+'" title="' + snippet + '" href="' + itemURL + '"><img src="' + obj.arcgispath + obj.imagepath + data.results[i].id + obj.imagepath2 + data.results[i].thumbnail + '?token=' + obj.token + '" width="200" height="133"></a><a class="title" id="mapItemLink'+i+'" title="' + snippet + '" href="' + itemURL + '"><strong>' + itemTitle + '</strong></a><p>' + snippet + '</p><p><a class="viewMap" title="View map" href="' + itemURL + '">View map<span class="arrow"></span></a></p><div class="clear"></div></li>';
+				html += '<li class="item ' + appClass + '"><a ' + linkTarget + ' class="block" id="mapItem'+i+'" title="' + snippet + '" href="' + itemURL + '"><img src="' + obj.arcgispath + obj.imagepath + data.results[i].id + obj.imagepath2 + data.results[i].thumbnail + '?token=' + obj.token + '" width="200" height="133"></a><a ' + linkTarget + ' class="title" id="mapItemLink'+i+'" title="' + snippet + '" href="' + itemURL + '"><strong>' + itemTitle + '</strong></a><p>' + snippet + '</p><p><a ' + linkTarget + ' class="viewMap" title="View map" href="' + itemURL + '">View map<span class="arrow"></span></a></p><div class="clear"></div></li>';
 			}
 			else{
 				var endRow = false;
@@ -160,6 +164,10 @@ function buildMapPlaylist(obj,data){
 				if(data.results[i].snippet){
 					snippet = data.results[i].snippet;
 				}
+				var linkTarget = '';
+				if(pmgConfig.openGalleryNewWindow){
+					linkTarget = 'target="_blank"';
+				}
 				// LAST ROW ITEM
 				if((i + 1) % obj.perRow == 0){
 					itemClass = ' endRow';
@@ -167,7 +175,7 @@ function buildMapPlaylist(obj,data){
 				}
 				// BUILD LIST ITEM
 				html += '<li class="item ' + appClass + ' ' + itemClass + '">';
-				html += '<a id="mapItem'+i+'" title="' + snippet + '" href="' + itemURL + '"><img src="' + obj.arcgispath + obj.imagepath + data.results[i].id + obj.imagepath2 + data.results[i].thumbnail + '?token=' + obj.token + '" width="200" height="133"><span>' + itemTitle + '</span></a>';
+				html += '<a ' + linkTarget + ' id="mapItem'+i+'" title="' + snippet + '" href="' + itemURL + '"><img src="' + obj.arcgispath + obj.imagepath + data.results[i].id + obj.imagepath2 + data.results[i].thumbnail + '?token=' + obj.token + '" width="200" height="133"><span>' + itemTitle + '</span></a>';
 				html += '</li>';
 				if(endRow){
 					html += '<li class="clear"></li>';

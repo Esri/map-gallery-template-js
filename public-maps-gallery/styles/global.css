@@ -12,7 +12,7 @@ html, body {
 }
 body {
 	color:#fff;
-	background-color:#4d4d4d;
+	background-color:#E5E5E5;
 }
 h1, h2 {
 	line-height:normal;
@@ -210,14 +210,12 @@ input[type=search] {
 }
 .socialButtons .item {
 	float:left;
-	width:125px;
-	margin-left:10px;
-}
-.socialButtons .first {
-	margin-left:0;
 }
 .socialButtons .itemRight {
 	float:right;
+}
+.socialButtons .homeButtons {
+	margin-right:10px;
 }
 /*-------------------------------------------------- */
 /* FEATURED MAPS */
@@ -534,6 +532,8 @@ input[type=search] {
 /* FOOTER */
 /*-------------------------------------------------- */
 #footer {
+}
+#footer #footerCon {
 	color:#fff;
 	background:#4d4d4d url(../graphics/ui/footerBG.jpg) repeat-x top left;
 	_background-image:none;
@@ -1336,7 +1336,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3c3c3', end
 /*-------------------------------------------------- */
 /* JQUERY UI */
 /*-------------------------------------------------- */
-.ui-dialog .ui-dialog-content{
+.ui-dialog .ui-dialog-content {
 	padding:10px;
 }
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
@@ -1503,11 +1503,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3c3c3', end
 /*-------------------------------------------------- */
 /* Dialog Buttons */
 /*-------------------------------------------------- */
-.ui-dialog .ui-dialog-buttonpane{
+.ui-dialog .ui-dialog-buttonpane {
 	margin:0 10px;
 	padding:10px 0;
 }
-.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button.ui-state-focus{
+.ui-dialog .ui-dialog-buttonpane button, .ui-dialog .ui-dialog-buttonpane button.ui-state-focus {
 	margin-left:10px;
 }
 /*-------------------------------------------------- */
