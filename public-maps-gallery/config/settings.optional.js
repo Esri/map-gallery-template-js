@@ -25,7 +25,7 @@ pmgConfig.galleryPerPage = 9; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL. Defa
 pmgConfig.galleryPerRow = 3; // ONLY CHANGE IF YOU CAN CHANGE CSS AS WELL Default: 3.
 
 // Open gallery thumbnail links in a new window/tab
-pmgConfig.openGalleryNewWindow = true;
+pmgConfig.openGalleryNewWindow = false;
 
 // SHOW SOCIAL BUTTONS SUCH AS TWITTER, FACEBOOK, EMAIL, SHARE. Default: true.
 pmgConfig.showSocialButtons = true;
@@ -98,7 +98,10 @@ pmgConfig.locatorURL = 'http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocato
 
 // ARCGIS PORTAL URL
 pmgConfig.arcgisPortalURL = 'http://www.arcgis.com/';
-pmgConfig.arcgisURL = pmgConfig.arcgisPortalURL + 'sharing/content/items';
+// As a result of the release of the ArcGIS Portal API in March 2012, the query URL "/sharing/rest/" has been added. The old query URL "/sharing/" declaration still works but was changed to reflect current practices.
+pmgConfig.arcgisPortalRest = 'sharing/rest/';
+pmgConfig.arcgisRestVersion = 1;
+pmgConfig.arcgisURL = pmgConfig.arcgisPortalURL + pmgConfig.arcgisPortalRest + 'content/items';
 
 // ARCGIS MOBILE CONTENT URL
 pmgConfig.mobileArcgisURL = 'arcgis://www.arcgis.com/';

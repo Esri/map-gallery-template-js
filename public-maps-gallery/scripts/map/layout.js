@@ -197,12 +197,13 @@ function initMap() {
 	esri.setRequestPreCallback(appendToken);
 	// ARCGIS URL
 	if(!pmgConfig.arcgisURL){
-		pmgConfig.arcgisURL = location.protocol + '//' + location.host + "/sharing/content/items";
+		// As a result of the release of the ArcGIS Portal API in March 2012, the query URL "/sharing/rest/" has been added. The old query URL "/sharing/" declaration still works but was changed to reflect current practices.
+		pmgConfig.arcgisURL = location.protocol + '//' + location.host + "/" + pmgConfig.arcgisPortalRest + "content/items";
 	}
 	esri.arcgis.utils.arcgisUrl = pmgConfig.arcgisURL;
 	// PROXY URL
 	if(!pmgConfig.proxyURL){   
-		pmgConfig.proxyURL = location.protocol + '//' + location.host + "/sharing/proxy";
+		pmgConfig.proxyURL = location.protocol + '//' + location.host + "/" + pmgConfig.arcgisPortalRest + "proxy";
 	}
 	esri.config.defaults.io.proxyUrl =  pmgConfig.proxyURL;
 	esri.config.defaults.io.alwaysUseProxy = false;

@@ -20,14 +20,15 @@ function queryArcGISGroupInfo(obj){
 	if(obj) { 
 		$.extend(settings,obj);
 	}
-	//EXAMPLE URL: http://www.arcgis.com/sharing/community/groups/2ecb37a8c8fb4051af9c086c25503bb0
+	//EXAMPLE URL: http://www.arcgis.com/sharing/rest/community/groups/2ecb37a8c8fb4051af9c086c25503bb0
 	if(settings.id_group){
 		var dataString = '';
 		dataString += '&f=' + settings.dataType;
 		// JQUERY AJAX FUNCTION CALL
 		$.ajax({
 			// AJAX URL
-			url: pmgConfig.arcgisPortalURL + 'sharing/community/groups/' + settings.id_group + '/?token=' + pmgConfig.token,
+			// As a result of the release of the ArcGIS Portal API in March 2012, the query URL "/sharing/rest/" has been added. The old query URL "/sharing/" declaration still works but was changed to reflect current practices.
+			url: pmgConfig.arcgisPortalURL + pmgConfig.arcgisPortalRest + 'community/groups/' + settings.id_group + '/?token=' + pmgConfig.token,
 			// DATA STRING WITH PARAMETERS
 			data: dataString,
 			// DATA TYPE
@@ -47,7 +48,7 @@ function queryArcGISGroupInfo(obj){
 /*------------------------------------*/
 /*
 EXAMPLE URL
-http://www.arcgis.com/sharing/search?q=group%3A%224a6f9fdc83ce44b6985115e4bd73cacd%22%20AND%20type%3A%22Web%20Map%22&f=json&sortField=title&sortOrder=asc&num=6&start=1
+http://www.arcgis.com/sharing/rest/search?q=group%3A%224a6f9fdc83ce44b6985115e4bd73cacd%22%20AND%20type%3A%22Web%20Map%22&f=json&sortField=title&sortOrder=asc&num=6&start=1
 */
 function queryArcGISGroup(obj){
 	// DEFAULT VALUES
@@ -55,9 +56,9 @@ function queryArcGISGroup(obj){
 		// ARCGIS.COM URL
 		arcgispath : pmgConfig.arcgisPortalURL,
 		// SEARCH PATH
-		searchpath : 'sharing/search',
+		searchpath : pmgConfig.arcgisPortalRest + 'search',
 		// IMAGE PATHS
-		imagepath : 'sharing/content/items/',
+		imagepath : pmgConfig.arcgisPortalRest + 'content/items/',
 		imagepath2 : '/info/',
 		// SET GROUP ID FOR WEB MAPS
 		id_group : '',
@@ -137,6 +138,8 @@ function queryArcGISGroup(obj){
 		if(settings.token != ''){
 			dataString += '&token=' + settings.token;
 		}
+		// REST API VERSION
+		dataString += '&v=' + pmgConfig.arcgisRestVersion;
 		// JQUERY AJAX FUNCTION CALL
 		$.ajax({
 			// AJAX URL

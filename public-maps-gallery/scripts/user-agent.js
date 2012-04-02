@@ -13,7 +13,8 @@ function getMobileAppURL(id){
 	// IF IOS DEVICE
 	if(pmgConfig.agent_ios){
 		// SHOW IOS LINK
-		return pmgConfig.mobileArcgisURL + 'sharing/content/items/' + id + '/data';
+		// As a result of the release of the ArcGIS Portal API in March 2012, the query URL "/sharing/rest/" has been added. The old query URL "/sharing/" declaration still works but was changed to reflect current practices.
+		return pmgConfig.mobileArcgisURL + pmgConfig.arcgisPortalRest + 'content/items/' + id + '/data';
 	}
 	// If Android
 	else if(pmgConfig.agent_android){
