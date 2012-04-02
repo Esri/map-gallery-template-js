@@ -24,6 +24,7 @@ function queryArcGISGroupInfo(obj){
 	if(settings.id_group){
 		var dataString = '';
 		dataString += '&f=' + settings.dataType;
+		dataString += '&v=' + pmgConfig.arcgisRestVersion;
 		// JQUERY AJAX FUNCTION CALL
 		$.ajax({
 			// AJAX URL
