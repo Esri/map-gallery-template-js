@@ -1,0 +1,274 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Layout Template - Read Me</title>
+<style>
+.selector {
+	color:red;
+}
+ul, ol {
+	margin-top:10px;
+	margin-bottom:10px;
+}
+ul li, ol li {
+	margin:5px 0;
+}
+img {
+	padding:20px;
+}
+.heading {
+	background-color:#D8E0E2;
+	background-repeat:repeat-x;
+	border-bottom:1px solid #FFFFFF;
+	border-top:1px solid #FFFFFF;
+	color:black;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:16px;
+	font-weight:bold;
+	letter-spacing:1.1px;
+	margin:15px 0 10px;
+	padding:3px 10px;
+	text-align:center;
+}
+</style>
+</head>
+<body>
+<p id="top">This template provides a starting point for creating your Web application. This easily configurable template allows you to define the map, title, and subtitle for the site. This read-me file explains how to setup and configure the template to run on your web server. We have also provided a few tips on how to personalize the template by adding a company logo and customizing the content.</p>
+<div class="heading">Table of Contents</div>
+<ul>
+	<li><a href="#deploy">Install the Web application</a></li>
+	<li><a href="#configure">Configure the application</a></li>
+	<li><a href="#personalize">Personalize the application</a>
+		<ul>
+			<li><a href="#logo">Add a logo</a></li>
+			<li><a href="#customhtml">Add Custom HTMl to footer</a></li>
+			<li><a href="#addthis">Setup an AddThis account for analytics</a></li>
+			<li><a href="#customtheme">Create a new custom theme</a></li>
+			<li><a href="#portal">Configure the template to work with your ArcGIS Portal</a></li>
+		</ul>
+	</li>
+</ul>
+<h3 id="deploy" class="heading">Install the Web application</h3>
+<p>These instructions assume that you have a Web server like <a href="http://www.iis.net/">Internet Information Services(IIS)</a> installed and setup on your machine. If you are using another Web server, the general installation steps will be the same, but you will need to check your Web server's documentation for specific information on deploying and testing the application.</p>
+<ol>
+	<li>Copy the contents of the zip file into your web server's root directory. In IIS, the default location for the web server's root folder is <code>c:\inetpub\wwwroot</code>. </li>
+	<li>If your application edits the features in a feature service, enables the elevation chart, contains secure services or web maps that aren't publicly shared or generates requests that exceed 2000 characters you may need to setup and use a proxy page. One example where you may exceed the URL length is by using complex polygons as an input to a task. Another example is by specifying a spatial reference using well-known text (wkt).
+		View the <a href="http://help.arcgis.com/EN/webapi/javascript/arcgis/help/jshelp_start.htm#jshelp/ags_proxy.htm">Using the proxy page</a> help topic for details on installing and configuring a proxy page. After setting up the proxy, set the proxyUrl option in index.html to point to your proxy. </li>
+	<li> Test the page using the following URL: http://localhost/[template name]/index.html, where [template name] is the name of the folder where you extracted the zip contents. </li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h3 id="configure"  class="heading">Configure the application</h3>
+<p>Now let's configure the application to use a different group and modify configuration options.</p>
+<ol>
+	<li>
+		<p>Every group on ArcGIS.com  has a unique identifier (id). To find the group's id, navigate to <a href="http://www.arcgis.com/">ArcGIS.com</a>, and find the group you want to display. If it is one of your groups, make sure it's shared with everyone (public).</p>
+		<p><strong>To find the group's id:</strong></p>
+		<ol>
+			<li>Navigate to the group's page.</li>
+			<li>Right-click on the group's image to copy it's URL location or open it's location in a new tab/window.
+				<div><img src="images/documentation/group_page.png" alt="group_page" width="969" height="387" /></div>
+			</li>
+			<li>View the URL and copy the id as highlighted in the URL. The section you need to copy is highlighted in the image below.
+				<div><img src="images/documentation/id_from_url.png" alt="id_from_url" width="864" height="194" /></div>
+			</li>
+		</ol>
+	<li>Open the config.js file in a text editor. The config.js file is located in the config folder in the root directory of this application.</li>
+	<li>To modify the group, replace the string for id with your group's id. You may optionally set the group's title and owner instead of id.
+		<div>
+			<pre>
+	"group":{
+		"id":"<span class="selector">4a6f9fdc83ce44b6985115e4bd73cacd</span>",
+		"title":"",
+		"owner":""
+	},
+</pre>
+		</div>
+	</li>
+	<li>If your group has a map which contains data from Bing Maps, enter your <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/help/jshelp_start.htm#jshelp/ve_getting_started.htm">Bing Maps key</a>.
+		<div>
+			<pre>
+	"bingmapskey":"<span class="selector">Enter your Bing Maps Key here</span>",
+</pre>
+		</div>
+	</li>
+	<li>By default, the application displays the ArcGIS.com group's title as the application's home heading, the group's summary as the application's home snippet and the group's description as the application's home side content. You can overwrite these by setting the following properties:
+		<div>
+			<pre>
+	"homeHeading":"<span class="selector">This is a custom title for your home page</span>",
+	"homeSnippet":"<span class="selector">This is a custom summary for home map</span>",
+	"homeSideContent":"<span class="selector">This is a custom description for your home page</span>",
+</pre>
+		</div>
+	</li>
+	<li>By default, the application displays the ArcGIS.com map's title as the application's title and the map's summary as the application's subtitle. You can overwrite these by setting the following properties:
+		<div>
+			<pre>
+	"mapTitle":"<span class="selector">This is a custom title for your map</span>",
+	"mapSnippet":"<span class="selector">This is a custom subtitle</span>",
+	"mapItemDescription":"<span class="selector">This is a custom description</span>",
+</pre>
+		</div>
+	</li>
+	<li>You can edit this file to set the following application properties:
+		<ul>
+			<li><b>appid:</b> ID of application on ArcGIS.com containing your settings for this template.</li>
+			<li><b>theme:</b> Color theme to use. Options are "blueTheme", "redTheme" or "greenTheme".</li>
+			<li><b>siteTitle:</b> The name of your website.</li>
+			<li><b>siteBannerImage:</b> URL for logo image. If empty, Site Title text is used in its place.</li>
+			<li><b>mapTitle:</b> If not specified, the ArcGIS.com map's title is used.</li>
+			<li><b>mapSnippet:</b> If not specified, the ArcGIS.com web map's summary is used</li>
+			<li><b>mapItemDescription:</b> Displayed in the about section of the map page. Defaults to map description.</li>
+			<li><b>homeHeading:</b> Heading displayed on the index page. Uses group title by default.</li>
+			<li><b>homeSnippet:</b> Summary displayed on the index page. Uses group summary by default.</li>
+			<li><b>homeSideHeading:</b> Heading displayed on the side-content on the index page.</li>
+			<li><b>homeSideContent:</b> Displayed on the side of the index page. Defaults to group description.</li>
+			<li><b>footerHeading:</b> Heading displayed in the footer.</li>
+			<li><b>footerDescription:</b> Content displayed in the footer.</li>
+			<li><b>footerLogo:</b> Image displayed in the footer. Defaults to group image.</li>
+			<li><b>footerLogoUrl:</b> Link used for the footer image. Defaults to link to group page on ArcGIS.com</li>
+			<li><b>addThisProfileId:</b> Account ID for AddThis.com. Defaults to generic.</li>
+			<li><b>defaultLayout:</b> Default layout to use. "grid" or "list".</li>
+			<li><b>sortField:</b> Order to display the group items: "uploaded", "title", "type", "owner", "avgRating", "numRatings", "numComments", or "numViews".</li>
+			<li><b>sortOrder:</b> Order to sort the group: "asc" or "desc".</li>
+			<li><b>mapViewer:</b> URL to open the gallery items to. "simple", "explorer", "explorer_present", "arcgis".</li>
+			<li><b>galleryItemsPerPage:</b> Number of gallery items to show per page.</li>
+			<li><b>showProfileUrl:</b> Show link to user profile . true or false.</li>
+			<li><b>showAboutPage:</b> Show about page link. true or false.</li>
+			<li><b>showSocialButtons:</b> Show social media buttons. true or false.</li>
+			<li><b>showFooter:</b> Show footer. true or false.</li>
+			<li><b>showBasemapGallery:</b> Show basemap gallery on map: true or false.</li>
+			<li><b>showGroupSearch:</b> Show group search on index: true or false.</li>
+			<li><b>showMapSearch:</b> Show map search on map: true or false.</li>
+			<li><b>showLayerToggle:</b> Show layer toggle on legend: true or false.</li>
+			<li><b>showLayoutSwitch:</b> Show layout switch on index: true or false.</li>
+			<li><b>showOverviewMap:</b> Show overview on map: true or false.</li>
+			<li><b>showMoreInfo:</b> Show more info link in about on map: true or false.</li>
+			<li><b>showMobileDialog:</b> Show dialog to prompt user to use ArcGIS mobile app: true or false.</li>
+			<li><b>showPagination:</b> Show pagination on index: true or false.</li>
+			<li><b>showExplorerButton:</b> Show explorer button on map: true or false.</li>
+			<li><b>showArcGISOnlineButton:</b> Show ArcGIS button on map: true or false.</li>
+			<li><b>openGalleryItemsNewWindow:</b> Open gallery items in a new window: true or false.</li>
+			<li><b>mobileAppUrl:</b> Use mobile app URL for compatible mobile devices: true or false.</li>
+			<li><b>bingMapsKey:</b> If the map uses data from Bing Maps, enter your Bing Maps Key.</li>
+			<li><b>proxyurl:</b> Proxy URL.</li>
+			<li><b>locatorserviceurl:</b> Service for locating addresses.</li>
+			<li><b>geometryserviceurl:</b> Geometry service URL.</li>
+			<li><b>sharingurl:</b> Portal sharing URL.</li>
+			<li><b>portalUrl:</b> Portal URL.</li>
+			<li><b>mobilePortalUrl:</b> Mobile Portal URL.</li>
+			<li><b>pointGraphic:</b> Graphic displayed when locating addresses.</li>
+		</ul>
+	</li>
+	<li>Save the file then test your <a href="http://localhost/PublicGallery/index.html">application</a> and note that it now displays your group and if specified your custom properties.</li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h3 id="personalize" class="heading">Personalize the application</h3>
+<p>In this section, you will see how to personalize the application by adding a logo, adding custom HTMl to the footer, creating an Addthis.com account and developing a custom theme. </p>
+<p><a href="#top">Top</a></p>
+<h4 id="logo">Add a logo to the application</h4>
+<p>You can personalize your site by adding a custom logo to the application's header next to the map title.</p>
+<ol>
+	<li>First make sure your image is 75 pixels high. It can be any width up to 940 pixels.</li>
+	<li>Copy your custom logo to the images subdirectory.</li>
+	<li>Open config.js in a text editor.</li>
+	<li>Find the property of code that has siteBannerImage and add your image's title and extension.
+		<div>
+			<pre>
+	"siteBannerImage":"images/<span class="selector">yourNewLogo.png</span>",
+</pre>
+		</div>
+	</li>
+	<li>Run the application. The custom logo should appear to the top navigation of the application's header.
+		<div> <img src="images/documentation/custom_logo.png" alt="custom_logo" width="588" height="94" /> </div>
+	</li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h4 id="customhtml">Add custom HTML to the footer</h4>
+<p>You can insert HTML into many of the config values to further customize the template. However, the HTML needs to be escaped in order to be used in the config JSON.</p>
+<ol>
+	<li>Create your custom HTML.</li>
+	<li>Copy your custom HTML from a text editor.</li>
+	<li>Escape the HTML by using either the <a target="_blank" href="http://www.freeformatter.com/javascript-escape.html">JavaScript String Escape</a> or <a target="_blank" href="http://www.htmlescape.net/stringescape_tool.html">JavaScript String encoding</a> tools.</li>
+	<li>Open config.js in a text editor.</li>
+	<li>Paste escaped HTML into the config value.
+		<div>
+			<pre>
+	"footerDescription":"<span class="selector">&lt;div class=\&quot;footerSmall\&quot;&gt;&lt;a href=\&quot;\/about-esri\/contact.html\&quot;&gt;Contact Us&lt;\/a&gt;&amp;nbsp;| &lt;a rel=\&quot;nofollow\&quot; href=\&quot;\/legal\/privacy.html\&quot;&gt;Privacy&lt;\/a&gt;&amp;nbsp;| &lt;a rel=\&quot;nofollow\&quot; href=\&quot;\/legal\/index.html\&quot;&gt;Legal&lt;\/a&gt;&amp;nbsp;| &lt;a href=\&quot;\/site\/sitemap.html\&quot;&gt;Site Map&lt;\/a&gt;&lt;\/div&gt;</span>",
+</pre>
+		</div>
+	</li>
+	<li>Run the application and the custom HTML should appear.
+		<div> <img src="images/documentation/custom_html.png" alt="custom_html" width="349" height="119" /> </div>
+	</li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h4 id="addthis">Setup an AddThis account for analytics</h4>
+<p>You can create an account for the sharing plugin to get real-time analytics, weekly email reports, alerts, and more.</p>
+<ol>
+	<li>Go to <a target="_blank" href="http://www.addthis.com/">AddThis.com</a> and navigate to the <a target="_blank" href="https://www.addthis.com/register">register page</a>.</li>
+	<li>After registering, go to your account settings.
+		<div><img src="images/documentation/addthis_account.png" alt="addthis_account" width="285" height="192" /></div>
+	</li>
+	<li>Navigate to the profile page under account settings</li>
+	<li>Copy your "Profile ID" from the page.
+		<div><img src="images/documentation/addthis_profile_id.png" alt="addthis_profile_id" width="961" height="270" /></div>
+	</li>
+	<li>Open config.js in a text editor.</li>
+	<li>Paste Addthis.com account ID into the config value.
+		<div>
+			<pre>
+	"addThisProfileId":"<span class="selector">Account Id</span>",
+</pre>
+		</div>
+	</li>
+	<li>Run the application. The application will now be using your AddThis account.</li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h4 id="customtheme">Create a new custom theme</h4>
+<p>You can personalize your site by creating a unique color scheme. This requires knowledge of CSS.</p>
+<ol>
+	<li>Open css/themes.css in a text editor.</li>
+	<li>Scroll to the bottom where the custom theme classes are defined.</li>
+	<li>Change wherever it says ".custom" and name it what you would like to give your theme.</li>
+	<li>Fill in all the empty CSS styles with how you'd like the theme styled.</li>
+	<li>Save the file.</li>
+	<li>Open config.js in a text editor.</li>
+	<li>Find the property of code that has "theme" and add the title of your theme.
+		<div>
+			<pre>
+	"theme":"<span class="selector">yourtheme</span>",
+</pre>
+		</div>
+	</li>
+	<li>Use the <a target="_blank" href="http://css3generator.com/">CSS Generator</a> to create CSS3 compatible styles such as rounded borders, shadows, and background gradients.</li>
+	<li>Run the application and the custom theme should appear.</li>
+</ol>
+<p><a href="#top">Top</a></p>
+<h4 id="portal">Configure the template to work with your ArcGIS Portal</h4>
+<p>You can use this template with your organization's ArcGIS Portal by setting a few configuration options.</p>
+<ol>
+	<li>Open config.js in a text editor.</li>
+	<li>Locate the options for "sharingurl", "portalUrl" and "mobilePortalUrl".
+		<div>
+			<pre>
+	"sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
+	"portalUrl":"http://www.arcgis.com/",
+	"mobilePortalUrl":"arcgis://www.arcgis.com/",
+</pre>
+		</div>
+	</li>
+	<li>Change these settings to point to your portal's URL instead of using ArcGIS.com's URL.
+		<div>
+			<pre>
+	"sharingurl":"<span class="selector">http://www.myorg.com/sharing/rest/content/items</span>",
+	"portalUrl":"<span class="selector">http://www.myorg.com/</span>",
+	"mobilePortalUrl":"arcgis://<span class="selector">www.myorg.com/</span>",
+</pre>
+		</div>
+	</li>
+	<li>Save the file.</li>
+	<li>Run the application and the template should be using your portal.</li>
+</ol>
+<p><a href="#top">Top</a></p>
+</body>
+</html>

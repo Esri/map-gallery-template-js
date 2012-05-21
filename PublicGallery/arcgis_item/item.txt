@@ -1,0 +1,11 @@
+Name:
+PublicGallery Template
+
+Short description:
+This PublicGallery template is designed for anyone who wants to showcase their ArcGIS Online maps, layers, and mobile apps in a dynamic web gallery.
+
+Detailed description:
+This template is designed for anyone who wants to showcase their ArcGIS Online maps, layers, and mobile apps in a dynamic web gallery. The template allows you to control the content that fills the gallery using tools available in your ArcGIS Online account. This means that once you deploy a gallery, keeping gallery content up-to-date is as simple as sharing or un-sharing items in your ArcGIS Online group.
+
+Thumbnail:
+item.png
