@@ -46,9 +46,9 @@ var configOptions = {
    "proxyurl":"",
    "locatorserviceurl":"http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocator/GeocodeServer/",
    "geometryserviceurl":"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
-   //"sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
-   //"portalUrl":"http://www.arcgis.com/",
-   //"mobilePortalUrl":"arcgis://www.arcgis.com/",
+   "sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
+   "portalUrl":"http://www.arcgis.com/",
+   "mobilePortalUrl":"arcgis://www.arcgis.com/",
    "iosAppUrl":"itms://itunes.apple.com/us/app/arcgis/id379687930?mt=8",
    "androidAppUrl":"https://market.android.com/details?id=com.esri.android.client",
    "pointGraphic":"images/ui/bluepoint-21x25.png"
