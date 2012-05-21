@@ -7,6 +7,7 @@ html, body {
 	letter-spacing:normal;
 	line-height:18px;
 	text-align: left;
+	outline:0;
 }
 body {
 	color:#000;
@@ -683,6 +684,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .searchList .iconInput input {
 	width:159px;
+	outline:0;
 	display:inline-block;
 	border:0;
 	border-collapse:collapse;

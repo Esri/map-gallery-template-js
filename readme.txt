@@ -1,18 +1,39 @@
-The Public Maps Gallery template (version 1.4.1) is the newest version of this particular template. It includes changes and enhancements suggested by users of the 1.3.1 version of the template (see below).
+The Public Maps Gallery template (version 2.0) is the newest version of this particular template. It includes changes and enhancements suggested by users of the 1.4.1 version of the template (see below).
 
-Please post your questions and suggestions about this template by replying to the Public Maps Gallery (PMG) template version 1.4 --Opening post in the ArcGIS Online forum.
+Please post your questions and suggestions about this template by replying to the Public Maps Gallery (PMG) template version 2 --Opening post in the ArcGIS Online forum.
 
 Steps for getting started with this template: 
 
     Download the code for the template. There's a Download link below as well.
-    Unzip the download file, then open the template folder, and double-click the Index.html file to launch the gallery in your default browser. Note: that the gallery is populated with sample maps and layers that are stored in groups on ArcGIS Online.
-    Use the Group ID Finder to find and copy your group ID that has the content (maps & layers) that you want to showcase in your gallery.
-    Replace the group ID in the /config/settings.required.js file with your group ID, save the file, and refresh the gallery in your browser.
+    Unzip the download file, then open the template folder, and double-click the index.html file to launch the gallery in your default browser. Note: that the gallery is populated with sample maps and layers that are stored in groups on ArcGIS Online. The gallery requires a web server to run correctly.
+    Use the readme.html to find and copy your group ID that has the content (maps & layers) that you want to showcase in your gallery.
+    Replace the group ID in the /config/config.js file with your group ID, save the file, and refresh the gallery in your browser.
 
 The Public Maps Gallery (PMG) template is designed for anyone who wants to showcase their ArcGIS Online maps, layers, and mobile apps in a dynamic web gallery. The template allows you to control the content that fills the gallery using tools available in your ArcGIS Online account. This means that once you deploy a gallery, keeping gallery content up-to-date is as simple as sharing or un-sharing items in your ArcGIS Online group.
 The PMG template is also easily configurable. A complete list of features and enhancements is included with the template as is a quick start guide. 
 
 Public Maps Gallery Template Changes
+
+Version 2.0 Changes
+	
+	Available as an official ArcGIS template.
+	Configurable on ArcGIS.com and can be hosted.
+	Template has been localized to support different languages.
+	Now uses ArcGIS Portal API and version 3.0 of the ArcGIS Javascript API.
+	Uses Dojo 1.7 only. jQuery converted to Dojo.
+	Ability to add logo in banner.
+	Pagination usability improvements and style adjustments.
+	Uses 960 Grid for gallery layout.
+	Uses ArcGIS Online user group description for home page content and site information.
+	About page added to showcase user information.
+	Footer now shows group image and user link.
+	Basemap gallery moved to a different position and looks more native to the template.
+	Now uses simple zoom bar.
+	Added buttons to open map in ArcGIS.com and ArcGIS Explorer Online.
+	Fullscreen Fixes and layout improvements.
+	Info Windows now use theme colors.
+	Owner now displayed in about panel.
+	Various fixes and style improvements.
 
 Version 1.4.1 Changes
 
