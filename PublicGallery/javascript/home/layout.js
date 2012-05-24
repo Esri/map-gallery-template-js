@@ -27,6 +27,7 @@ dojo.addOnLoad(function(){
 // On sort button click
 /*------------------------------------*/
 function sortOnClick(){
+	// sorting fields
 	var sortFields = [
 		{
 			"title":"Date",
@@ -64,29 +65,38 @@ function sortOnClick(){
 			"defaultOrder":"desc"
 		}
 	];
+	// html variable
 	var html = '';
 	html += '<div class="grid_9 alpha omega">';
 		html += '<ul id="sortGallery">';
 			html += '<li class="label"><span>Sort By</span></li>';
+			// for each sort field
 			for(var i = 0; i < sortFields.length; i++){
-				var selectedClass = '';
-				var buttonClass = '';
+				// variables
+				var selectedClass = '', buttonClass = '';
+				// if first button
 				if(i == 0){
 					buttonClass = ' buttonLeft';
 				}
+				// if last button
 				if(i == (sortFields.length - 1)){
 					buttonClass = ' buttonRight';
 				}
+				// if default selected button
 				if(sortFields[i].field === configOptions.sortField){
 					selectedClass = sortFields[i].defaultOrder + ' active';
 				}
+				// button html
 				html += '<li class="' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow"></span></span></li>';
 			}
 		html += '</ul>';
 	html += '</div>';
 	html += '<div class="clear"></div>';
-	node = dojo.query("#groupSortOptions");
+	// html node
+	var node = dojo.query("#groupSortOptions");
+	// if node exists
 	if(node.length > 0){
+		// insert html
 		node.innerHTML(html);
 	}
 	// toggle basemap button
