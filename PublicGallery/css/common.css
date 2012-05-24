@@ -391,6 +391,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #resetGroupSearch:hover {
 	text-decoration:underline;
 }
+#groupSortOptions{
+	margin:20px 0;
+}
 /*-------------------------------------------------- */
 /* MAPS GRID */
 /*-------------------------------------------------- */
@@ -1446,6 +1449,59 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 /*-------------------------------------------------- */
 .esriRtl {
 	direction: rtl;
+}
+/*-------------------------------------------------- */
+/* Sorting */
+/*-------------------------------------------------- */
+#sortGallery li{
+	float:left;
+}
+.esriRtl #sortGallery li{
+	float:right;
+}
+#sortGallery .active .silverButton{
+	cursor:pointer !important;
+}
+#sortGallery .label{
+	margin-right:10px;
+}
+.esriRtl #sortGallery .label{
+	margin-right:0;
+	margin-left:10px;
+}
+#sortGallery .label span{
+	display:inline-block;
+	vertical-align:center;
+	font-size:12px;
+	line-height:14px;
+	padding:6px 0;
+}
+#sortGallery li .arrow{
+	display:inline-block;
+	vertical-align:text-bottom;
+	width:12px;
+	height:12px;
+	margin-left:4px;
+}
+.esriRtl #sortGallery li .arrow{
+	margin-left:0;
+	margin-right:4px;
+}
+#sortGallery .desc .arrow{
+	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -178px -2px;
+}
+#sortGallery .desc:hover .arrow, #sortGallery .desc:focus .arrow {
+	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -178px -2px;
+}
+#sortGallery .asc .arrow{
+	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -242px -2px;
+}
+#sortGallery .asc:hover .arrow, #sortGallery .asc:focus .arrow {
+	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -242px -2px;
 }
 /*-------------------------------------------------- */
 /* Media Queries */

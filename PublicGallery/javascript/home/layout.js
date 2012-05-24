@@ -24,6 +24,101 @@ dojo.addOnLoad(function(){
 	});
 });
 /*------------------------------------*/
+// On sort button click
+/*------------------------------------*/
+function sortOnClick(){
+	var sortFields = [
+		{
+			"title":"Date",
+			"field":"uploaded",
+			"defaultOrder":"desc"
+		},
+		{
+			"title":"Title",
+			"field":"title",
+			"defaultOrder":"asc"
+		},
+		{
+			"title":"Type",
+			"field":"type",
+			"defaultOrder":"asc"
+		},
+		{
+			"title":"Owner",
+			"field":"owner",
+			"defaultOrder":"asc"
+		},
+		{
+			"title":"Rating",
+			"field":"avgRating",
+			"defaultOrder":"desc"
+		},
+		{
+			"title":"Comments",
+			"field":"numComments",
+			"defaultOrder":"desc"
+		},
+		{
+			"title":"Views",
+			"field":"numViews",
+			"defaultOrder":"desc"
+		}
+	];
+	var html = '';
+	html += '<div class="grid_9 alpha omega">';
+		html += '<ul id="sortGallery">';
+			html += '<li class="label"><span>Sort By</span></li>';
+			for(var i = 0; i < sortFields.length; i++){
+				var selectedClass = '';
+				var buttonClass = '';
+				if(i == 0){
+					buttonClass = ' buttonLeft';
+				}
+				if(i == (sortFields.length - 1)){
+					buttonClass = ' buttonRight';
+				}
+				if(sortFields[i].field === configOptions.sortField){
+					selectedClass = sortFields[i].defaultOrder + ' active';
+				}
+				html += '<li class="' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow"></span></span></li>';
+			}
+		html += '</ul>';
+	html += '</div>';
+	html += '<div class="clear"></div>';
+	node = dojo.query("#groupSortOptions");
+	if(node.length > 0){
+		node.innerHTML(html);
+	}
+	// toggle basemap button
+	dojo.query(document).delegate("#sortGallery li", "onclick", function(event){
+		// get nodes
+		var buttonNode = dojo.query(this);
+		var node = dojo.query('#sortGallery')[0];
+		// if they exist
+		if(node && buttonNode){
+			// 
+			var sortColumn = buttonNode.attr("data-sort-field")[0];
+			var defaultOrder = buttonNode.attr("data-default-order")[0];
+			var sortOrder = buttonNode.attr("data-sort-order")[0];
+			// sort field
+			configOptions.sortField = sortColumn;
+			// sort order
+			if(sortOrder){
+				configOptions.sortOrder = reverseSortOrder(sortOrder);
+			}
+			else{
+				configOptions.sortOrder = defaultOrder;
+			}
+			// set sort order
+			buttonNode.attr("data-sort-order", configOptions.sortOrder);
+			dojo.query('#sortGallery li').removeClass('asc desc active');
+			buttonNode.addClass(configOptions.sortOrder + ' active');
+			// get maps
+			queryMaps();
+		}
+    });
+}
+/*------------------------------------*/
 // QUERY FEATURED MAPS
 /*------------------------------------*/
 function queryMaps(data_offset,keywords){
@@ -528,5 +623,6 @@ function init(){
 		else if(e.type === 'keyup' && e.keyCode === 38) {
 			dojo.query(this).prev('li')[0].focus();
 		}
-	});	
+	});
+	sortOnClick();
 }
