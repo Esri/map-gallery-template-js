@@ -9,6 +9,17 @@ function addSpinner(query){
 	}
 }
 /*------------------------------------*/
+// Reverse sort order
+/*------------------------------------*/
+function reverseSortOrder(order){
+	if(order==='desc'){
+		return 'asc';
+	}
+	else{
+		return 'desc';
+	}
+}
+/*------------------------------------*/
 // Remove Spinner
 /*------------------------------------*/
 function removeSpinner(){

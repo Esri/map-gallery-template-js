@@ -40,10 +40,128 @@
 </div>
 <div id="content">
 	<div class="container_12">
+		
+		
+		<script>		
+		
+		dojo.addOnLoad(function(){
+
+		    
+		    
+		    // toggle basemap button
+			dojo.query(document).delegate("#sortGallery li", "onclick", function(event){
+				// get nodes
+				var buttonNode = dojo.query(this);
+				var node = dojo.query('#sortGallery')[0];
+				// if they exist
+				if(node && buttonNode){
+					// 
+					var sortColumn = buttonNode.attr("data-sort-field")[0];
+					var defaultOrder = buttonNode.attr("data-default-order")[0];
+					var sortOrder = buttonNode.attr("data-sort-order")[0];
+					// sort field
+					configOptions.sortField = sortColumn;
+					// sort order
+					if(sortOrder){
+						configOptions.sortOrder = reverseSortOrder(sortOrder);
+					}
+					else{
+						configOptions.sortOrder = defaultOrder;
+					}
+					// set sort order
+					buttonNode.attr("data-sort-order", configOptions.sortOrder);
+					
+					
+					dojo.query('#sortGallery li').removeClass('asc desc active');
+					
+					
+					buttonNode.addClass(configOptions.sortOrder + ' active');
+					
+					
+										
+					
+					
+					
+					
+					// get maps
+					queryMaps();
+				}
+		    });
+		});
+		</script>
+		<style>
+		#sortGallery li{
+			float:left;
+		}
+		#sortGallery .active .silverButton{
+			cursor:pointer !important;
+		}
+		#sortGallery .label{
+			margin-right:10px;
+		}
+		#sortGallery .label span{
+			display:inline-block;
+			vertical-align:center;
+			font-size:12px;
+			line-height:14px;
+			padding:6px 0;
+		}
+		#sortGallery li .arrow{
+			display:inline-block;
+			vertical-align:text-bottom;
+			width:12px;
+			height:12px;
+			margin-left:4px;
+		}
+		#sortGallery .desc .arrow{
+			background:url(images/ui/uiSprite.png) no-repeat -178px -2px;
+			_background:url(images/ui/uiSprite.gif) no-repeat -178px -2px;
+		}
+		#sortGallery .desc:hover .arrow, #sortGallery .desc:focus .arrow {
+			background:url(images/ui/uiSprite.png) no-repeat -178px -2px;
+			_background:url(images/ui/uiSprite.gif) no-repeat -178px -2px;
+		}
+		#sortGallery .asc .arrow{
+			background:url(images/ui/uiSprite.png) no-repeat -242px -2px;
+			_background:url(images/ui/uiSprite.gif) no-repeat -242px -2px;
+		}
+		#sortGallery .asc:hover .arrow, #sortGallery .asc:focus .arrow {
+			background:url(images/ui/uiSprite.png) no-repeat -242px -2px;
+			_background:url(images/ui/uiSprite.gif) no-repeat -242px -2px;
+		}
+		</style>
+		
+	
+		
+		
+		
+		
+		
+		
+		
 		<div class="grid_9 contentLeft">
 			<h1 id="homeHeading"></h1>
 			<p id="homeSnippet"></p>
 			<div id="layoutAndSearch"></div>
+			
+			
+			
+			
+			<div class="grid_9 alpha omega" style="margin-top:20px; margin-bottom:20px;">	
+				<ul id="sortGallery">
+					<li class="label"><span>Sort By</span></li>
+					<li class="active desc" data-sort-order="desc" data-default-order="desc" data-sort-field="uploaded"><span class="silverButton buttonLeft">Date<span class="arrow"></span></span></li>
+					<li data-default-order="asc" data-sort-field="title"><span class="silverButton">Title<span class="arrow"></span></span></li>
+					<li data-default-order="asc" data-sort-field="type"><span class="silverButton">Type<span class="arrow"></span></span></li>
+					<li data-default-order="asc" data-sort-field="owner"><span class="silverButton">Owner<span class="arrow"></span></span></li>
+					<li data-default-order="desc" data-sort-field="avgRating"><span class="silverButton">Rating<span class="arrow"></span></span></li>
+					<li data-default-order="desc" data-sort-field="numComments"><span class="silverButton">Comments<span class="arrow"></span></span></li>
+					<li data-default-order="desc" data-sort-field="numViews"><span class="silverButton buttonRight">Views<span class="arrow"></span></span></li>
+				</ul>
+			</div>
+			<div class="clear"></div>
+			
+			
 			<div id="featuredMaps">
 				<p class="featuredLoading"></p>
 			</div>

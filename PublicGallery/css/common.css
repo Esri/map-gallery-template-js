@@ -1127,9 +1127,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	-webkit-border-radius: 0px 5px 5px 0px;
 	border-radius: 0px 5px 5px 0px;
 }
-.buttonCenter {
-	border-right:1px solid #0c5113;
-}
 .buttonSingle {
 	-webkit-border-radius: 5px;
 	border-radius:5px;
@@ -1390,9 +1387,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 .autoComplete li {
 	padding: 6px 10px;
 	cursor:pointer;
-}
-.autoComplete li:hover, .autoComplete li:focus {
-	background-color: #004e9a;
 }
 .autoComplete li span {
 	font-weight:bold;
