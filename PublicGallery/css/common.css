@@ -392,7 +392,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	text-decoration:underline;
 }
 #groupSortOptions{
-	margin:20px 0;
+	margin:20px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* MAPS GRID */
