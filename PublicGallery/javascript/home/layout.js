@@ -31,7 +31,7 @@ function sortOnClick(){
 	var sortFields = [
 		{
 			"title":"Date",
-			"field":"uploaded",
+			"field":"created",
 			"defaultOrder":"desc"
 		},
 		{
@@ -205,8 +205,8 @@ function groupAutoComplete(acQuery){
 		// Settings
 		id_group : configOptions.group.id,
 		searchType : 'Web Map',
-		sortField : 'uploaded', // SORTING COLUMN: The allowed field names are title, uploaded, type, owner, avgRating, numRatings, numComments and numViews.
-		sortOrder : 'desc', // SORTING ORDER: Values: asc | desc
+		sortField : configOptions.sortField, // SORTING COLUMN: The allowed field names are title, created, type, owner, avgRating, numRatings, numComments and numViews.
+		sortOrder : configOptions.sortOrder, // SORTING ORDER: Values: asc | desc
 		keywords: acQuery,
 		perPage : 10,
 		searchStart : 1,
@@ -302,6 +302,18 @@ function buildMapPlaylist(obj,data){
 		}
 		// Create list items
 		for(var i=0; i < forTotal; ++i) {
+		
+			console.log('-----------------');
+			console.log(data.results[i]);
+			console.log(data.results[i].numViews);
+			console.log(data.results[i].numComments);
+			console.log(data.results[i].created);
+			console.log(data.results[i].avgRating);
+			console.log(data.results[i].owner);
+			console.log(data.results[i].type);
+			console.log('-----------------');
+			
+			
 			var appClass = '';
 			var itemTitle;
 			var itemURL;

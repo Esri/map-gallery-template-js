@@ -21,7 +21,7 @@ var configOptions = {
    "footerLogoUrl":"",
    "addThisProfileId":"xa-4f3bf72958320e9e",
    "defaultLayout":"grid",
-   "sortField":"uploaded",
+   "sortField":"created",
    "sortOrder":"desc",
    "mapViewer":"simple",
    "galleryItemsPerPage":9,

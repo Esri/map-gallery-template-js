@@ -187,7 +187,7 @@ function setDefaultConfigOptions(){
 	}
 	// if no sort field set
 	if(!configOptions.hasOwnProperty('sortField')){
-		configOptions.sortField = 'uploaded';
+		configOptions.sortField = 'created';
 	}
 	// if no default layout
 	if(!configOptions.hasOwnProperty('defaultLayout')){
@@ -656,8 +656,8 @@ function queryArcGISGroupItems(obj){
 		searchAccess: '',
 		// format
 		dataType: 'json',
-		// sorting column: The allowed field names are title, uploaded, type, owner, avgRating, numRatings, numComments and numViews.
-		sortField: 'uploaded',
+		// sorting column: The allowed field names are title, created, type, owner, avgRating, numRatings, numComments and numViews.
+		sortField: 'created',
 		// sorting order: Values: asc | desc
 		sortOrder: 'desc',
 		// if pagination

@@ -185,8 +185,8 @@
                "label":"Group Sort Field:",
                "options":[
                   {
-                     "label":"Upload date",
-                     "value":"uploaded"
+                     "label":"Created Date",
+                     "value":"created"
                   },
                   {
                      "label":"Title",
@@ -404,7 +404,7 @@
       "homeSideHeading":"Description",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
-      "sortField":"uploaded",
+      "sortField":"created",
       "sortOrder":"desc",
       "mapViewer":"simple",
       "galleryItemsPerPage":9,
