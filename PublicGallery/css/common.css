@@ -332,17 +332,11 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #layoutAndSearch {
 	margin: 20px 0 0 0;
 }
-.toggleLayout {
-	float:right;
-}
-.esriRtl .toggleLayout {
-	float:left;
-}
 .toggleLayout li {
-	float:left;
+	float:right;
 }
 .esriRtl .toggleLayout li {
-	float:right;
+	float:left;
 }
 .toggleLayout .active {
 	font-weight:bold;
@@ -513,12 +507,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	width:200px;
 	height:133px;
 	overflow:hidden;
-	margin-right:10px;
 }
 .esriRtl .mapsList .item .block {
 	float:right;
-	margin-right:0;
-	margin-left:10px;
 }
 .mapsList .externalLink .block {
 	position:relative;
@@ -549,7 +540,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .mapsList .item .itemInfo {
 	float:left;
-	width:484px;
+	width:474px;
+	margin: 0 10px;
 }
 .esriRtl .mapsList .item .itemInfo {
 	float:right;
@@ -567,6 +559,28 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .mapsList .item .itemInfo .title {
 	margin-bottom:6px;
+}
+.mapsList .item .infoList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.mapsList .item .infoList li {
+	float: left;
+}
+.esriRtl .item .infoList li {
+	float: right;
+}
+.mapsList .item .infoList .smallInfo {
+	float: right;
+	color:#999;
+	font-size: 11px;
+	margin-left: 10px;
+}
+.esriRtl .mapsList .item .infoList .smallInfo {
+	float: left;
+	margin-left: 0;
+	margin-right: 10px;
 }
 .mapsList .item .itemInfo p {
 	margin:0 0 6px 0;

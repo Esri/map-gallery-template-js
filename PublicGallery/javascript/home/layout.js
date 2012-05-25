@@ -302,25 +302,7 @@ function buildMapPlaylist(obj,data){
 		}
 		// Create list items
 		for(var i=0; i < forTotal; ++i) {
-			//	TODO
-			if(configOptions.development){
-				if(i === 0 || i === (forTotal - 1)){
-					if(i === 0){
-						console.log('------- FIRST ----------');
-					}
-					else{
-						console.log('-------- LAST ---------');
-					}
-					console.log(i);
-					console.log(data.results[i]);
-					console.log('Views: ' + data.results[i].numViews);
-					console.log('Comments: ' + data.results[i].numComments);
-					console.log('Created: ' + data.results[i].created);
-					console.log('Rating: ' + data.results[i].avgRating);
-					console.log('Owner: ' + data.results[i].owner);
-					console.log('Type: ' + data.results[i].type);
-				}
-			}
+			// variables
 			var appClass = '';
 			var itemTitle;
 			var itemURL;
@@ -363,18 +345,32 @@ function buildMapPlaylist(obj,data){
 						html += '<div class="itemInfo">';
 						html += '<a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '"><strong>' + itemTitle + '</strong></a>';
 						html += '<p>' + snippet + '</p>';
-						//	TODO
+						
+						html += '<ul class="infoList">';
+						html += '<li><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></li>';
+						// TODO
 						if(configOptions.development){
-							html += '<p>';
-							html += data.results[i].numViews;
-							html += data.results[i].numComments;
+							if(data.results[i].numViews){
+								var pluralViews = 'view.';
+								if(data.results[i].numViews > 1){
+									pluralViews = 'views.';
+								}
+								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numViews) + ' ' + pluralViews + '</li>';
+							}
+							if(data.results[i].numComments){
+								var pluralComments = 'comment.';
+								if(data.results[i].numComments > 1){
+									pluralComments = 'comments.';
+								}
+								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
+							}
 							//html +=  data.results[i].created;
-							html += data.results[i].avgRating;
+							//html += data.results[i].avgRating;
 							//html += data.results[i].owner;
-							html += data.results[i].type;
-							html += '</p>';
+							//html += data.results[i].type;
 						}
-						html += '<p><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></p>';
+						html += '</ul>';
+						html += '<div class="clear"></div>';
 						html += '</div>';
 						html += '<div class="clear"></div>';
 					html += '</div>';
@@ -475,14 +471,15 @@ function configLayoutSearch(){
 			html += '<div class="grid_4 omega">';
 			html += '<div class="toggleLayout">';
 			html += '<ul>';
-			html += '<li id="layoutSpinner" class="spinnerCon"></li>';
+			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
+			html += '<span class="silverButton buttonRight"><span class="listView"></span></span>';
 			html += '<li id="layoutGrid" class="' + gridClass + '" title="' + i18n.viewer.groupPage.gridSwitch + '">';
 			html += '<span class="silverButton buttonLeft"><span class="gridView"></span></span>';
 			html += '</li>';
-			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
-			html += '<span class="silverButton buttonRight"><span class="listView"></span></span>';
+			html += '<li id="layoutSpinner" class="spinnerCon"></li>';
 			html += '</li>';
 			html += '</ul>';
+			html += '<div class="clear"></div>';
 			html += '</div>';
 			html += '<div class="clear"></div>';
 			html += '</div>';

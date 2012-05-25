@@ -124,7 +124,7 @@ function setDefaultConfigOptions(){
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
 	// Template Development
-	configOptions.development = true;
+	configOptions.development = false;
 	// Template Version
 	configOptions.templateVersion = 2.01;
 	// ArcGIS Rest Version
