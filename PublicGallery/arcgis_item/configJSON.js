@@ -406,6 +406,7 @@
       "defaultLayout":"grid",
       "sortField":"created",
       "sortOrder":"desc",
+	  "searchType":"Web Map",
       "mapViewer":"simple",
       "galleryItemsPerPage":9,
       "openGalleryItemsNewWindow":false,

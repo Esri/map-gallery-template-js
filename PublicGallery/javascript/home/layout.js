@@ -144,7 +144,7 @@ function queryMaps(data_offset,keywords){
 	queryArcGISGroupItems({
 		// Settings
 		id_group : configOptions.group.id,
-		searchType : 'Web Map',
+		searchType : configOptions.searchType,
 		sortField : configOptions.sortField,
 		sortOrder : configOptions.sortOrder,
 		pagination: configOptions.showPagination,
@@ -204,7 +204,7 @@ function groupAutoComplete(acQuery){
 	queryArcGISGroupItems({
 		// Settings
 		id_group : configOptions.group.id,
-		searchType : 'Web Map',
+		searchType : configOptions.searchType,
 		sortField : configOptions.sortField, // SORTING COLUMN: The allowed field names are title, created, type, owner, avgRating, numRatings, numComments and numViews.
 		sortOrder : configOptions.sortOrder, // SORTING ORDER: Values: asc | desc
 		keywords: acQuery,
@@ -302,18 +302,22 @@ function buildMapPlaylist(obj,data){
 		}
 		// Create list items
 		for(var i=0; i < forTotal; ++i) {
-		
-			console.log('-----------------');
-			console.log(data.results[i]);
-			console.log(data.results[i].numViews);
-			console.log(data.results[i].numComments);
-			console.log(data.results[i].created);
-			console.log(data.results[i].avgRating);
-			console.log(data.results[i].owner);
-			console.log(data.results[i].type);
-			console.log('-----------------');
-			
-			
+			if(i === 0 || i === (forTotal - 1)){
+				if(i === 0){
+					console.log('------- FIRST ----------');
+				}
+				else{
+					console.log('-------- LAST ---------');
+				}
+				console.log(i);
+				console.log(data.results[i]);
+				console.log('Views: ' + data.results[i].numViews);
+				console.log('Comments: ' + data.results[i].numComments);
+				console.log('Created: ' + data.results[i].created);
+				console.log('Rating: ' + data.results[i].avgRating);
+				console.log('Owner: ' + data.results[i].owner);
+				console.log('Type: ' + data.results[i].type);
+			}
 			var appClass = '';
 			var itemTitle;
 			var itemURL;
