@@ -9,6 +9,7 @@ dojo.require("dijit.Dialog");
 dojo.require("dojo.cookie");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
+dojo.require("dojox.form.Rating");
 // Map Only
 dojo.require("esri.map");
 dojo.require("esri.dijit.Legend");
@@ -565,13 +566,13 @@ function addBottomMapButtons(){
 /*------------------------------------*/
 // Set Owner
 /*------------------------------------*/
-function setItemOwner(){
+function setItemOwner(owner){
 	var html = '';
-	if(configOptions.group.owner){
+	if(owner){
 		var ownerNode = dojo.byId("mapOwner");
 		if(ownerNode){
 			html += '<h2>' + i18n.viewer.mapPage.ownerHeader + '</h2>';
-			html += '<p>' + i18n.viewer.footer.label + ' <a href="' + getViewerURL('owner_page') + '" target="_blank">' + configOptions.group.owner + '</a></p>';
+			html += '<p>' + i18n.viewer.footer.label + ' <a href="' + getViewerURL('owner_page', false, owner) + '" target="_blank">' + owner + '</a></p>';
 			html += '<div class="clear"></div>';
 			ownerNode.innerHTML = html;
 		}
@@ -624,8 +625,47 @@ function initMap() {
 			if(subTitleNode){
 				subTitleNode.innerHTML = configOptions.mapSnippet || "";
 			}
+			// TODO
+			if(configOptions.development){
+				console.log(itemInfo);
+				// Set license info
+				var licenseInfo = dojo.byId("licenseInfo");
+				if(licenseInfo && itemInfo.item.licenseInfo){
+					licenseInfo.innerHTML = '<h2>Use Constraints</h2>' + itemInfo.item.licenseInfo;
+				}
+				// Set credits
+				var accessInformation = dojo.byId("accessInformation");
+				if(accessInformation && itemInfo.item.accessInformation){
+					accessInformation.innerHTML = '<div class="credits"><strong>Credits:</strong> ' + itemInfo.item.accessInformation + '</div>';
+				}
+				
+				//
+				var numViews = dojo.byId("numViews");
+				if(numViews && itemInfo.item.numViews){
+					numViews.innerHTML = dojo.number.format(itemInfo.item.numViews);
+				}
+				
+				//
+				var numComments = dojo.byId("numComments");
+				if(numComments && itemInfo.item.numComments){
+					numComments.innerHTML = dojo.number.format(itemInfo.item.numComments);
+				}
+				
+				//
+				var created = dojo.byId("created");
+				if(created && itemInfo.item.created){
+					// date object
+					var d = new Date(itemInfo.item.created);
+					// date format for locale
+					var dateLocale = dojo.date.locale.format(d, {
+						selector:"date",
+						datePattern:"MMM d, yyyy"
+					}); 
+					created.innerHTML = dateLocale;
+				}
+			}
 			// Set owner
-			setItemOwner();
+			setItemOwner(itemInfo.item.owner);
 			// Set description
 			var descriptionInfo = configOptions.mapItemDescription || "";
 			var descNode = dojo.byId("descriptionContent");

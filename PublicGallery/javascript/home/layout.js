@@ -9,6 +9,7 @@ dojo.require("dijit.Dialog");
 dojo.require("dojo.cookie");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
+dojo.require("dojox.form.Rating");
 /*------------------------------------*/
 // on dojo load
 /*------------------------------------*/
@@ -350,6 +351,7 @@ function buildMapPlaylist(obj,data){
 						html += '<li><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></li>';
 						// TODO
 						if(configOptions.development){
+							// views
 							if(data.results[i].numViews){
 								var pluralViews = 'view.';
 								if(data.results[i].numViews > 1){
@@ -357,17 +359,36 @@ function buildMapPlaylist(obj,data){
 								}
 								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numViews) + ' ' + pluralViews + '</li>';
 							}
+							// comments
 							if(data.results[i].numComments){
 								var pluralComments = 'comment.';
 								if(data.results[i].numComments > 1){
 									pluralComments = 'comments.';
 								}
-								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
+								html += '<li class="smallInfo"><img style=" display:inline-block !important;width:16px !important; height:16px !important; background:none!important;" src="http://findicons.com/files//icons/1689/splashy/16/comments_small.png" /> ' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
 							}
-							//html +=  data.results[i].created;
-							//html += data.results[i].avgRating;
-							//html += data.results[i].owner;
-							//html += data.results[i].type;
+							// date
+							if(data.results[i].created){
+								// date object
+								var d = new Date(data.results[i].created);
+								// date format for locale
+								var dateLocale = dojo.date.locale.format(d, {
+									selector:"date",
+									datePattern:"MMM d, yyyy"
+								}); 
+								// html
+								html += '<li class="smallInfo">' + dateLocale + '.</li>';
+							}
+							// rating
+							if(data.results[i].avgRating){
+								html += '<li class="smallInfo">Rating ' + data.results[i].avgRating + '.</li>';
+							}
+							
+							
+							
+							console.log(data.results[i]);
+							console.log(data.results[i].owner);
+							console.log(data.results[i].type);
 						}
 						html += '</ul>';
 						html += '<div class="clear"></div>';

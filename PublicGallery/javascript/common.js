@@ -124,7 +124,7 @@ function setDefaultConfigOptions(){
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
 	// Template Development
-	configOptions.development = false;
+	configOptions.development = true;
 	// Template Version
 	configOptions.templateVersion = 2.01;
 	// ArcGIS Rest Version
@@ -860,7 +860,7 @@ function createPagination(obj, totalItems, pagObject){
 /*------------------------------------*/
 // Configure viewer URL to use
 /*------------------------------------*/
-function getViewerURL(viewer, webmap){
+function getViewerURL(viewer, webmap, owner){
 	// if not defined
 	if(!viewer){
 		// set to default in config
@@ -908,8 +908,13 @@ function getViewerURL(viewer, webmap){
 			}
 			return retUrl;
 		case 'owner_page':
-			if(configOptions.group.owner){
-				retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.group.owner);
+			if(configOptions.group.owner || owner){
+				if(owner){
+					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(owner);
+				}
+				else{
+					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.group.owner);
+				}
 			}
 			return retUrl;
 		case 'item_page':

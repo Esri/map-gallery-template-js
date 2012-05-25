@@ -988,7 +988,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	padding:3px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	margin-bottom:20px;
 	width: 694px;
 	height: 584px;
 	position:relative;
@@ -1009,6 +1008,14 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .map .bingLogo-lg {
 	left:18px !important;
+}
+#accessInformation .credits{
+	margin:5px 0 0 0;
+	font-size:10px;
+	color:#999;
+}
+#mapButtonCon{
+	margin:20px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* MAP PAGE */
