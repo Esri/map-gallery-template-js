@@ -519,6 +519,15 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	width:13px;
 	height:12px;
 }
+.mapsList .item .itemInfo{
+	float:left;
+	width:484px;
+	height:133px;
+	overflow:auto;
+}
+.esriRtl  .mapsList .item .itemInfo{
+	float:right;
+}
 .mapsList .item .itemInfo a {
 	display:inline-block;
 	border:0;

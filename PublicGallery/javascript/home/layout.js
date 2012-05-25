@@ -26,7 +26,7 @@ dojo.addOnLoad(function(){
 /*------------------------------------*/
 // On sort button click
 /*------------------------------------*/
-function sortOnClick(){
+function buildSortingMenu(){
 	// sorting fields
 	var sortFields = [
 		{
@@ -302,21 +302,24 @@ function buildMapPlaylist(obj,data){
 		}
 		// Create list items
 		for(var i=0; i < forTotal; ++i) {
-			if(i === 0 || i === (forTotal - 1)){
-				if(i === 0){
-					console.log('------- FIRST ----------');
+			//	TODO
+			if(configOptions.development){
+				if(i === 0 || i === (forTotal - 1)){
+					if(i === 0){
+						console.log('------- FIRST ----------');
+					}
+					else{
+						console.log('-------- LAST ---------');
+					}
+					console.log(i);
+					console.log(data.results[i]);
+					console.log('Views: ' + data.results[i].numViews);
+					console.log('Comments: ' + data.results[i].numComments);
+					console.log('Created: ' + data.results[i].created);
+					console.log('Rating: ' + data.results[i].avgRating);
+					console.log('Owner: ' + data.results[i].owner);
+					console.log('Type: ' + data.results[i].type);
 				}
-				else{
-					console.log('-------- LAST ---------');
-				}
-				console.log(i);
-				console.log(data.results[i]);
-				console.log('Views: ' + data.results[i].numViews);
-				console.log('Comments: ' + data.results[i].numComments);
-				console.log('Created: ' + data.results[i].created);
-				console.log('Rating: ' + data.results[i].avgRating);
-				console.log('Owner: ' + data.results[i].owner);
-				console.log('Type: ' + data.results[i].type);
 			}
 			var appClass = '';
 			var itemTitle;
@@ -360,6 +363,17 @@ function buildMapPlaylist(obj,data){
 						html += '<div class="itemInfo">';
 						html += '<a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '"><strong>' + itemTitle + '</strong></a>';
 						html += '<p>' + snippet + '</p>';
+						//	TODO
+						if(configOptions.development){
+							html += '<p>';
+							html += 'Views: ' + data.results[i].numViews;
+							html += 'Comments: ' + data.results[i].numComments;
+							html +=  data.results[i].created;
+							html += 'Rating: ' + data.results[i].avgRating;
+							html += 'Owner: ' + data.results[i].owner;
+							html += 'Type: ' + data.results[i].type;
+							html += '</p>';
+						}
 						html += '<p><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></p>';
 						html += '</div>';
 						html += '<div class="clear"></div>';
@@ -650,5 +664,9 @@ function init(){
 			dojo.query(this).prev('li')[0].focus();
 		}
 	});
-	sortOnClick();
+	//	TODO
+	// Create sorting menu filter
+	if(configOptions.development){
+		buildSortingMenu();
+	}
 }
