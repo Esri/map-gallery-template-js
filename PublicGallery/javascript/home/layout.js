@@ -366,12 +366,12 @@ function buildMapPlaylist(obj,data){
 						//	TODO
 						if(configOptions.development){
 							html += '<p>';
-							html += 'Views: ' + data.results[i].numViews;
-							html += 'Comments: ' + data.results[i].numComments;
-							html +=  data.results[i].created;
-							html += 'Rating: ' + data.results[i].avgRating;
-							html += 'Owner: ' + data.results[i].owner;
-							html += 'Type: ' + data.results[i].type;
+							html += data.results[i].numViews;
+							html += data.results[i].numComments;
+							//html +=  data.results[i].created;
+							html += data.results[i].avgRating;
+							//html += data.results[i].owner;
+							html += data.results[i].type;
 							html += '</p>';
 						}
 						html += '<p><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></p>';
