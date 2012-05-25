@@ -67,7 +67,7 @@ function buildSortingMenu(){
 	];
 	// html variable
 	var html = '';
-	html += '<div class="grid_9 alpha omega">';
+	html += '<div class="grid_9 sigma">';
 		html += '<ul id="sortGallery">';
 			html += '<li class="label"><span>Sort By</span></li>';
 			// for each sort field
@@ -75,11 +75,11 @@ function buildSortingMenu(){
 				// variables
 				var selectedClass = '', buttonClass = '';
 				// if first button
-				if(i == 0){
+				if(i === 0){
 					buttonClass = ' buttonLeft';
 				}
 				// if last button
-				if(i == (sortFields.length - 1)){
+				if(i === (sortFields.length - 1)){
 					buttonClass = ' buttonRight';
 				}
 				// if default selected button
@@ -352,7 +352,7 @@ function buildMapPlaylist(obj,data){
 					linkTarget = 'target="_blank"';
 				}
 				// Build list item
-				html += '<div class="grid_9 alpha omega">';
+				html += '<div class="grid_9 sigma">';
 					html += '<div class="item' + appClass + '">';
 						html += '<a ' + linkTarget + ' class="block" id="mapItem' + i + '" title="' + snippet + '" href="' + itemURL + '">';
 						if(externalLink){
@@ -425,7 +425,7 @@ function buildMapPlaylist(obj,data){
 	}
 	else{
 		// No results
-		html += '<div class="grid_5 suffix_4 alpha omega"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
+		html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
 		html += '<div class="clear"></div>';
 	}
 	// Insert HTML

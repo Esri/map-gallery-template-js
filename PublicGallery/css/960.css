@@ -37,12 +37,16 @@ body {
 	margin-right:0;
 }
 .esriRtl .alpha {
-	margin-right:0;
 	margin-left:10px;
+	margin-right:0;
 }
 .esriRtl .omega {
-	margin-left:0;
 	margin-right:10px;
+	margin-left:0;
+}
+.sigma {
+	margin-left:0;
+	margin-right:0;
 }
 .container_12 .grid_1 {
 	width:60px;
