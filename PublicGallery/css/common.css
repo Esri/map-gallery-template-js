@@ -573,7 +573,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .mapsList .item .infoList .smallInfo {
 	float: right;
-	color:#999;
+	color:#656565;
 	font-size: 11px;
 	margin-left: 10px;
 }
@@ -637,6 +637,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .dataLayers ul li {
 	margin-bottom:10px;
+}
+.dataLayers .moreInfoList{
+	margin:10px 0;
+}
+.dataLayers .moreInfoList li{
+	margin:0 0 5px 0;
 }
 .dataLayers ul li a {
 	text-decoration:none;
@@ -1012,7 +1018,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #accessInformation .credits{
 	margin:5px 0 0 0;
 	font-size:10px;
-	color:#999;
+	color:#656565;
 }
 #mapButtonCon{
 	margin:20px 0 0 0;

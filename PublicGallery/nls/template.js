@@ -15,9 +15,6 @@ define({
                 "noMatches": "No matches found.",
                 "noMapsFound": "No maps were found."
             },
-            "footer": {
-                "label": "A map from:"
-            },
             "sidePanel": {
                 "title": "Legend",
                 "legendButton": "Legend",
@@ -34,7 +31,13 @@ define({
                 "itemTitle": "View map",
                 "gridSwitch": "Switch to Grid View",
                 "listSwitch": "Switch to List View",
-                "loadingText": "Loading Maps&hellip;"
+                "loadingText": "Loading Maps&hellip;",
+				// new
+				"createdLabel":"Created",
+				"viewsLabel":"view.",
+				"viewsLabelPlural":"views.",
+				"commentsLabel":"comment.",
+				"commentsLabelPlural":"comments."
             },
             "mapPage": {
                 "findLocation": "Find a location",
@@ -49,8 +52,14 @@ define({
                 "openInMobile": "Open in Mobile App",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "Owner",
-                "switchBasemap": "Switch Basemap"
+                "ownerHeader": "Owner:",
+                "switchBasemap": "Switch Basemap",
+				// new
+				"constraintsHeading":"Use Constraints",
+				"creditsHeading":"Credits:",
+				"createdLabel":"Created:",
+				"detailsLabel":"Details:",
+				"modifiedLabel":"Last Modified:"
             },
             "mobileOptions": {
                 "mobileAppDialogTitle": "Open Maps in the ArcGIS App?",

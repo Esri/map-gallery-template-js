@@ -46,11 +46,6 @@ function buildSortingMenu(){
 			"defaultOrder":"asc"
 		},
 		{
-			"title":"Owner",
-			"field":"owner",
-			"defaultOrder":"asc"
-		},
-		{
 			"title":"Rating",
 			"field":"avgRating",
 			"defaultOrder":"desc"
@@ -85,10 +80,10 @@ function buildSortingMenu(){
 				}
 				// if default selected button
 				if(sortFields[i].field === configOptions.sortField){
-					selectedClass = sortFields[i].defaultOrder + ' active';
+					selectedClass = ' ' + sortFields[i].defaultOrder + ' active';
 				}
 				// button html
-				html += '<li class="' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow"></span></span></li>';
+				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow"></span></span></li>';
 			}
 		html += '</ul>';
 	html += '</div>';
@@ -101,13 +96,12 @@ function buildSortingMenu(){
 		node.innerHTML(html);
 	}
 	// toggle basemap button
-	dojo.query(document).delegate("#sortGallery li", "onclick", function(event){
+	dojo.query(document).delegate("#sortGallery .sort", "onclick", function(event){
 		// get nodes
 		var buttonNode = dojo.query(this);
-		var node = dojo.query('#sortGallery')[0];
-		// if they exist
-		if(node && buttonNode){
-			// 
+		// if button exists
+		if(buttonNode){
+			// variables for attributes
 			var sortColumn = buttonNode.attr("data-sort-field")[0];
 			var defaultOrder = buttonNode.attr("data-default-order")[0];
 			var sortOrder = buttonNode.attr("data-sort-order")[0];
@@ -120,9 +114,11 @@ function buildSortingMenu(){
 			else{
 				configOptions.sortOrder = defaultOrder;
 			}
+			// remove classes and data sort order
+			dojo.query("#sortGallery .sort").removeClass('asc desc active').attr('data-sort-order','');
 			// set sort order
 			buttonNode.attr("data-sort-order", configOptions.sortOrder);
-			dojo.query('#sortGallery li').removeClass('asc desc active');
+			// set current to active
 			buttonNode.addClass(configOptions.sortOrder + ' active');
 			// get maps
 			queryMaps();
@@ -351,21 +347,30 @@ function buildMapPlaylist(obj,data){
 						html += '<li><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></li>';
 						// TODO
 						if(configOptions.development){
+							// (43 ratings, 2 comments, 205,998 views)
+
+							var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
+							console.log(widget);
+
+							html += '<li>' + widget.domNode.outerHTML + '</li>';
+
+
+
 							// views
 							if(data.results[i].numViews){
-								var pluralViews = 'view.';
+								var pluralViews = i18n.viewer.groupPage.viewsLabel;
 								if(data.results[i].numViews > 1){
-									pluralViews = 'views.';
+									pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
 								}
 								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numViews) + ' ' + pluralViews + '</li>';
 							}
 							// comments
 							if(data.results[i].numComments){
-								var pluralComments = 'comment.';
+								var pluralComments = i18n.viewer.groupPage.commentsLabel;
 								if(data.results[i].numComments > 1){
-									pluralComments = 'comments.';
+									pluralComments = i18n.viewer.groupPage.commentsLabelPlural;
 								}
-								html += '<li class="smallInfo"><img style=" display:inline-block !important;width:16px !important; height:16px !important; background:none!important;" src="http://findicons.com/files//icons/1689/splashy/16/comments_small.png" /> ' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
+								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
 							}
 							// date
 							if(data.results[i].created){
@@ -377,17 +382,10 @@ function buildMapPlaylist(obj,data){
 									datePattern:"MMM d, yyyy"
 								}); 
 								// html
-								html += '<li class="smallInfo">' + dateLocale + '.</li>';
+								html += '<li class="smallInfo">' + i18n.viewer.groupPage.createdLabel + ' ' + dateLocale + '.</li>';
 							}
-							// rating
-							if(data.results[i].avgRating){
-								html += '<li class="smallInfo">Rating ' + data.results[i].avgRating + '.</li>';
-							}
-							
-							
-							
 							console.log(data.results[i]);
-							console.log(data.results[i].owner);
+							console.log(data.results[i].avgRating);
 							console.log(data.results[i].type);
 						}
 						html += '</ul>';
@@ -477,6 +475,10 @@ function configLayoutSearch(){
 		}
 		html += '</ul>';
 		html += '<div class="clear"></div>';
+		// if show search
+		if(configOptions.showGroupSearch){
+			html += '<div id="acCon"><div id="groupAutoComplete" class="autoComplete"></div></div><div class="clear"></div>';
+		}
 		html += '</div>';
 		// if show switch
 		var listClass, gridClass;
@@ -510,10 +512,6 @@ function configLayoutSearch(){
 		var node = dojo.query("#layoutAndSearch");
 		if(node.length > 0){
 			node.innerHTML(html);
-		}
-		// if show search
-		if(configOptions.showGroupSearch){
-			dojo.place('<div id="acCon"><div id="groupAutoComplete" class="autoComplete"></div></div><div class="clear"></div>', "searchListCon", "last");
 		}
 	}
 }
@@ -683,8 +681,8 @@ function init(){
 		}
 	});
 	//	TODO
-	// Create sorting menu filter
 	if(configOptions.development){
+		// Create sorting menu filter
 		buildSortingMenu();
 	}
 }

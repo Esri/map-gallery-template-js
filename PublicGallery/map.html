@@ -13,6 +13,7 @@
 <!-- END iOS -->
 <!-- STYLESHEETS -->
 <link href="//servicesbeta.esri.com/jsapi/arcgis/3.0/js/dojo/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
+<link href="//servicesbeta.esri.com/jsapi/arcgis/3.0/js/dojo/dojox/form/resources/Rating.css" rel="stylesheet" type="text/css" />
 <link href="//servicesbeta.esri.com/jsapi/arcgis/3.0/js/esri/dijit/css/Popup.css" rel="stylesheet" type="text/css" />
 <link href="css/reset.css" rel="stylesheet" type="text/css" />
 <link href="css/960.css" rel="stylesheet" type="text/css" />
@@ -44,6 +45,7 @@
 		<div class="grid_9 contentLeft">
 			<h1 class="mapHeader" id="title"></h1>
 			<div id="subtitle"></div>
+			<div><span id="numViews"></span> <span id="created"></span></div>		
 			<div id="addressContainer" class="addressContainer"></div>
 			<div class="clear"></div>
 			<div class="mapContainer">
@@ -79,7 +81,6 @@
 					<div id="descriptionContent"></div>
 					<div id="licenseInfo"></div>
 					<div id="mapMoreInfo"></div>
-					<div id="mapOwner"></div>
 				</div>
 				<div class="clear"></div>
 			</div>

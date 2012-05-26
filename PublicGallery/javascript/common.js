@@ -123,7 +123,7 @@ function setDefaultConfigOptions(){
 		//right now checking for Arabic only, to generalize for all RTL languages
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
-	// Template Development
+	// Template Development. Enables features that are in progress and not finalized. 
 	configOptions.development = true;
 	// Template Version
 	configOptions.templateVersion = 2.01;
@@ -532,6 +532,7 @@ function insertFooterHTML(){
 /*------------------------------------*/
 function insertHeaderContent(){
 	var html = '';
+	var node = dojo.query("#templateNav");
 	html += '<li id="homeItem"><a title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
 	// if banner image
 	if(configOptions.siteBannerImage){
@@ -541,12 +542,18 @@ function insertHeaderContent(){
 		html += configOptions.siteTitle;
 	}
 	html += '</a></li>';
+	// copy if any current lists are in there that users may have set
+	if(node.length > 0){
+		html += node.innerHTML();
+	}
 	// if show about page
 	if(configOptions.showAboutPage){
 		html += '<li><a href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
 	}
 	// insert HTML
-	dojo.place(html, "templateNav", "first");
+	if(node.length > 0){
+		node.innerHTML(html);
+	}
 	// set selected class
 	dojo.forEach(dojo.query('#templateNav li a'),function(obj){
 		// if link HREF equals page HREF
@@ -555,6 +562,20 @@ function insertHeaderContent(){
 			dojo.query(obj).addClass('activeLink');
 		}
 	});
+}
+/*------------------------------------*/
+// Resize Sidebar
+/*------------------------------------*/
+function resizeDataLayers(){
+	var height;
+	var contentLeft = dojo.query('.contentLeft')[0];
+	if(contentLeft){
+		height = dojo.marginBox(contentLeft).h;
+	}
+	if(height){
+		dojo.query('.dataLayers').style('height', height + 'px');
+	}
+	console.log('test');
 }
 /*------------------------------------*/
 // Insert content

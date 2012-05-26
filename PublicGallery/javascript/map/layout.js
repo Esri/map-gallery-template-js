@@ -17,10 +17,6 @@ dojo.require("esri.dijit.Scalebar");
 dojo.require("esri.dijit.OverviewMap");
 dojo.require("esri.dijit.BasemapGallery");
 dojo.require("esri.tasks.locator");
-dojo.require("dijit.layout.BorderContainer");
-dojo.require("dijit.layout.ContentPane");
-dojo.require("dijit.layout.StackContainer");
-dojo.require("dijit.TitlePane");
 // Localization
 dojo.requireLocalization("esriTemplate","template");
 /*------------------------------------*/
@@ -171,13 +167,6 @@ function hideAutoComplete(){
 function setMapContent(){
 	// check for mobile cookie	
 	checkMobileCookie();
-	// if showMoreInfo is set
-	if(configOptions.showMoreInfo){
-		// set map contents url
-		var mapURL = getViewerURL('item_page');
-		// show and set href
-		dojo.place('<h2>' + i18n.viewer.mapPage.moreInformation + '</h2><a id="mapContentsLink" href="' + mapURL + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>', "mapMoreInfo", "last");	
-	}
     // show about button click
 	dojo.query(document).delegate("#showAbout", "onclick", function(event){
         tabMenu('#aboutMenu',this);
@@ -196,13 +185,6 @@ function setMapContent(){
 	});
 	// set map buttons
 	setInnerMapButtons();
-	// If mobile user
-	if(isMobileUser() && configOptions.appCookie === 'installed'){
-		// get item url
-		var itemURL = getViewerURL('mobile', configOptions.webmap);
-		// add button
-		dojo.place('<a href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>', "mapButtons", "last");
-	}
 	// Search Button
 	dojo.query(document).delegate("#searchAddressButton", "onclick", function(event){
 		locate();
@@ -558,24 +540,17 @@ function addBottomMapButtons(){
 		// add open in arcgis button
 		html += '<a target="_blank" href="' + getViewerURL('arcgis', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';
 	}
-	if(html){
-		// insert
-		dojo.place(html, "mapButtons", "first");
+	// If mobile user
+	if(isMobileUser() && configOptions.appCookie === 'installed'){
+		// get item url
+		var itemURL = getViewerURL('mobile', configOptions.webmap);
+		// add button
+		html += '<a href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
 	}
-}
-/*------------------------------------*/
-// Set Owner
-/*------------------------------------*/
-function setItemOwner(owner){
-	var html = '';
-	if(owner){
-		var ownerNode = dojo.byId("mapOwner");
-		if(ownerNode){
-			html += '<h2>' + i18n.viewer.mapPage.ownerHeader + '</h2>';
-			html += '<p>' + i18n.viewer.footer.label + ' <a href="' + getViewerURL('owner_page', false, owner) + '" target="_blank">' + owner + '</a></p>';
-			html += '<div class="clear"></div>';
-			ownerNode.innerHTML = html;
-		}
+	// insert
+	var node = dojo.byId("mapButtons");
+	if(node && html){
+		node.innerHTML = html;
 	}
 }
 /*------------------------------------*/
@@ -625,47 +600,68 @@ function initMap() {
 			if(subTitleNode){
 				subTitleNode.innerHTML = configOptions.mapSnippet || "";
 			}
+			// if showMoreInfo is set
+			if(configOptions.showMoreInfo){
+				var d, dateLocale, html = '';
+				html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
+				html += '<ul class="moreInfoList">';
+				// TODO
+				if(configOptions.development){
+					// Created Date
+					if(itemInfo.item.created){
+						// date object
+						d = new Date(itemInfo.item.created);
+						// date format for locale
+						dateLocale = dojo.date.locale.format(d, {
+							selector:"date",
+							datePattern:"MMM d, yyyy"
+						}); 
+						html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale+ '</li>';
+					}
+					// Modified Date
+					if(itemInfo.item.modified){
+						// date object
+						d = new Date(itemInfo.item.modified);
+						// date format for locale
+						dateLocale = dojo.date.locale.format(d, {
+							selector:"date",
+							datePattern:"MMM d, yyyy"
+						}); 
+						html += '<li><strong>' + i18n.viewer.mapPage.modifiedLabel + '</strong><br />' + dateLocale+ '</li>';
+					}
+				}
+				// Set owner
+				if(itemInfo.item.owner){
+					html += '<li><strong>' + i18n.viewer.mapPage.ownerHeader + '</strong><br /><a href="' + getViewerURL('owner_page', false, itemInfo.item.owner) + '" target="_blank">' + itemInfo.item.owner + '</a></li>';
+				}
+				// item page link
+				html += '<li>';
+				// TODO
+				if(configOptions.development){
+					html += '<strong>' + i18n.viewer.mapPage.detailsLabel + '</strong><br />';
+				}
+				html += '<a id="mapContentsLink" href="' + getViewerURL('item_page') + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
+				html += '</li>';
+				html += '</ul>';
+				// set html to node
+				var mapMoreInfo = dojo.byId("mapMoreInfo");
+				if(mapMoreInfo){
+					mapMoreInfo.innerHTML = html;
+				}
+			}
 			// TODO
 			if(configOptions.development){
-				console.log(itemInfo);
 				// Set license info
 				var licenseInfo = dojo.byId("licenseInfo");
-				if(licenseInfo && itemInfo.item.licenseInfo){
-					licenseInfo.innerHTML = '<h2>Use Constraints</h2>' + itemInfo.item.licenseInfo;
+				if(licenseInfo && itemInfo.item.licenseInfo && configOptions.showLicenseInfo){
+					licenseInfo.innerHTML = '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + itemInfo.item.licenseInfo;
 				}
 				// Set credits
 				var accessInformation = dojo.byId("accessInformation");
-				if(accessInformation && itemInfo.item.accessInformation){
-					accessInformation.innerHTML = '<div class="credits"><strong>Credits:</strong> ' + itemInfo.item.accessInformation + '</div>';
-				}
-				
-				//
-				var numViews = dojo.byId("numViews");
-				if(numViews && itemInfo.item.numViews){
-					numViews.innerHTML = dojo.number.format(itemInfo.item.numViews);
-				}
-				
-				//
-				var numComments = dojo.byId("numComments");
-				if(numComments && itemInfo.item.numComments){
-					numComments.innerHTML = dojo.number.format(itemInfo.item.numComments);
-				}
-				
-				//
-				var created = dojo.byId("created");
-				if(created && itemInfo.item.created){
-					// date object
-					var d = new Date(itemInfo.item.created);
-					// date format for locale
-					var dateLocale = dojo.date.locale.format(d, {
-						selector:"date",
-						datePattern:"MMM d, yyyy"
-					}); 
-					created.innerHTML = dateLocale;
+				if(accessInformation && itemInfo.item.accessInformation && configOptions.showCredits){
+					accessInformation.innerHTML = '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + itemInfo.item.accessInformation + '</div>';
 				}
 			}
-			// Set owner
-			setItemOwner(itemInfo.item.owner);
 			// Set description
 			var descriptionInfo = configOptions.mapItemDescription || "";
 			var descNode = dojo.byId("descriptionContent");
@@ -703,48 +699,51 @@ function initMap() {
 					var layerClick = '';
 					var mapLayersNode = dojo.query("#mapLayers");
 					if(mapLayersNode.length > 0){
-						mapLayersNode.innerHTML('<h2>' + i18n.viewer.mapPage.layersHeader + '</h2><table id="mapLayerToggle"></table><div class="clear"></div>');
-					}
-					layerClick += "<tbody>";
-					for(j=0; j< layers.length; j++){
-						var checked;
-						if(layers[j].featureCollection){
-							layerClick += "<tr>";
-							checked = '';
-							if(layers[j].visibility){
-								checked = 'checked="checked"';
-							}
-							// check column
-							layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-							for(k=0; k < layers[j].featureCollection.layers.length; k++){
-								layerClick += layers[j].featureCollection.layers[k].id;
-								// if not last
-								if(k !== (layers[j].featureCollection.layers.length - 1)){
-									layerClick += ",";
+						layerClick += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
+						layerClick += '<table id="mapLayerToggle">';
+						layerClick += "<tbody>";
+						for(j=0; j< layers.length; j++){
+							var checked;
+							if(layers[j].featureCollection){
+								layerClick += "<tr>";
+								checked = '';
+								if(layers[j].visibility){
+									checked = 'checked="checked"';
 								}
+								// check column
+								layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								for(k=0; k < layers[j].featureCollection.layers.length; k++){
+									layerClick += layers[j].featureCollection.layers[k].id;
+									// if not last
+									if(k !== (layers[j].featureCollection.layers.length - 1)){
+										layerClick += ",";
+									}
+								}
+								layerClick += '" /></td>';
+								// label column
+								layerClick += '<td><label for="layerCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								layerClick += "</tr>";
 							}
-							layerClick += '" /></td>';
-							// label column
-							layerClick += '<td><label for="layerCheckbox' + j + '">' + layers[j].title + '</label></td>';
-							layerClick += "</tr>";
-						}
-						else{
-							layerClick += "<tr>";
-							checked = '';
-							if(layers[j].visibility){
-								checked = 'checked="checked"';
+							else{
+								layerClick += "<tr>";
+								checked = '';
+								if(layers[j].visibility){
+									checked = 'checked="checked"';
+								}
+								// check column
+								layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								layerClick += layers[j].id;
+								layerClick += '" /></td>';
+								// label column
+								layerClick += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								layerClick += "</tr>";
 							}
-							// check column
-							layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-							layerClick += layers[j].id;
-							layerClick += '" /></td>';
-							// label column
-							layerClick += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title + '</label></td>';
-							layerClick += "</tr>";
 						}
+						layerClick += "</tbody>";
+						layerClick += '</table>';
+						layerClick += '<div class="clear"></div>';
+						mapLayersNode.innerHTML(layerClick);
 					}
-					layerClick += "</tbody>";
-					dojo.place(layerClick, 'mapLayerToggle', "first");
 				}
 				// ENDLAYER TOGGLE
 				if(map.loaded){

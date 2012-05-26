@@ -392,6 +392,18 @@
                "fieldName":"showArcGISOnlineButton",
                "label":"Show ArcGIS Online Button",
                "tooltip":"Display's the button to open the webmap in ArcGIS Online"
+            },
+			{
+               "type":"boolean",
+               "fieldName":"showLicenseInfo",
+               "label":"Show License Info",
+               "tooltip":"Display's the map's license information."
+            },
+			{
+               "type":"boolean",
+               "fieldName":"showCredits",
+               "label":"Show Credits",
+               "tooltip":"Display's the map's credits."
             }
          ]
       }
@@ -423,6 +435,8 @@
       "showMobileDialog":true,
       "showPagination":true,
       "showExplorerButton":true,
-      "showArcGISOnlineButton":true
+      "showArcGISOnlineButton":true,
+	  "showLicenseInfo":true,
+	  "showCredits":true
    }
 }
