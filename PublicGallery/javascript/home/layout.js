@@ -340,56 +340,83 @@ function buildMapPlaylist(obj,data){
 						html += '<img src="' + configOptions.sharingurl + "/" + data.results[i].id + "/info/" + data.results[i].thumbnail + '" width="200" height="133" />';
 						html += '</a>';
 						html += '<div class="itemInfo">';
-						html += '<a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '"><strong>' + itemTitle + '</strong></a>';
+						html += '<strong><a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '">' + itemTitle + '</a></strong>';
+						// TODO
+						var createdDate, createdLocalized, modifiedDate, modifiedLocalized;
+						if(configOptions.development){
+							// created date
+							if(data.results[i].created){
+								// date object
+								createdDate = new Date(data.results[i].created);
+								// date format for locale
+								createdLocalized = dojo.date.locale.format(createdDate, {
+									selector:"date",
+									datePattern:"MMM d, yyyy"
+								});
+							}
+							// modified date
+							if(data.results[i].modified){
+								// date object
+								modifiedDate = new Date(data.results[i].modified);
+								// date format for locale
+								modifiedLocalized = dojo.date.locale.format(modifiedDate, {
+									selector:"date",
+									datePattern:"MMM d, yyyy"
+								});
+							}
+							// html
+							html += '<p class="dateInfo">';
+							html += data.results[i].type + ' ';
+							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.group.owner + '</a>. ';
+							if(createdLocalized){
+								console.log('TODO');
+								//html += i18n.viewer.groupPage.createdLabel + ' ' + createdLocalized + '. ';
+							}
+							if(modifiedLocalized){
+								html += 'Last modified ' + modifiedLocalized + '. ';
+							}
+							html += '</p>';
+						}
 						html += '<p>' + snippet + '</p>';
-						
-						html += '<ul class="infoList">';
-						html += '<li><a ' + linkTarget + ' class="viewMap" title="' + i18n.viewer.groupPage.itemTitle + '" href="' + itemURL + '">' + i18n.viewer.groupPage.itemTitle + '<span class="arrow"></span></a></li>';
 						// TODO
 						if(configOptions.development){
-							// (43 ratings, 2 comments, 205,998 views)
-
+							// rating widget
 							var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
-							console.log(widget);
-
-							html += '<li>' + widget.domNode.outerHTML + '</li>';
-
-
-
-							// views
-							if(data.results[i].numViews){
-								var pluralViews = i18n.viewer.groupPage.viewsLabel;
-								if(data.results[i].numViews > 1){
-									pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
+							// rating container
+							html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
+							// Ratings
+							if(data.results[i].numRatings){
+								var pluralRatings = i18n.viewer.groupPage.ratingsLabel;
+								if(data.results[i].numRatings > 1){
+									pluralRatings = i18n.viewer.groupPage.ratingsLabelPlural;
 								}
-								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numViews) + ' ' + pluralViews + '</li>';
+								html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
 							}
 							// comments
 							if(data.results[i].numComments){
+								if(data.results[i].numRatings){
+									html += i18n.viewer.groupPage.separator + ' ';
+								}
 								var pluralComments = i18n.viewer.groupPage.commentsLabel;
 								if(data.results[i].numComments > 1){
 									pluralComments = i18n.viewer.groupPage.commentsLabelPlural;
 								}
-								html += '<li class="smallInfo">' + dojo.number.format(data.results[i].numComments) + ' ' + pluralComments + '</li>';
+								html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
 							}
-							// date
-							if(data.results[i].created){
-								// date object
-								var d = new Date(data.results[i].created);
-								// date format for locale
-								var dateLocale = dojo.date.locale.format(d, {
-									selector:"date",
-									datePattern:"MMM d, yyyy"
-								}); 
-								// html
-								html += '<li class="smallInfo">' + i18n.viewer.groupPage.createdLabel + ' ' + dateLocale + '.</li>';
+							// views
+							if(data.results[i].numViews){
+								if(data.results[i].numRatings || data.results[i].numComments){
+									html += i18n.viewer.groupPage.separator + ' ';
+								}
+								var pluralViews = i18n.viewer.groupPage.viewsLabel;
+								if(data.results[i].numViews > 1){
+									pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
+								}
+								html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
 							}
-							console.log(data.results[i]);
-							console.log(data.results[i].avgRating);
-							console.log(data.results[i].type);
+							// close container
+							html += ')</div>';
 						}
-						html += '</ul>';
-						html += '<div class="clear"></div>';
 						html += '</div>';
 						html += '<div class="clear"></div>';
 					html += '</div>';
@@ -425,8 +452,11 @@ function buildMapPlaylist(obj,data){
 							if(externalLink){
 								html += '<span class="externalIcon"></span>';
 							}
-							html += '<img src="' + configOptions.sharingurl + "/" + data.results[i].id + "/info/" + data.results[i].thumbnail + '" width="200" height="133" />';
-							html += '<span>' + itemTitle + '</span>';
+							if(configOptions.development){
+								html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + snippet + '</span>';
+							}
+							html += '<img class="gridImg" src="' + configOptions.sharingurl + "/" + data.results[i].id + "/info/" + data.results[i].thumbnail + '" width="200" height="133" />';
+							html += '<span class="itemTitle">' + itemTitle + '</span>';
 						html += '</a>';
 					html += '</div>';
 				html += '</div>';
@@ -682,7 +712,6 @@ function init(){
 	});
 	//	TODO
 	if(configOptions.development){
-		// Create sorting menu filter
 		buildSortingMenu();
 	}
 }

@@ -696,53 +696,53 @@ function initMap() {
 				var layers = response.itemInfo.itemData.operationalLayers;
 				// LAYER TOGGLE
 				if(configOptions.showLayerToggle && layers.length > 0){
-					var layerClick = '';
+					var html = '';
 					var mapLayersNode = dojo.query("#mapLayers");
 					if(mapLayersNode.length > 0){
-						layerClick += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
-						layerClick += '<table id="mapLayerToggle">';
-						layerClick += "<tbody>";
+						html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
+						html += '<table id="mapLayerToggle">';
+						html += "<tbody>";
 						for(j=0; j< layers.length; j++){
 							var checked;
 							if(layers[j].featureCollection){
-								layerClick += "<tr>";
+								html += "<tr>";
 								checked = '';
 								if(layers[j].visibility){
 									checked = 'checked="checked"';
 								}
 								// check column
-								layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								html += '<td class="checkColumn"><input class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
 								for(k=0; k < layers[j].featureCollection.layers.length; k++){
-									layerClick += layers[j].featureCollection.layers[k].id;
+									html += layers[j].featureCollection.layers[k].id;
 									// if not last
 									if(k !== (layers[j].featureCollection.layers.length - 1)){
-										layerClick += ",";
+										html += ",";
 									}
 								}
-								layerClick += '" /></td>';
+								html += '" /></td>';
 								// label column
-								layerClick += '<td><label for="layerCheckbox' + j + '">' + layers[j].title + '</label></td>';
-								layerClick += "</tr>";
+								html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								html += "</tr>";
 							}
 							else{
-								layerClick += "<tr>";
+								html += "<tr>";
 								checked = '';
 								if(layers[j].visibility){
 									checked = 'checked="checked"';
 								}
 								// check column
-								layerClick += '<td class="checkColumn"><input class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-								layerClick += layers[j].id;
-								layerClick += '" /></td>';
+								html += '<td class="checkColumn"><input class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								html += layers[j].id;
+								html += '" /></td>';
 								// label column
-								layerClick += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title + '</label></td>';
-								layerClick += "</tr>";
+								html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								html += "</tr>";
 							}
 						}
-						layerClick += "</tbody>";
-						layerClick += '</table>';
-						layerClick += '<div class="clear"></div>';
-						mapLayersNode.innerHTML(layerClick);
+						html += "</tbody>";
+						html += '</table>';
+						html += '<div class="clear"></div>';
+						mapLayersNode.innerHTML(html);
 					}
 				}
 				// ENDLAYER TOGGLE

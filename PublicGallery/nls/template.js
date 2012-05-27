@@ -33,11 +33,14 @@ define({
                 "listSwitch": "Switch to List View",
                 "loadingText": "Loading Maps&hellip;",
 				// new
-				"createdLabel":"Created",
-				"viewsLabel":"view.",
-				"viewsLabelPlural":"views.",
-				"commentsLabel":"comment.",
-				"commentsLabelPlural":"comments."
+				"createdLabel":"created",
+				"ratingsLabel":"rating",
+				"ratingsLabelPlural":"ratings",
+				"viewsLabel":"view",
+				"viewsLabelPlural":"views",
+				"commentsLabel":"comment",
+				"commentsLabelPlural":"comments",
+				"separator":","
             },
             "mapPage": {
                 "findLocation": "Find a location",

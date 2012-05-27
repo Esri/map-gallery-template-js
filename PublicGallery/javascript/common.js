@@ -123,8 +123,6 @@ function setDefaultConfigOptions(){
 		//right now checking for Arabic only, to generalize for all RTL languages
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
-	// Template Development. Enables features that are in progress and not finalized. 
-	configOptions.development = true;
 	// Template Version
 	configOptions.templateVersion = 2.01;
 	// ArcGIS Rest Version
@@ -563,19 +561,29 @@ function insertHeaderContent(){
 		}
 	});
 }
+// TODO
+/*------------------------------------*/
+// Insert HTML to node reference function
+/*------------------------------------*/
+function setNodeHTML(node, htmlString, position){
+	if(!position){
+		position = 'only';
+	}
+	dojo.place(node, htmlString, position);
+	resizeSidebarHeight();
+}
 /*------------------------------------*/
 // Resize Sidebar
 /*------------------------------------*/
-function resizeDataLayers(){
-	var height;
-	var contentLeft = dojo.query('.contentLeft')[0];
+function resizeSidebarHeight(){
+	var height, contentLeft = dojo.query('.contentLeft')[0];
 	if(contentLeft){
 		height = dojo.marginBox(contentLeft).h;
+		if(height){
+			dojo.query('.dataLayers').style('height', height + 'px');
+			console.log('test');
+		}
 	}
-	if(height){
-		dojo.query('.dataLayers').style('height', height + 'px');
-	}
-	console.log('test');
 }
 /*------------------------------------*/
 // Insert content
@@ -596,6 +604,10 @@ function insertContent(){
 		// direction attribute
 		dirNode.setAttribute("dir", "ltr");
 	}
+	// add sidepanel class
+	dojo.query('#sidePanel').addClass('dataLayers');
+	// add main panel class
+	dojo.query('#mainPanel').addClass('contentLeft');
 	// Set Theme
 	dirNode.className += " " + configOptions.theme;
 	// Insert banner and navigation
