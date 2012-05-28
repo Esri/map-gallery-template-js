@@ -131,7 +131,7 @@ function tabMenu(menuObj, buttonObj){
 function setInnerMapButtons(){
 	var html = '';
 	// fullscreen button
-	html += '<div title="' + i18n.viewer.mapPage.enterFullscreen + '" class="mapButton buttonSingle" id="fullScreen"><span class="fullScreenButton"></span></div>';
+	html += '<div title="' + i18n.viewer.mapPage.enterFullscreen + '" class="mapButton buttonSingle" id="fullScreen"><span class="fullScreenButton">&nbsp;</span></div>';
 	// fullscreen button
 	dojo.query(document).delegate("#fullScreen", "onclick", function(event){
 		// if currently in full screen
@@ -146,7 +146,7 @@ function setInnerMapButtons(){
     });
 	// if gelocation is available
 	if(navigator.geolocation){
-		html += '<div id="geoButton" title="' + i18n.viewer.mapPage.geoLocateTitle + '" class="mapButton buttonSingle"><span class="geoLocateButton"></span></div>';
+		html += '<div id="geoButton" title="' + i18n.viewer.mapPage.geoLocateTitle + '" class="mapButton buttonSingle"><span class="geoLocateButton">&nbsp;</span></div>';
 		dojo.query(document).delegate("#geoButton", "onclick", function(event){
 			navigator.geolocation.getCurrentPosition(geoLocateMap);
 		});
@@ -289,9 +289,10 @@ function showAutoComplete(geocodeResults){
         }
         aResults += '</ul>';
         if(geocodeResults.length > 0){
-			var node = dojo.query("#autoComplete");
-			if(node.length > 0){
-				node.innerHTML(aResults).style('display','block');
+			var node = dojo.byId('autoComplete');
+			if(node){
+				setNodeHTML(node, aResults);
+				dojo.style(node, 'display', 'block');
 			}
 		}
 		else{
@@ -335,7 +336,7 @@ function locate() {
     var query = dojo.byId("searchAddress").value;
 	if(query){
 		// add loading spinner
-		addSpinner("#locateSpinner");
+		addSpinner("locateSpinner");
 		// locate string
 		locateString = query;
 		var address = {
@@ -431,14 +432,12 @@ function showResults(geocodeResults, resultNumber){
 function createBasemapGallery() {
 	var html = '';
 	// insert HTML for basemap
-	html += '<div class="silverButton buttonSingle" id="basemapButton"><span class="basemapArrowButton"></span>' + i18n.viewer.mapPage.switchBasemap + '</div>';
+	html += '<div class="silverButton buttonSingle" id="basemapButton"><span class="basemapArrowButton">&nbsp;</span>' + i18n.viewer.mapPage.switchBasemap + '</div>';
 	html += '<div class="clear"></div>';
 	html += '<div id="basemapGallery"></div>';
 	// if node exists
 	var node = dojo.byId("basemapContainer");
-	if(node){
-		node.innerHTML = html;
-	}
+	setNodeHTML(node, html);
 	//add the basemap gallery, in this case we'll display maps from ArcGIS.com including bing maps
 	var basemapGallery = new esri.dijit.BasemapGallery({
 		showArcGISBasemaps: true,
@@ -461,19 +460,19 @@ function createBasemapGallery() {
 	dojo.query(document).delegate("#basemapButton", "onclick", function(event){
 		// get nodes
 		var buttonNode = dojo.query(this);
-		var node = dojo.query('#basemapGallery')[0];
+		var node = dojo.byId('basemapGallery');
 		// if they exist
 		if(node && buttonNode){
 			// remove classes
 			buttonNode.removeClass('buttonSelected open');
 			// if already shown
-			if(node.style.display === 'block'){
+			if(dojo.style(node, 'display') === 'block'){
 				// hide
-				node.style.display = 'none';
+				dojo.style(node, 'display', 'none');
 			}
 			else{
 				// show and add class
-				node.style.display = 'block';
+				dojo.style(node, 'display', 'block');
 				buttonNode.addClass('buttonSelected open');
 			}
 		}
@@ -491,7 +490,7 @@ function setAddressContainer(){
 				html += '<div title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
 				html += '<input placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
 			html += '</li>';
-			html += '<li class="searchButtonLi" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddressButton"><span class="silverButton buttonRight"><span class="searchButton"></span></span></li>';
+			html += '<li class="searchButtonLi" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddressButton"><span class="silverButton buttonRight"><span class="searchButton">&nbsp;</span></span></li>';
 			html += '<li id="locateSpinner" class="spinnerCon"></li>';
 		html += '</ul>';
 		html += '<div class="clear"></div>';
@@ -509,9 +508,7 @@ function setAddressContainer(){
 	html += '<div class="clear"></div>';
 	// Set
 	var node = dojo.byId("addressContainer");
-	if(node){
-		node.innerHTML = html;
-	}
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Insert Menu Tab HTML
@@ -523,9 +520,7 @@ function insertMenuTabs(){
 	html += '<div class="clear"></div>';
 	// Set
 	var node = dojo.byId("tabMenu");
-	if(node){
-		node.innerHTML = html;
-	}
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Add bottom map buttons
@@ -549,9 +544,7 @@ function addBottomMapButtons(){
 	}
 	// insert
 	var node = dojo.byId("mapButtons");
-	if(node && html){
-		node.innerHTML = html;
-	}
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Init Map
@@ -592,14 +585,10 @@ function initMap() {
 			}
 			// Set title
 			var titleNode = dojo.byId("title");
-			if(titleNode){
-				titleNode.innerHTML = configOptions.mapTitle || "";
-			}
+			setNodeHTML(titleNode, configOptions.mapTitle || "");
 			// Set subtitle
 			var subTitleNode = dojo.byId("subtitle");
-			if(subTitleNode){
-				subTitleNode.innerHTML = configOptions.mapSnippet || "";
-			}
+			setNodeHTML(subTitleNode, configOptions.mapSnippet || "");
 			// if showMoreInfo is set
 			if(configOptions.showMoreInfo){
 				var d, dateLocale, html = '';
@@ -645,29 +634,25 @@ function initMap() {
 				html += '</ul>';
 				// set html to node
 				var mapMoreInfo = dojo.byId("mapMoreInfo");
-				if(mapMoreInfo){
-					mapMoreInfo.innerHTML = html;
-				}
+				setNodeHTML(mapMoreInfo, html);
 			}
 			// TODO
 			if(configOptions.development){
 				// Set license info
 				var licenseInfo = dojo.byId("licenseInfo");
 				if(licenseInfo && itemInfo.item.licenseInfo && configOptions.showLicenseInfo){
-					licenseInfo.innerHTML = '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + itemInfo.item.licenseInfo;
+					setNodeHTML(licenseInfo, '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + itemInfo.item.licenseInfo);
 				}
 				// Set credits
 				var accessInformation = dojo.byId("accessInformation");
 				if(accessInformation && itemInfo.item.accessInformation && configOptions.showCredits){
-					accessInformation.innerHTML = '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + itemInfo.item.accessInformation + '</div>';
+					setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + itemInfo.item.accessInformation + '</div>');
 				}
 			}
 			// Set description
 			var descriptionInfo = configOptions.mapItemDescription || "";
 			var descNode = dojo.byId("descriptionContent");
-			if(descNode){
-				descNode.innerHTML = '<h2>' + i18n.viewer.mapPage.aboutHeader + '</h2>' + descriptionInfo + '<div class="clear"></div>';
-			}
+			setNodeHTML(descNode, '<h2>' + i18n.viewer.mapPage.aboutHeader + '</h2>' + descriptionInfo + '<div class="clear"></div>');
 			// set page title
 			if(configOptions.mapTitle){
 				document.title = configOptions.siteTitle + ' | ' + configOptions.mapTitle;
@@ -697,8 +682,8 @@ function initMap() {
 				// LAYER TOGGLE
 				if(configOptions.showLayerToggle && layers.length > 0){
 					var html = '';
-					var mapLayersNode = dojo.query("#mapLayers");
-					if(mapLayersNode.length > 0){
+					var mapLayersNode = dojo.byId('mapLayers');
+					if(mapLayersNode){
 						html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
 						html += '<table id="mapLayerToggle">';
 						html += "<tbody>";
@@ -742,7 +727,7 @@ function initMap() {
 						html += "</tbody>";
 						html += '</table>';
 						html += '<div class="clear"></div>';
-						mapLayersNode.innerHTML(html);
+						setNodeHTML(mapLayersNode, html);
 					}
 				}
 				// ENDLAYER TOGGLE
@@ -872,9 +857,7 @@ function buildLayersList(layers) {
 function initUI(layers) {
 	// Set legend header
 	var node = dojo.byId('legendHeader');
-	if(node){
-		node.innerHTML = i18n.viewer.sidePanel.title;
-	}
+	setNodeHTML(node, i18n.viewer.sidePanel.title);
 	// Set basemap gallery
 	if(configOptions.showBasemapGallery){
 		createBasemapGallery();
@@ -900,9 +883,7 @@ function initUI(layers) {
 	}
 	else{
 		var legendContentNode = dojo.byId('legendContent');
-		if(legendContentNode){
-			legendContentNode.innerHTML = i18n.viewer.errors.noLayers;
-		}
+		setNodeHTML(legendContentNode, i18n.viewer.errors.noLayers);
 	}
 }
 /*------------------------------------*/

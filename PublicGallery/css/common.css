@@ -128,6 +128,7 @@ ol {
 }
 a {
 	text-decoration:none;
+	outline:0;
 }
 a:hover {
 	color:#000;
@@ -294,10 +295,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	background:#e5e5e5 url(../images/ui/contentBG.jpg) repeat-x top left;
 	color:#404040;
 	min-height:550px;
-	padding-bottom:20px;
 }
 #content .contentLeft {
-	padding:30px 0 20px 0;
+	padding:30px 0 50px 0;
 	position:relative;
 }
 .socialButtons {
@@ -316,6 +316,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .esriRtl .itemRight {
 	float:left;
 }
+#homeSideContent{
+	overflow:auto;
+}
 /*-------------------------------------------------- */
 /* FEATURED MAPS */
 /*-------------------------------------------------- */
@@ -325,8 +328,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .featuredLoading {
 	margin:20px 0;
 	padding-left:21px;
-	min-height:16px;
-	_height:16px;
+	height:16px;
 	background:url(../images/ui/ajax-loader.gif) no-repeat left center;
 }
 /*-------------------------------------------------- */
@@ -348,6 +350,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:11px;
 	height:11px;
+	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -96px 0;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -96px 0;
 }
@@ -359,6 +362,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:13px;
 	height:11px;
+	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -112px 0;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -112px 0;
 }
@@ -406,10 +410,13 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	box-shadow: 0px 0px 6px #ccc;
 }
 .mapsGrid .item .summaryHidden{
+	zoom:1;
 	position:absolute;
 	width:190px;
 	height:123px;
 	opacity:0;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+    filter:alpha(opacity=0);
 	padding:5px;
 	background:#fff;
 	z-index:2;
@@ -426,6 +433,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
 	opacity:.9;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=90)";
+    filter:alpha(opacity=90);
 }
 .mapsGrid .alpha .item {
 	margin-right:14px;
@@ -450,6 +459,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	color:#404040;
 	outline:0;
 	width:200px;
+	cursor:pointer;
 }
 .mapsGrid .externalLink a {
 	position:relative;
@@ -623,16 +633,11 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /*-------------------------------------------------- */
 .dataLayers {
 	background:#f1f1f1 url(../images/ui/dataLayers.jpg) repeat-x top left;
-	padding:30px 0 20px 0;
+	padding:30px 0 50px 0;
 	-moz-box-shadow: 0px 1px 10px #999;
 	-webkit-box-shadow: 0px 1px 10px #999;
 	box-shadow: 0px 1px 10px #999;
 	line-height:18px;
-	-webkit-border-radius: 0px 0px 8px 8px;
-	border-radius: 0px 0px 8px 8px;
-	margin-bottom:40px;
-	min-height:750px;
-	height:750px;
 }
 .dataLayers .Pad {
 	padding:0 20px;
@@ -713,6 +718,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:12px;
 	height:12px;
+	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -82px -1px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -82px -1px;
 }
@@ -877,6 +883,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:12px;
 	height:12px;
+	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -2px -2px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -2px -2px;
 }
@@ -895,6 +902,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:12px;
 	height:12px;
+	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -162px -2px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -162px -2px;
 }
@@ -942,6 +950,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	vertical-align:text-bottom;
 	width:12px;
 	height:12px;
+	overflow:hidden;
 	margin-right:2px;
 	background:url(../images/ui/uiSprite.png) no-repeat -194px -2px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -194px -2px;
@@ -1052,6 +1061,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	vertical-align:middle;
 	font-size:12px;
 	line-height:14px;
+	height:14px;
 	margin:0;
 	padding:6px 10px;
 	color:#5f5f5f;
@@ -1109,6 +1119,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	vertical-align:middle;
 	font-size:12px;
 	line-height:14px;
+	height:14px;
 	margin:0;
 	padding:6px 13px;
 	border:0;
@@ -1370,6 +1381,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	_background:url(../images/ui/uiSprite.gif) no-repeat -35px -1px;
 	height:12px;
 	width:12px;
+	overflow:hidden;
 }
 .pagination ul .previous .silverButton span {
 	display:inline-block;
@@ -1377,6 +1389,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	_background:url(../images/ui/uiSprite.gif) no-repeat -18px -1px;
 	height:12px;
 	width:12px;
+	overflow:hidden;
 }
 .esriRtl .pagination ul .next .silverButton span {
 	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
@@ -1551,6 +1564,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	vertical-align:text-bottom;
 	width:12px;
 	height:12px;
+	overflow:hidden;
 	margin-left:4px;
 }
 .esriRtl #sortGallery li .arrow {

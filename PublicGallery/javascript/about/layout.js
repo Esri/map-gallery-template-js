@@ -60,18 +60,18 @@ function insertAboutContent(userInfo){
 	var node, html;
 	if(userInfo){
 		// users full name
-		node = dojo.query("#fullName");
-		if(node.length > 0 && userInfo.fullName){
-			node.innerHTML(userInfo.fullName);
+		node = dojo.byId('fullName');
+		if(userInfo.fullName){
+			setNodeHTML(node, userInfo.fullName);
 		}
 		// users description
-		node = dojo.query("#userDescription");
-		if(node.length > 0 && userInfo.description){
-			node.innerHTML(userInfo.description);
+		node = dojo.byId('userDescription');
+		if(userInfo.description){
+			setNodeHTML(node, userInfo.description);
 		}
 		// users thumbnail
-		node = dojo.query("#thumbnailUrl");
-		if(node.length > 0 && userInfo.thumbnailUrl){
+		node = dojo.byId('thumbnailUrl');
+		if(userInfo.thumbnailUrl){
 			html = '';
 			if(configOptions.showProfileUrl){
 				html += '<a class="ownerImage" href="' + getViewerURL('owner_page') + '" target="_blank">';
@@ -86,14 +86,14 @@ function insertAboutContent(userInfo){
 			else{
 				html += '</span>';
 			}
-			node.innerHTML(html);
+			setNodeHTML(node, html);
 		}		
 		// users page
 		if(configOptions.showProfileUrl){
-			node = dojo.query("#userLink");
-			if(node.length > 0 && userInfo.username){
+			node = dojo.byId('userLink');
+			if(userInfo.username){
 				html = '<p><strong>' + i18n.viewer.mapPage.moreInformation + '</strong> <a href="' + getViewerURL('owner_page') + '" target="_blank">' + userInfo.username + '</a></p>';
-				node.innerHTML(html);
+				setNodeHTML(node, html);
 			}
 		}
 	}

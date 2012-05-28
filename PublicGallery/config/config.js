@@ -1,5 +1,5 @@
 var configOptions = {
-	"development":false,
+   "development":false,
    "group":{
       "id":"",
       "title":"National Maps for USA",

@@ -1,12 +1,10 @@
 /*------------------------------------*/
 // Add Spinner
 /*------------------------------------*/
-function addSpinner(query){
+function addSpinner(id){
 	var html = '<div class="spinnerRemove"><div class="loadingAjax"></div></div>';
-	var node = dojo.query(query);
-	if(node.length > 0){
-		node.innerHTML(html);
-	}
+	var node = dojo.byId(id);
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Reverse sort order
@@ -30,9 +28,7 @@ function removeSpinner(){
 /*------------------------------------*/
 function hideAllContent(){
 	var node = dojo.byId('content');
-	if(node){
-		node.innerHTML = "";
-	}
+	setNodeHTML(node, '');
 }
 /*------------------------------------*/
 // App ID Settings
@@ -456,10 +452,8 @@ function insertSocialHTML(){
 	html += '<a class="addthis_counter addthis_bubble_style"></a>';
 	html += '</div>';
 	// if social HTML
-	var node = dojo.query("#socialHTML");
-	if(node.length > 0){
-		node.innerHTML(html);
-	}
+	var node = dojo.byId('socialHTML');
+	setNodeHTML(node, html);
 	// addthis url
 	var addthisURL = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=";
 	// https support
@@ -518,10 +512,8 @@ function insertFooterHTML(){
 		html += '</div>';
 	html += '</div>';
 	// if Footer
-	var node = dojo.query("#footer");
-	if(node.length > 0){
-		node.innerHTML(html);
-	}
+	var node = dojo.byId('footer');
+	setNodeHTML(node, html);
 	// set Background Color
 	dojo.query("body").style('background-color', '#4d4d4d');
 }
@@ -530,7 +522,7 @@ function insertFooterHTML(){
 /*------------------------------------*/
 function insertHeaderContent(){
 	var html = '';
-	var node = dojo.query("#templateNav");
+	var node = dojo.byId('templateNav');
 	html += '<li id="homeItem"><a title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
 	// if banner image
 	if(configOptions.siteBannerImage){
@@ -541,17 +533,15 @@ function insertHeaderContent(){
 	}
 	html += '</a></li>';
 	// copy if any current lists are in there that users may have set
-	if(node.length > 0){
-		html += node.innerHTML();
+	if(node){
+		html += node.innerHTML;
 	}
 	// if show about page
 	if(configOptions.showAboutPage){
 		html += '<li><a href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
 	}
 	// insert HTML
-	if(node.length > 0){
-		node.innerHTML(html);
-	}
+	setNodeHTML(node, html);
 	// set selected class
 	dojo.forEach(dojo.query('#templateNav li a'),function(obj){
 		// if link HREF equals page HREF
@@ -561,27 +551,27 @@ function insertHeaderContent(){
 		}
 	});
 }
-// TODO
 /*------------------------------------*/
 // Insert HTML to node reference function
 /*------------------------------------*/
-function setNodeHTML(node, htmlString, position){
-	if(!position){
-		position = 'only';
+function setNodeHTML(node, htmlString){
+	if(node){
+		node.innerHTML = htmlString;
+		resizeSidebarHeight();
 	}
-	dojo.place(node, htmlString, position);
-	resizeSidebarHeight();
 }
 /*------------------------------------*/
 // Resize Sidebar
 /*------------------------------------*/
 function resizeSidebarHeight(){
-	var height, contentLeft = dojo.query('.contentLeft')[0];
-	if(contentLeft){
-		height = dojo.marginBox(contentLeft).h;
-		if(height){
-			dojo.query('.dataLayers').style('height', height + 'px');
-			console.log('test');
+	var mainHeight, sideNode = dojo.byId('sidePanel'), mainNode = dojo.byId('mainPanel');
+	if(mainNode && sideNode){
+		mainHeight = dojo.contentBox(mainNode).h;
+		if(mainHeight < 750){
+			mainHeight = 750;
+		}
+		if(mainHeight){
+			dojo.style(sideNode, 'height', mainHeight + 'px');			
 		}
 	}
 }
@@ -590,26 +580,26 @@ function resizeSidebarHeight(){
 /*------------------------------------*/
 function insertContent(){
 	// add direction tag to HTML
-	var dirNode = document.getElementsByTagName("html")[0];
+	var dirNode = dojo.query("html");
 	// if RTL
 	if(configOptions.isRightToLeft) {
 		// Set direction class
-		dirNode.className += " esriRtl";
+		dirNode.addClass('esriRtl');
 		// direction attribute
-		dirNode.setAttribute("dir", "rtl");
+		dirNode.attr('dir', 'rtl');
 	}
 	else {
 		// Set direction class
-		dirNode.className += " esriLtr";
+		dirNode.addClass('esriLtr');
 		// direction attribute
-		dirNode.setAttribute("dir", "ltr");
+		dirNode.attr('dir', 'ltr');
 	}
 	// add sidepanel class
 	dojo.query('#sidePanel').addClass('dataLayers');
 	// add main panel class
 	dojo.query('#mainPanel').addClass('contentLeft');
 	// Set Theme
-	dirNode.className += " " + configOptions.theme;
+	dirNode.addClass(configOptions.theme);
 	// Insert banner and navigation
 	insertHeaderContent();
 	// Set social media buttons
@@ -801,7 +791,7 @@ function createPagination(obj, totalItems, pagObject){
 			if(current > 1){
 				firstClass = '';
 			}
-			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" data-offset="' + previous + '"><span class="silverButton buttonLeft"><span></span></span></li>';
+			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" data-offset="' + previous + '"><span class="silverButton buttonLeft"><span>&nbsp;</span></span></li>';
 		}
 		// pagination first page
 		if(obj.paginationShowFirstLast && current > (obj.paginationSize + 1)){
@@ -823,7 +813,7 @@ function createPagination(obj, totalItems, pagObject){
 			if(current < last){
 				lastClass = '';
 			}
-			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" data-offset="' + next + '"><span class="silverButton buttonRight"><span></span></span></li>';
+			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" data-offset="' + next + '"><span class="silverButton buttonRight"><span>&nbsp;</span></span></li>';
 		}
 		// create each pagination item
 		for(var i=1; i <= last; ++i) {
@@ -886,9 +876,9 @@ function createPagination(obj, totalItems, pagObject){
 	}
 	html += '<div class="clear"></div>';
 	// insert into html
-	var node = dojo.query(pagObject);
+	var node = dojo.byId(pagObject);
 	// insert pagination html
-	node.innerHTML(html);
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Configure viewer URL to use

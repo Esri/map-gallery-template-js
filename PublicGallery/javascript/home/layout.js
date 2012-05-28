@@ -83,18 +83,15 @@ function buildSortingMenu(){
 					selectedClass = ' ' + sortFields[i].defaultOrder + ' active';
 				}
 				// button html
-				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow"></span></span></li>';
+				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
 			}
 		html += '</ul>';
 	html += '</div>';
 	html += '<div class="clear"></div>';
 	// html node
-	var node = dojo.query("#groupSortOptions");
-	// if node exists
-	if(node.length > 0){
-		// insert html
-		node.innerHTML(html);
-	}
+	var node = dojo.byId('groupSortOptions');
+	// insert html
+	setNodeHTML(node, html);
 	// toggle basemap button
 	dojo.query(document).delegate("#sortGallery .sort", "onclick", function(event){
 		// get nodes
@@ -166,31 +163,23 @@ function queryMaps(data_offset,keywords){
 function insertHomeContent(){
 	// Set home heading
 	if(configOptions.homeHeading){
-		node = dojo.query("#homeHeading");
-		if(node.length > 0){
-			node.innerHTML(configOptions.homeHeading);
-		}
+		node = dojo.byId('homeHeading');
+		setNodeHTML(node, configOptions.homeHeading);
 	}
 	// Set home intro text
 	if(configOptions.homeSnippet){
-		node = dojo.query("#homeSnippet");
-		if(node.length > 0){
-			node.innerHTML(configOptions.homeSnippet);
-		}
+		node = dojo.byId('homeSnippet');
+		setNodeHTML(node, configOptions.homeSnippet);
 	}
 	// Set home right heading
 	if(configOptions.homeSideHeading){
-		node = dojo.query("#homeSideHeading");
-		if(node.length > 0){
-			node.innerHTML(configOptions.homeSideHeading);
-		}
+		node = dojo.byId('homeSideHeading');
+		setNodeHTML(node, configOptions.homeSideHeading);
 	}
 	// Set home right content
 	if(configOptions.homeSideContent){
-		node = dojo.query("#homeSideContent");
-		if(node.length > 0){
-			node.innerHTML(configOptions.homeSideContent);
-		}
+		node = dojo.byId('homeSideContent');
+		setNodeHTML(node, configOptions.homeSideContent);
 	}
 }
 /*------------------------------------*/
@@ -244,21 +233,19 @@ function showGroupAutoComplete(obj, data){
           aResults += '<li tabindex="' + (i + 2) + '" class="' + layerClass + '">' +  data.results[i].title.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
         }
         aResults += '</ul>';
-        if(data.results.length > 0){
-			node = dojo.query("#groupAutoComplete");
-			if(node.length > 0){
-				node.innerHTML(aResults).style('display','block');
+		node = dojo.byId('groupAutoComplete');
+		if(node){
+			if(data.results.length > 0){
+				setNodeHTML(node, aResults);
 			}
-		}
-		else{
-			node = dojo.query("#groupAutoComplete");
-			if(node.length > 0){
-				node.innerHTML('<p>' + i18n.viewer.errors.noMatches + '</p>').style('display','block');
+			else{
+				setNodeHTML(node, '<p>' + i18n.viewer.errors.noMatches + '</p>');		
+				clearTimeout(ACTimeout);
+				ACTimeout  = setTimeout(function(){
+					hideGroupAutoComplete();
+				},3000);
 			}
-			clearTimeout(ACTimeout);
-			ACTimeout  = setTimeout(function(){
-				hideGroupAutoComplete();
-			},3000);
+			dojo.style(node, 'display', 'block');
 		}
     }
 }
@@ -271,10 +258,8 @@ function buildMapPlaylist(obj,data){
 	// Remove Spinner
 	removeSpinner();
 	// Clear Pagination
-	var node = dojo.query("#maps_pagination");
-	if(node.length > 0){
-		node.innerHTML('');
-	}
+	var node = dojo.byId('maps_pagination');
+	setNodeHTML(node, '');
 	// HTML Variable
 	var html = '';
 	// Get total results
@@ -474,12 +459,13 @@ function buildMapPlaylist(obj,data){
 		html += '<div class="clear"></div>';
 	}
 	// Insert HTML
-	node = dojo.query("#featuredMaps");
-	if(node.length > 0){
-		node.removeClass('mapsGrid mapsList').addClass(layout).innerHTML(html);
+	node = dojo.byId('featuredMaps');
+	if(node){
+		dojo.query(node).removeClass('mapsGrid mapsList').addClass(layout);
+		setNodeHTML(node, html);
 	}
 	// Create pagination
-	createPagination(obj,totalItems,'#maps_pagination');
+	createPagination(obj,totalItems,'maps_pagination');
 }
 /*------------------------------------*/
 // Enalbe layout and search options
@@ -499,7 +485,7 @@ function configLayoutSearch(){
 			html += '</li>';
 			html += '<li title="' + i18n.viewer.groupPage.searchTitleShort + '" class="searchButtonLi">';	
 			html += '<span id="searchGroupButton" class="silverButton buttonRight">';
-			html += '<span class="searchButton"></span></span>';
+			html += '<span class="searchButton">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="groupSpinner" class="spinnerCon"></li>';
 		}
@@ -525,9 +511,9 @@ function configLayoutSearch(){
 			html += '<div class="toggleLayout">';
 			html += '<ul>';
 			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
-			html += '<span class="silverButton buttonRight"><span class="listView"></span></span>';
+			html += '<span class="silverButton buttonRight"><span class="listView">&nbsp;</span></span>';
 			html += '<li id="layoutGrid" class="' + gridClass + '" title="' + i18n.viewer.groupPage.gridSwitch + '">';
-			html += '<span class="silverButton buttonLeft"><span class="gridView"></span></span>';
+			html += '<span class="silverButton buttonLeft"><span class="gridView">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="layoutSpinner" class="spinnerCon"></li>';
 			html += '</li>';
@@ -539,10 +525,8 @@ function configLayoutSearch(){
 		}
 		html += '<div class="clear"></div>';
 		// if node, insert HTML
-		var node = dojo.query("#layoutAndSearch");
-		if(node.length > 0){
-			node.innerHTML(html);
-		}
+		var node = dojo.byId('layoutAndSearch');
+		setNodeHTML(node, html);
 	}
 }
 /*------------------------------------*/
@@ -556,10 +540,8 @@ function init(){
 		dataOffset = 0;
 	}	
 	// set loading text
-	var node = dojo.query(".featuredLoading");
-	if(node.length > 0){
-		node.innerHTML(i18n.viewer.groupPage.loadingText);
-	}
+	var node = dojo.byId('featuredLoading');
+	setNodeHTML(node, i18n.viewer.groupPage.loadingText);
 	// check for mobile cookie	
 	checkMobileCookie();
 	// Query group and then query maps
@@ -571,15 +553,13 @@ function init(){
 	});
 	// Configure grid/list and search
 	configLayoutSearch();
-	// Set placeholder
-	var theNode = dojo.query('#searchGroup')[0];
 	// Featured maps pagination onclick function
 	dojo.query('#maps_pagination').delegate("ul li[data-offset]:not(.selected):not(.disabled):not(.clicked)", "onclick", function(event){
 		// clicked
 		dojo.query(this).addClass('clicked');
 		var placeDom = dojo.query("#maps_pagination ul");
 		// add loading spinner
-		addSpinner("#paginationSpinner");
+		addSpinner("paginationSpinner");
 		// get offset number
         var data_offset = dojo.query(this).attr('data-offset')[0];
 		dataOffset = data_offset;
@@ -591,7 +571,7 @@ function init(){
 		var textVal = dojo.query("#searchGroup").attr('value')[0];
 		if(textVal !== prevVal){
 			searchVal = textVal;
-			addSpinner("#groupSpinner");
+			addSpinner("groupSpinner");
 			queryMaps(1,textVal);
 			prevVal = searchVal;
 		}
@@ -601,7 +581,7 @@ function init(){
 		dojo.query('#clearAddress').removeClass('resetActive');
 		dojo.query("#searchGroup").attr('value', '');
 		searchVal = '';
-		addSpinner("#groupSpinner");
+		addSpinner("groupSpinner");
 		queryMaps(1,'');
 		prevVal = searchVal;
 		hideGroupAutoComplete();
@@ -612,7 +592,7 @@ function init(){
 			configOptions.defaultLayout = 'list';
 			dojo.query('.toggleLayout li').removeClass('active');
 			dojo.query(this).addClass('active');
-			addSpinner("#layoutSpinner");
+			addSpinner("layoutSpinner");
 			queryMaps(dataOffset,searchVal);
 		}
 	});
@@ -622,7 +602,7 @@ function init(){
 			configOptions.defaultLayout = 'grid';
 			dojo.query('.toggleLayout li').removeClass('active');
 			dojo.query(this).addClass('active');
-			addSpinner("#layoutSpinner");
+			addSpinner("layoutSpinner");
 			queryMaps(dataOffset,searchVal);
 		}
 	});
@@ -644,7 +624,7 @@ function init(){
 			var textVal = dojo.query(this).attr('value');
 			if(textVal !== prevVal){
 				searchVal = textVal;
-				addSpinner("#groupSpinner");
+				addSpinner("groupSpinner");
 				queryMaps(1,textVal);
 				prevVal = searchVal;
 			}
