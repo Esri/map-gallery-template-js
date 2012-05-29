@@ -638,15 +638,23 @@ function initMap() {
 			}
 			// TODO
 			if(configOptions.development){
+				// if no license info set in config
+				if(!configOptions.mapLicenseInfo){
+					configOptions.mapLicenseInfo = itemInfo.item.licenseInfo;
+				}
 				// Set license info
 				var licenseInfo = dojo.byId("licenseInfo");
-				if(licenseInfo && itemInfo.item.licenseInfo && configOptions.showLicenseInfo){
-					setNodeHTML(licenseInfo, '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + itemInfo.item.licenseInfo);
+				if(licenseInfo && configOptions.mapLicenseInfo && configOptions.showLicenseInfo){
+					setNodeHTML(licenseInfo, '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + configOptions.mapLicenseInfo);
+				}
+				// if no credits set in config
+				if(!configOptions.mapCredits){
+					configOptions.mapCredits = itemInfo.item.accessInformation;
 				}
 				// Set credits
 				var accessInformation = dojo.byId("accessInformation");
-				if(accessInformation && itemInfo.item.accessInformation && configOptions.showCredits){
-					setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + itemInfo.item.accessInformation + '</div>');
+				if(accessInformation && configOptions.mapCredits && configOptions.showCredits){
+					setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + configOptions.mapCredits + '</div>');
 				}
 			}
 			// Set description

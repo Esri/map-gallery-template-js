@@ -103,6 +103,20 @@
                "label":"Map about Text:",
                "tooltip":"",
                "placeHolder":"Defaults to map description"
+            },
+            {
+               "type":"paragraph",
+               "fieldName":"mapLicenseInfo",
+               "label":"License info on map page:",
+               "tooltip":"",
+               "placeHolder":"Defaults to map license info"
+            },
+             {
+               "type":"paragraph",
+               "fieldName":"mapCredits",
+               "label":"Credits on map page:",
+               "tooltip":"",
+               "placeHolder":"Defaults to map credits"
             }
          ]
       },

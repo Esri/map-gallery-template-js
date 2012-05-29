@@ -1,5 +1,5 @@
 var configOptions = {
-   "development":false,
+   "development":true,
    "group":{
       "id":"",
       "title":"National Maps for USA",
@@ -12,6 +12,8 @@ var configOptions = {
    "mapTitle":"",
    "mapSnippet":"",
    "mapItemDescription":"",
+   "mapLicenseInfo":"",
+   "mapCredits":"",
    "homeHeading":"",
    "homeSnippet":"",
    "homeSideHeading":"Description",
