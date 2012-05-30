@@ -552,6 +552,30 @@ function addBottomMapButtons(){
 function initMap() {
 	// set map content
 	setMapContent();
+	
+	
+	
+	
+	
+	var html = '';
+	portal.queryItems({q:'id:' + configOptions.webmap}).then(function(result){
+		result.results[0].getComments().then(function(comments){
+			var html = '';
+			for(var i = 0; i < comments.length; i++){
+			html += '<p>';
+				html += decodeURIComponent(comments[i].comment);
+				html += comments[i].created;
+				html += comments[i].owner;
+				//html += comments[i].url;
+				//html += comments[i].id;
+				html += '</p>';
+			}
+			var commentsNode = dojo.byId("comments");
+			setNodeHTML(commentsNode, html);	
+		});
+	});
+	
+	
 	// ITEM
 	var itemDeferred = esri.arcgis.utils.getItem(configOptions.webmap);
 	itemDeferred.addErrback(function(error) {
@@ -565,6 +589,53 @@ function initMap() {
 		hideAllContent();
 	});
 	itemDeferred.addCallback(function(itemInfo) {
+		
+		
+		
+		var html = '';
+		// rating widget
+		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+		// rating container
+		html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
+		// Ratings
+		if(itemInfo.item.numRatings){
+			var pluralRatings = i18n.viewer.groupPage.ratingsLabel;
+			if(itemInfo.item.numRatings > 1){
+				pluralRatings = i18n.viewer.groupPage.ratingsLabelPlural;
+			}
+			html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
+		}
+		// comments
+		if(itemInfo.item.numComments){
+			if(itemInfo.item.numRatings){
+				html += i18n.viewer.groupPage.separator + ' ';
+			}
+			var pluralComments = i18n.viewer.groupPage.commentsLabel;
+			if(itemInfo.item.numComments > 1){
+				pluralComments = i18n.viewer.groupPage.commentsLabelPlural;
+			}
+			html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
+		}
+		// views
+		if(itemInfo.item.numViews){
+			if(itemInfo.item.numRatings || itemInfo.item.numComments){
+				html += i18n.viewer.groupPage.separator + ' ';
+			}
+			var pluralViews = i18n.viewer.groupPage.viewsLabel;
+			if(itemInfo.item.numViews > 1){
+				pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
+			}
+			html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
+		}
+		// close container
+		html += ')</div>';
+		var ratingNode = dojo.byId("rating");
+		setNodeHTML(ratingNode, html);
+		
+		
+		
+		
+		
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html
