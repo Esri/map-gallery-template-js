@@ -111,7 +111,7 @@ function init(){
 		// query group info
 		queryOwnerInfo({
 			// Group Owner
-			owner: configOptions.group.owner,
+			owner: configOptions.groupowner,
 			// Executed after ajax returned
 			callback: function(obj,data){
 				if(data.results.length > 0){

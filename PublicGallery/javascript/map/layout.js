@@ -53,7 +53,7 @@ function setWebmap(){
 		// call featured maps function to get 1 webmap
 		queryArcGISGroupItems({
 			// settings
-			id_group: configOptions.group.id,
+			id_group: configOptions.group,
 			searchType: "Web Map",
 			filterType: "Web Mapping Application",
 			sortField: configOptions.sortField,

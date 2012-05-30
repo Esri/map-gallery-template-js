@@ -137,7 +137,7 @@ function queryMaps(data_offset,keywords){
 	// Call featured maps
 	queryArcGISGroupItems({
 		// Settings
-		id_group : configOptions.group.id,
+		id_group : configOptions.group,
 		searchType : configOptions.searchType,
 		sortField : configOptions.sortField,
 		sortOrder : configOptions.sortOrder,
@@ -189,7 +189,7 @@ function groupAutoComplete(acQuery){
 	// Called when searching (Autocomplete)
 	queryArcGISGroupItems({
 		// Settings
-		id_group : configOptions.group.id,
+		id_group : configOptions.group,
 		searchType : configOptions.searchType,
 		sortField : configOptions.sortField, // SORTING COLUMN: The allowed field names are title, created, type, owner, avgRating, numRatings, numComments and numViews.
 		sortOrder : configOptions.sortOrder, // SORTING ORDER: Values: asc | desc
@@ -352,7 +352,7 @@ function buildMapPlaylist(obj,data){
 							// html
 							html += '<p class="dateInfo">';
 							html += data.results[i].type + ' ';
-							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.group.owner + '</a>. ';
+							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupowner + '</a>. ';
 							if(createdLocalized){
 								console.log('TODO');
 								//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';

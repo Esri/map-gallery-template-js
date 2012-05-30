@@ -43,16 +43,6 @@ function setAppIdSettings(callback){
 			callbackParamName: "callback",
 			// on load
 			load: function (response) {
-				// handle group object in config.
-				if(response.values.group){
-					configOptions.group.id = response.values.group;
-				}
-				if(response.values.grouptitle){
-					configOptions.group.title = response.values.grouptitle;
-				}
-				if(response.values.groupowner){
-					configOptions.group.owner = response.values.groupowner;
-				}
 				// set other config options from app id
 				dojo.mixin(configOptions, response.values);
 				// callback function
@@ -118,10 +108,6 @@ function setDefaultConfigOptions(){
 	setUserAgent();
 	// set localization
 	i18n = dojo.i18n.getLocalization("esriTemplate", "template");
-	// if group object is empty
-	if(!configOptions.group){
-		configOptions.group = {};
-	}
 	// right to left
 	configOptions.isRightToLeft = false;
 	// if RTL
@@ -213,11 +199,11 @@ function queryGroup(callback){
 	// query group info
 	queryArcGISGroupInfo({
 		// Settings
-		id_group: configOptions.group.id,
+		id_group: configOptions.group,
 		// Group Owner
-		owner: configOptions.group.owner,
+		owner: configOptions.groupowner,
 		// Group Title
-		groupTitle: configOptions.group.title,
+		groupTitle: configOptions.grouptitle,
 		// Executed after ajax returned
 		callback: function(obj,data){
 			if(data.results.length > 0){
@@ -245,16 +231,16 @@ function queryGroup(callback){
 /*------------------------------------*/
 function setGroupContent(groupInfo){
 	// set group id
-	if(!configOptions.group.id){
-		configOptions.group.id = groupInfo.id;
+	if(!configOptions.group){
+		configOptions.group = groupInfo.id;
 	}
 	// Set owner
-	if(!configOptions.group.owner){
-		configOptions.group.owner = groupInfo.owner;
+	if(!configOptions.groupowner){
+		configOptions.groupowner = groupInfo.owner;
 	}
 	// Set group title
-	if(!configOptions.group.title){
-		configOptions.group.title = groupInfo.title;
+	if(!configOptions.grouptitle){
+		configOptions.grouptitle = groupInfo.title;
 	}
 	// Set home heading
 	if(!configOptions.homeHeading){
@@ -287,42 +273,14 @@ function setGroupContent(groupInfo){
 function configUrlParams(){
 	// set url object
 	urlObject = esri.urlToObject(document.location.href);
-	urlObject.query = urlObject.query || {};
-	// if group is set in url
-	if(urlObject.query.group){
-		configOptions.group.id = urlObject.query.group;
-	}
-	// group title
-	if(urlObject.query.grouptitle){
-		configOptions.group.title = urlObject.query.grouptitle;
-	}
-	// group owner
-	if(urlObject.query.groupowner){
-		configOptions.group.owner = urlObject.query.groupowner;
-	}
-	// if title is set via url
-	if(urlObject.query.title) {
-		configOptions.mapTitle = urlObject.query.title;
-	}
-	// if subtitle set via url
-	if(urlObject.query.subtitle) {
-		configOptions.mapTitle = urlObject.query.subtitle;
-	}
-	// if webmap set via url
-	if(urlObject.query.webmap){
-		configOptions.webmap = urlObject.query.webmap;
-	}
-	// if bing maps key set via url
-	if(urlObject.query.bingMapsKey) {
-		configOptions.bingmapskey = urlObject.query.bingMapsKey;
-	}
-	// if theme is set in url
-	if(urlObject.query.theme){
-		configOptions.theme = urlObject.query.theme;
-	}
-	// set RTL
-	if(urlObject.query.rtl){
-		configOptions.isRightToLeft = true;
+	urlObject.query = urlObject.query || {};	
+	// for each property in the url object query
+	for(var key in urlObject.query){
+		// if url has property
+		if(urlObject.query.hasOwnProperty(key)){
+			// set configOptions  property to url property
+			configOptions[key] = urlObject.query[key];
+		}
 	}
 }
 /*------------------------------------*/
@@ -521,7 +479,7 @@ function insertFooterHTML(){
 					html += '</a></div>';
 					// if profile url
 					if(configOptions.showProfileUrl){
-						html += '<div><a href="' + getViewerURL('owner_page') + '">' + configOptions.group.owner + '</a></div>';
+						html += '<div><a href="' + getViewerURL('owner_page') + '">' + configOptions.groupowner + '</a></div>';
 					}
 				}
 				html += '</div>';
@@ -931,29 +889,43 @@ function getViewerURL(viewer, webmap, owner){
 	// lowercase
 	viewer = viewer.toLowerCase();
 	// return url and vars
-	var retUrl = '', theme = '', rtl = '', group ='', queryString = '';
-	// if group set via url
-	if(urlObject.query.group){
-		group = "&group=" + encodeURIComponent(urlObject.query.group);
+	var retUrl = '', queryString = '?', stringSetFlag = 0;
+	// if webmap is set
+	if(webmap){
+		urlObject.query.webmap = webmap;
 	}
-	// if theme set via url
-	if(urlObject.query.theme){
-		theme = "&theme=" + encodeURIComponent(urlObject.query.theme);
+	else{
+		// if webmap set
+		if(urlObject.query.webmap){
+			// unset it
+			delete urlObject.query.webmap;
+		}
 	}
-	// if rtl set via url
-	if(urlObject.query.rtl){
-		rtl = "&rtl=" + encodeURIComponent(urlObject.query.rtl);
+	// for each query param
+	for(var key in urlObject.query){
+		// if url has property
+		if(urlObject.query.hasOwnProperty(key)){
+			if(stringSetFlag){
+				queryString += '&';
+			}
+			// append to query string
+			queryString += key + '=' + encodeURIComponent(urlObject.query[key]);
+			// flag for first query param
+			stringSetFlag = 1;
+		}
 	}
-	if(theme || rtl || group){
-		queryString = '?';
+	// if query string is only a ?
+	if(queryString === '?'){
+		// set it to empty string
+		queryString = '';
 	}
 	// return correct url
 	switch(viewer){
 		case 'index_page':
-			retUrl = 'index.html' + queryString + group + theme + rtl;
+			retUrl = 'index.html' + queryString;
 			return retUrl;
 		case 'about_page':
-			retUrl = 'about.html' + queryString + group + theme + rtl;
+			retUrl = 'about.html' + queryString;
 			return retUrl;
 		case 'arcgis':
 			return configOptions.portalUrl + 'home/webmap/viewer.html?webmap=' + webmap;
@@ -970,12 +942,12 @@ function getViewerURL(viewer, webmap, owner){
 			}
 			return retUrl;
 		case 'owner_page':
-			if(configOptions.group.owner || owner){
+			if(configOptions.groupowner || owner){
 				if(owner){
 					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(owner);
 				}
 				else{
-					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.group.owner);
+					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupowner);
 				}
 			}
 			return retUrl;
@@ -985,8 +957,8 @@ function getViewerURL(viewer, webmap, owner){
 			}
 			return retUrl;
 		case 'group_page':
-			if(configOptions.group.owner && configOptions.group.title){
-				retUrl = configOptions.portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.group.owner) + '&title=' + encodeURIComponent(configOptions.group.title);
+			if(configOptions.groupowner && configOptions.grouptitle){
+				retUrl = configOptions.portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupowner) + '&title=' + encodeURIComponent(configOptions.grouptitle);
 			}
 			return retUrl;
 		case 'mobile':
@@ -998,7 +970,7 @@ function getViewerURL(viewer, webmap, owner){
 			}
 			return retUrl;
 		case 'simple':
-			retUrl = "map.html?webmap=" + webmap + group + theme + rtl;
+			retUrl = 'map.html' + queryString;
 			return retUrl;
 		default:
 			return '';
