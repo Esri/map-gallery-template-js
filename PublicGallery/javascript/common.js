@@ -43,7 +43,17 @@ function setAppIdSettings(callback){
 			callbackParamName: "callback",
 			// on load
 			load: function (response) {
-				// set config options from app id
+				// handle group object in config.
+				if(response.values.group){
+					configOptions.group.id = response.values.group;
+				}
+				if(response.values.grouptitle){
+					configOptions.group.title = response.values.grouptitle;
+				}
+				if(response.values.groupowner){
+					configOptions.group.owner = response.values.groupowner;
+				}
+				// set other config options from app id
 				dojo.mixin(configOptions, response.values);
 				// callback function
 				if(typeof callback === 'function'){
@@ -154,8 +164,8 @@ function setDefaultConfigOptions(){
 		configOptions.mobilePortalUrl =  'arcgis://' + location.host + "/";
 	}
 	// Set Proxy URL
-	if(!configOptions.proxyurl){   
-		configOptions.proxyurl = location.protocol + '//' + location.host + "/sharing/proxy";
+	if(!configOptions.proxyUrl){   
+		configOptions.proxyUrl = location.protocol + '//' + location.host + "/sharing/proxy";
 	}
 	// lowercase layout
 	if(configOptions.defaultLayout){
@@ -281,6 +291,14 @@ function configUrlParams(){
 	// if group is set in url
 	if(urlObject.query.group){
 		configOptions.group.id = urlObject.query.group;
+	}
+	// group title
+	if(urlObject.query.grouptitle){
+		configOptions.group.title = urlObject.query.grouptitle;
+	}
+	// group owner
+	if(urlObject.query.groupowner){
+		configOptions.group.owner = urlObject.query.groupowner;
 	}
 	// if title is set via url
 	if(urlObject.query.title) {
