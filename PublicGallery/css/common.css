@@ -30,13 +30,19 @@ h1 {
 	line-height:normal;
 	font-variant:normal;
 	margin-bottom:10px;
+	margin:0;
 }
 .mapPage h1 {
 	font-size:24px;
 	line-height: normal;
 }
 #homeSideHeading {
-	margin-top:52px;
+	width:180px;
+	padding:52px 20px 0 20px;
+}
+#homeSideContent{
+	width:180px;
+	padding: 0 20px 20px 20px;
 }
 h2, h2 a {
 	font-size:24px;
@@ -46,7 +52,8 @@ h2, h2 a {
 	line-height:normal;
 	font-variant:normal;
 	margin-bottom:4px;
-	margin-top:0;
+	padding:0;
+	margin:0;
 	line-height:normal;
 	font-variant:normal;
 	text-decoration:none;
@@ -61,15 +68,18 @@ h3, h3 a {
 	font-weight: bold;
 	line-height:normal;
 	font-variant:normal;
-	margin-bottom:4px;
-	margin-top:15px;
+	margin:15px 0 4px 0;
 	text-decoration:none;
 }
 h3 a:hover {
 	text-decoration:underline;
 }
+h4,h5,h6{
+	padding:0;
+	margin:0;
+}
 #legendMenu h2, #aboutMenu h2 {
-	margin:0 0 10px 0;
+	margin:0px 0px 10px 0px;
 }
 #mapLayerToggle {
 	margin:0;
@@ -97,14 +107,6 @@ h3 a:hover {
 #mapLayerToggle label {
 	display:inline-block;
 	margin:2px 0;
-}
-#legendContent, .esriLegendServiceLabel, #mapLayerToggle td label, #description {
-	white-space: -moz-pre-wrap;
-	white-space: -hp-pre-wrap;
-	white-space: -o-pre-wrap;
-	white-space: -pre-wrap;
-	white-space: pre-wrap;
-	white-space: pre-line;
 }
 .mapPage h2, .mapPage h2 a {
 	font-size:18px;
@@ -315,9 +317,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .esriRtl .itemRight {
 	float:left;
-}
-#homeSideContent{
-	overflow:auto;
 }
 /*-------------------------------------------------- */
 /* FEATURED MAPS */
@@ -638,9 +637,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-webkit-box-shadow: 0px 1px 10px #999;
 	box-shadow: 0px 1px 10px #999;
 	line-height:18px;
-}
-.dataLayers .Pad {
-	padding:0 20px;
 }
 .dataLayers ul li {
 	margin-bottom:10px;
@@ -977,7 +973,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .tabMenu {
 	display:none;
-	overflow:hidden;
 }
 .defaultMenu {
 	display:block;
@@ -1038,12 +1033,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /* MAP PAGE */
 /*-------------------------------------------------- */
 #description, #legendDiv {
-	max-height:675px;
-	height:675px;
 	width:180px;
-	overflow:auto;
-	padding:0 20px 20px 20px;
 	position:relative;
+	padding: 0 20px 20px 20px;
 }
 #mapButtons .mapButton {
 	margin-left:10px;
@@ -1586,6 +1578,38 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 #sortGallery .asc:hover .arrow, #sortGallery .asc:focus .arrow {
 	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -242px -2px;
+}
+/*-------------------------------------------------- */
+/* Comments */
+/*-------------------------------------------------- */
+#comments {
+	margin:20px 0 0 0;
+}
+#comments h2{
+	margin-bottom:10px;
+}
+#comments .comment{
+	background:#fff;
+	padding:10px;
+	margin-bottom:10px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 1px 1px 3px #ccc;
+	-webkit-box-shadow: 1px 1px 3px #ccc;
+	box-shadow: 1px 1px 3px #ccc;
+}
+#comments .comment .smallText{
+	color:#656565;
+	font-size: 11px;
+}
+/*-------------------------------------------------- */
+/* Scroll Div */
+/*-------------------------------------------------- */
+.scrollHeight{
+	overflow:auto;
+	margin:0;
+	padding:0;
+	width:220px;
 }
 /*-------------------------------------------------- */
 /* Media Queries */

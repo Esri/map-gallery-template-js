@@ -355,7 +355,7 @@ function buildMapPlaylist(obj,data){
 							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.group.owner + '</a>. ';
 							if(createdLocalized){
 								console.log('TODO');
-								//html += i18n.viewer.groupPage.createdLabel + ' ' + createdLocalized + '. ';
+								//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
 							}
 							if(modifiedLocalized){
 								html += 'Last modified ' + modifiedLocalized + '. ';
@@ -371,31 +371,31 @@ function buildMapPlaylist(obj,data){
 							html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
 							// Ratings
 							if(data.results[i].numRatings){
-								var pluralRatings = i18n.viewer.groupPage.ratingsLabel;
+								var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
 								if(data.results[i].numRatings > 1){
-									pluralRatings = i18n.viewer.groupPage.ratingsLabelPlural;
+									pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
 								}
 								html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
 							}
 							// comments
 							if(data.results[i].numComments){
 								if(data.results[i].numRatings){
-									html += i18n.viewer.groupPage.separator + ' ';
+									html += i18n.viewer.itemInfo.separator + ' ';
 								}
-								var pluralComments = i18n.viewer.groupPage.commentsLabel;
+								var pluralComments = i18n.viewer.itemInfo.commentsLabel;
 								if(data.results[i].numComments > 1){
-									pluralComments = i18n.viewer.groupPage.commentsLabelPlural;
+									pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
 								}
 								html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
 							}
 							// views
 							if(data.results[i].numViews){
 								if(data.results[i].numRatings || data.results[i].numComments){
-									html += i18n.viewer.groupPage.separator + ' ';
+									html += i18n.viewer.itemInfo.separator + ' ';
 								}
-								var pluralViews = i18n.viewer.groupPage.viewsLabel;
+								var pluralViews = i18n.viewer.itemInfo.viewsLabel;
 								if(data.results[i].numViews > 1){
-									pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
+									pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
 								}
 								html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
 							}

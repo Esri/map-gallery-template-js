@@ -31,8 +31,15 @@ define({
                 "itemTitle": "View map",
                 "gridSwitch": "Switch to Grid View",
                 "listSwitch": "Switch to List View",
-                "loadingText": "Loading Maps&hellip;",
-				// new
+                "loadingText": "Loading Maps&hellip;"
+            },
+			"comments":{
+				"commentsHeader":"Comments",
+				"posted":"Posted",
+				"by":"by"
+			},
+			// new
+			"itemInfo":{
 				"createdLabel":"created",
 				"ratingsLabel":"rating",
 				"ratingsLabelPlural":"ratings",
@@ -40,8 +47,9 @@ define({
 				"viewsLabelPlural":"views",
 				"commentsLabel":"comment",
 				"commentsLabelPlural":"comments",
+				"modifiedLabel":"Last Modified",
 				"separator":","
-            },
+			},
             "mapPage": {
                 "findLocation": "Find a location",
                 "findPlaceholder": "Locate an address",
@@ -60,9 +68,8 @@ define({
 				// new
 				"constraintsHeading":"Use Constraints",
 				"creditsHeading":"Credits:",
-				"createdLabel":"Created:",
-				"detailsLabel":"Details:",
-				"modifiedLabel":"Last Modified:"
+				"createdLabel":"Created",
+				"detailsLabel":"Details"
             },
             "mobileOptions": {
                 "mobileAppDialogTitle": "Open Maps in the ArcGIS App?",

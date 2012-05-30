@@ -547,35 +547,84 @@ function addBottomMapButtons(){
 	setNodeHTML(node, html);
 }
 /*------------------------------------*/
+// Query Comments
+/*------------------------------------*/
+function queryComments(obj){
+	// default values
+	var settings = {
+		// Group Owner
+		id: '',
+		// format
+		dataType : 'json',
+		// callback function with object
+		callback: null
+    };
+	// If options exist, lets merge them with our default settings
+	if(obj) { 
+		dojo.mixin(settings,obj);
+	}
+	var q = 'id:' + settings.id;
+	var params = {
+		q: q,
+		v: configOptions.arcgisRestVersion,
+		f: settings.dataType
+	};
+	portal.queryItems(params).then(function(result){
+		result.results[0].getComments().then(function(comments){
+			if(typeof settings.callback === 'function'){
+				// call callback function with settings and data
+				settings.callback.call(this,comments);
+			}
+		});
+	});
+}
+/*------------------------------------*/
+// Builds listing of comments
+/*------------------------------------*/
+function buildComments(comments){
+	var html = '';
+	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
+	for(var i = 0; i < comments.length; i++){
+		html += '<div id="comment_' + comments[i].id + '" class="comment">';
+		html+= '<p>';
+		html += decodeURIComponent(comments[i].comment);
+		html+= '</p>';
+		html+= '<p class="smallText">';
+		// date object
+		var commentDate = new Date(comments[i].created);
+		// date format for locale
+		var dateLocale = dojo.date.locale.format(commentDate, {
+			selector:"date",
+			datePattern:"MMM d, yyyy"
+		});
+		html += i18n.viewer.comments.posted + ' ' + dateLocale;
+		html += ' ' + i18n.viewer.comments.by + ' <a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">' + comments[i].owner + '</a>.';
+		html+= '</p>';
+		//html += comments[i].url;
+		html += '</div>';
+	}
+	var commentsNode = dojo.byId("comments");
+	setNodeHTML(commentsNode, html);
+}
+/*------------------------------------*/
 // Init Map
 /*------------------------------------*/
 function initMap() {
 	// set map content
 	setMapContent();
-	
-	
-	
-	
-	
-	var html = '';
-	portal.queryItems({q:'id:' + configOptions.webmap}).then(function(result){
-		result.results[0].getComments().then(function(comments){
-			var html = '';
-			for(var i = 0; i < comments.length; i++){
-			html += '<p>';
-				html += decodeURIComponent(comments[i].comment);
-				html += comments[i].created;
-				html += comments[i].owner;
-				//html += comments[i].url;
-				//html += comments[i].id;
-				html += '</p>';
+	// TODO
+	if(configOptions.development){
+		// get comments
+		queryComments({
+			// Group Owner
+			id: configOptions.webmap,
+			// Executed after ajax returned
+			callback: function(comments){
+				// create comments list
+				buildComments(comments);
 			}
-			var commentsNode = dojo.byId("comments");
-			setNodeHTML(commentsNode, html);	
 		});
-	});
-	
-	
+	}
 	// ITEM
 	var itemDeferred = esri.arcgis.utils.getItem(configOptions.webmap);
 	itemDeferred.addErrback(function(error) {
@@ -589,53 +638,48 @@ function initMap() {
 		hideAllContent();
 	});
 	itemDeferred.addCallback(function(itemInfo) {
-		
-		
-		
 		var html = '';
-		// rating widget
-		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
-		// rating container
-		html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
-		// Ratings
-		if(itemInfo.item.numRatings){
-			var pluralRatings = i18n.viewer.groupPage.ratingsLabel;
-			if(itemInfo.item.numRatings > 1){
-				pluralRatings = i18n.viewer.groupPage.ratingsLabelPlural;
-			}
-			html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
-		}
-		// comments
-		if(itemInfo.item.numComments){
+		// TODO
+		if(configOptions.development){
+			// rating widget
+			var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+			// rating container
+			html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
+			// Ratings
 			if(itemInfo.item.numRatings){
-				html += i18n.viewer.groupPage.separator + ' ';
+				var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
+				if(itemInfo.item.numRatings > 1){
+					pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
+				}
+				html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
 			}
-			var pluralComments = i18n.viewer.groupPage.commentsLabel;
-			if(itemInfo.item.numComments > 1){
-				pluralComments = i18n.viewer.groupPage.commentsLabelPlural;
+			// comments
+			if(itemInfo.item.numComments){
+				if(itemInfo.item.numRatings){
+					html += i18n.viewer.itemInfo.separator + ' ';
+				}
+				var pluralComments = i18n.viewer.itemInfo.commentsLabel;
+				if(itemInfo.item.numComments > 1){
+					pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+				}
+				html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
 			}
-			html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
+			// views
+			if(itemInfo.item.numViews){
+				if(itemInfo.item.numRatings || itemInfo.item.numComments){
+					html += i18n.viewer.itemInfo.separator + ' ';
+				}
+				var pluralViews = i18n.viewer.itemInfo.viewsLabel;
+				if(itemInfo.item.numViews > 1){
+					pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
+				}
+				html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
+			}
+			// close container
+			html += ')</div>';
+			var ratingNode = dojo.byId("rating");
+			setNodeHTML(ratingNode, html);
 		}
-		// views
-		if(itemInfo.item.numViews){
-			if(itemInfo.item.numRatings || itemInfo.item.numComments){
-				html += i18n.viewer.groupPage.separator + ' ';
-			}
-			var pluralViews = i18n.viewer.groupPage.viewsLabel;
-			if(itemInfo.item.numViews > 1){
-				pluralViews = i18n.viewer.groupPage.viewsLabelPlural;
-			}
-			html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
-		}
-		// close container
-		html += ')</div>';
-		var ratingNode = dojo.byId("rating");
-		setNodeHTML(ratingNode, html);
-		
-		
-		
-		
-		
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html
@@ -662,7 +706,8 @@ function initMap() {
 			setNodeHTML(subTitleNode, configOptions.mapSnippet || "");
 			// if showMoreInfo is set
 			if(configOptions.showMoreInfo){
-				var d, dateLocale, html = '';
+				var d, dateLocale;
+				html = '';
 				html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
 				html += '<ul class="moreInfoList">';
 				// TODO
@@ -687,7 +732,7 @@ function initMap() {
 							selector:"date",
 							datePattern:"MMM d, yyyy"
 						}); 
-						html += '<li><strong>' + i18n.viewer.mapPage.modifiedLabel + '</strong><br />' + dateLocale+ '</li>';
+						html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale+ '</li>';
 					}
 				}
 				// Set owner
