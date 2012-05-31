@@ -575,7 +575,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .mapsList .item .itemInfo {
 	float:left;
 	width:474px;
-	margin: 0 10px;
+	margin: 0 0 0 10px;
 }
 .esriRtl .mapsList .item .itemInfo {
 	float:right;
