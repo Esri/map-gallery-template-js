@@ -1,8 +1,8 @@
 var configOptions = {
    "development":false,
    "group":"",
-   "grouptitle":"National Maps for USA",
-   "groupowner":"Federal_User_Community",
+   "groupTitle":"National Maps for USA",
+   "groupOwner":"Federal_User_Community",
    "appid":"",
    "theme":"blueTheme",
    "siteTitle":"My Gallery",

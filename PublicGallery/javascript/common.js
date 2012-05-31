@@ -116,7 +116,7 @@ function setDefaultConfigOptions(){
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
 	// Template Version
-	configOptions.templateVersion = 2.01;
+	configOptions.templateVersion = 2.03;
 	// ArcGIS Rest Version
 	configOptions.arcgisRestVersion = 1;
 	// row items
@@ -201,9 +201,9 @@ function queryGroup(callback){
 		// Settings
 		id_group: configOptions.group,
 		// Group Owner
-		owner: configOptions.groupowner,
+		owner: configOptions.groupOwner,
 		// Group Title
-		groupTitle: configOptions.grouptitle,
+		groupTitle: configOptions.groupTitle,
 		// Executed after ajax returned
 		callback: function(obj,data){
 			if(data.results.length > 0){
@@ -235,12 +235,12 @@ function setGroupContent(groupInfo){
 		configOptions.group = groupInfo.id;
 	}
 	// Set owner
-	if(!configOptions.groupowner){
-		configOptions.groupowner = groupInfo.owner;
+	if(!configOptions.groupOwner){
+		configOptions.groupOwner = groupInfo.owner;
 	}
 	// Set group title
-	if(!configOptions.grouptitle){
-		configOptions.grouptitle = groupInfo.title;
+	if(!configOptions.groupTitle){
+		configOptions.groupTitle = groupInfo.title;
 	}
 	// Set home heading
 	if(!configOptions.homeHeading){
@@ -489,7 +489,7 @@ function insertFooterHTML(){
 					html += '</a></div>';
 					// if profile url
 					if(configOptions.showProfileUrl){
-						html += '<div><a href="' + getViewerURL('owner_page') + '">' + configOptions.groupowner + '</a></div>';
+						html += '<div><a href="' + getViewerURL('owner_page') + '">' + configOptions.groupOwner + '</a></div>';
 					}
 				}
 				html += '</div>';
@@ -894,12 +894,13 @@ function getViewerURL(viewer, webmap, owner){
 		// set to default in config
 		viewer = configOptions.mapViewer;
 	}
-	// lowercase
+	// lowercase viewer string
 	viewer = viewer.toLowerCase();
 	// return url and vars
-	var retUrl = '', queryString = '?', stringSetFlag = 0;
+	var retUrl = '', queryString = '', firstParamFlag;
 	// if webmap is set
 	if(webmap){
+		// set webmap in query object
 		urlObject.query.webmap = webmap;
 	}
 	else{
@@ -913,62 +914,72 @@ function getViewerURL(viewer, webmap, owner){
 	for(var key in urlObject.query){
 		// if url has property
 		if(urlObject.query.hasOwnProperty(key)){
-			if(stringSetFlag){
+			// if flag not set
+			if(!firstParamFlag){
+				// prepend ?
+				queryString += '?';
+				// flag for first query param
+				firstParamFlag = 1;
+			}
+			else{
+				// prepend &
 				queryString += '&';
 			}
 			// append to query string
 			queryString += key + '=' + encodeURIComponent(urlObject.query[key]);
-			// flag for first query param
-			stringSetFlag = 1;
 		}
-	}
-	// if query string is only a ?
-	if(queryString === '?'){
-		// set it to empty string
-		queryString = '';
 	}
 	// return correct url
 	switch(viewer){
+		// home page link
 		case 'index_page':
 			retUrl = 'index.html' + queryString;
 			return retUrl;
+		// about page link
 		case 'about_page':
 			retUrl = 'about.html' + queryString;
 			return retUrl;
+		// portal viewer link
 		case 'arcgis':
 			return configOptions.portalUrl + 'home/webmap/viewer.html?webmap=' + webmap;
+		// arcgis explorer link
 		case 'explorer':
 			retUrl = "http://explorer.arcgis.com/?open=" + webmap;
 			if(retUrl && location.protocol === "https:") {
 				retUrl = retUrl.replace('http:', 'https:');
 			}
 			return retUrl;
+		// arcgis explorer presentation mode link
 		case 'explorer_present':
 			retUrl = "http://explorer.arcgis.com/?present=" + webmap;
 			if(retUrl && location.protocol === "https:") {
 				retUrl = retUrl.replace('http:', 'https:');
 			}
 			return retUrl;
+		// portal owner page link
 		case 'owner_page':
-			if(configOptions.groupowner || owner){
+			if(configOptions.groupOwner || owner){
 				if(owner){
 					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(owner);
 				}
 				else{
-					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupowner);
+					retUrl = configOptions.portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupOwner);
 				}
 			}
 			return retUrl;
+		// portal item page
 		case 'item_page':
 			if(configOptions.webmap){
 				retUrl = configOptions.portalUrl + 'home/item.html?id=' + configOptions.webmap;
 			}
 			return retUrl;
+		// portal group page
 		case 'group_page':
-			if(configOptions.groupowner && configOptions.grouptitle){
-				retUrl = configOptions.portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupowner) + '&title=' + encodeURIComponent(configOptions.grouptitle);
+			if(configOptions.groupOwner && configOptions.groupTitle){
+				retUrl = configOptions.portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupOwner) + '&title=' + encodeURIComponent(configOptions.groupTitle);
 			}
 			return retUrl;
+		// portal mobile URL data
 		case 'mobile':
 			if(configOptions.agent_ios){
 				retUrl = configOptions.mobilePortalUrl + 'sharing/rest/content/items/' + webmap + '/data';
@@ -977,6 +988,7 @@ function getViewerURL(viewer, webmap, owner){
 				retUrl = configOptions.mobilePortalUrl + '?webmap=' + webmap;
 			}
 			return retUrl;
+		// simple viewer
 		case 'simple':
 			retUrl = 'map.html' + queryString;
 			return retUrl;

@@ -7,42 +7,42 @@
                "type":"string",
                "fieldName":"group",
                "label":"Group ID:",
-               "tooltip":"ID of the group",
+               "tooltip":"ID of the group. Either set this or both the groupOwner and groupTitle.",
                "placeHolder":""
             },
             {
                "type":"string",
-               "fieldName":"grouptitle",
+               "fieldName":"groupTitle",
                "label":"Group Title:",
-               "tooltip":"Title of the group",
+               "tooltip":"Title of the group. Should be set along with groupOwner.",
                "placeHolder":""
             },
             {
                "type":"string",
-               "fieldName":"groupowner",
+               "fieldName":"groupOwner",
                "label":"Group Owner:",
-               "tooltip":"The owner of the group",
+               "tooltip":"The owner of the group. Should be set along with groupTitle.",
                "placeHolder":""
             },
             {
                "type":"string",
                "fieldName":"siteTitle",
                "label":"Website Title:",
-               "tooltip":"The name of your website",
+               "tooltip":"The title of this template's website.",
                "placeHolder":"My Gallery"
             },
             {
                "type":"string",
                "fieldName":"siteBannerImage",
-               "tooltip":"Url for logo image. If empty, Site Title text is used.",
-               "placeHolder":"URL to image",
+               "tooltip":"URL for the navigation header logo image. If empty, Site Title text is used.",
+               "placeHolder":"URL to image:",
                "label":"Logo on top navigation."
             },
             {
                "type":"string",
                "fieldName":"addThisProfileId",
-               "label":"Addthis profile Id",
-               "tooltip":"Account ID for AddThis.com",
+               "label":"Addthis profile Id:",
+               "tooltip":"Account ID for AddThis.com.",
                "placeHolder":"xa-4f3bf72958320e9e"
             }
          ]
@@ -53,8 +53,8 @@
             {
                "type":"string",
                "fieldName":"homeSideHeading",
-               "label":"Homepage right side heading",
-               "tooltip":"Heading displayed on the right side content on the index page",
+               "label":"Homepage side heading:",
+               "tooltip":"Heading displayed within the side panel on the index page.",
                "placeHolder":""
             }
          ]
@@ -65,15 +65,15 @@
             {
                "type":"string",
                "fieldName":"footerHeading",
-               "label":"Footer heading",
-               "tooltip":"Heading displayed in the footer",
+               "label":"Footer heading:",
+               "tooltip":"Heading displayed in the footer.",
                "placeHolder":""
             },
             {
                "type":"paragraph",
                "fieldName":"footerDescription",
-               "label":"Footer content",
-               "tooltip":"Content displayed in the footer",
+               "label":"Footer content:",
+               "tooltip":"Content description displayed in the footer.",
                "placeHolder":""
             }
          ]
@@ -84,8 +84,8 @@
             {
                "type":"string",
                "fieldName":"theme",
-               "tooltip":"Color theme to use",
-               "label":"Color Scheme:",
+               "tooltip":"Color theme to use.",
+               "label":"Color Theme:",
                "options":[
                   {
                      "label":"Blue",
@@ -104,7 +104,7 @@
             {
                "type":"string",
                "fieldName":"defaultLayout",
-               "tooltip":"Grid or List view",
+               "tooltip":"Specify to use Grid view or List view.",
                "label":"Default layout to use:",
                "options":[
                   {
@@ -120,7 +120,7 @@
             {
                "type":"string",
                "fieldName":"sortField",
-               "tooltip":"Order of the group items",
+               "tooltip":"Field to sort the group items by.",
                "label":"Group Sort Field:",
                "options":[
                   {
@@ -160,7 +160,7 @@
             {
                "type":"string",
                "fieldName":"sortOrder",
-               "tooltip":"Order of sort field",
+               "tooltip":"Ordering of the sorting field.",
                "label":"Sort order:",
                "options":[
                   {
@@ -176,7 +176,7 @@
             {
                "type":"string",
                "fieldName":"mapViewer",
-               "tooltip":"Opens maps in this viewer",
+               "tooltip":"Open maps in this viewer.",
                "label":"Open maps in:",
                "options":[
                   {
@@ -200,7 +200,7 @@
             {
                "type":"string",
                "fieldName":"galleryItemsPerPage",
-               "tooltip":"Gallery items to show per page",
+               "tooltip":"Gallery items to show per page.",
                "label":"Items per page:",
                "options":[
                   {
@@ -230,7 +230,6 @@
    ],
    "values":{
       "theme":"blueTheme",
-      "homeSideHeading":"Description",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"created",

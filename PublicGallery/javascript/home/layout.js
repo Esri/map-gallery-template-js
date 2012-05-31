@@ -352,7 +352,7 @@ function buildMapPlaylist(obj,data){
 							// html
 							html += '<p class="dateInfo">';
 							html += data.results[i].type + ' ';
-							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupowner + '</a>. ';
+							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupOwner + '</a>. ';
 							if(createdLocalized){
 								html += ''; // TODO
 								//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
