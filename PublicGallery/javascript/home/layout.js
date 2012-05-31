@@ -299,7 +299,7 @@ function buildMapPlaylist(obj,data){
 			}
 			else{
 				// url variable
-				itemURL = getViewerURL('simple', data.results[i].id);
+				itemURL = getViewerURL(configOptions.mapViewer, data.results[i].id);
 				// if mobile
 				if(isMobileUser() && obj.mobileAppUrl && configOptions.appCookie === 'installed'){
 					itemURL = getViewerURL('mobile', data.results[i].id);
@@ -661,7 +661,7 @@ function init(){
 		}
 		else{		
 			// item url
-			mapURL = getViewerURL('simple', ACObj[locNum].id);
+			mapURL = getViewerURL(configOptions.mapViewer, ACObj[locNum].id);
 		}
 		// load map
 		window.location = mapURL;
@@ -680,7 +680,7 @@ function init(){
 			}
 			else{
 				// item url
-				mapURL = getViewerURL('simple', ACObj[locNum].id);
+				mapURL = getViewerURL(configOptions.mapViewer, ACObj[locNum].id);
 			}
 			// load map
 			window.location = mapURL;
