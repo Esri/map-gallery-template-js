@@ -1,5 +1,5 @@
 var configOptions = {
-   "development":true,
+   "development":false,
    "group":"",
    "grouptitle":"National Maps for USA",
    "groupowner":"Federal_User_Community",
@@ -40,7 +40,7 @@ var configOptions = {
    "showMoreInfo":true,
    "showMobileDialog":true,
    "showPagination":true,
-   "showExplorerButton":true,
+   "showExplorerButton":false,
    "showArcGISOnlineButton":true,
    "showLicenseInfo":true,
    "showCredits":true,

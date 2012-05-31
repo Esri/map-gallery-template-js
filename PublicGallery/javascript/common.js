@@ -419,27 +419,33 @@ function setUserAgent(){
 /*------------------------------------*/
 function insertSocialHTML(){
 	var html = '';
-	html += '<div class="addthis_toolbox addthis_default_style">';
-	html += '<a class="addthis_button_facebook"></a>';
-	html += '<a class="addthis_button_twitter"></a>';
-	html += '<a class="addthis_button_linkedin"></a>';
-	html += '<a class="addthis_button_email"></a>';
-	html += '<a class="addthis_button_compact"></a>';
-	html += '<a class="addthis_counter addthis_bubble_style"></a>';
-	html += '</div>';
+	if(configOptions.showSocialButtons){
+		html += '<div class="addthis_toolbox addthis_default_style">';
+		html += '<a class="addthis_button_facebook"></a>';
+		html += '<a class="addthis_button_twitter"></a>';
+		html += '<a class="addthis_button_linkedin"></a>';
+		html += '<a class="addthis_button_email"></a>';
+		html += '<a class="addthis_button_compact"></a>';
+		html += '<a class="addthis_counter addthis_bubble_style"></a>';
+		html += '</div>';
+		// addthis url
+		var addthisURL = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=";
+		// https support
+		if(addthisURL && location.protocol === "https:"){
+			addthisURL = addthisURL.replace('http:', 'https:');
+		}
+		// load share script
+		dojo.io.script.get({
+			url: addthisURL + configOptions.addThisProfileId
+		});
+	}
+	else{
+		html += '&nbsp;';
+	}
 	// if social HTML
 	var node = dojo.byId('socialHTML');
 	setNodeHTML(node, html);
-	// addthis url
-	var addthisURL = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=";
-	// https support
-	if(addthisURL && location.protocol === "https:"){
-		addthisURL = addthisURL.replace('http:', 'https:');
-	}
-	// load share script
-	dojo.io.script.get({
-        url: addthisURL + configOptions.addThisProfileId
-    });
+	
 }
 /*------------------------------------*/
 // Insert footer HTML
@@ -449,19 +455,23 @@ function insertFooterHTML(){
 	html += '<div id="footerCon">';
 		html += '<div class="container_12">';
 			html += '<div class="grid_6">';
-				html += '<div class="Pad"> ';
-					html += '<h2 id="footerHeading">';
+				html += '<div class="Pad">';
 					// Set footer heading
 					if(configOptions.footerHeading){
+						html += '<h2 id="footerHeading">';
 						html += configOptions.footerHeading;
+						html += '</h2>';
 					}
-					html += '</h2>';
-					html += '<p id="footerDescription">';
 					// if footer description
 					if(configOptions.footerDescription){
+						html += '<div id="footerDescription">';
 						html += configOptions.footerDescription;
+						html += '</div>';
 					}
-					html += '</p>';
+					// if neither is set just put a space.
+					if(!configOptions.footerHeading && !configOptions.footerDescription){
+						html += '&nbsp;';
+					}
 				html += '</div>';
 			html += '</div>';
 			html += '<div class="prefix_3 grid_3">';
@@ -600,9 +610,7 @@ function insertContent(){
 	// Insert banner and navigation
 	insertHeaderContent();
 	// Set social media buttons
-	if(configOptions.showSocialButtons){
-		insertSocialHTML();	
-	}
+	insertSocialHTML();
 	// Set footer
 	if(configOptions.showFooter){
 		insertFooterHTML();

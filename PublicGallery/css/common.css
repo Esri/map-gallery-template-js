@@ -637,6 +637,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-webkit-box-shadow: 0px 1px 10px #999;
 	box-shadow: 0px 1px 10px #999;
 	line-height:18px;
+	position:relative;
 }
 .dataLayers ul li {
 	margin-bottom:10px;
@@ -977,6 +978,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .defaultMenu {
 	display:block;
 }
+#legendMenu, #aboutMenu{
+	position:relative;
+}
 #legendMenu .esriLegendLayerLabel {
 	font-weight:bold;
 	margin-bottom:2px;
@@ -1034,8 +1038,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /*-------------------------------------------------- */
 #description, #legendDiv {
 	width:180px;
-	position:relative;
 	padding: 0 20px 20px 20px;
+	zoom:1;
 }
 #mapButtons .mapButton {
 	margin-left:10px;
@@ -1230,8 +1234,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	background:none !important;
 	min-height:100% !important;
 }
-.fullScreen #header, .fullScreen #footer, .fullScreen #parentLink, .fullScreen .socialButtons {
+.fullScreen #header, .fullScreen #footer, .fullScreen .socialButtons {
 	display:none !important;
+}
+.fullScreen .dataLayers{
+	position:static;
 }
 .fullScreen #legendMenu {
 	display: block !important;
@@ -1239,23 +1246,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	z-index:38;
 	top:10px;
 	right:10px;
-	width:200px;
 	background:#F1F1F1;
-	padding:10px;
+}
+.fullScreen #aboutMenu {
+	display: none !important;
+}
+.fullScreen #description, .fullScreen  #legendDiv {
+	padding:20px;
+}
+.fullScreen .scrollHeight {
+	height: 400px !important;
+	max-height:400px !important;
+	zoom:1;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-moz-box-shadow: 1px 1px 3px #666;
 	-webkit-box-shadow: 1px 1px 3px #666;
 	box-shadow: 1px 1px 3px #666;
-}
-.fullScreen #legendMenu #legendDiv, .fullScreen #aboutMenu #description {
-	height: 400px;
-	max-height:400px;
-	padding: 10px;
-	width:auto;
-}
-.fullScreen #aboutMenu {
-	display: none;
 }
 .fullScreen .mapContainer {
 	padding:0 !important;
@@ -1607,6 +1614,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 /*-------------------------------------------------- */
 .scrollHeight{
 	overflow:auto;
+	zoom:1;
 	margin:0;
 	padding:0;
 	width:220px;

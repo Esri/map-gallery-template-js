@@ -503,7 +503,7 @@ function setAddressContainer(){
 		html += '&nbsp;';
 	}
 	html += '</div>';
-	html += '<div class="grid_5 omega basemapConRel"><div id="basemapContainer"></div>';
+	html += '<div class="grid_5 omega basemapConRel"><div id="basemapContainer">&nbsp;</div>';
 	html += '</div>';	
 	html += '<div class="clear"></div>';
 	// Set
@@ -541,6 +541,9 @@ function addBottomMapButtons(){
 		var itemURL = getViewerURL('mobile', configOptions.webmap);
 		// add button
 		html += '<a href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
+	}
+	if(html === ''){
+		html = '&nbsp;';
 	}
 	// insert
 	var node = dojo.byId("mapButtons");

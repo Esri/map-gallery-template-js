@@ -354,7 +354,7 @@ function buildMapPlaylist(obj,data){
 							html += data.results[i].type + ' ';
 							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupowner + '</a>. ';
 							if(createdLocalized){
-								console.log('TODO');
+								html += ''; // TODO
 								//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
 							}
 							if(modifiedLocalized){
@@ -474,11 +474,11 @@ function configLayoutSearch(){
 	// if show search or show layout switch
 	if(configOptions.showGroupSearch || configOptions.showLayoutSwitch){
 		// create HTML
-		var html = '';
-		html += '<div id="searchListCon" class="grid_5 alpha">';
-		html += '<ul id="searchListUL" class="searchList">';
+		var html = '', listClass, gridClass;
 		// if show search
+		html += '<div id="searchListCon" class="grid_5 alpha">';
 		if(configOptions.showGroupSearch){
+			html += '<ul id="searchListUL" class="searchList">';
 			html += '<li id="mapSearch" class="iconInput">';	
 			html += '<div title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';	
 			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="" autocomplete="off" type="text" tabindex="1" />';	
@@ -488,16 +488,16 @@ function configLayoutSearch(){
 			html += '<span class="searchButton">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="groupSpinner" class="spinnerCon"></li>';
-		}
-		html += '</ul>';
-		html += '<div class="clear"></div>';
-		// if show search
-		if(configOptions.showGroupSearch){
+			html += '</ul>';
+			html += '<div class="clear"></div>';
 			html += '<div id="acCon"><div id="groupAutoComplete" class="autoComplete"></div></div><div class="clear"></div>';
+		}
+		else{
+			html += '&nbsp;';
 		}
 		html += '</div>';
 		// if show switch
-		var listClass, gridClass;
+		html += '<div class="grid_4 omega">';
 		if(configOptions.showLayoutSwitch){
 			if(configOptions.defaultLayout === "list"){
 				listClass = 'active';
@@ -507,7 +507,6 @@ function configLayoutSearch(){
 				listClass = '';
 				gridClass = 'active';
 			}
-			html += '<div class="grid_4 omega">';
 			html += '<div class="toggleLayout">';
 			html += '<ul>';
 			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
@@ -521,8 +520,11 @@ function configLayoutSearch(){
 			html += '<div class="clear"></div>';
 			html += '</div>';
 			html += '<div class="clear"></div>';
-			html += '</div>';
 		}
+		else{
+			html += '&nbsp;';
+		}
+		html += '</div>';
 		html += '<div class="clear"></div>';
 		// if node, insert HTML
 		var node = dojo.byId('layoutAndSearch');
