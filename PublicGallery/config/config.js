@@ -1,5 +1,5 @@
 var configOptions = {
-   "development":false,
+   "development":true,
    "group":"",
    "groupTitle":"National Maps for USA",
    "groupOwner":"Federal_User_Community",

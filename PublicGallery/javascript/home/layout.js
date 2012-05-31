@@ -69,7 +69,7 @@ function buildSortingMenu(){
 			// for each sort field
 			for(var i = 0; i < sortFields.length; i++){
 				// variables
-				var selectedClass = '', buttonClass = '';
+				var selectedClass = '', buttonClass = '', dataSortOrder = '';
 				// if first button
 				if(i === 0){
 					buttonClass = ' buttonLeft';
@@ -81,9 +81,10 @@ function buildSortingMenu(){
 				// if default selected button
 				if(sortFields[i].field === configOptions.sortField){
 					selectedClass = ' ' + sortFields[i].defaultOrder + ' active';
+					dataSortOrder = 'data-sort-order="' + configOptions.sortOrder + '"';
 				}
 				// button html
-				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
+				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
 			}
 		html += '</ul>';
 	html += '</div>';
