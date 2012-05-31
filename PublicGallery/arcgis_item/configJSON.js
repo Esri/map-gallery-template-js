@@ -35,13 +35,13 @@
                "type":"string",
                "fieldName":"siteBannerImage",
                "tooltip":"URL for the navigation header logo image. If empty, Site Title text is used.",
-               "placeHolder":"URL to image:",
-               "label":"Logo on top navigation."
+               "placeHolder":"http://www.mysite.com/logo.png",
+               "label":"Banner Logo:"
             },
             {
                "type":"string",
                "fieldName":"addThisProfileId",
-               "label":"Addthis profile Id:",
+               "label":"AddThis.com Profile Id:",
                "tooltip":"Account ID for AddThis.com.",
                "placeHolder":"xa-4f3bf72958320e9e"
             }
@@ -53,7 +53,7 @@
             {
                "type":"string",
                "fieldName":"homeSideHeading",
-               "label":"Homepage side heading:",
+               "label":"Homepage Side Heading:",
                "tooltip":"Heading displayed within the side panel on the index page.",
                "placeHolder":""
             }
@@ -65,14 +65,14 @@
             {
                "type":"string",
                "fieldName":"footerHeading",
-               "label":"Footer heading:",
+               "label":"Footer Heading:",
                "tooltip":"Heading displayed in the footer.",
                "placeHolder":""
             },
             {
                "type":"paragraph",
                "fieldName":"footerDescription",
-               "label":"Footer content:",
+               "label":"Footer Content:",
                "tooltip":"Content description displayed in the footer.",
                "placeHolder":""
             }
@@ -104,8 +104,8 @@
             {
                "type":"string",
                "fieldName":"defaultLayout",
-               "tooltip":"Specify to use Grid view or List view.",
-               "label":"Default layout to use:",
+               "tooltip":"Whether to use grid view or list view as the default layout.",
+               "label":"Default Layout:",
                "options":[
                   {
                      "label":"Grid",
@@ -160,8 +160,8 @@
             {
                "type":"string",
                "fieldName":"sortOrder",
-               "tooltip":"Ordering of the sorting field.",
-               "label":"Sort order:",
+               "tooltip":"Order to sort the group field.",
+               "label":"Group Sort Order:",
                "options":[
                   {
                      "label":"Descending",
@@ -176,8 +176,8 @@
             {
                "type":"string",
                "fieldName":"mapViewer",
-               "tooltip":"Open maps in this viewer.",
-               "label":"Open maps in:",
+               "tooltip":"Open maps with this viewer.",
+               "label":"Open Maps With:",
                "options":[
                   {
                      "label":"Simple Viewer",
@@ -201,7 +201,7 @@
                "type":"string",
                "fieldName":"galleryItemsPerPage",
                "tooltip":"Gallery items to show per page.",
-               "label":"Items per page:",
+               "label":"Items Per Page:",
                "options":[
                   {
                      "label":"3",
