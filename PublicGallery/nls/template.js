@@ -57,7 +57,7 @@ define({
                 "layersHeader": "Layers",
                 "enterFullscreen": "Fullscreen View",
                 "exitFullscreen": "Exit Fullscreen",
-                "arcgisLink": "ArcGIS Item Details",
+                "arcgisLink": "Item Details",
                 "moreInformation": "More Information",
                 "geoLocateTitle": "Use Current Location",
                 "openInMobile": "Open in Mobile App",

@@ -124,8 +124,8 @@
                "label":"Group Sort Field:",
                "options":[
                   {
-                     "label":"Created Date",
-                     "value":"created"
+                     "label":"Modified Date",
+                     "value":"modified"
                   },
                   {
                      "label":"Title",
@@ -232,7 +232,7 @@
       "theme":"blueTheme",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
-      "sortField":"created",
+      "sortField":"modified",
       "sortOrder":"desc",
       "mapViewer":"simple",
       "galleryItemsPerPage":9

@@ -32,7 +32,7 @@ function buildSortingMenu(){
 	var sortFields = [
 		{
 			"title":"Date",
-			"field":"created",
+			"field":"modified",
 			"defaultOrder":"desc"
 		},
 		{
@@ -191,7 +191,7 @@ function groupAutoComplete(acQuery){
 		// Settings
 		id_group : configOptions.group,
 		searchType : configOptions.searchType,
-		sortField : configOptions.sortField, // SORTING COLUMN: The allowed field names are title, created, type, owner, avgRating, numRatings, numComments and numViews.
+		sortField : configOptions.sortField, // SORTING COLUMN: The allowed field names are title, modified, type, owner, avgRating, numRatings, numComments and numViews.
 		sortOrder : configOptions.sortOrder, // SORTING ORDER: Values: asc | desc
 		keywords: acQuery,
 		perPage : 10,
