@@ -323,7 +323,6 @@ function buildMapPlaylist(obj,data){
 						if(externalLink){
 							html += '<span class="externalIcon"></span>';
 						}
-						console.log(data.results[i]);
 						html += '<img src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '</a>';
 						html += '<div class="itemInfo">';
