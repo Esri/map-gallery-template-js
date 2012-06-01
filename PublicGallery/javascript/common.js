@@ -104,21 +104,19 @@ function checkAddressStatus(obj){
 // Set default options for the template
 /*------------------------------------*/
 function setDefaultConfigOptions(){
-	// set up params
-	configUrlParams();
 	// set user agent
 	setUserAgent();
+	// set up params
+	configUrlParams();
 	// set localization
 	i18n = dojo.i18n.getLocalization("esriTemplate", "template");
-	// right to left
-	configOptions.isRightToLeft = false;
 	// if RTL
 	if(window.dojoConfig.locale && window.dojoConfig.locale.indexOf("ar") !== -1) {
 		//right now checking for Arabic only, to generalize for all RTL languages
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
 	// Template Version
-	configOptions.templateVersion = 2.03;
+	configOptions.templateVersion = '2.01a';
 	// ArcGIS Rest Version
 	configOptions.arcgisRestVersion = 1;
 	// row items
@@ -206,10 +204,6 @@ function queryGroup(callback){
 	queryArcGISGroupInfo({
 		// Settings
 		id_group: configOptions.group,
-		// Group Owner
-		owner: configOptions.groupOwner,
-		// Group Title
-		groupTitle: configOptions.groupTitle,
 		// Executed after ajax returned
 		callback: function(obj,data){
 			if(data.results.length > 0){
@@ -626,45 +620,36 @@ function insertContent(){
 // query arcgis group info
 /*------------------------------------*/
 function queryArcGISGroupInfo(obj){
+	// default values
+	var settings = {
+		// set group id for web maps
+		id_group : '',
+		// format
+		dataType : 'json',
+		// callback function with object
+		callback: null
+	};
+	// If options exist, lets merge them with our default settings
+	if(obj) { 
+		dojo.mixin(settings,obj);
+	}
 	// first, request the group to see if it's public or private
 	esri.request({
 		// group rest URL
-		url: configOptions.portalUrl + '/sharing/rest/community/groups/' + configOptions.group,
+		url: configOptions.portalUrl + '/sharing/rest/community/groups/' + settings.id_group,
 		content: {
 			'f':'json'
 		},
 		callbackParamName: 'callback',
 		load: function (response) {
-			// sign in flag
-			var signInRequired = (response.access !== 'public')? true : false;
+			// sign-in flag
+			var signInRequired = (response.access !== 'public') ? true : false;
 			// if sign-in is required
 			if(signInRequired){
 				portal.signIn();
 			}
-			// default values
-			var settings = {
-				// set group id for web maps
-				id_group : '',
-				// Group Owner
-				owner: '',
-				// Group Title
-				groupTitle: '',
-				// format
-				dataType : 'json',
-				// callback function with object
-				callback: null
-			};
-			// If options exist, lets merge them with our default settings
-			if(obj) { 
-				dojo.mixin(settings,obj);
-			}
-			var q = '';
-			if(settings.id_group){
-				q += 'id:"' + settings.id_group + '"';
-			}
-			else{
-				q += 'title:"' + settings.groupTitle + '" AND owner:"' + settings.owner + '"';
-			}
+			// query
+			var q = 'id:"' + settings.id_group + '"';
 			var params = {
 				q: q,
 				v: configOptions.arcgisRestVersion,
