@@ -115,8 +115,8 @@ function setDefaultConfigOptions(){
 		//right now checking for Arabic only, to generalize for all RTL languages
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
-	// Template Version
-	configOptions.templateVersion = '2.01a';
+	// Template Version. Used for development and version recognition.
+	configOptions.templateVersion = "2.01f";
 	// ArcGIS Rest Version
 	configOptions.arcgisRestVersion = 1;
 	// row items
