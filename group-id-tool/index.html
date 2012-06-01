@@ -21,13 +21,13 @@
 	overflow: hidden;
 	display: block;
 	padding:3px;
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
 	-moz-box-shadow: 0px 0px 6px #ccc;
 	-webkit-box-shadow: 0px 0px 6px #ccc;
 	box-shadow: 0px 0px 6px #ccc;
-	background:#fff url(http://help.arcgis.com/en/webapi/javascript/arcgis/demos/map/images/loading.gif) no-repeat center center;
+	background: #fff;
 }
 #groupResults table td .thumb {
 	display: block;
@@ -36,9 +36,6 @@
 #groupResults table td .thumb:hover {
 	display: block;
 	opacity: .75;
-}
-#groupResults table td img: hover {
-	background:#fff;
 }
 #groupResults table td ul {
 	margin:0;
@@ -77,7 +74,7 @@ dojo.require("dojo.NodeList-traverse");
 dojo.require("dojox.NodeList.delegate");
 
 // global vars
-var portalUrl = 'http://www.arcgis.com/';
+var portal, portalUrl = 'http://www.arcgis.com/';
 
 // show results from username
 function showGroupResults(data){
@@ -110,7 +107,7 @@ function showGroupResults(data){
 			html += '<li>';
 			html += '<strong>Group:</strong>&nbsp;<a target="_blank" href="' + portalUrl + 'home/group.html?owner=' + data.results[i].owner + '&title=' + data.results[i].title + '">' + data.results[i].title + '</a></li>';
 			html += '<li><strong>Snippet:</strong>&nbsp;'+data.results[i].snippet+'</li>';
-			html += '<li><strong>ID:</strong>&nbsp;<input size="50" type="text" value="'+data.results[i].id+'" /></li>';
+			html += '<li><strong>ID:</strong>&nbsp;<input size="50" type="text" value="' + data.results[i].id + '" /></li>';
 			html += '</ul>';
 			html += '</tr>';
 			html += '</td>';
@@ -128,6 +125,27 @@ function showGroupResults(data){
 	dojo.query('#groupResults')[0].innerHTML = html;
 }
 
+// create portal
+function createPortal(callback){
+	if(!portal){
+		// create portal
+		portal = new esri.arcgis.Portal(portalUrl);
+		// portal loaded
+		dojo.connect(portal, 'onLoad', function(){
+			if(typeof callback === 'function'){
+				// call callback function
+				callback.call(this);
+			}
+		});
+	}
+	else{
+		if(typeof callback === 'function'){
+			// call callback function
+			callback.call(this);
+		}
+	}
+}
+
 // find owner's groups
 function findArcGISGroup(owner){
 	// query	
@@ -139,37 +157,24 @@ function findArcGISGroup(owner){
 		f: 'json'
 	};
 	// create portal
-	var portal = new esri.arcgis.Portal(portalUrl);
-	// portal loaded
-	dojo.connect(portal, 'onLoad', function(){
+	createPortal(function(){
+		// get groups
 		portal.queryGroups(params).then(function(data){
 			showGroupResults(data);
 		});
-	});	
+	});
 }
 
 // gets private groups as well
-function getPrivateGroups(){
-	// clear results
-	dojo.query('#groupResults')[0].innerHTML = '';
+function signIn(){
 	// create portal
-	var portal = new esri.arcgis.Portal(portalUrl);
-	// portal loaded
-	dojo.connect(portal, 'onLoad', function(){
+	createPortal(function(){
+		// sign in
 		portal.signIn().then(function(loggedInUser){
-			// query	
-			var q = 'owner:"' + loggedInUser.username + '"';
-			// params
-			var params = {
-				q: q,
-				v: 1,
-				f: 'json'
-			};
-			portal.queryGroups(params).then(function(data){
-				showGroupResults(data);
-			});		
+			// update results
+			submitGroupFinder();
 		});
-	});	
+	});
 }
 
 // submit group finder function
@@ -185,7 +190,7 @@ dojo.addOnLoad(function(){
 		submitGroupFinder();
 	});
 	// Group Finder Reset Button
-	dojo.query(document).delegate('#groupFinderReset', "onclick", function(){
+	dojo.query(document).delegate('.groupFinderReset', "onclick", function(){
 		dojo.query('#groupFinder').attr('value', '');
 		dojo.query('#groupResults')[0].innerHTML = '';
 	});
@@ -196,24 +201,21 @@ dojo.addOnLoad(function(){
 		}
 	});
 	// Group Finder Submit Button
-	dojo.query(document).delegate('#getPrivateGroups', "onclick", function(){
-		getPrivateGroups();
+	dojo.query(document).delegate('#signIn', "onclick", function(){
+		signIn();
 	});
 });
 </script>
 </head>
 <body class="claro">
 <h1>ArcGIS Online Group ID Finder</h1>
-<h2>Public Groups</h2>
+<h2>Groups</h2>
 <p>
 	<label for="groupFinder">ArcGIS Online Username:</label>
 	<input name="groupFinder" id="groupFinder" placeholder="username" value="esri" size="30" />
-	<input name="groupFinderReset" id="groupFinderReset" type="reset" value="Reset" />
+	<a href="#" id="signIn">Sign In</a>
+	<input name="groupFinderReset" class="groupFinderReset" id="groupFinderReset" type="reset" value="Reset" />
 	<input name="groupFinderSubmit" type="submit" value="Submit" id="groupFinderSubmit" />
-</p>
-<h2>Private Groups</h2>
-<p>
-	<input id="getPrivateGroups" type="button" value="Get Private Groups" /> (login prompt)
 </p>
 <div id="groupResults"></div>
 </body>
