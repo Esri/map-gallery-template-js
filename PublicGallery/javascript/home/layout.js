@@ -323,7 +323,8 @@ function buildMapPlaylist(obj,data){
 						if(externalLink){
 							html += '<span class="externalIcon"></span>';
 						}
-						html += '<img src="' + configOptions.sharingurl + "/" + data.results[i].id + "/info/" + data.results[i].thumbnail + '" width="200" height="133" />';
+						console.log(data.results[i]);
+						html += '<img src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '</a>';
 						html += '<div class="itemInfo">';
 						html += '<strong><a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '">' + itemTitle + '</a></strong>';
@@ -441,7 +442,7 @@ function buildMapPlaylist(obj,data){
 							if(configOptions.development){
 								html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + snippet + '</span>';
 							}
-							html += '<img class="gridImg" src="' + configOptions.sharingurl + "/" + data.results[i].id + "/info/" + data.results[i].thumbnail + '" width="200" height="133" />';
+							html += '<img class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 							html += '<span class="itemTitle">' + itemTitle + '</span>';
 						html += '</a>';
 					html += '</div>';
