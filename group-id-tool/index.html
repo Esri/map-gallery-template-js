@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <title></title>
+<link href="//servicesbeta.esri.com/jsapi/arcgis/3.0/js/dojo/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
 <style type="text/css">
 #groupResults table {
 	margin:20px 0;
@@ -147,6 +148,30 @@ function findArcGISGroup(owner){
 	});	
 }
 
+// gets private groups as well
+function getPrivateGroups(){
+	// clear results
+	dojo.query('#groupResults')[0].innerHTML = '';
+	// create portal
+	var portal = new esri.arcgis.Portal(portalUrl);
+	// portal loaded
+	dojo.connect(portal, 'onLoad', function(){
+		portal.signIn().then(function(loggedInUser){
+			// query	
+			var q = 'owner:"' + loggedInUser.username + '"';
+			// params
+			var params = {
+				q: q,
+				v: 1,
+				f: 'json'
+			};
+			portal.queryGroups(params).then(function(data){
+				showGroupResults(data);
+			});		
+		});
+	});	
+}
+
 // submit group finder function
 function submitGroupFinder(){
 	var inputVal = dojo.query('#groupFinder').attr('value')[0];
@@ -170,18 +195,26 @@ dojo.addOnLoad(function(){
 			submitGroupFinder();
 		}
 	});
+	// Group Finder Submit Button
+	dojo.query(document).delegate('#getPrivateGroups', "onclick", function(){
+		getPrivateGroups();
+	});
 });
 </script>
 </head>
-<body>
+<body class="claro">
 <h1>ArcGIS Online Group ID Finder</h1>
-<p> <strong>Paste ArcGIS Online Owner Username</strong><br>
-	<label for="groupFinder">Username:</label>
+<h2>Public Groups</h2>
+<p>
+	<label for="groupFinder">ArcGIS Online Username:</label>
 	<input name="groupFinder" id="groupFinder" placeholder="username" value="esri" size="30" />
 	<input name="groupFinderReset" id="groupFinderReset" type="reset" value="Reset" />
 	<input name="groupFinderSubmit" type="submit" value="Submit" id="groupFinderSubmit" />
 </p>
-<p>Example Owner Username(Case Sensitive): Esri_webmap</p>
+<h2>Private Groups</h2>
+<p>
+	<input id="getPrivateGroups" type="button" value="Get Private Groups" /> (login prompt)
+</p>
 <div id="groupResults"></div>
 </body>
 </html>
