@@ -121,6 +121,10 @@ function setDefaultConfigOptions(){
 	configOptions.arcgisRestVersion = 1;
 	// row items
 	configOptions.galleryPerRow = 3;
+	// fix dijit for HTTPS
+	if(esri.dijit._arcgisUrl && location.protocol === "https:") {
+		esri.dijit._arcgisUrl = esri.dijit._arcgisUrl.replace('http:', 'https:');
+	}
 	// Set geometry to HTTPS if protocol is used
 	if(configOptions.geometryserviceurl && location.protocol === "https:") {
 		configOptions.geometryserviceurl = configOptions.geometryserviceurl.replace('http:', 'https:');
@@ -620,39 +624,56 @@ function insertContent(){
 // query arcgis group info
 /*------------------------------------*/
 function queryArcGISGroupInfo(obj){
-	// default values
-	var settings = {
-		// set group id for web maps
-		id_group : '',
-		// Group Owner
-		owner: '',
-		// Group Title
-		groupTitle: '',
-		// format
-		dataType : 'json',
-		// callback function with object
-		callback: null
-    };
-	// If options exist, lets merge them with our default settings
-	if(obj) { 
-		dojo.mixin(settings,obj);
-	}
-	var q = '';
-	if(settings.id_group){
-		q += 'id:"' + settings.id_group + '"';
-	}
-	else{
-		q += 'title:"' + settings.groupTitle + '" AND owner:"' + settings.owner + '"';
-	}
-	var params = {
-		q: q,
-		v: configOptions.arcgisRestVersion,
-		f: settings.dataType
-	};
-	portal.queryGroups(params).then(function(data){
-		if(typeof settings.callback === 'function'){
-			// call callback function with settings and data
-			settings.callback.call(this,settings,data);
+	// first, request the group to see if it's public or private
+	esri.request({
+		// group rest URL
+		url: configOptions.portalUrl + '/sharing/rest/community/groups/' + configOptions.group,
+		content: {
+			'f':'json'
+		},
+		callbackParamName: 'callback',
+		load: function (response) {
+			// sign in flag
+			var signInRequired = (response.access !== 'public')? true : false;
+			// if sign-in is required
+			if(signInRequired){
+				portal.signIn();
+			}
+			// default values
+			var settings = {
+				// set group id for web maps
+				id_group : '',
+				// Group Owner
+				owner: '',
+				// Group Title
+				groupTitle: '',
+				// format
+				dataType : 'json',
+				// callback function with object
+				callback: null
+			};
+			// If options exist, lets merge them with our default settings
+			if(obj) { 
+				dojo.mixin(settings,obj);
+			}
+			var q = '';
+			if(settings.id_group){
+				q += 'id:"' + settings.id_group + '"';
+			}
+			else{
+				q += 'title:"' + settings.groupTitle + '" AND owner:"' + settings.owner + '"';
+			}
+			var params = {
+				q: q,
+				v: configOptions.arcgisRestVersion,
+				f: settings.dataType
+			};
+			portal.queryGroups(params).then(function(data){
+				if(typeof settings.callback === 'function'){
+					// call callback function with settings and data
+					settings.callback.call(this,settings,data);
+				}
+			});
 		}
 	});
 }

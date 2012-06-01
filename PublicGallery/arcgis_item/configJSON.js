@@ -7,21 +7,7 @@
                "type":"string",
                "fieldName":"group",
                "label":"Group ID:",
-               "tooltip":"ID of the group. Either set this or both the groupOwner and groupTitle.",
-               "placeHolder":""
-            },
-            {
-               "type":"string",
-               "fieldName":"groupTitle",
-               "label":"Group Title:",
-               "tooltip":"Title of the group. Should be set along with groupOwner.",
-               "placeHolder":""
-            },
-            {
-               "type":"string",
-               "fieldName":"groupOwner",
-               "label":"Group Owner:",
-               "tooltip":"The owner of the group. Should be set along with groupTitle.",
+               "tooltip":"ID of the group.",
                "placeHolder":""
             },
             {
