@@ -29,8 +29,6 @@ dojo.addOnLoad(function(){
 	setAppIdSettings(function(){
 		// create portal
 		createPortal(function(){
-			// set URL params
-			configUrlParams();
 			// query group info
 			queryGroup(function(){
 				// set webmap info

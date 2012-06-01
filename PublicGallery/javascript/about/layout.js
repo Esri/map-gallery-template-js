@@ -102,8 +102,6 @@ function insertAboutContent(userInfo){
 // Init
 /*------------------------------------*/
 function init(){
-	// set up params
-	configUrlParams();
 	// check for mobile cookie	
 	checkMobileCookie();
 	// Query group and then query maps

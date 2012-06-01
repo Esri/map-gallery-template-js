@@ -104,6 +104,8 @@ function checkAddressStatus(obj){
 // Set default options for the template
 /*------------------------------------*/
 function setDefaultConfigOptions(){
+	// set up params
+	configUrlParams();
 	// set user agent
 	setUserAgent();
 	// set localization

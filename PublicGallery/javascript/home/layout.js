@@ -536,8 +536,6 @@ function configLayoutSearch(){
 // Init
 /*------------------------------------*/
 function init(){
-	// set up params
-	configUrlParams();
 	// set default data offset
 	if(!dataOffset){
 		dataOffset = 0;
