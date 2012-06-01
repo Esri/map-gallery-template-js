@@ -11,11 +11,19 @@
                "placeHolder":""
             },
             {
+               "type":"paragraph",
+               "value":"Find your group&#39;s ID <a target=\"_blank\" href=\"http:\/\/www.esri.com\/\">using this tool<\/a>."
+            },
+            {
                "type":"string",
                "fieldName":"siteTitle",
                "label":"Website Title:",
-               "tooltip":"The title of this template's website.",
+               "tooltip":"The title of this template&#39;s website.",
                "placeHolder":"My Gallery"
+            },
+            {
+               "type":"paragraph",
+               "value":"The text above will be displayed in the top banner if no banner image is set."
             },
             {
                "type":"string",
@@ -25,11 +33,19 @@
                "label":"Banner Logo:"
             },
             {
+               "type":"paragraph",
+               "value":"Image to display in the top banner. Recommended height of 72 pixels."
+            },
+            {
                "type":"string",
                "fieldName":"addThisProfileId",
                "label":"AddThis.com Profile Id:",
                "tooltip":"Account ID for AddThis.com.",
                "placeHolder":"xa-4f3bf72958320e9e"
+            },
+            {
+               "type":"paragraph",
+               "value":"Register an <a target=\"_blank\" href=\"https:\/\/www.addthis.com\/register\">AddThis.com<\/a> account for social media button analytics."
             }
          ]
       },
@@ -56,10 +72,11 @@
                "placeHolder":""
             },
             {
-               "type":"paragraph",
+               "type":"string",
                "fieldName":"footerDescription",
                "label":"Footer Content:",
                "tooltip":"Content description displayed in the footer.",
+               "stringFieldOption":"textarea",
                "placeHolder":""
             }
          ]
@@ -190,16 +207,24 @@
                "label":"Items Per Page:",
                "options":[
                   {
+                     "label":"9",
+                     "value":9
+                  },
+                  {
                      "label":"3",
                      "value":3
                   },
                   {
-                     "label":"6",
-                     "value":6
+                     "label":"4",
+                     "value":4
                   },
                   {
-                     "label":"9",
-                     "value":9
+                     "label":"5",
+                     "value":5
+                  },
+                  {
+                     "label":"6",
+                     "value":6
                   },
                   {
                      "label":"12",
