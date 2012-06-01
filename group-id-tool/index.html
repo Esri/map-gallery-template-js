@@ -2,46 +2,186 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-
 <title></title>
-
-
-<link href="//servicesbeta.esri.com/jsapi/arcgis/3.0/js/dojo/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css" />
-
-<link rel="stylesheet" type="text/css" href="css/local.css">
-
-
+<style type="text/css">
+#groupResults table {
+	margin:20px 0;
+}
+#groupResults table td {
+	vertical-align:top;
+}
+#groupResults table td img {
+	margin-top:2px;
+	margin-right:10px;
+	width:50px;
+	height:50px;
+	max-width: 50px;
+	max-height: 50px;
+	overflow: hidden;
+	display: block;
+	padding:3px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0px 0px 6px #ccc;
+	-webkit-box-shadow: 0px 0px 6px #ccc;
+	box-shadow: 0px 0px 6px #ccc;
+	background:#fff url(http://ajaxload.info/cache/FF/FF/FF/00/00/00/1-0.gif) no-repeat center center;
+}
+#groupResults table td .thumb {
+	display: block;
+	opacity: 1;
+}
+#groupResults table td .thumb:hover {
+	display: block;
+	opacity: .75;
+}
+#groupResults table td img: hover {
+	background:#fff;
+}
+#groupResults table td ul {
+	margin:0;
+	padding:0;
+	list-style:none;
+	margin-bottom:15px;
+}
+#groupResults table td ul li {
+	background:none;
+	margin-bottom:3px;
+}
+</style>
 <script type="text/javascript">
 var dojoConfig = {
     parseOnLoad: true,
     packages: [{
         name: "esriTemplate",
-        location: location.pathname.replace(/\/[^/]+$/, '')
+        location: location.pathname.replace('/\/[^/]+$/', '')
     }, {
         name: "myModules",
-        location: location.pathname.replace(/\/[^/]+$/, '') + '/javascript'
+        location: location.pathname.replace('/\/[^/]+$/', '') + '/javascript'
     }, {
         name: "apl",
-        location: location.pathname.replace(/\/[^/]+$/, '') + '/apl'
+        location: location.pathname.replace('/\/[^/]+$/', '') + '/apl'
     }]
 };
 </script>
 <script type="text/javascript" src="//servicesbeta.esri.com/jsapi/arcgis/3.0/"></script>
-<script type="text/javascript" src="javascript/local.js"></script>
+<script type="text/javascript">
+// dojo requires
+dojo.require("esri.arcgis.utils");
+dojo.require("esri.IdentityManager");
+dojo.require("esri.arcgis.Portal");
+dojo.require("dojo.NodeList-manipulate");
+dojo.require("dojo.NodeList-traverse");
+dojo.require("dojox.NodeList.delegate");
+
+// global vars
+var portalUrl = 'http://www.arcgis.com/';
+
+// show results from username
+function showGroupResults(data){
+	// clear results
+	dojo.query('#groupResults')[0].innerHTML = '';
+	// html var
+	var html = '';
+	// total results
+	var totalItems = data.total;
+	var totalResults = data.results.length;
+	// if items were returned
+	if(totalItems > 0){
+		// create table
+		html += '<h2>Group Results</h2>';
+		html += '<table>';
+		html += '<tbody>';
+		// Create table rows
+		for(var i = 0; i < totalResults; ++i){
+			// build table row
+			html += '<tr>';
+			html += '<td>';
+			html += '<a class="thumb" target="_blank" href="' + portalUrl + 'home/group.html?owner=' + data.results[i].owner + '&title=' + data.results[i].title + '">';
+			if(data.results[i].thumbnailUrl){
+				html += '<img width="50" height="50" alt="' + data.results[i].title + '" src="' + data.results[i].thumbnailUrl + '" />';
+			}
+			html += '</a>';
+			html += '</td>';
+			html += '<td>';
+			html += '<ul>';
+			html += '<li>';
+			html += '<strong>Group:</strong>&nbsp;<a target="_blank" href="' + portalUrl + 'home/group.html?owner=' + data.results[i].owner + '&title=' + data.results[i].title + '">' + data.results[i].title + '</a></li>';
+			html += '<li><strong>Snippet:</strong>&nbsp;'+data.results[i].snippet+'</li>';
+			html += '<li><strong>ID:</strong>&nbsp;<input size="50" type="text" value="'+data.results[i].id+'" /></li>';
+			html += '</ul>';
+			html += '</tr>';
+			html += '</td>';
+		}
+		// close table
+		html += '</tbody>';
+		html += '</table>';	
+	}
+	else{
+		// NO RESULTS
+		html += '<h2>Group Results</h2>';
+		html += '<p>No groups were found. Make sure that your group is set to Public and you copy the full link with the user and group title.</p>';	
+	}
+	// INSERT TO HTML
+	dojo.query('#groupResults')[0].innerHTML = html;
+}
+
+// find owner's groups
+function findArcGISGroup(owner){
+	// query	
+	var q = 'owner:"' + owner + '"';
+	// params
+	var params = {
+		q: q,
+		v: 1,
+		f: 'json'
+	};
+	// create portal
+	var portal = new esri.arcgis.Portal(portalUrl);
+	// portal loaded
+	dojo.connect(portal, 'onLoad', function(){
+		portal.queryGroups(params).then(function(data){
+			showGroupResults(data);
+		});
+	});	
+}
+
+// submit group finder function
+function submitGroupFinder(){
+	var inputVal = dojo.query('#groupFinder').attr('value')[0];
+	findArcGISGroup(inputVal);
+}
+
+// dojo ready
+dojo.addOnLoad(function(){
+	// Group Finder Submit Button
+	dojo.query(document).delegate('#groupFinderSubmit', "onclick", function(){
+		submitGroupFinder();
+	});
+	// Group Finder Reset Button
+	dojo.query(document).delegate('#groupFinderReset', "onclick", function(){
+		dojo.query('#groupFinder').attr('value', '');
+		dojo.query('#groupResults')[0].innerHTML = '';
+	});
+	// Group Finder Enter Key Button
+	dojo.query(document).delegate("#groupFinder", "onkeyup", function(e){
+		if(e.keyCode === 13){
+			submitGroupFinder();
+		}
+	});
+});
+</script>
 </head>
 <body>
-
-
 <h1>ArcGIS Online Group ID Finder</h1>
 <p> <strong>Paste ArcGIS Online Owner Username</strong><br>
 	<label for="groupFinder">Username:</label>
-	<input name="groupFinder" id="groupFinder" placeholder="" value="Esri_webmap" size="30" />
+	<input name="groupFinder" id="groupFinder" placeholder="username" value="esri" size="30" />
 	<input name="groupFinderReset" id="groupFinderReset" type="reset" value="Reset" />
 	<input name="groupFinderSubmit" type="submit" value="Submit" id="groupFinderSubmit" />
 </p>
 <p>Example Owner Username(Case Sensitive): Esri_webmap</p>
 <div id="groupResults"></div>
-			
-
 </body>
 </html>
