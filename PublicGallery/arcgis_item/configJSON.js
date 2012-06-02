@@ -293,6 +293,8 @@
       "sortField":"modified",
       "sortOrder":"desc",
       "mapViewer":"simple",
+	  "mobileAppUrl":false,
+	  "showMobileDialog":false,
       "galleryItemsPerPage":9
    }
 }
