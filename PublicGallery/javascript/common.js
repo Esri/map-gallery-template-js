@@ -278,8 +278,15 @@ function configUrlParams(){
 	for(var key in urlObject.query){
 		// if url has property
 		if(urlObject.query.hasOwnProperty(key)){
-			// set configOptions  property to url property
-			configOptions[key] = urlObject.query[key];
+			// handle false strings
+			if(urlObject.query[key].toLowerCase() === 'false' || urlObject.query[key].toLowerCase() === 'null' || urlObject.query[key].toLowerCase() === 'undefined'){
+				configOptions[key] = false;
+			}
+			// handle strings
+			else{
+				// set configOptions  property to url property
+				configOptions[key] = urlObject.query[key];
+			}
 		}
 	}
 }
