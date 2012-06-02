@@ -6,7 +6,6 @@ dojo.require("dojo.NodeList-manipulate");
 dojo.require("dojo.NodeList-traverse");
 dojo.require("dojox.NodeList.delegate");
 dojo.require("dijit.Dialog");
-dojo.require("dojo.cookie");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
 dojo.require("dojox.form.Rating");
@@ -145,7 +144,6 @@ function queryMaps(data_offset,keywords){
 		pagination: configOptions.showPagination,
 		paginationShowFirstLast: true,
 		paginationShowPrevNext: true,
-		mobileAppUrl: configOptions.mobileAppUrl,
 		keywords: keywords,
 		perPage : parseInt(configOptions.galleryItemsPerPage, 10),
 		perRow : parseInt(configOptions.galleryPerRow, 10),
@@ -301,10 +299,6 @@ function buildMapPlaylist(obj,data){
 			else{
 				// url variable
 				itemURL = getViewerURL(configOptions.mapViewer, data.results[i].id);
-				// if mobile
-				if(isMobileUser() && obj.mobileAppUrl && configOptions.appCookie === 'installed'){
-					itemURL = getViewerURL('mobile', data.results[i].id);
-				}
 			}
 			if(obj.layout === 'list'){
 				itemTitle = data.results[i].title;
@@ -543,8 +537,6 @@ function init(){
 	// set loading text
 	var node = dojo.byId('featuredLoading');
 	setNodeHTML(node, i18n.viewer.groupPage.loadingText);
-	// check for mobile cookie	
-	checkMobileCookie();
 	// Query group and then query maps
 	queryGroup(function(){
 		// insert home items

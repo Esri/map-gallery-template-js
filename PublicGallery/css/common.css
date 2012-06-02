@@ -799,11 +799,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	margin:0 0 4px 0;
 }
 #footer .logoDiv {
-	padding:20px 0 20px 20px;
+	padding:20px;
 	text-align:center;
-}
-.esriRtl #footer .logoDiv {
-	padding:20px 20px 20px 0;
 }
 #footer .footBorder {
 	zoom:1;
@@ -816,23 +813,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	zoom:1;
 	border:0;
-	margin-bottom:20px;
+	margin-bottom:5px;
 	outline:0;
 	width:60px;
 	height:60px;
-	background:#fff;
-	-moz-box-shadow: 0px 0px 6px #444;
-	-webkit-box-shadow: 0px 0px 6px #444;
-	box-shadow: 0px 0px 6px #444;
-}
-#yourLogo:hover {
-	-moz-box-shadow: 0px 0px 6px #999;
-	-webkit-box-shadow: 0px 0px 6px #999;
-	box-shadow: 0px 0px 6px #999;
-	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
-	-moz-transition:-moz-box-shadow 0.25s ease-in;
-	-o-transition:box-shadow 0.25s ease-in;
-	transition:box-shadow 0.25s ease-in;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 #yourLogo img {
 	border:0;
@@ -842,8 +828,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	zoom:1;
 	width:60px;
 	height:60px;
-	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
 	opacity:1;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
 }
 #yourLogo img:hover {
 	opacity:.75;
@@ -1486,25 +1474,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 /*-------------------------------------------------- */
 /* About Page */
 /*-------------------------------------------------- */
-#userLink {
-	margin: 20px 0;
-}
 #thumbnailUrl {
 	text-align: center;
 }
 .ownerImage {
 	display: inline-block;
-	background: #fff;
-	-moz-box-shadow: 1px 1px 3px #ccc;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
+	margin:0 0 5px 0;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
 .ownerImage:hover {
-	-moz-box-shadow: 0px 0px 6px #999;
-	-webkit-box-shadow: 0px 0px 6px #999;
-	box-shadow: 0px 0px 6px #999;
 	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
 	-moz-transition:-moz-box-shadow 0.25s ease-in;
 	-o-transition:box-shadow 0.25s ease-in;
@@ -1514,9 +1493,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	display: block;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
-	padding:3px;
-	background:#fff;
-	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
 	opacity:1;
 }
 .ownerImage img:hover {

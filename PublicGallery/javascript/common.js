@@ -10,7 +10,7 @@ function addSpinner(id){
 // Reverse sort order
 /*------------------------------------*/
 function reverseSortOrder(order){
-	if(order==='desc'){
+	if(order === 'desc'){
 		return 'asc';
 	}
 	else{
@@ -43,8 +43,10 @@ function setAppIdSettings(callback){
 			callbackParamName: "callback",
 			// on load
 			load: function (response) {
+				// check for false value strings
+				var appSettings = setFalseValues(response.values);				
 				// set other config options from app id
-				dojo.mixin(configOptions, response.values);
+				dojo.mixin(configOptions, appSettings);
 				// callback function
 				if(typeof callback === 'function'){
 					// call callback function
@@ -268,50 +270,46 @@ function setGroupContent(groupInfo){
 	insertContent();
 }
 /*------------------------------------*/
-// Set URL params for GROUP, THEME and WEBMAP
+// Set false url param strings to false
+/*------------------------------------*/
+function setFalseValues(obj){
+	// for each key
+	for(var key in obj){
+		// if not a prototype
+		if(obj.hasOwnProperty(key)){
+			// if is a false value string
+			if(typeof obj[key] === 'string' && (obj[key].toLowerCase() === 'false' || obj[key].toLowerCase() === 'null' || obj[key].toLowerCase() === 'undefined')){
+				// set to false bool type
+				obj[key] = false;
+			}
+		}
+	}
+	// return object
+	return obj;
+}
+/*------------------------------------*/
+// Set URL params such as group, theme, webmap and more
 /*------------------------------------*/
 function configUrlParams(){
 	// set url object
 	urlObject = esri.urlToObject(document.location.href);
-	urlObject.query = urlObject.query || {};	
-	// for each property in the url object query
-	for(var key in urlObject.query){
-		// if url has property
-		if(urlObject.query.hasOwnProperty(key)){
-			// handle false strings
-			if(urlObject.query[key].toLowerCase() === 'false' || urlObject.query[key].toLowerCase() === 'null' || urlObject.query[key].toLowerCase() === 'undefined'){
-				configOptions[key] = false;
-			}
-			// handle strings
-			else{
-				// set configOptions  property to url property
-				configOptions[key] = urlObject.query[key];
-			}
-		}
-	}
+	// make sure it's an object
+	urlObject.query = urlObject.query || {};
+	// check for false value strings
+	urlObject.query = setFalseValues(urlObject.query);
+	// mix in settings
+	dojo.mixin(configOptions, urlObject.query);
 }
 /*------------------------------------*/
 // is user on supported mobile device
 /*------------------------------------*/
 function isMobileUser(){
+	// if ios or android
 	if(configOptions.agent_ios || configOptions.agent_android){
 		return true;	
 	}
 	else{
 		return false;
-	}
-}
-/*------------------------------------*/
-// Open Mobile App Link
-/*------------------------------------*/
-function openmobileAppUrl(){
-	// if iOS Device
-	if(configOptions.agent_ios && configOptions.iosAppUrl){
-		window.open(configOptions.iosAppUrl);
-	}
-	// if Android Device
-	else if(configOptions.agent_android && configOptions.androidAppUrl){
-		window.open(configOptions.androidAppUrl);
 	}
 }
 /*------------------------------------*/
@@ -356,59 +354,7 @@ function geoLocateMap(position){
 	// Get accuracy
 	var IPAccuracy = position.coords.accuracy;
 	// Zoom to location
-	zoomToLocation(longitude,latitude,IPAccuracy);
-}
-/*------------------------------------*/
-// Check Mobile Cookie
-/*------------------------------------*/
-function checkMobileCookie(){
-	// if disable mobile dialog is false
-	if(configOptions.showMobileDialog){
-		// get cookie
-		configOptions.appCookie = dojo.cookie('ArcGISAppInstalled');
-		// if mobile user and mobile enabled
-		if(isMobileUser() && !configOptions.appCookie){
-			// prompt for decision
-			var installedButton = new dijit.form.Button({
-				label: i18n.viewer.mobileOptions.installed,
-				onClick: function(){
-					// set cookie to installed
-					dojo.cookie("ArcGISAppInstalled", "installed", {expires: 365});
-					// update config value to installed
-					configOptions.appCookie = 'installed';
-					mobileDialog.onCancel();
-					// requery data
-					document.location.reload(true);
-				}
-			});
-			var notInstalledButton = new dijit.form.Button({
-				label: i18n.viewer.mobileOptions.install,
-				onClick: function(){
-					openmobileAppUrl();
-					mobileDialog.onCancel();
-				}
-			});
-			var ignoreButton = new dijit.form.Button({
-				label: i18n.viewer.mobileOptions.ignore,
-				onClick: function(){
-					// set cookie to opt out of app
-					dojo.cookie("ArcGISAppInstalled", "disabled", {expires: 365});
-					// update config value to optout
-					configOptions.appCookie = 'disabled';
-					// close dialog
-					mobileDialog.onCancel();
-				}
-			});
-			mobileDialog = new dijit.Dialog({
-				title: i18n.viewer.mobileOptions.mobileAppDialogTitle,
-				content: '<div class="dialogContent">' + i18n.viewer.mobileOptions.mobileAppDialogContent + '</div>'
-			});
-			mobileDialog.containerNode.appendChild(installedButton.domNode);
-			mobileDialog.containerNode.appendChild(notInstalledButton.domNode);
-			mobileDialog.containerNode.appendChild(ignoreButton.domNode);
-			mobileDialog.show();
-		}
-	}	
+	zoomToLocation(longitude, latitude, IPAccuracy);
 }
 /*------------------------------------*/
 // Set user agent
@@ -452,7 +398,6 @@ function insertSocialHTML(){
 	// if social HTML
 	var node = dojo.byId('socialHTML');
 	setNodeHTML(node, html);
-	
 }
 /*------------------------------------*/
 // Insert footer HTML
@@ -485,19 +430,17 @@ function insertFooterHTML(){
 				html += '<div id="footerLogoDiv" class="logoDiv footBorder">';
 				// Set footer logo
 				if(configOptions.footerLogo && configOptions.showFooter){
-					html += '<div><a id="yourLogo" ';
+					html += '<div>';
 					// if logo url
 					if(configOptions.footerLogoUrl){
-						html += 'href="' + configOptions.footerLogoUrl + '"';
+						html += '<a id="yourLogo" href="' + configOptions.footerLogoUrl + '" title="' + configOptions.homeHeading + '">';
 					}
-					html += 'title="' + configOptions.homeHeading + '" ';
-					html += '>';
 					html += '<img src="' + configOptions.footerLogo + '" alt="' + configOptions.homeHeading + '" title="' + configOptions.homeHeading + '" />';
-					html += '</a></div>';
-					// if profile url
-					if(configOptions.showProfileUrl){
-						html += '<div><a href="' + getViewerURL('owner_page') + '">' + configOptions.groupOwner + '</a></div>';
+					// if logo url
+					if(configOptions.footerLogoUrl){
+						html += '</a>';
 					}
+					html += '</div>';
 				}
 				html += '</div>';
 			html += '</div>';
@@ -549,12 +492,14 @@ function insertHeaderContent(){
 /*------------------------------------*/
 function setNodeHTML(node, htmlString){
 	if(node){
+		// update HTML
 		node.innerHTML = htmlString;
+		// resize sidebar and scrolling div
 		resizeSidebarHeight();
 	}
 }
 /*------------------------------------*/
-// Resize Sidebar
+// Resize Sidebar and scrolling div
 /*------------------------------------*/
 function resizeSidebarHeight(){
 	// vars
@@ -638,14 +583,14 @@ function queryArcGISGroupInfo(obj){
 	};
 	// If options exist, lets merge them with our default settings
 	if(obj) { 
-		dojo.mixin(settings,obj);
+		dojo.mixin(settings, obj);
 	}
 	// first, request the group to see if it's public or private
 	esri.request({
 		// group rest URL
 		url: configOptions.portalUrl + '/sharing/rest/community/groups/' + settings.id_group,
 		content: {
-			'f':'json'
+			'f':settings.dataType
 		},
 		callbackParamName: 'callback',
 		load: function (response) {
@@ -665,7 +610,7 @@ function queryArcGISGroupInfo(obj){
 			portal.queryGroups(params).then(function(data){
 				if(typeof settings.callback === 'function'){
 					// call callback function with settings and data
-					settings.callback.call(this,settings,data);
+					settings.callback.call(this, settings, data);
 				}
 			});
 		}
@@ -723,14 +668,12 @@ function queryArcGISGroupItems(obj){
 		keywords: '',
 		// style of layout for the results
 		layout: 'grid',
-		// use arcgis mobile app links when on a mobile device
-		mobileAppUrl: false,
 		// callback function with object
 		callback: null
     };
 	// If options exist, lets merge them with our default settings
 	if(obj) { 
-		dojo.mixin(settings,obj);
+		dojo.mixin(settings, obj);
 	}
 	var q = '';
 	q += 'group:"' + settings.id_group + '"';
@@ -774,7 +717,7 @@ function queryArcGISGroupItems(obj){
 	portal.queryItems(params).then(function(data){
 		if(typeof settings.callback === 'function'){
 			// call callback function with settings and data
-			settings.callback.call(this,settings,data);
+			settings.callback.call(this, settings, data);
 		}
 	});
 }
@@ -1001,6 +944,16 @@ function getViewerURL(viewer, webmap, owner){
 			}
 			else if(configOptions.agent_android){
 				retUrl = configOptions.mobilePortalUrl + '?webmap=' + webmap;
+			}
+			return retUrl;
+		case 'mobile_app':
+			// if iOS Device
+			if(configOptions.agent_ios && configOptions.iosAppUrl){
+				retUrl = configOptions.iosAppUrl;
+			}
+			// if Android Device
+			else if(configOptions.agent_android && configOptions.androidAppUrl){
+				retUrl = configOptions.androidAppUrl;
 			}
 			return retUrl;
 		// simple viewer

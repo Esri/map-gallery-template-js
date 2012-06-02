@@ -215,14 +215,6 @@
                      "value":3
                   },
                   {
-                     "label":"4",
-                     "value":4
-                  },
-                  {
-                     "label":"5",
-                     "value":5
-                  },
-                  {
                      "label":"6",
                      "value":6
                   },
@@ -293,8 +285,7 @@
       "sortField":"modified",
       "sortOrder":"desc",
       "mapViewer":"simple",
-	  "mobileAppUrl":false,
-	  "showMobileDialog":false,
+	  "showMobileButtons":false,
       "galleryItemsPerPage":9
    }
 }

@@ -66,17 +66,11 @@ define({
                 "ownerHeader": "Owner:",
                 "switchBasemap": "Switch Basemap",
 				// new
+				"getMobileApp": "Get App",
 				"constraintsHeading":"Use Constraints",
 				"creditsHeading":"Credits:",
 				"createdLabel":"Created",
 				"detailsLabel":"Details"
-            },
-            "mobileOptions": {
-                "mobileAppDialogTitle": "Open Maps in the ArcGIS App?",
-                "mobileAppDialogContent": "Did you know there's an ArcGIS app for your mobile device?",
-                "ignore": "Don't Show Again",
-                "installed": "Already Installed",
-                "install": "Install Now"
             },
             "pagination": {
                 "previous": "Previous",

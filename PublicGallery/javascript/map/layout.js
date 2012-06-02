@@ -6,7 +6,6 @@ dojo.require("dojo.NodeList-manipulate");
 dojo.require("dojo.NodeList-traverse");
 dojo.require("dojox.NodeList.delegate");
 dojo.require("dijit.Dialog");
-dojo.require("dojo.cookie");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
 dojo.require("dojox.form.Rating");
@@ -163,8 +162,6 @@ function hideAutoComplete(){
 // Set map content
 /*------------------------------------*/
 function setMapContent(){
-	// check for mobile cookie	
-	checkMobileCookie();
     // show about button click
 	dojo.query(document).delegate("#showAbout", "onclick", function(event){
         tabMenu('#aboutMenu',this);
@@ -525,7 +522,7 @@ function insertMenuTabs(){
 /*------------------------------------*/
 function addBottomMapButtons(){
 	var html = '';
-	if(configOptions.showExplorerButton){
+	if(configOptions.showExplorerButton && !isMobileUser()){
 		// add open in explorer button
 		html += '<a target="_blank" href="' + getViewerURL('explorer', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInExplorer + '</a>';
 	}
@@ -534,11 +531,15 @@ function addBottomMapButtons(){
 		html += '<a target="_blank" href="' + getViewerURL('arcgis', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';
 	}
 	// If mobile user
-	if(isMobileUser() && configOptions.appCookie === 'installed'){
+	if(isMobileUser() && configOptions.showMobileButtons){
 		// get item url
 		var itemURL = getViewerURL('mobile', configOptions.webmap);
 		// add button
 		html += '<a href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
+		// app url
+		var appUrl = getViewerURL('mobile_app');
+		// add app button
+		html += '<a href="' + appUrl + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.getMobileApp + '</a>';
 	}
 	if(html === ''){
 		html = '&nbsp;';
@@ -562,7 +563,7 @@ function queryComments(obj){
     };
 	// If options exist, lets merge them with our default settings
 	if(obj) { 
-		dojo.mixin(settings,obj);
+		dojo.mixin(settings, obj);
 	}
 	var q = 'id:' + settings.id;
 	var params = {
@@ -574,7 +575,7 @@ function queryComments(obj){
 		result.results[0].getComments().then(function(comments){
 			if(typeof settings.callback === 'function'){
 				// call callback function with settings and data
-				settings.callback.call(this,comments);
+				settings.callback.call(this, comments);
 			}
 		});
 	});

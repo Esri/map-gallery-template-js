@@ -6,7 +6,6 @@ dojo.require("dojo.NodeList-manipulate");
 dojo.require("dojo.NodeList-traverse");
 dojo.require("dojox.NodeList.delegate");
 dojo.require("dijit.Dialog");
-dojo.require("dojo.cookie");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
 /*------------------------------------*/
@@ -38,7 +37,7 @@ function queryOwnerInfo(obj){
     };
 	// If options exist, lets merge them with our default settings
 	if(obj) { 
-		dojo.mixin(settings,obj);
+		dojo.mixin(settings, obj);
 	}
 	var q = 'username:' + settings.owner;
 	var params = {
@@ -49,7 +48,7 @@ function queryOwnerInfo(obj){
 	portal.queryUsers(params).then(function(data){
 		if(typeof settings.callback === 'function'){
 			// call callback function with settings and data
-			settings.callback.call(this,settings,data);
+			settings.callback.call(this, settings, data);
 		}
 	});
 }
@@ -71,8 +70,8 @@ function insertAboutContent(userInfo){
 		}
 		// users thumbnail
 		node = dojo.byId('thumbnailUrl');
+		html = '';
 		if(userInfo.thumbnailUrl){
-			html = '';
 			if(configOptions.showProfileUrl){
 				html += '<a class="ownerImage" href="' + getViewerURL('owner_page') + '" target="_blank">';
 			}
@@ -86,24 +85,17 @@ function insertAboutContent(userInfo){
 			else{
 				html += '</span>';
 			}
-			setNodeHTML(node, html);
-		}		
-		// users page
-		if(configOptions.showProfileUrl){
-			node = dojo.byId('userLink');
-			if(userInfo.username){
-				html = '<p><strong>' + i18n.viewer.mapPage.moreInformation + '</strong> <a href="' + getViewerURL('owner_page') + '" target="_blank">' + userInfo.username + '</a></p>';
-				setNodeHTML(node, html);
-			}
 		}
+		if(configOptions.showProfileUrl && userInfo.username){
+			html += '<div><a href="' + getViewerURL('owner_page') + '" target="_blank">' + userInfo.username + '</a></div>';
+		}
+		setNodeHTML(node, html);
 	}
 }
 /*------------------------------------*/
 // Init
 /*------------------------------------*/
 function init(){
-	// check for mobile cookie	
-	checkMobileCookie();
 	// Query group and then query maps
 	queryGroup(function(){
 		// query group info
