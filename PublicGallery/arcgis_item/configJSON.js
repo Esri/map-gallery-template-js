@@ -244,44 +244,44 @@
             {
                "type":"boolean",
                "fieldName":"openGalleryItemsNewWindow",
-               "label":"Open gallery items in new window",
+               "label":"Open gallery items in new window.",
                "tooltip":""
             },
             {
                "type":"boolean",
                "fieldName":"showProfileUrl",
-               "label":"Show Profile Link",
-               "tooltip":"Show profile link in footer"
+               "label":"Show Profile Link.",
+               "tooltip":"Show profile link in footer."
             },
             {
                "type":"boolean",
                "fieldName":"showAboutPage",
-               "label":"Show About Page",
-               "tooltip":"Show about page in top navigation"
+               "label":"Show About Page.",
+               "tooltip":"Show about page in top navigation."
             },
             {
                "type":"boolean",
                "fieldName":"showSocialButtons",
-               "label":"Show social media buttons",
+               "label":"Show social media buttons.",
                "tooltip":""
             },
             {
                "type":"boolean",
                "fieldName":"showFooter",
-               "label":"Show footer",
+               "label":"Show footer.",
                "tooltip":""
             },
             {
                "type":"boolean",
                "fieldName":"showExplorerButton",
-               "label":"Show ArcGIS Explorer Button",
-               "tooltip":"Display's the button to open the webmap in ArcGIS Explorer"
+               "label":"Show ArcGIS Explorer Button.",
+               "tooltip":"Display's the button to open the webmap in ArcGIS Explorer."
             },
             {
                "type":"boolean",
                "fieldName":"showArcGISOnlineButton",
-               "label":"Show ArcGIS Online Button",
-               "tooltip":"Display's the button to open the webmap in ArcGIS Online"
+               "label":"Show ArcGIS Online Button.",
+               "tooltip":"Display's the button to open the webmap in ArcGIS Online."
             }
          ]
       }
