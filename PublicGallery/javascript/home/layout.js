@@ -92,7 +92,7 @@ function buildSortingMenu(){
 	var node = dojo.byId('groupSortOptions');
 	// insert html
 	setNodeHTML(node, html);
-	// toggle basemap button
+	// sort map gallery bar
 	dojo.query(document).delegate("#sortGallery .sort", "onclick", function(event){
 		// get nodes
 		var buttonNode = dojo.query(this);
@@ -547,7 +547,7 @@ function init(){
 	// Configure grid/list and search
 	configLayoutSearch();
 	// Featured maps pagination onclick function
-	dojo.query('#maps_pagination').delegate("ul li[data-offset]:not(.selected):not(.disabled):not(.clicked)", "onclick", function(event){
+	dojo.query('#maps_pagination').delegate("ul .enabled", "onclick", function(event){
 		// clicked
 		dojo.query(this).addClass('clicked');
 		var placeDom = dojo.query("#maps_pagination ul");

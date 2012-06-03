@@ -13,9 +13,8 @@ function reverseSortOrder(order){
 	if(order === 'desc'){
 		return 'asc';
 	}
-	else{
-		return 'desc';
-	}
+	// else
+	return 'desc';
 }
 /*------------------------------------*/
 // Remove Spinner
@@ -728,7 +727,7 @@ function createPagination(obj, totalItems, pagObject){
 	// creates middle pagination item HTML
 	function createMiddleItem(i, current){
 		// class
-		var selectedClass = '';
+		var selectedClass = 'enabled';
 		if(i === current){
 			// IF SELECTED
 			selectedClass = 'selected';
@@ -737,7 +736,7 @@ function createPagination(obj, totalItems, pagObject){
 		return '<li title="' + i18n.viewer.pagination.page + ' ' +  dojo.number.format(i) + '" data-offset="' + i + '" class="' + selectedClass + '"><span class="default">' +  dojo.number.format(i) + '</span></li>';
 	}
 	// variables
-	var html = '', startHTML = '', middleHTML = '', endHTML = '', current, first, previous, next, last, middleCount = 0, lastMiddle = 0, firstMiddle = 0, remainderStart;
+	var html = '', startHTML = '', middleHTML = '', endHTML = '', current, first, previous, next, last, middleCount = 0, lastMiddle = 0, firstMiddle = 0, remainderStart, helipText = i18n.viewer.pagination.helip;
 	// if pagination is necessary
 	if(obj.pagination && obj.perPage && totalItems > obj.perPage){
 		// create pagination list
@@ -748,24 +747,28 @@ function createPagination(obj, totalItems, pagObject){
 		previous = current - 1;
 		next = current + 1;
 		last = Math.ceil(totalItems/obj.perPage);
+		// if pages matches size of pagination
+		if(last === (3 + (2 * obj.paginationSize))){
+			helipText = '';
+		}
 		// pagination previous
 		if(obj.paginationShowPrevNext){
 			var firstClass = 'disabled';
 			if(current > 1){
-				firstClass = '';
+				firstClass = 'enabled';
 			}
 			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" data-offset="' + previous + '"><span class="silverButton buttonLeft"><span>&nbsp;</span></span></li>';
 		}
 		// pagination first page
 		if(obj.paginationShowFirstLast && current > (obj.paginationSize + 1)){
-			startHTML += '<li title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '"><span class="default">' +  dojo.number.format(first) + i18n.viewer.pagination.helip + '</span></li>';
+			startHTML += '<li class="enabled" title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '"><span class="default">' +  dojo.number.format(first) + helipText + '</span></li>';
 		}
 		else{
 			middleCount = middleCount - 1;
 		}
 		// pagination last page
 		if(obj.paginationShowFirstLast && current < (last - obj.paginationSize)){
-			endHTML += '<li title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '"><span class="default">' +  i18n.viewer.pagination.helip + dojo.number.format(last) + '</span></li>';
+			endHTML += '<li class="enabled" title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '"><span class="default">' +  helipText + dojo.number.format(last) + '</span></li>';
 		}
 		else{
 			middleCount = middleCount - 1;
@@ -774,7 +777,7 @@ function createPagination(obj, totalItems, pagObject){
 		if(obj.paginationShowPrevNext){
 			var lastClass = 'disabled';
 			if(current < last){
-				lastClass = '';
+				lastClass = 'enabled';
 			}
 			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" data-offset="' + next + '"><span class="silverButton buttonRight"><span>&nbsp;</span></span></li>';
 		}
