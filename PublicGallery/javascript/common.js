@@ -753,11 +753,12 @@ function createPagination(obj, totalItems, pagObject){
 		}
 		// pagination previous
 		if(obj.paginationShowPrevNext){
-			var firstClass = 'disabled';
+			var firstClass = 'disabled', firstOffset = '';
 			if(current > 1){
 				firstClass = 'enabled';
+				firstOffset = 'data-offset="' + previous + '"';
 			}
-			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" data-offset="' + previous + '"><span class="silverButton buttonLeft"><span>&nbsp;</span></span></li>';
+			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" ' + firstOffset + '><span class="silverButton buttonLeft"><span>&nbsp;</span></span></li>';
 		}
 		// pagination first page
 		if(obj.paginationShowFirstLast && current > (obj.paginationSize + 1)){
@@ -775,11 +776,12 @@ function createPagination(obj, totalItems, pagObject){
 		}
 		// pagination next
 		if(obj.paginationShowPrevNext){
-			var lastClass = 'disabled';
+			var lastClass = 'disabled', lastOffset = '';
 			if(current < last){
 				lastClass = 'enabled';
+				lastOffset = 'data-offset="' + next + '"';
 			}
-			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" data-offset="' + next + '"><span class="silverButton buttonRight"><span>&nbsp;</span></span></li>';
+			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" ' + lastOffset + '><span class="silverButton buttonRight"><span>&nbsp;</span></span></li>';
 		}
 		// create each pagination item
 		for(var i=1; i <= last; ++i) {
