@@ -458,8 +458,7 @@ function insertFooterHTML(){
 function insertHeaderContent(){
 	var html = '';
 	var node = dojo.byId('templateNav');
-	html += '<li id="homeItem"><a tabindex="' + tabIndex + '" title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
-	tabIndex++;
+	html += '<li id="homeItem"><a tabindex="0" title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
 	// if banner image
 	if(configOptions.siteBannerImage){
 		html += '<img alt="' + configOptions.siteTitle + '" title="' + configOptions.siteTitle + '" src="' + configOptions.siteBannerImage + '" />';
@@ -474,8 +473,7 @@ function insertHeaderContent(){
 	}
 	// if show about page
 	if(configOptions.showAboutPage){
-		html += '<li><a tabindex="' + tabIndex + '" href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
-		tabIndex++;
+		html += '<li><a tabindex="0" href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
 	}
 	// insert HTML
 	setNodeHTML(node, html);
@@ -735,7 +733,7 @@ function createPagination(obj, totalItems, pagObject){
 			selectedClass = 'selected';
 		}
 		// page list item
-		return '<li tabindex="' + tabIndex + '" title="' + i18n.viewer.pagination.page + ' ' +  dojo.number.format(i) + '" data-offset="' + i + '" class="default ' + selectedClass + '">' +  dojo.number.format(i) + '</li>';
+		return '<li tabindex="0" title="' + i18n.viewer.pagination.page + ' ' +  dojo.number.format(i) + '" data-offset="' + i + '" class="default ' + selectedClass + '">' +  dojo.number.format(i) + '</li>';
 	}
 	// variables
 	var html = '', startHTML = '', middleHTML = '', endHTML = '', current, first, previous, next, last, middleCount = 0, lastMiddle = 0, firstMiddle = 0, remainderStart, helipText = i18n.viewer.pagination.helip, paginationCount, npCount = 0;
@@ -770,20 +768,18 @@ function createPagination(obj, totalItems, pagObject){
 				firstClass = 'enabled';
 				firstOffset = 'data-offset="' + previous + '"';
 			}
-			startHTML += '<li tabindex="' + tabIndex + '" title="' + i18n.viewer.pagination.previous + '" class="silverButton buttonLeft previous ' + firstClass + '" ' + firstOffset + '><span>&nbsp;</span></li>';
-			tabIndex++;
+			startHTML += '<li tabindex="0" title="' + i18n.viewer.pagination.previous + '" class="silverButton buttonLeft previous ' + firstClass + '" ' + firstOffset + '><span>&nbsp;</span></li>';
 		}
 		// pagination first page
 		if(obj.paginationShowFirstLast && current > (obj.paginationSize + 1)){
-			startHTML += '<li tabindex="' + tabIndex + '" class="default enabled" title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '">' +  dojo.number.format(first) + helipText + '</li>';
-			tabIndex++;
+			startHTML += '<li tabindex="0" class="default enabled" title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '">' +  dojo.number.format(first) + helipText + '</li>';
 		}
 		else{
 			middleCount = middleCount - 1;
 		}
 		// pagination last page
 		if(obj.paginationShowFirstLast && current < (last - obj.paginationSize)){
-			endHTML += '<li tabindex="' + (tabIndex + (paginationCount - 1)) + '" class="default enabled" title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '">' +  helipText + dojo.number.format(last) + '</li>';
+			endHTML += '<li tabindex="0" class="default enabled" title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '">' +  helipText + dojo.number.format(last) + '</li>';
 		}
 		else{
 			middleCount = middleCount - 1;
@@ -795,7 +791,7 @@ function createPagination(obj, totalItems, pagObject){
 				lastClass = 'enabled';
 				lastOffset = 'data-offset="' + next + '"';
 			}
-			endHTML += '<li tabindex="' + (tabIndex + paginationCount) + '" title="' + i18n.viewer.pagination.next + '" class="silverButton buttonRight next ' + lastClass + '" ' + lastOffset + '><span>&nbsp;</span></li>';
+			endHTML += '<li tabindex="0" title="' + i18n.viewer.pagination.next + '" class="silverButton buttonRight next ' + lastClass + '" ' + lastOffset + '><span>&nbsp;</span></li>';
 		}
 		// create each pagination item
 		for(var i=1; i <= last; ++i) {
@@ -805,7 +801,6 @@ function createPagination(obj, totalItems, pagObject){
 				}
 				middleHTML += createMiddleItem(i, current);
 				middleCount++;
-				tabIndex++;
 				lastMiddle = i;
 			}
 		}
@@ -824,7 +819,6 @@ function createPagination(obj, totalItems, pagObject){
 				middleHTML = createMiddleItem(remainderStart, current) + middleHTML;
 				// increase middle count
 				middleCount++;
-				tabIndex++;
 				// decrease remainder start
 				remainderStart--;
 			}
@@ -844,16 +838,9 @@ function createPagination(obj, totalItems, pagObject){
 				middleHTML += createMiddleItem(remainderStart, current);
 				// increase middle count
 				middleCount++;
-				tabIndex++;
 				// increase remainder start
 				remainderStart++;
 			}
-		}
-		if(obj.paginationShowFirstLast && current < (last - obj.paginationSize)){
-			tabIndex++;
-		}
-		if(obj.paginationShowPrevNext){
-			tabIndex++;
 		}
 		// add up HTML	
 		html += startHTML + middleHTML + endHTML;

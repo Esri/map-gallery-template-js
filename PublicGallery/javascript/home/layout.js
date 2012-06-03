@@ -83,8 +83,7 @@ function buildSortingMenu(){
 					dataSortOrder = 'data-sort-order="' + configOptions.sortOrder + '"';
 				}
 				// button html
-				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span tabindex="' + tabIndex + '" class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
-				tabIndex++;
+				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span tabindex="0" class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
 			}
 		html += '</ul>';
 	html += '</div>';
@@ -219,7 +218,6 @@ function showGroupAutoComplete(obj, data){
     var aResults = '';
 	var node;
     var partialMatch = dojo.query("#searchGroup").attr('value')[0];
-	var nextTabIndex = dojo.query("#searchGroup").attr('tabindex')[0];
     var regex = new RegExp('(' + partialMatch + ')','gi');
     if(data.results !== null){
 		dojo.query(".searchList").addClass('autoCompleteOpen');
@@ -233,8 +231,7 @@ function showGroupAutoComplete(obj, data){
             else{
                 layerClass = 'stripe';
             }
-			aResults += '<li tabindex="' + nextTabIndex + '" class="' + layerClass + '">' +  data.results[i].title.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
-			nextTabIndex++;
+			aResults += '<li tabindex="0" class="' + layerClass + '">' +  data.results[i].title.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
         }
         aResults += '</ul>';
 		node = dojo.byId('groupAutoComplete');
@@ -455,7 +452,7 @@ function buildMapPlaylist(obj,data){
 	}
 	else{
 		// No results
-		html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a tabindex="' + tabIndex + '" id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
+		html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a tabindex="0" id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
 		html += '<div class="clear"></div>';
 	}
 	// Insert HTML
@@ -480,14 +477,11 @@ function configLayoutSearch(){
 		if(configOptions.showGroupSearch){
 			html += '<ul id="searchListUL" class="searchList">';
 			html += '<li id="mapSearch" class="iconInput">';
-			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="" autocomplete="off" type="text" tabindex="' + tabIndex + '" />';	
-			tabIndex = tabIndex + 11;
-			html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
-			tabIndex++;
+			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="" autocomplete="off" type="text" tabindex="0" />';	
+			html += '<div tabindex="0" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
 			html += '</li>';
 			html += '<li title="' + i18n.viewer.groupPage.searchTitleShort + '" class="searchButtonLi">';	
-			html += '<span tabindex="' + tabIndex + '" id="searchGroupButton" class="silverButton buttonRight">';
-			tabIndex++;
+			html += '<span tabindex="0" id="searchGroupButton" class="silverButton buttonRight">';
 			html += '<span class="searchButton">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="groupSpinner" class="spinnerCon"></li>';
@@ -513,11 +507,9 @@ function configLayoutSearch(){
 			html += '<div class="toggleLayout">';
 			html += '<ul>';
 			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
-			html += '<span tabindex="' + tabIndex + '" class="silverButton buttonRight"><span class="listView">&nbsp;</span></span>';
-			tabIndex++;
+			html += '<span tabindex="0" class="silverButton buttonRight"><span class="listView">&nbsp;</span></span>';
 			html += '<li id="layoutGrid" class="' + gridClass + '" title="' + i18n.viewer.groupPage.gridSwitch + '">';
-			html += '<span tabindex="' + tabIndex + '" class="silverButton buttonLeft"><span class="gridView">&nbsp;</span></span>';
-			tabIndex++;
+			html += '<span tabindex="0" class="silverButton buttonLeft"><span class="gridView">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="layoutSpinner" class="spinnerCon"></li>';
 			html += '</li>';
@@ -665,27 +657,9 @@ function init(){
 			hideGroupAutoComplete();
 		}
 	});
-	// Autocomplete result click
-	dojo.query(document).delegate("#groupAutoComplete ul li", "onclick", function(event){
-		// hide auto complete
-		hideGroupAutoComplete();
-		// get result number
-		var locNum = dojo.indexOf(dojo.query('#groupAutoComplete ul li'), this);
-		// if map has a url
-		var mapURL;
-		if(ACObj[locNum].url){
-			mapURL = ACObj[locNum].url;
-		}
-		else{		
-			// item url
-			mapURL = getViewerURL(configOptions.mapViewer, ACObj[locNum].id);
-		}
-		// load map
-		window.location = mapURL;
-	});
-	// Autocomplete key up
-	dojo.query(document).delegate("#groupAutoComplete ul li", "onkeyup", function(e){
-		if(e.type === 'keyup' && e.keyCode === 13) {
+	// Autocomplete key up and click
+	dojo.query(document).delegate("#groupAutoComplete ul li", "onclick,keyup", function(e){
+		if(event.type === 'click' || (e.type === 'keyup' && e.keyCode === 13)){
 			// hide auto complete
 			hideGroupAutoComplete();
 			// get result number
