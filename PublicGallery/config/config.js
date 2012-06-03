@@ -1,5 +1,5 @@
 var configOptions = {
-   "development":true,
+   "development":false,
    "group":"1d1f24e8556642f49448f1c88b5a571b",
    "appid":"",
    "theme":"blueTheme",

@@ -31,7 +31,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d86932', end
 	background: linear-gradient(top, #db652c 0%, #c54417 44%, #af2302 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#db652c', endColorstr='#af2302', GradientType=0 );
 }
-.redTheme .mapButton:hover, .redTheme .buttonSelected, .redTheme .buttonSelected:hover {
+.redTheme .mapButton:hover, .redTheme .buttonSelected, .redTheme .buttonSelected:hover, .redTheme .mapButton:focus, .redTheme .buttonSelected:focus {
 	background: #af2302;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2FmMjMwMiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iI2M1NDQxNyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYjY1MmMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #af2302 0%, #c54417 56%, #db652c 100%);
@@ -108,7 +108,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1478c3', end
 	background: linear-gradient(top, #1393ff 0%, #004e9a 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1393ff', endColorstr='#004e9a', GradientType=0 );
 }
-.blueTheme .mapButton:hover, .blueTheme .buttonSelected, .blueTheme .buttonSelected:hover {
+.blueTheme .mapButton:hover, .blueTheme .buttonSelected, .blueTheme .buttonSelected:hover, .blueTheme .mapButton:focus, .blueTheme .buttonSelected:focus{
 	background: #004e9a;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzAwNGU5YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxMzkzZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #004e9a 0%, #1393ff 100%);
@@ -185,7 +185,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#339340', end
 	background: linear-gradient(top, #6fbf7d 0%, #0f5314 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fbf7d', endColorstr='#0f5314', GradientType=0 );
 }
-.greenTheme .mapButton:hover, .greenTheme .buttonSelected, .greenTheme .buttonSelected:hover {;
+.greenTheme .mapButton:hover, .greenTheme .buttonSelected, .greenTheme .buttonSelected:hover, .greenTheme .mapButton:focus, .greenTheme .buttonSelected:focus {
 	background: #0f5314;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzBmNTMxNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM2ZmJmN2QiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #0f5314 0%, #6fbf7d 100%);
@@ -237,14 +237,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fbf7d', end
 }
 .custom .mapHeader, .custom h2, .custom h2 a, .custom a, .custom h3, .custom h3 a {
 }
-.custom .pagination ul .selected .default, .custom .pagination ul .selected .default:hover {
-}
 .custom #header {
 	display: block;
 }
 .custom .mapButton {
 }
-.custom .mapButton:hover, .custom .buttonSelected, .custom .buttonSelected:hover {
+.custom .mapButton:hover, .custom .buttonSelected, .custom .buttonSelected:hover, .custom .mapButton:focus, .custom .buttonSelected:focus {
 }
 .custom .autoComplete li:hover, .custom .autoComplete li:focus {
 }
@@ -255,6 +253,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6fbf7d', end
 .esriPopup.custom .titlePane {
 }
 .esriPopup.custom a {
+}
+.esriPopup.custom .contentPane, .esriPopup.custom .actionsPane {
 }
 .esriPopup.custom .contentPane, .esriPopup.custom .actionsPane {
 }

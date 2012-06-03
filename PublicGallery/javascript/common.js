@@ -81,7 +81,7 @@ function clearAddress(obj){
 	// empty value
 	obj.attr('value', "");
 	// get reset node
-	var iconReset = obj.prev('.iconReset');
+	var iconReset = obj.next('.iconReset');
 	// remove active class
 	iconReset.removeClass('resetActive');
 	// add default class
@@ -94,7 +94,7 @@ function checkAddressStatus(obj){
 	// get value of node
 	var cAVal = dojo.query(obj).attr('value')[0];
 	// get reset node
-	var iconReset = dojo.query(obj).prev('.iconReset');
+	var iconReset = dojo.query(obj).next('.iconReset');
 	// if value is not empty
 	if(cAVal !== ''){
 		// add reset class
@@ -458,7 +458,8 @@ function insertFooterHTML(){
 function insertHeaderContent(){
 	var html = '';
 	var node = dojo.byId('templateNav');
-	html += '<li id="homeItem"><a title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
+	html += '<li id="homeItem"><a tabindex="' + tabIndex + '" title="' + configOptions.siteTitle + '" href="' + getViewerURL('index_page') + '" id="siteTitle">';
+	tabIndex++;
 	// if banner image
 	if(configOptions.siteBannerImage){
 		html += '<img alt="' + configOptions.siteTitle + '" title="' + configOptions.siteTitle + '" src="' + configOptions.siteBannerImage + '" />';
@@ -473,7 +474,8 @@ function insertHeaderContent(){
 	}
 	// if show about page
 	if(configOptions.showAboutPage){
-		html += '<li><a href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
+		html += '<li><a tabindex="' + tabIndex + '" href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
+		tabIndex++;
 	}
 	// insert HTML
 	setNodeHTML(node, html);
@@ -729,26 +731,36 @@ function createPagination(obj, totalItems, pagObject){
 		// class
 		var selectedClass = 'enabled';
 		if(i === current){
-			// IF SELECTED
+			// if selected
 			selectedClass = 'selected';
 		}
 		// page list item
-		return '<li title="' + i18n.viewer.pagination.page + ' ' +  dojo.number.format(i) + '" data-offset="' + i + '" class="' + selectedClass + '"><span class="default">' +  dojo.number.format(i) + '</span></li>';
+		return '<li tabindex="' + tabIndex + '" title="' + i18n.viewer.pagination.page + ' ' +  dojo.number.format(i) + '" data-offset="' + i + '" class="default ' + selectedClass + '">' +  dojo.number.format(i) + '</li>';
 	}
 	// variables
-	var html = '', startHTML = '', middleHTML = '', endHTML = '', current, first, previous, next, last, middleCount = 0, lastMiddle = 0, firstMiddle = 0, remainderStart, helipText = i18n.viewer.pagination.helip;
+	var html = '', startHTML = '', middleHTML = '', endHTML = '', current, first, previous, next, last, middleCount = 0, lastMiddle = 0, firstMiddle = 0, remainderStart, helipText = i18n.viewer.pagination.helip, paginationCount, npCount = 0;
 	// if pagination is necessary
 	if(obj.pagination && obj.perPage && totalItems > obj.perPage){
 		// create pagination list
 		html += '<ul>';
 		// determine offset links
 		current =  parseInt(obj.searchStart, 10);
+		// first link
 		first = 1;
+		// previous link
 		previous = current - 1;
+		// next link
 		next = current + 1;
+		// last link
 		last = Math.ceil(totalItems/obj.perPage);
+		// determine next and previous count
+		if(obj.paginationShowPrevNext){
+			npCount = 2;
+		}
+		// determine pagination total size
+		paginationCount = 1 + npCount + (2 * obj.paginationSize);
 		// if pages matches size of pagination
-		if(last === (3 + (2 * obj.paginationSize))){
+		if(last === paginationCount){
 			helipText = '';
 		}
 		// pagination previous
@@ -758,18 +770,20 @@ function createPagination(obj, totalItems, pagObject){
 				firstClass = 'enabled';
 				firstOffset = 'data-offset="' + previous + '"';
 			}
-			startHTML += '<li title="' + i18n.viewer.pagination.previous + '" class="previous ' + firstClass + '" ' + firstOffset + '><span class="silverButton buttonLeft"><span>&nbsp;</span></span></li>';
+			startHTML += '<li tabindex="' + tabIndex + '" title="' + i18n.viewer.pagination.previous + '" class="silverButton buttonLeft previous ' + firstClass + '" ' + firstOffset + '><span>&nbsp;</span></li>';
+			tabIndex++;
 		}
 		// pagination first page
 		if(obj.paginationShowFirstLast && current > (obj.paginationSize + 1)){
-			startHTML += '<li class="enabled" title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '"><span class="default">' +  dojo.number.format(first) + helipText + '</span></li>';
+			startHTML += '<li tabindex="' + tabIndex + '" class="default enabled" title="' + i18n.viewer.pagination.first + '" data-offset="' + first + '">' +  dojo.number.format(first) + helipText + '</li>';
+			tabIndex++;
 		}
 		else{
 			middleCount = middleCount - 1;
 		}
 		// pagination last page
 		if(obj.paginationShowFirstLast && current < (last - obj.paginationSize)){
-			endHTML += '<li class="enabled" title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '"><span class="default">' +  helipText + dojo.number.format(last) + '</span></li>';
+			endHTML += '<li tabindex="' + (tabIndex + (paginationCount - 1)) + '" class="default enabled" title="' + i18n.viewer.pagination.last + '" data-offset="' + last + '">' +  helipText + dojo.number.format(last) + '</li>';
 		}
 		else{
 			middleCount = middleCount - 1;
@@ -781,7 +795,7 @@ function createPagination(obj, totalItems, pagObject){
 				lastClass = 'enabled';
 				lastOffset = 'data-offset="' + next + '"';
 			}
-			endHTML += '<li title="' + i18n.viewer.pagination.next + '" class="next ' + lastClass + '" ' + lastOffset + '><span class="silverButton buttonRight"><span>&nbsp;</span></span></li>';
+			endHTML += '<li tabindex="' + (tabIndex + paginationCount) + '" title="' + i18n.viewer.pagination.next + '" class="silverButton buttonRight next ' + lastClass + '" ' + lastOffset + '><span>&nbsp;</span></li>';
 		}
 		// create each pagination item
 		for(var i=1; i <= last; ++i) {
@@ -791,6 +805,7 @@ function createPagination(obj, totalItems, pagObject){
 				}
 				middleHTML += createMiddleItem(i, current);
 				middleCount++;
+				tabIndex++;
 				lastMiddle = i;
 			}
 		}
@@ -809,6 +824,7 @@ function createPagination(obj, totalItems, pagObject){
 				middleHTML = createMiddleItem(remainderStart, current) + middleHTML;
 				// increase middle count
 				middleCount++;
+				tabIndex++;
 				// decrease remainder start
 				remainderStart--;
 			}
@@ -828,9 +844,16 @@ function createPagination(obj, totalItems, pagObject){
 				middleHTML += createMiddleItem(remainderStart, current);
 				// increase middle count
 				middleCount++;
+				tabIndex++;
 				// increase remainder start
 				remainderStart++;
 			}
+		}
+		if(obj.paginationShowFirstLast && current < (last - obj.paginationSize)){
+			tabIndex++;
+		}
+		if(obj.paginationShowPrevNext){
+			tabIndex++;
 		}
 		// add up HTML	
 		html += startHTML + middleHTML + endHTML;

@@ -128,24 +128,28 @@ function tabMenu(menuObj, buttonObj){
 function setInnerMapButtons(){
 	var html = '';
 	// fullscreen button
-	html += '<div title="' + i18n.viewer.mapPage.enterFullscreen + '" class="mapButton buttonSingle" id="fullScreen"><span class="fullScreenButton">&nbsp;</span></div>';
+	html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.mapPage.enterFullscreen + '" class="mapButton buttonSingle" id="fullScreen"><span class="fullScreenButton">&nbsp;</span></div>';
 	// fullscreen button
-	dojo.query(document).delegate("#fullScreen", "onclick", function(event){
-		// if currently in full screen
-		if(!mapFullscreen){
-			// enter fullscreen
-			toggleFullscreenMap(true);
-		}
-		else{
-			// exit fullscreen
-			toggleFullscreenMap(false);
+	dojo.query(document).delegate("#fullScreen", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			// if currently in full screen
+			if(!mapFullscreen){
+				// enter fullscreen
+				toggleFullscreenMap(true);
+			}
+			else{
+				// exit fullscreen
+				toggleFullscreenMap(false);
+			}
 		}
     });
 	// if gelocation is available
 	if(navigator.geolocation){
-		html += '<div id="geoButton" title="' + i18n.viewer.mapPage.geoLocateTitle + '" class="mapButton buttonSingle"><span class="geoLocateButton">&nbsp;</span></div>';
-		dojo.query(document).delegate("#geoButton", "onclick", function(event){
-			navigator.geolocation.getCurrentPosition(geoLocateMap);
+		html += '<div tabindex="' + tabIndex + '" id="geoButton" title="' + i18n.viewer.mapPage.geoLocateTitle + '" class="mapButton buttonSingle"><span class="geoLocateButton">&nbsp;</span></div>';
+		dojo.query(document).delegate("#geoButton", "onclick,keyup", function(event){
+			if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+				navigator.geolocation.getCurrentPosition(geoLocateMap);
+			}
 		});
 	}
 	// insert html
@@ -163,12 +167,16 @@ function hideAutoComplete(){
 /*------------------------------------*/
 function setMapContent(){
     // show about button click
-	dojo.query(document).delegate("#showAbout", "onclick", function(event){
-        tabMenu('#aboutMenu',this);
+	dojo.query(document).delegate("#showAbout", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			tabMenu('#aboutMenu',this);
+		}
     });
 	// show legend button click
-	dojo.query(document).delegate("#showLegend", "onclick", function(event){
-		tabMenu('#legendMenu',this);
+	dojo.query(document).delegate("#showLegend", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			tabMenu('#legendMenu',this);
+		}
 	});
 	// escape button when in full screen view
 	dojo.query(document).delegate("body", "onkeyup", function(e){
@@ -181,18 +189,22 @@ function setMapContent(){
 	// set map buttons
 	setInnerMapButtons();
 	// Search Button
-	dojo.query(document).delegate("#searchAddressButton", "onclick", function(event){
-		locate();
-		hideAutoComplete();
+	dojo.query(document).delegate("#searchAddressButton", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			locate();
+			hideAutoComplete();
+		}
 	});
 	// listener for address key up
 	dojo.query(document).delegate(".iconInput input", "onkeyup", function(e){
 		checkAddressStatus(this);
 	});
 	// Clear address button
-	dojo.query(document).delegate(".iconInput .iconReset", "onclick", function(event){
-		var obj = dojo.query(this).nextAll('input');
-		clearAddress(obj);
+	dojo.query(document).delegate(".iconInput .iconReset", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			var obj = dojo.query(this).prevAll('input');
+			clearAddress(obj);
+		}
 	});
 	// auto complete && address specific action listeners
 	dojo.query(document).delegate("#searchAddress", "onkeyup", function(e){
@@ -249,9 +261,11 @@ function setMapContent(){
 		}
 	});
 	// clear address
-	dojo.query(document).delegate("#clearAddress", "onclick", function(event){
-		clearLocate();
-		hideAutoComplete();
+	dojo.query(document).delegate("#clearAddress", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			clearLocate();
+			hideAutoComplete();
+		}
 	});
 	// toggle legend layers
 	dojo.query(document).delegate("#mapLayerToggle .toggleLayers", "onclick", function(event){
@@ -266,7 +280,8 @@ function setMapContent(){
 /*------------------------------------*/
 function showAutoComplete(geocodeResults){
     var aResults = '';
-    var partialMatch = dojo.query("#searchAddress").attr('value')[0]; 
+    var partialMatch = dojo.query("#searchAddress").attr('value')[0];
+	var nextTabIndex = dojo.query("#searchAddress").attr('tabindex')[0];
     var regex = new RegExp('(' + partialMatch + ')','gi');
     if(geocodeResults !== null){
 		dojo.query(".searchList").addClass('autoCompleteOpen');
@@ -280,7 +295,8 @@ function showAutoComplete(geocodeResults){
             else{
                 layerClass = 'stripe';
             }
-			aResults += '<li tabindex="' + (i + 2) + '" class="' + layerClass + '">' + geocodeResults[i].address.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
+			aResults += '<li tabindex="' + nextTabIndex + '" class="' + layerClass + '">' + geocodeResults[i].address.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
+			nextTabIndex++;
         }
         aResults += '</ul>';
         if(geocodeResults.length > 0){
@@ -427,7 +443,7 @@ function showResults(geocodeResults, resultNumber){
 function createBasemapGallery() {
 	var html = '';
 	// insert HTML for basemap
-	html += '<div class="silverButton buttonSingle" id="basemapButton"><span class="basemapArrowButton">&nbsp;</span>' + i18n.viewer.mapPage.switchBasemap + '</div>';
+	html += '<div tabindex="' + tabIndex + '" class="silverButton buttonSingle" id="basemapButton"><span class="basemapArrowButton">&nbsp;</span>' + i18n.viewer.mapPage.switchBasemap + '</div>';
 	html += '<div class="clear"></div>';
 	html += '<div id="basemapGallery"></div>';
 	// if node exists
@@ -452,23 +468,25 @@ function createBasemapGallery() {
 		dialog.show();
 	});
 	// toggle basemap button
-	dojo.query(document).delegate("#basemapButton", "onclick", function(event){
-		// get nodes
-		var buttonNode = dojo.query(this);
-		var node = dojo.byId('basemapGallery');
-		// if they exist
-		if(node && buttonNode){
-			// remove classes
-			buttonNode.removeClass('buttonSelected open');
-			// if already shown
-			if(dojo.style(node, 'display') === 'block'){
-				// hide
-				dojo.style(node, 'display', 'none');
-			}
-			else{
-				// show and add class
-				dojo.style(node, 'display', 'block');
-				buttonNode.addClass('buttonSelected open');
+	dojo.query(document).delegate("#basemapButton", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			// get nodes
+			var buttonNode = dojo.query(this);
+			var node = dojo.byId('basemapGallery');
+			// if they exist
+			if(node && buttonNode){
+				// remove classes
+				buttonNode.removeClass('buttonSelected open');
+				// if already shown
+				if(dojo.style(node, 'display') === 'block'){
+					// hide
+					dojo.style(node, 'display', 'none');
+				}
+				else{
+					// show and add class
+					dojo.style(node, 'display', 'block');
+					buttonNode.addClass('buttonSelected open');
+				}
 			}
 		}
     });
@@ -482,10 +500,11 @@ function setAddressContainer(){
 	if(configOptions.locatorserviceurl && configOptions.showMapSearch){
 		html += '<ul class="searchList">';
 			html += '<li id="mapSearch" class="iconInput">';
-				html += '<div title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
-				html += '<input placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
+				html += '<input tabindex="' + tabIndex + '" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
+				tabIndex = tabIndex + 21;
+				html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
 			html += '</li>';
-			html += '<li class="searchButtonLi" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddressButton"><span class="silverButton buttonRight"><span class="searchButton">&nbsp;</span></span></li>';
+			html += '<li class="searchButtonLi" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddressButton"><span tabindex="' + tabIndex + '" class="silverButton buttonRight"><span class="searchButton">&nbsp;</span></span></li>';
 			html += '<li id="locateSpinner" class="spinnerCon"></li>';
 		html += '</ul>';
 		html += '<div class="clear"></div>';
@@ -510,8 +529,8 @@ function setAddressContainer(){
 /*------------------------------------*/
 function insertMenuTabs(){
 	var html = '';
-	html += '<div title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected">' + i18n.viewer.sidePanel.legendButton + '</div>';
-	html += '<div title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight">' + i18n.viewer.sidePanel.aboutButton + '</div>';
+	html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected">' + i18n.viewer.sidePanel.legendButton + '</div>';
+	html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight">' + i18n.viewer.sidePanel.aboutButton + '</div>';
 	html += '<div class="clear"></div>';
 	// Set
 	var node = dojo.byId("tabMenu");
@@ -524,22 +543,22 @@ function addBottomMapButtons(){
 	var html = '';
 	if(configOptions.showExplorerButton && !isMobileUser()){
 		// add open in explorer button
-		html += '<a target="_blank" href="' + getViewerURL('explorer', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInExplorer + '</a>';
+		html += '<a tabindex="' + tabIndex + '" target="_blank" href="' + getViewerURL('explorer', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInExplorer + '</a>';
 	}
 	if(configOptions.showArcGISOnlineButton){
 		// add open in arcgis button
-		html += '<a target="_blank" href="' + getViewerURL('arcgis', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';
+		html += '<a tabindex="' + tabIndex + '" target="_blank" href="' + getViewerURL('arcgis', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';
 	}
 	// If mobile user
 	if(isMobileUser() && configOptions.showMobileButtons){
 		// get item url
 		var itemURL = getViewerURL('mobile', configOptions.webmap);
 		// add button
-		html += '<a href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
+		html += '<a tabindex="' + tabIndex + '" href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
 		// app url
 		var appUrl = getViewerURL('mobile_app');
 		// add app button
-		html += '<a href="' + appUrl + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.getMobileApp + '</a>';
+		html += '<a tabindex="' + tabIndex + '" href="' + appUrl + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.getMobileApp + '</a>';
 	}
 	if(html === ''){
 		html = '&nbsp;';
@@ -822,7 +841,7 @@ function initMap() {
 									checked = 'checked="checked"';
 								}
 								// check column
-								html += '<td class="checkColumn"><input class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								html += '<td class="checkColumn"><input tabindex="' + tabIndex + '" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
 								for(k=0; k < layers[j].featureCollection.layers.length; k++){
 									html += layers[j].featureCollection.layers[k].id;
 									// if not last
@@ -842,7 +861,7 @@ function initMap() {
 									checked = 'checked="checked"';
 								}
 								// check column
-								html += '<td class="checkColumn"><input class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+								html += '<td class="checkColumn"><input tabindex="' + tabIndex + '" class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
 								html += layers[j].id;
 								html += '" /></td>';
 								// label column

@@ -83,7 +83,8 @@ function buildSortingMenu(){
 					dataSortOrder = 'data-sort-order="' + configOptions.sortOrder + '"';
 				}
 				// button html
-				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
+				html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span tabindex="' + tabIndex + '" class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
+				tabIndex++;
 			}
 		html += '</ul>';
 	html += '</div>';
@@ -93,32 +94,34 @@ function buildSortingMenu(){
 	// insert html
 	setNodeHTML(node, html);
 	// sort map gallery bar
-	dojo.query(document).delegate("#sortGallery .sort", "onclick", function(event){
-		// get nodes
-		var buttonNode = dojo.query(this);
-		// if button exists
-		if(buttonNode){
-			// variables for attributes
-			var sortColumn = buttonNode.attr("data-sort-field")[0];
-			var defaultOrder = buttonNode.attr("data-default-order")[0];
-			var sortOrder = buttonNode.attr("data-sort-order")[0];
-			// sort field
-			configOptions.sortField = sortColumn;
-			// sort order
-			if(sortOrder){
-				configOptions.sortOrder = reverseSortOrder(sortOrder);
+	dojo.query(document).delegate("#sortGallery .sort", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			// get nodes
+			var buttonNode = dojo.query(this);
+			// if button exists
+			if(buttonNode){
+				// variables for attributes
+				var sortColumn = buttonNode.attr("data-sort-field")[0];
+				var defaultOrder = buttonNode.attr("data-default-order")[0];
+				var sortOrder = buttonNode.attr("data-sort-order")[0];
+				// sort field
+				configOptions.sortField = sortColumn;
+				// sort order
+				if(sortOrder){
+					configOptions.sortOrder = reverseSortOrder(sortOrder);
+				}
+				else{
+					configOptions.sortOrder = defaultOrder;
+				}
+				// remove classes and data sort order
+				dojo.query("#sortGallery .sort").removeClass('asc desc active').attr('data-sort-order','');
+				// set sort order
+				buttonNode.attr("data-sort-order", configOptions.sortOrder);
+				// set current to active
+				buttonNode.addClass(configOptions.sortOrder + ' active');
+				// get maps
+				queryMaps();
 			}
-			else{
-				configOptions.sortOrder = defaultOrder;
-			}
-			// remove classes and data sort order
-			dojo.query("#sortGallery .sort").removeClass('asc desc active').attr('data-sort-order','');
-			// set sort order
-			buttonNode.attr("data-sort-order", configOptions.sortOrder);
-			// set current to active
-			buttonNode.addClass(configOptions.sortOrder + ' active');
-			// get maps
-			queryMaps();
 		}
     });
 }
@@ -216,6 +219,7 @@ function showGroupAutoComplete(obj, data){
     var aResults = '';
 	var node;
     var partialMatch = dojo.query("#searchGroup").attr('value')[0];
+	var nextTabIndex = dojo.query("#searchGroup").attr('tabindex')[0];
     var regex = new RegExp('(' + partialMatch + ')','gi');
     if(data.results !== null){
 		dojo.query(".searchList").addClass('autoCompleteOpen');
@@ -229,7 +233,8 @@ function showGroupAutoComplete(obj, data){
             else{
                 layerClass = 'stripe';
             }
-          aResults += '<li tabindex="' + (i + 2) + '" class="' + layerClass + '">' +  data.results[i].title.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
+			aResults += '<li tabindex="' + nextTabIndex + '" class="' + layerClass + '">' +  data.results[i].title.replace(regex,'<span>' + partialMatch + '</span>')  + '</li>';
+			nextTabIndex++;
         }
         aResults += '</ul>';
 		node = dojo.byId('groupAutoComplete');
@@ -427,8 +432,8 @@ function buildMapPlaylist(obj,data){
 				}
 				// Build grid item
 				html += '<div class="grid_3' + itemClass + '">';
-					html += '<div class="item' + appClass + '">';
-						html += '<a ' + linkTarget + ' id="mapItem' + i + '" title="' + snippet + '" href="' + itemURL + '">';
+					//html += '<div class="item' + appClass + '">';
+						html += '<a class="item' + appClass + '" ' + linkTarget + ' id="mapItem' + i + '" title="' + snippet + '" href="' + itemURL + '">';
 							if(externalLink){
 								html += '<span class="externalIcon"></span>';
 							}
@@ -438,7 +443,7 @@ function buildMapPlaylist(obj,data){
 							html += '<img class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 							html += '<span class="itemTitle">' + itemTitle + '</span>';
 						html += '</a>';
-					html += '</div>';
+					//html += '</div>';
 				html += '</div>';
 				if(endRow){
 					html += '<div class="clear"></div>';
@@ -450,7 +455,7 @@ function buildMapPlaylist(obj,data){
 	}
 	else{
 		// No results
-		html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
+		html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a tabindex="' + tabIndex + '" id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
 		html += '<div class="clear"></div>';
 	}
 	// Insert HTML
@@ -474,12 +479,15 @@ function configLayoutSearch(){
 		html += '<div id="searchListCon" class="grid_5 alpha">';
 		if(configOptions.showGroupSearch){
 			html += '<ul id="searchListUL" class="searchList">';
-			html += '<li id="mapSearch" class="iconInput">';	
-			html += '<div title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';	
-			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="" autocomplete="off" type="text" tabindex="1" />';	
+			html += '<li id="mapSearch" class="iconInput">';
+			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="" autocomplete="off" type="text" tabindex="' + tabIndex + '" />';	
+			tabIndex = tabIndex + 11;
+			html += '<div tabindex="' + tabIndex + '" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
+			tabIndex++;
 			html += '</li>';
 			html += '<li title="' + i18n.viewer.groupPage.searchTitleShort + '" class="searchButtonLi">';	
-			html += '<span id="searchGroupButton" class="silverButton buttonRight">';
+			html += '<span tabindex="' + tabIndex + '" id="searchGroupButton" class="silverButton buttonRight">';
+			tabIndex++;
 			html += '<span class="searchButton">&nbsp;</span></span>';
 			html += '</li>';
 			html += '<li id="groupSpinner" class="spinnerCon"></li>';
@@ -505,9 +513,11 @@ function configLayoutSearch(){
 			html += '<div class="toggleLayout">';
 			html += '<ul>';
 			html += '<li id="layoutList" class="' + listClass + '" title="' + i18n.viewer.groupPage.listSwitch + '">';
-			html += '<span class="silverButton buttonRight"><span class="listView">&nbsp;</span></span>';
+			html += '<span tabindex="' + tabIndex + '" class="silverButton buttonRight"><span class="listView">&nbsp;</span></span>';
+			tabIndex++;
 			html += '<li id="layoutGrid" class="' + gridClass + '" title="' + i18n.viewer.groupPage.gridSwitch + '">';
-			html += '<span class="silverButton buttonLeft"><span class="gridView">&nbsp;</span></span>';
+			html += '<span tabindex="' + tabIndex + '" class="silverButton buttonLeft"><span class="gridView">&nbsp;</span></span>';
+			tabIndex++;
 			html += '</li>';
 			html += '<li id="layoutSpinner" class="spinnerCon"></li>';
 			html += '</li>';
@@ -541,62 +551,76 @@ function init(){
 	queryGroup(function(){
 		// insert home items
 		insertHomeContent();
+		// Configure grid/list and search
+		configLayoutSearch();
+		//	TODO
+		if(configOptions.development){
+			buildSortingMenu();
+		}
 		// query for maps
 		queryMaps();
 	});
-	// Configure grid/list and search
-	configLayoutSearch();
 	// Featured maps pagination onclick function
-	dojo.query('#maps_pagination').delegate("ul .enabled", "onclick", function(event){
-		// clicked
-		dojo.query(this).addClass('clicked');
-		var placeDom = dojo.query("#maps_pagination ul");
-		// add loading spinner
-		addSpinner("paginationSpinner");
-		// get offset number
-        var data_offset = dojo.query(this).attr('data-offset')[0];
-		dataOffset = data_offset;
-		// query maps function
-		queryMaps(data_offset,searchVal);
+	dojo.query('#maps_pagination').delegate("ul .enabled", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			// clicked
+			dojo.query(this).addClass('clicked');
+			var placeDom = dojo.query("#maps_pagination ul");
+			// add loading spinner
+			addSpinner("paginationSpinner");
+			// get offset number
+			var data_offset = dojo.query(this).attr('data-offset')[0];
+			dataOffset = data_offset;
+			// query maps function
+			queryMaps(data_offset,searchVal);
+		}
     });
 	// search button
-	dojo.query(document).delegate("#searchGroupButton", "onclick", function(event){
+	dojo.query(document).delegate("#searchGroupButton", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 		var textVal = dojo.query("#searchGroup").attr('value')[0];
-		if(textVal !== prevVal){
-			searchVal = textVal;
-			addSpinner("groupSpinner");
-			queryMaps(1,textVal);
-			prevVal = searchVal;
+			if(textVal !== prevVal){
+				searchVal = textVal;
+				addSpinner("groupSpinner");
+				queryMaps(1,textVal);
+				prevVal = searchVal;
+			}
 		}
 	});
 	// search reset button
-	dojo.query(document).delegate("#clearAddress, #resetGroupSearch", "onclick", function(event){
-		dojo.query('#clearAddress').removeClass('resetActive');
-		dojo.query("#searchGroup").attr('value', '');
-		searchVal = '';
-		addSpinner("groupSpinner");
-		queryMaps(1,'');
-		prevVal = searchVal;
-		hideGroupAutoComplete();
+	dojo.query(document).delegate("#clearAddress, #resetGroupSearch", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			dojo.query('#clearAddress').removeClass('resetActive');
+			dojo.query("#searchGroup").attr('value', '');
+			searchVal = '';
+			addSpinner("groupSpinner");
+			queryMaps(1,'');
+			prevVal = searchVal;
+			hideGroupAutoComplete();
+		}
 	});
 	// list view
-	dojo.query(document).delegate("#layoutList", "onclick", function(event){
-		if(configOptions.defaultLayout !== 'list'){
-			configOptions.defaultLayout = 'list';
-			dojo.query('.toggleLayout li').removeClass('active');
-			dojo.query(this).addClass('active');
-			addSpinner("layoutSpinner");
-			queryMaps(dataOffset,searchVal);
+	dojo.query(document).delegate("#layoutList", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			if(configOptions.defaultLayout !== 'list'){
+				configOptions.defaultLayout = 'list';
+				dojo.query('.toggleLayout li').removeClass('active');
+				dojo.query(this).addClass('active');
+				addSpinner("layoutSpinner");
+				queryMaps(dataOffset,searchVal);
+			}
 		}
 	});
 	// grid view
-	dojo.query(document).delegate("#layoutGrid", "onclick", function(event){
-		if(configOptions.defaultLayout !== 'grid'){
-			configOptions.defaultLayout = 'grid';
-			dojo.query('.toggleLayout li').removeClass('active');
-			dojo.query(this).addClass('active');
-			addSpinner("layoutSpinner");
-			queryMaps(dataOffset,searchVal);
+	dojo.query(document).delegate("#layoutGrid", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			if(configOptions.defaultLayout !== 'grid'){
+				configOptions.defaultLayout = 'grid';
+				dojo.query('.toggleLayout li').removeClass('active');
+				dojo.query(this).addClass('active');
+				addSpinner("layoutSpinner");
+				queryMaps(dataOffset,searchVal);
+			}
 		}
 	});
 	// listener for address key up
@@ -604,9 +628,11 @@ function init(){
 		checkAddressStatus(this);
 	});
 	// Reset X click
-	dojo.query(document).delegate(".iconInput .iconReset", "onclick", function(event){
-		var obj = dojo.query(this).nextAll('input');
-		clearAddress(obj);
+	dojo.query(document).delegate(".iconInput .iconReset", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			var obj = dojo.query(this).prevAll('input');
+			clearAddress(obj);
+		}
 	});
 	// auto complete && address specific action listeners
 	dojo.query(document).delegate("#searchGroup", "onkeyup", function(e){
@@ -683,8 +709,4 @@ function init(){
 			dojo.query(this).prev('li')[0].focus();
 		}
 	});
-	//	TODO
-	if(configOptions.development){
-		buildSortingMenu();
-	}
 }

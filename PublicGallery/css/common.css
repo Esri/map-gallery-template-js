@@ -58,7 +58,7 @@ h2, h2 a {
 	font-variant:normal;
 	text-decoration:none;
 }
-h2 a:hover {
+h2 a:hover, h2 a:focus {
 	text-decoration:underline;
 }
 h3, h3 a {
@@ -71,7 +71,7 @@ h3, h3 a {
 	margin:15px 0 4px 0;
 	text-decoration:none;
 }
-h3 a:hover {
+h3 a:hover, h3 a:focus {
 	text-decoration:underline;
 }
 h4,h5,h6{
@@ -112,14 +112,14 @@ h4,h5,h6{
 	font-size:18px;
 	text-decoration:none;
 }
-.mapPage h2 a:hover {
+.mapPage h2 a:hover, .mapPage h2 a:focus {
 	text-decoration:underline;
 }
 .mapPage h3, .mapPage h3 a {
 	font-size:16px;
 	text-decoration:none;
 }
-.mapPage h2 a:hover {
+.mapPage h2 a:hover, .mapPage h2 a:focus{
 	text-decoration:underline;
 }
 ul {
@@ -132,7 +132,7 @@ a {
 	text-decoration:none;
 	outline:0;
 }
-a:hover {
+a:hover, a:focus {
 	color:#000;
 	text-decoration:underline;
 }
@@ -254,7 +254,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .esriRtl #header ul li a {
 	text-align: right;
 }
-#header ul li a:hover {
+#header ul li a:hover, #header ul li a:focus {
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
@@ -388,7 +388,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #resetGroupSearch {
 	cursor:pointer;
 }
-#resetGroupSearch:hover {
+#resetGroupSearch:hover, #resetGroupSearch:focus{
 	text-decoration:underline;
 }
 #groupSortOptions {
@@ -407,6 +407,21 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-moz-box-shadow: 0px 0px 6px #ccc;
 	-webkit-box-shadow: 0px 0px 6px #ccc;
 	box-shadow: 0px 0px 6px #ccc;
+	display:block;
+	border:0;
+	text-decoration:none;
+	color:#404040;
+	outline:0;
+	cursor:pointer;
+}
+.mapsGrid .item:hover, .mapsGrid .item:focus {
+	-moz-box-shadow: 0px 0px 6px #999;
+	-webkit-box-shadow: 0px 0px 6px #999;
+	box-shadow: 0px 0px 6px #999;
+	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
+	-moz-transition:-moz-box-shadow 0.25s ease-in;
+	-o-transition:box-shadow 0.25s ease-in;
+	transition:box-shadow 0.25s ease-in;
 }
 .mapsGrid .item .summaryHidden{
 	zoom:1;
@@ -426,7 +441,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .mapsGrid .item .summaryHidden strong{
 	display:block;
 }
-.mapsGrid .item:hover .summaryHidden{
+.mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden{
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
@@ -451,18 +466,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	margin-right:14px;
 	margin-left:0;
 }
-.mapsGrid .item a {
-	display:block;
-	border:0;
-	text-decoration:none;
-	color:#404040;
-	outline:0;
-	width:200px;
-	cursor:pointer;
-}
-.mapsGrid .externalLink a {
-	position:relative;
-}
 .mapsGrid .item .gridImg {
 	width:200px;
 	height:133px;
@@ -471,16 +474,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
 	opacity:1;
 }
-.mapsGrid .item:hover {
-	-moz-box-shadow: 0px 0px 6px #999;
-	-webkit-box-shadow: 0px 0px 6px #999;
-	box-shadow: 0px 0px 6px #999;
-	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
-	-moz-transition:-moz-box-shadow 0.25s ease-in;
-	-o-transition:box-shadow 0.25s ease-in;
-	transition:box-shadow 0.25s ease-in;
-}
-.mapsGrid .item:hover .gridImg {
+.mapsGrid .item:hover .gridImg, .mapsGrid .item:focus .gridImg {
 	background-image:none;
 	opacity:0.75;
 	-webkit-transition:opacity 0.25s ease-in;
@@ -497,6 +491,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	text-overflow: ellipsis;
 	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
+}
+.mapsGrid .externalLink{
+	position:relative;
 }
 .mapsGrid .externalLink .externalIcon {
 	display: block;
@@ -594,14 +591,14 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .mapsList .item .itemInfo p a{
 	text-decoration:underline;
 }
-.mapsList .item .itemInfo a:hover {
+.mapsList .item .itemInfo a:hover, .mapsList .item .itemInfo a:focus {
 	color:#999;
 	text-decoration:none;
 }
 .mapsList .item .itemInfo p {
 	margin:0 0 6px 0;
 }
-.mapsList .item img {
+.mapsList .item .block img {
 	width:200px;
 	height:133px;
 	display:block;
@@ -609,7 +606,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	opacity:1;
 	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
 }
-.mapsList img:hover {
+.mapsList .block:hover img, .mapsList .block:focus img{
 	background-image:none;
 	opacity:.75;
 	-webkit-transition:opacity 0.25s ease-in;
@@ -652,7 +649,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .dataLayers ul li a {
 	text-decoration:none;
 }
-.dataLayers ul li a:hover {
+.dataLayers ul li a:hover, .dataLayers ul li a:focus {
 	text-decoration:underline;
 }
 .dataLayers .dataLayersButton {
@@ -740,7 +737,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	right:auto;
 	left:5px;
 }
-.searchList .iconInput .resetActive:hover {
+.searchList .iconInput .resetActive:hover, .searchList .iconInput .resetActive:focus {
 	opacity:0.75;
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
@@ -807,7 +804,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	background:url(../images/ui/logoBorder.jpg) repeat-y top left;
 }
 .esriRtl #footer .footBorder {
-	background:url(../images/ui/logoBorder.jpg) repeat-y top right;
+	background:url(../images/ui/logoBorderRTL.jpg) repeat-y top right;
 }
 #yourLogo {
 	display:inline-block;
@@ -833,7 +830,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
-#yourLogo img:hover {
+#yourLogo:hover img, #yourLogo:focus img{
 	opacity:.75;
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
@@ -848,7 +845,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #footer a:hover, #footer a:active, #footer a:visited {
 	color:#fff;
 }
-#footer a:hover {
+#footer a:hover, #footer a:focus {
 	text-decoration:none;
 }
 /*-------------------------------------------------- */
@@ -1040,7 +1037,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /*-------------------------------------------------- */
 /* BUTTONS  */
 /*-------------------------------------------------- */
-.silverButton, .disabled .silverButton:hover {
+.silverButton, .pagination .disabled:hover, .pagination .disabled:focus {
 	zoom: 1;
 	display:inline-block;
 	vertical-align:middle;
@@ -1071,10 +1068,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	-webkit-box-shadow: 0px 0px 6px #ccc;
 	box-shadow: 0px 0px 6px #ccc;
 }
-.disabled .silverButton, .disabled .silverButton:hover {
+.pagination .disabled, .pagination .disabled:hover, .pagination .disabled:focus {
 	cursor: default;
 }
-.silverButton:hover {
+.silverButton:hover, .silverButton:focus {
 	background: #c3c3c3;
 	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2MzYzNjMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
 	background: -moz-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
@@ -1121,7 +1118,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	-webkit-box-shadow: 0px 0px 6px #ccc;
 	box-shadow: 0px 0px 6px #ccc;
 }
-.mapButton:hover {
+.mapButton:hover, .mapButton:focus {
 	text-decoration:none;
 	color:#fff;
 }
@@ -1157,7 +1154,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', end
 	-webkit-box-shadow: 0px 0px 6px #ccc;
 	box-shadow: 0px 0px 6px #ccc;
 }
-.toggleButton:hover {
+.toggleButton:hover, .toggleButton:focus {
 	border-top:none;
 	border-bottom:1px solid #fff;
 	background: #b9b9b9;
@@ -1170,7 +1167,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', end
 	background: linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', endColorstr='#dbdbdb', GradientType=0 );
 }
-.buttonSelected, .buttonSelected:hover {
+.buttonSelected, .buttonSelected:hover, .buttonSelected:focus {
 	cursor:default;
 	border-bottom:none;
 	color:#fff !important;
@@ -1292,7 +1289,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	z-index:38;
 }
 /*-------------------------------------------------- */
-/* New Pagination */
+/* Pagination */
 /*-------------------------------------------------- */
 .pagination {
 	margin:0 0 20px 0;
@@ -1304,16 +1301,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 }
 .pagination ul li {
 	float:left;
-	padding:0;
+	display:block;
 	font-size:12px;
 	line-height:14px;
-	padding:0;
 	margin:0;
 }
 .esriRtl .pagination ul li {
 	float:right;
 }
-.pagination ul li .default {
+.pagination ul .default {
 	display:inline-block;
 	padding:5px;
 	cursor:pointer;
@@ -1326,12 +1322,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	-webkit-box-shadow: 6px 0px 6px #ccc;
 	box-shadow: 6px 0px 6px #ccc;
 }
-.esriRtl .pagination ul li .default {
+.esriRtl .pagination ul .default {
 	-moz-box-shadow: -6px 0px 6px #ccc;
 	-webkit-box-shadow: -6px 0px 6px #ccc;
 	box-shadow: -6px 0px 6px #ccc;
 }
-.pagination ul .selected .default, .pagination ul .selected .default:hover {
+.pagination ul .default:hover, .pagination ul .default:focus {
+	background-color:#ccc;
+	color:#333;
+	-webkit-transition:background-color 0.25s ease-in;
+	-moz-transition:background-color 0.25s ease-in;
+	-o-transition:background-color 0.25s ease-in;
+	transition:background-color 0.25s ease-in;
+}
+.pagination ul .selected, .pagination ul .selected:hover, .pagination ul .selected:focus  {
 	cursor:default;
 	font-weight:bold;
 	color:#fff;
@@ -1347,23 +1351,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	border-bottom:1px solid #6a6a6a;
 	border-top:1px solid #6a6a6a;
 }
-.pagination ul .next .silverButton {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
-}
-.pagination ul .previous .silverButton {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
-}
-.esriRtl .pagination ul .next .silverButton {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
-}
-.esriRtl .pagination ul .previous .silverButton {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
-}
-.pagination ul .next .silverButton span {
+.pagination ul .next span {
 	display:inline-block;
 	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -35px -1px;
@@ -1371,7 +1359,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	width:12px;
 	overflow:hidden;
 }
-.pagination ul .previous .silverButton span {
+.pagination ul .previous span {
 	display:inline-block;
 	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -18px -1px;
@@ -1379,51 +1367,13 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	width:12px;
 	overflow:hidden;
 }
-.esriRtl .pagination ul .next .silverButton span {
+.esriRtl .pagination ul .next span {
 	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -18px -1px;
 }
-.esriRtl .pagination ul .previous .silverButton span {
+.esriRtl .pagination ul .previous span {
 	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -35px -1px;
-}
-.pagination ul li .default:hover {
-	background-color:#ccc;
-	color:#333;
-	-webkit-transition:background-color 0.25s ease-in;
-	-moz-transition:background-color 0.25s ease-in;
-	-o-transition:background-color 0.25s ease-in;
-	transition:background-color 0.25s ease-in;
-}
-.pagination ul .last {
-	margin-left:20px;
-}
-.pagination ul .first {
-	margin-right:20px;
-}
-.esriRtl .pagination ul .last {
-	margin-left:0;
-	margin-right:20px;
-}
-.esriRtl .pagination ul .first {
-	margin-right:0;
-	margin-left:20px;
-}
-.pagination ul .next {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
-}
-.pagination ul .previous {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
-}
-.esriRtl .pagination ul .next {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
-}
-.esriRtl .pagination ul .previous {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
 }
 /*-------------------------------------------------- */
 /* AUTO COMPLETE LIST */
@@ -1483,7 +1433,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
-.ownerImage:hover {
+.ownerImage:hover, .ownerImage:focus {
 	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
 	-moz-transition:-moz-box-shadow 0.25s ease-in;
 	-o-transition:box-shadow 0.25s ease-in;
@@ -1496,7 +1446,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
 	opacity:1;
 }
-.ownerImage img:hover {
+.ownerImage:hover img, .ownerImage:focus img {
 	background-image:none;
 	opacity:0.75;
 	-webkit-transition:opacity 0.25s ease-in;
