@@ -542,14 +542,10 @@ function addBottomMapButtons(){
 	}
 	// If mobile user
 	if(isMobileUser() && configOptions.showMobileButtons){
-		// get item url
-		var itemURL = getViewerURL('mobile', configOptions.webmap);
 		// add button
-		html += '<a tabindex="0" href="' + itemURL + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
-		// app url
-		var appUrl = getViewerURL('mobile_app');
+		html += '<a tabindex="0" href="' + getViewerURL('mobile', configOptions.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInMobile + '</a>';
 		// add app button
-		html += '<a tabindex="0" href="' + appUrl + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.getMobileApp + '</a>';
+		html += '<a tabindex="0" href="' + getViewerURL('mobile_app') + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.getMobileApp + '</a>';
 	}
 	if(html === ''){
 		html = '&nbsp;';
