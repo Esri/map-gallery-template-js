@@ -1,6 +1,6 @@
 var configOptions = {
    "development":false,
-   "group":"1d1f24e8556642f49448f1c88b5a571b",
+   "group":"ae64a5cbebc4476cb5949cb13cbfd7ba",
    "appid":"",
    "theme":"blueTheme",
    "siteTitle":"My Gallery",
@@ -47,9 +47,9 @@ var configOptions = {
    "proxyUrl":"",
    "locatorserviceurl":"http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocator/GeocodeServer/",
    "geometryserviceurl":"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
-   "sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
-   "portalUrl":"http://www.arcgis.com/",
-   "mobilePortalUrl":"arcgis://www.arcgis.com/",
+   "sharingurl":"http://devext.arcgis.com/sharing/rest/content/items",
+   "portalUrl":"http://devext.arcgis.com/",
+   "mobilePortalUrl":"arcgis://devext.arcgis.com/",
    "iosAppUrl":"itms://itunes.apple.com/us/app/arcgis/id379687930?mt=8",
    "androidAppUrl":"https://market.android.com/details?id=com.esri.android.client",
    "pointGraphic":"images/ui/bluepoint-21x25.png"
