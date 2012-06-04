@@ -117,15 +117,11 @@ function setDefaultConfigOptions(){
 		configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
 	}
 	// Template Version. Used for development and version recognition.
-	configOptions.templateVersion = "2.01f";
+	configOptions.templateVersion = "2.05a";
 	// ArcGIS Rest Version
 	configOptions.arcgisRestVersion = 1;
 	// row items
 	configOptions.galleryPerRow = 3;
-	// fix dijit for HTTPS
-	if(esri.dijit._arcgisUrl && location.protocol === "https:") {
-		esri.dijit._arcgisUrl = esri.dijit._arcgisUrl.replace('http:', 'https:');
-	}
 	// Set geometry to HTTPS if protocol is used
 	if(configOptions.geometryserviceurl && location.protocol === "https:") {
 		configOptions.geometryserviceurl = configOptions.geometryserviceurl.replace('http:', 'https:');
