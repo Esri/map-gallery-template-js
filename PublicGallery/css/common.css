@@ -43,7 +43,7 @@ h1 {
 	width:180px;
 	padding:52px 20px 0 20px;
 }
-#homeSideContent{
+#homeSideContent {
 	width:180px;
 	padding: 0 20px 20px 20px;
 }
@@ -77,7 +77,7 @@ h3, h3 a {
 h3 a:hover, h3 a:focus {
 	text-decoration:underline;
 }
-h4,h5,h6{
+h4, h5, h6 {
 	padding:0;
 	margin:0;
 }
@@ -104,7 +104,7 @@ h4,h5,h6{
 	padding-right:0;
 	padding-left:4px;
 }
-#mapLayerToggle .checkColumn .toggleLayers{
+#mapLayerToggle .checkColumn .toggleLayers {
 	cursor:pointer;
 }
 #mapLayerToggle label {
@@ -122,7 +122,7 @@ h4,h5,h6{
 	font-size:16px;
 	text-decoration:none;
 }
-.mapPage h2 a:hover, .mapPage h2 a:focus{
+.mapPage h2 a:hover, .mapPage h2 a:focus {
 	text-decoration:underline;
 }
 ul {
@@ -391,7 +391,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #resetGroupSearch {
 	cursor:pointer;
 }
-#resetGroupSearch:hover, #resetGroupSearch:focus{
+#resetGroupSearch:hover, #resetGroupSearch:focus {
 	text-decoration:underline;
 }
 #groupSortOptions {
@@ -426,14 +426,14 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-o-transition:box-shadow 0.25s ease-in;
 	transition:box-shadow 0.25s ease-in;
 }
-.mapsGrid .item .summaryHidden{
+.mapsGrid .item .summaryHidden {
 	zoom:1;
 	position:absolute;
 	width:190px;
 	height:123px;
 	opacity:0;
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
-    filter:alpha(opacity=0);
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=0)";
+	filter:alpha(opacity=0);
 	padding:5px;
 	background:#fff;
 	z-index:2;
@@ -441,17 +441,17 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	overflow:hidden;
 	font-size:11px;
 }
-.mapsGrid .item .summaryHidden strong{
+.mapsGrid .item .summaryHidden strong {
 	display:block;
 }
-.mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden{
+.mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden {
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
 	opacity:.9;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=90)";
-    filter:alpha(opacity=90);
+	filter:alpha(opacity=90);
 }
 .mapsGrid .alpha .item {
 	margin-right:14px;
@@ -495,7 +495,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-o-text-overflow: ellipsis;
 	-ms-text-overflow: ellipsis;
 }
-.mapsGrid .externalLink{
+.mapsGrid .externalLink {
 	position:relative;
 }
 .mapsGrid .externalLink .externalIcon {
@@ -588,10 +588,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .mapsList .item .itemInfo strong {
 	display:block;
 }
-.mapsList .item .itemInfo strong a{
+.mapsList .item .itemInfo strong a {
 	text-decoration:none;
 }
-.mapsList .item .itemInfo p a{
+.mapsList .item .itemInfo p a {
 	text-decoration:underline;
 }
 .mapsList .item .itemInfo a:hover, .mapsList .item .itemInfo a:focus {
@@ -609,7 +609,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	opacity:1;
 	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
 }
-.mapsList .block:hover img, .mapsList .block:focus img{
+.mapsList .block:hover img, .mapsList .block:focus img {
 	background-image:none;
 	opacity:.75;
 	-webkit-transition:opacity 0.25s ease-in;
@@ -617,13 +617,13 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
 }
-.mapsList .item .itemInfo .ratingCon{
+.mapsList .item .itemInfo .ratingCon {
 	color:#656565;
 	font-size: 11px;
 	line-height:16px;
 	margin-bottom:5px;
 }
-.mapsList .item .itemInfo .dateInfo{
+.mapsList .item .itemInfo .dateInfo {
 	color:#656565;
 	font-size: 11px;
 	line-height:normal;
@@ -643,10 +643,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .dataLayers ul li {
 	margin-bottom:10px;
 }
-.dataLayers .moreInfoList{
+.dataLayers .moreInfoList {
 	margin:10px 0;
 }
-.dataLayers .moreInfoList li{
+.dataLayers .moreInfoList li {
 	margin:0 0 5px 0;
 }
 .dataLayers ul li a {
@@ -833,7 +833,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
-#yourLogo:hover img, #yourLogo:focus img{
+#yourLogo:hover img, #yourLogo:focus img {
 	opacity:.75;
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
@@ -967,7 +967,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .defaultMenu {
 	display:block;
 }
-#legendMenu, #aboutMenu{
+#legendMenu, #aboutMenu {
 	position:relative;
 }
 #legendMenu .esriLegendLayerLabel {
@@ -1014,12 +1014,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .map .bingLogo-lg {
 	left:18px !important;
 }
-#accessInformation .credits{
+#accessInformation .credits {
 	margin:5px 0 0 0;
 	font-size:10px;
 	color:#656565;
 }
-#mapButtonCon{
+#mapButtonCon {
 	margin:20px 0 0 0;
 }
 /*-------------------------------------------------- */
@@ -1226,7 +1226,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 .fullScreen #header, .fullScreen #footer, .fullScreen .socialButtons {
 	display:none !important;
 }
-.fullScreen .dataLayers{
+.fullScreen .dataLayers {
 	position:static;
 }
 .fullScreen #legendMenu {
@@ -1240,7 +1240,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 .fullScreen #aboutMenu {
 	display: none !important;
 }
-.fullScreen #description, .fullScreen  #legendDiv {
+.fullScreen #description, .fullScreen #legendDiv {
 	padding:20px;
 }
 .fullScreen .scrollHeight {
@@ -1338,7 +1338,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	-o-transition:background-color 0.25s ease-in;
 	transition:background-color 0.25s ease-in;
 }
-.pagination ul .selected, .pagination ul .selected:hover, .pagination ul .selected:focus  {
+.pagination ul .selected, .pagination ul .selected:hover, .pagination ul .selected:focus {
 	cursor:default;
 	font-weight:bold;
 	color:#fff;
@@ -1523,10 +1523,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 #comments {
 	margin:20px 0 0 0;
 }
-#comments h2{
+#comments h2 {
 	margin-bottom:10px;
 }
-#comments .comment{
+#comments .comment {
 	background:#fff;
 	padding:10px;
 	margin-bottom:10px;
@@ -1536,14 +1536,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	-webkit-box-shadow: 1px 1px 3px #ccc;
 	box-shadow: 1px 1px 3px #ccc;
 }
-#comments .comment .smallText{
+#comments .comment .smallText {
 	color:#656565;
 	font-size: 11px;
 }
 /*-------------------------------------------------- */
 /* Scroll Div */
 /*-------------------------------------------------- */
-.scrollHeight{
+.scrollHeight {
 	overflow:auto;
 	zoom:1;
 	margin:0;
