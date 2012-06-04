@@ -1,15 +1,19 @@
+// host path regular expression
+var pathRegex = new RegExp(/\/[^\/]+$/);
+var locationPath = location.pathname.replace(pathRegex, '');
+
 // Dojo Config
 var dojoConfig = {
     parseOnLoad: true,
     packages: [{
         name: "esriTemplate",
-        location: location.pathname.replace(/\/[^/]+$/, '')
+        location: locationPath
     }, {
         name: "myModules",
-        location: location.pathname.replace(/\/[^/]+$/, '') + '/javascript'
+        location: locationPath + '/javascript'
     }, {
         name: "apl",
-        location: location.pathname.replace(/\/[^/]+$/, '') + '/apl'
+        location: locationPath + '/apl'
     }]
 };
 
