@@ -826,6 +826,7 @@ function initMap() {
 						html += "<tbody>";
 						for(j=0; j < layers.length; j++){
 							var checked;
+							// if feature collection
 							if(layers[j].featureCollection){
 								html += "<tr>";
 								checked = '';
@@ -834,12 +835,19 @@ function initMap() {
 								}
 								// check column
 								html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-								for(k = 0; k < layers[j].featureCollection.layers.length; k++){
-									html += layers[j].featureCollection.layers[k].id;
-									// if not last
-									if(k !== (layers[j].featureCollection.layers.length - 1)){
-										html += ",";
+								// if feature collection layers
+								if(layers[j].featureCollection.layers){
+									for(k = 0; k < layers[j].featureCollection.layers.length; k++){
+										html += layers[j].featureCollection.layers[k].id;
+										// if not last
+										if(k !== (layers[j].featureCollection.layers.length - 1)){
+											html += ",";
+										}
 									}
+								}
+								// csv
+								else{
+									html += layers[j].id;
 								}
 								html += '" /></td>';
 								// label column
