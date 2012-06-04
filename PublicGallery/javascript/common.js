@@ -794,7 +794,7 @@ function createPagination(obj, totalItems, pagObject){
 			endHTML += '<li tabindex="0" title="' + i18n.viewer.pagination.next + '" class="silverButton buttonRight next ' + lastClass + '" ' + lastOffset + '><span>&nbsp;</span></li>';
 		}
 		// create each pagination item
-		for(var i=1; i <= last; ++i) {
+		for(var i = 1; i <= last; i++) {
 			if(i <= (current + obj.paginationSize) && i >= (current - obj.paginationSize)){
 				if(firstMiddle === 0){
 					firstMiddle = i;

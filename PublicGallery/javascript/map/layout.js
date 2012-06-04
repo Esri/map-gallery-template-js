@@ -165,7 +165,7 @@ function hideAutoComplete(){
 /*------------------------------------*/
 // Set map content
 /*------------------------------------*/
-function setMapContent(){
+function setDelegations(){
     // show about button click
 	dojo.query(document).delegate("#showAbout", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
@@ -186,18 +186,12 @@ function setMapContent(){
 			toggleFullscreenMap(false);
 		}
 	});
-	// set map buttons
-	setInnerMapButtons();
 	// Search Button
 	dojo.query(document).delegate("#searchAddressButton", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			locate();
 			hideAutoComplete();
 		}
-	});
-	// listener for address key up
-	dojo.query(document).delegate(".iconInput input", "onkeyup", function(e){
-		checkAddressStatus(this);
 	});
 	// Clear address button
 	dojo.query(document).delegate(".iconInput .iconReset", "onclick,keyup", function(event){
@@ -208,6 +202,7 @@ function setMapContent(){
 	});
 	// auto complete && address specific action listeners
 	dojo.query(document).delegate("#searchAddress", "onkeyup", function(e){
+		checkAddressStatus(this);
 		var aquery = dojo.query(this).attr('value')[0];
 		var alength = aquery.length;
 		// enter key
@@ -280,7 +275,7 @@ function showAutoComplete(geocodeResults){
 		dojo.query(".searchList").addClass('autoCompleteOpen');
         ACObj = geocodeResults;
         aResults += '<ul class="zebraStripes">';
-        for(var i=0; i < geocodeResults.length; ++i){
+        for(var i = 0; i < geocodeResults.length; i++){
             var layerClass = '';
             if(i % 2 === 0){
                 layerClass = '';
@@ -327,9 +322,12 @@ function mapNowLoaded(layers){
 // clear the locate graphic
 /*------------------------------------*/
 function clearLocate() {
-    if (locateResultLayer){
+	// if locate layer exists
+    if(locateResultLayer){
+		// clear it
         locateResultLayer.clear();
     }
+	// reset locate string
     locateString = "";
 }
 /*------------------------------------*/
@@ -342,9 +340,11 @@ function locate() {
 		addSpinner("locateSpinner");
 		// locate string
 		locateString = query;
+		// address object
 		var address = {
 			SingleLine: locateString
 		};
+		// get address and set callback. * includes all fields in query
 		aoGeocoder.addressToLocations(address,["*"]);
 	}
 }
@@ -352,10 +352,13 @@ function locate() {
 // search box functions
 /*------------------------------------*/ 
 function autoComplete(query) {
+	// set global locate string
 	locateString = query;
+	// address object
 	var address = {
 		SingleLine: locateString
 	};
+	// get address and set callback. * includes all fields in query
     aoGeoCoderAutocomplete.addressToLocations(address,["*"]);
 }
 /*------------------------------------*/
@@ -619,7 +622,9 @@ function buildComments(comments){
 /*------------------------------------*/
 function initMap() {
 	// set map content
-	setMapContent();
+	setDelegations();
+	// set map buttons
+	setInnerMapButtons();
 	// TODO
 	if(configOptions.development){
 		// get comments
@@ -729,7 +734,7 @@ function initMap() {
 							selector:"date",
 							datePattern:"MMM d, yyyy"
 						}); 
-						html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale+ '</li>';
+						html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale + '</li>';
 					}
 					// Modified Date
 					if(itemInfo.item.modified){
@@ -740,7 +745,7 @@ function initMap() {
 							selector:"date",
 							datePattern:"MMM d, yyyy"
 						}); 
-						html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale+ '</li>';
+						html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale + '</li>';
 					}
 				}
 				// Set owner
@@ -819,7 +824,7 @@ function initMap() {
 						html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
 						html += '<table id="mapLayerToggle">';
 						html += "<tbody>";
-						for(j=0; j< layers.length; j++){
+						for(j=0; j < layers.length; j++){
 							var checked;
 							if(layers[j].featureCollection){
 								html += "<tr>";
@@ -829,7 +834,7 @@ function initMap() {
 								}
 								// check column
 								html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-								for(k=0; k < layers[j].featureCollection.layers.length; k++){
+								for(k = 0; k < layers[j].featureCollection.layers.length; k++){
 									html += layers[j].featureCollection.layers[k].id;
 									// if not last
 									if(k !== (layers[j].featureCollection.layers.length - 1)){

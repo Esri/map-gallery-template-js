@@ -223,7 +223,7 @@ function showGroupAutoComplete(obj, data){
 		dojo.query(".searchList").addClass('autoCompleteOpen');
         ACObj = data.results;
         aResults += '<ul class="zebraStripes">';
-        for(var i=0; i < data.results.length; ++i){
+        for(var i = 0; i < data.results.length; i++){
             var layerClass = '';
             if(i % 2 === 0){
                 layerClass = '';
@@ -284,7 +284,7 @@ function buildMapPlaylist(obj,data){
 			forTotal = totalResults;
 		}
 		// Create list items
-		for(var i=0; i < forTotal; ++i) {
+		for(var i = 0; i < forTotal; i++) {
 			// variables
 			var appClass = '';
 			var itemTitle;
@@ -529,29 +529,9 @@ function configLayoutSearch(){
 	}
 }
 /*------------------------------------*/
-// Init
+// Event Delegations
 /*------------------------------------*/
-function init(){
-	// set default data offset
-	if(!dataOffset){
-		dataOffset = 0;
-	}	
-	// set loading text
-	var node = dojo.byId('featuredLoading');
-	setNodeHTML(node, i18n.viewer.groupPage.loadingText);
-	// Query group and then query maps
-	queryGroup(function(){
-		// insert home items
-		insertHomeContent();
-		// Configure grid/list and search
-		configLayoutSearch();
-		//	TODO
-		if(configOptions.development){
-			buildSortingMenu();
-		}
-		// query for maps
-		queryMaps();
-	});
+function setDelegations(){
 	// Featured maps pagination onclick function
 	dojo.query('#maps_pagination').delegate("ul .enabled", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
@@ -615,10 +595,6 @@ function init(){
 			}
 		}
 	});
-	// listener for address key up
-	dojo.query(document).delegate(".iconInput input", "onkeyup", function(e){
-		checkAddressStatus(this);
-	});
 	// Reset X click
 	dojo.query(document).delegate(".iconInput .iconReset", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
@@ -628,6 +604,7 @@ function init(){
 	});
 	// auto complete && address specific action listeners
 	dojo.query(document).delegate("#searchGroup", "onkeyup", function(e){
+		checkAddressStatus(this);
 		var aquery = dojo.query(this).attr('value')[0];
 		var alength = aquery.length;
 		if(e.keyCode === 13 && aquery !== '') {
@@ -683,4 +660,31 @@ function init(){
 			dojo.query(this).prev('li')[0].focus();
 		}
 	});
+}
+/*------------------------------------*/
+// Init
+/*------------------------------------*/
+function init(){
+	// set default data offset
+	if(!dataOffset){
+		dataOffset = 0;
+	}	
+	// set loading text
+	var node = dojo.byId('featuredLoading');
+	setNodeHTML(node, i18n.viewer.groupPage.loadingText);
+	// Query group and then query maps
+	queryGroup(function(){
+		// insert home items
+		insertHomeContent();
+		// Configure grid/list and search
+		configLayoutSearch();
+		//	TODO
+		if(configOptions.development){
+			buildSortingMenu();
+		}
+		// query for maps
+		queryMaps();
+	});
+	// set up event delegations
+	setDelegations();
 }
