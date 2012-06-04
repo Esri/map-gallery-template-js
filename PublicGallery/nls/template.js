@@ -33,6 +33,7 @@ define({
                 "listSwitch": "Switch to List View",
                 "loadingText": "Loading Maps&hellip;"
             },
+			// new
 			"comments":{
 				"commentsHeader":"Comments",
 				"posted":"Posted",
