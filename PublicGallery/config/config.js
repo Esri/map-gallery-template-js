@@ -41,7 +41,7 @@ var configOptions = {
    "showArcGISOnlineButton":true,
    "showLicenseInfo":true,
    "showCredits":true,
-   "showMobileButtons":false,
+   "showMobileButtons":true,
    "openGalleryItemsNewWindow":false,
    "bingmapskey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
    "proxyUrl":"",
