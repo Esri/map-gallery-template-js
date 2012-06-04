@@ -12,7 +12,7 @@
             },
             {
                "type":"paragraph",
-               "value":"Find your group&#39;s ID <a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">using this tool<\/a>."
+               "value":"Find your group&#39;s ID <a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">using this demo tool<\/a>."
             },
             {
                "type":"string",
@@ -285,7 +285,15 @@
       "sortField":"modified",
       "sortOrder":"desc",
       "mapViewer":"simple",
-	  "showMobileButtons":false,
-      "galleryItemsPerPage":9
+      "showProfileUrl":true,
+      "showAboutPage":true,
+      "showSocialButtons":true,
+      "showFooter":true,
+      "showMoreInfo":true,
+      "showExplorerButton":true,
+      "showArcGISOnlineButton":true,
+      "showMobileButtons":false,
+      "openGalleryItemsNewWindow":false,
+      "galleryItemsPerPage":"9"
    }
 }
