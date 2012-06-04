@@ -43,7 +43,7 @@ var configOptions = {
    "showCredits":true,
    "showMobileButtons":true,
    "openGalleryItemsNewWindow":false,
-   "bingmapskey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
+   "bingMapsKey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
    "proxyUrl":"",
    "locatorserviceurl":"http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocator/GeocodeServer/",
    "geometryserviceurl":"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
