@@ -12,7 +12,7 @@
             },
             {
                "type":"paragraph",
-               "value":"Find your group&#39;s ID using <a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">this demo tool<\/a>."
+               "value":"<a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">Find your group&#39;s ID<\/a>."
             },
             {
                "type":"string",
@@ -280,6 +280,8 @@
    ],
    "values":{
       "theme":"blueTheme",
+      "siteTitle":"My Gallery",
+      "homeSideHeading":"Description",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"modified",
