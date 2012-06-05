@@ -63,15 +63,24 @@ img {
 	<li>
 		<p>Every group on ArcGIS.com  has a unique identifier (id). To find the group's id, navigate to <a href="http://www.arcgis.com/">ArcGIS.com</a>, and find the group you want to display. If it is one of your groups, make sure it's shared with everyone (public).</p>
 		<p><strong>To find the group's id:</strong></p>
-		<ol>
-			<li>Navigate to the group's page.</li>
-			<li>Right-click on the group's image to copy it's URL location or open it's location in a new tab/window.
-				<div><img src="images/documentation/group_page.png" alt="group_page" width="969" height="387" /></div>
+		<ul>
+			<li>Option 1:
+				<ol>
+					<li>Use the sample <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/demos/portal/portal_getgroup.html">ArcGIS Online Group ID Finder</a> demo which searches for groups by ArcGIS Online username. You can get private group ID's by using the "Sign In" link on the demo tool to log into your account and display your private groups. <a href="http://help.arcgis.com/en/webapi/javascript/arcgis/demos/portal/portal_getgroup.html">ArcGIS Online Group ID Finder</a></li>
+				</ol>
 			</li>
-			<li>View the URL and copy the id as highlighted in the URL. The section you need to copy is highlighted in the image below.
-				<div><img src="images/documentation/id_from_url.png" alt="id_from_url" width="864" height="194" /></div>
+			<li>Option 2:
+				<ol>
+					<li>Navigate to the group's page.</li>
+					<li>Right-click on the group's image to copy it's URL location or open it's location in a new tab/window.
+						<div><img src="images/documentation/group_page.png" alt="group_page" width="969" height="387" /></div>
+					</li>
+					<li>View the URL and copy the id as highlighted in the URL. The section you need to copy is highlighted in the image below.
+						<div><img src="images/documentation/id_from_url.png" alt="id_from_url" width="864" height="194" /></div>
+					</li>
+				</ol>
 			</li>
-		</ol>
+		</ul>
 	<li>Open the config.js file in a text editor. The config.js file is located in the config folder in the root directory of this application.</li>
 	<li>To modify the group, replace the string for id with your group's id.
 		<div>
