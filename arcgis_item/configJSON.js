@@ -12,7 +12,7 @@
             },
             {
                "type":"paragraph",
-               "value":"Find your group&#39;s ID <a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">using this demo tool<\/a>."
+               "value":"Find your group&#39;s ID using <a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">this demo tool<\/a>."
             },
             {
                "type":"string",
@@ -34,7 +34,7 @@
             },
             {
                "type":"paragraph",
-               "value":"Image to display in the top banner. Recommended height of 72 pixels."
+               "value":"Image to display in the top banner. Recommended height of 75 pixels."
             },
             {
                "type":"string",
@@ -207,24 +207,24 @@
                "label":"Items Per Page:",
                "options":[
                   {
-                     "label":"9",
-                     "value":9
-                  },
-                  {
                      "label":"3",
-                     "value":3
+                     "value":"3"
                   },
                   {
                      "label":"6",
-                     "value":6
+                     "value":"6"
+                  },
+                  {
+                     "label":"9",
+                     "value":"9"
                   },
                   {
                      "label":"12",
-                     "value":12
+                     "value":"12"
                   },
                   {
                      "label":"15",
-                     "value":15
+                     "value":"15"
                   }
                ]
             }
