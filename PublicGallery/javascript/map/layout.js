@@ -974,12 +974,16 @@ function buildLayersList(layers) {
                     }
                 });
             }
-        } else if (mapLayer.showLegend !== false) {
-            layerInfo = {
-                "layer": mapLayer.layerObject,
-                "title": mapLayer.title,
-                "defaultSymbol": false
-            };
+        } else if (mapLayer.showLegend !== false && mapLayer.layerObject) {
+			var showDefaultSymbol = false;
+			if (mapLayer.layerObject.version < 10.1 && (mapLayer.layerObject instanceof esri.layers.ArcGISDynamicMapServiceLayer || mapLayer.layerObject instanceof esri.layers.ArcGISTiledMapServiceLayer)) {
+				showDefaultSymbol = true;
+			}
+			layerInfo = {
+				"layer": mapLayer.layerObject,
+				"title": mapLayer.title,
+				"defaultSymbol": showDefaultSymbol
+			};
             //does it have layers too? If so check to see if showLegend is false
             if (mapLayer.layers) {
                 var hideLayers = dojo.map(dojo.filter(mapLayer.layers, function (lyr) {

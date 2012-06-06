@@ -1,6 +1,6 @@
 var configOptions = {
    "development":false,
-   "group":"92595b371efa47e49c1b6c5c216c11bc",
+   "group":"69b91f7b857b40a484c4aacbd1b243a7",
    "appid":"",
    "theme":"blueTheme",
    "siteTitle":"My Gallery",
