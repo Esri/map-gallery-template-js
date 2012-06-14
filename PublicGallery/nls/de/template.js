@@ -1,18 +1,18 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Löschen"
+                "clearSearch": "LÃ¶schen"
             },
             "errors": {
                 "createMap": "Karte kann nicht erstellt werden",
                 "general": "Fehler",
-                "bingError": "Für die Bereitstellung dieser Anwendung ist ein eigener Bing Maps-Schlüssel erforderlich.",
+                "bingError": "FÃ¼r die Bereitstellung dieser Anwendung ist ein eigener Bing Maps-SchlÃ¼ssel erforderlich.",
                 "noLayers": "Keine operationalen Layer",
                 "noSearchResults": "Es wurden keine Ergebnisse gefunden.",
 				"noGroupResults": "Die Gruppe konnte nicht gefunden werden.",
-                "noMatches": "Keine Übereinstimmungen gefunden.",
+                "noMatches": "Keine Ãœbereinstimmungen gefunden.",
                 "noMapsFound": "Keine Karten gefunden."
             },
             "footer": {
@@ -22,7 +22,7 @@ define(
                 "title": "Legende",
                 "legendButton": "Legende",
                 "legendButtonTitle": "Kartenlegende",
-                "aboutButton": "Info über",
+                "aboutButton": "Info Ã¼ber",
                 "aboutButtonTitle": "Info zur Karte",
                 "message": "Keine operationalen Layer"
             },
@@ -46,21 +46,21 @@ define(
                 "arcgisLink": "ArcGIS-Elementdetails",
                 "moreInformation": "Weitere Informationen",
                 "geoLocateTitle": "Aktuelle Position verwenden",
-                "openInMobile": "In Mobile App öffnen",
+                "openInMobile": "In Mobile App Ã¶ffnen",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
                 "ownerHeader": "Besitzer",
                 "switchBasemap": "Grundkarte wechseln"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "Karten im ArcGIS App öffnen?",
-                "mobileAppDialogContent": "Wussten Sie schon, dass es ein ArcGIS App für Ihr Mobilgerät gibt?",
+                "mobileAppDialogTitle": "Karten im ArcGIS App Ã¶ffnen?",
+                "mobileAppDialogContent": "Wussten Sie schon, dass es ein ArcGIS App fÃ¼r Ihr MobilgerÃ¤t gibt?",
                 "ignore": "Nicht mehr anzeigen",
                 "installed": "Bereits installiert",
                 "install": "Jetzt installieren"
             },
             "pagination": {
-                "previous": "Zurück",
+                "previous": "ZurÃ¼ck",
                 "next": "Weiter",
                 "first": "Erste Seite",
                 "last": "Letzte Seite",

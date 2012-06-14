@@ -1,71 +1,71 @@
-define(
+Ôªødefine(
 ({
         "viewer": {
             "main": {
-                "scaleBarUnits": "È_english_»",
-                "clearSearch": "È_Clear_»"
+                "scaleBarUnits": "metric",
+                "clearSearch": "Cancella"
             },
             "errors": {
-                "createMap": "È_Unable to create map_»",
-                "general": "È_Error_»",
-                "bingError": "È_Deploying this application requires your own Bing Maps key._»",
-                "noLayers": "È_No operational layers_»",
-                "noSearchResults": "È_Sorry, no results were found._»",
-				"noGroupResults": "È_The group could not be found._»",
-                "noMatches": "È_No matches found._»",
-                "noMapsFound": "È_No maps were found._»"
+                "createMap": "Impossibile creare la mappa",
+                "general": "Errore",
+                "bingError": "Per distribuire questa applicazione √® necessaria la chiave Bing Maps personale.",
+                "noLayers": "Layer operativi non disponibili",
+                "noSearchResults": "Nessun risultato trovato.",
+				"noGroupResults": "Impossibile trovare il gruppo.",
+                "noMatches": "Nessuna corrispondenza trovata.",
+                "noMapsFound": "Nessuna mappa trovata."
             },
             "footer": {
-                "label": "È_A map from:_»"
+                "label": "Una mappa da:"
             },
             "sidePanel": {
-                "title": "È_Legend_»",
-                "legendButton": "È_Legend_»",
-                "legendButtonTitle": "È_Map Legend_»",
-                "aboutButton": "È_About_»",
-                "aboutButtonTitle": "È_About Map_»",
-                "message": "È_No operational layers_»"
+                "title": "Legenda",
+                "legendButton": "Legenda",
+                "legendButtonTitle": "Legenda mappa",
+                "aboutButton": "Informazioni",
+                "aboutButtonTitle": "Informazioni sulla mappa",
+                "message": "Layer operativi non disponibili"
             },
             "groupPage": {
-                "showAllMaps": "È_Show all maps_»",
-                "searchTitle": "È_Search this group_»",
-                "searchTitleShort": "È_Search_»",
-                "searchPlaceholder": "È_Search maps_»",
-                "itemTitle": "È_View map_»",
-                "gridSwitch": "È_Switch to Grid View_»",
-                "listSwitch": "È_Switch to List View_»",
-                "loadingText": "È_Loading Maps&hellip;_»"
+                "showAllMaps": "Mostra tutte le mappe",
+                "searchTitle": "Cerca gruppo",
+                "searchTitleShort": "Ricerca",
+                "searchPlaceholder": "Cerca mappe",
+                "itemTitle": "Visualizza mappa",
+                "gridSwitch": "Passa a vista griglia",
+                "listSwitch": "Passa a vista elenco",
+                "loadingText": "Caricamento mappe in corso&hellip;"
             },
             "mapPage": {
-                "findLocation": "È_Find a location_»",
-                "findPlaceholder": "È_Locate an address_»",
-                "aboutHeader": "È_About this map_»",
-                "layersHeader": "È_Layers_»",
-                "enterFullscreen": "È_Fullscreen View_»",
-                "exitFullscreen": "È_Exit Fullscreen_»",
-                "arcgisLink": "È_ArcGIS Item Details_»",
-                "moreInformation": "È_More Information_»",
-                "geoLocateTitle": "È_Use Current Location_»",
-                "openInMobile": "È_Open in Mobile App_»",
+                "findLocation": "Trova posizione",
+                "findPlaceholder": "Trova indirizzo",
+                "aboutHeader": "Informazioni sulla mappa",
+                "layersHeader": "Layer",
+                "enterFullscreen": "Visualizzazione a schermo intero",
+                "exitFullscreen": "Chiudi visualizzazione a schermo intero",
+                "arcgisLink": "Dettagli elementi ArcGIS",
+                "moreInformation": "Ulteriori informazioni",
+                "geoLocateTitle": "Usa posizione corrente",
+                "openInMobile": "Apri nell\'applicazione mobile",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "È_Owner_»",
-                "switchBasemap": "È_Switch Basemap_»"
+                "ownerHeader": "Proprietario",
+                "switchBasemap": "Cambia mappa di base"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "È_Open Maps in the ArcGIS App?_»",
-                "mobileAppDialogContent": "È_Did you know there's an ArcGIS app for your mobile device?_»",
-                "ignore": "È_Don't Show Again_»",
-                "installed": "È_Already Installed_»",
-                "install": "È_Install Now_»"
+                "mobileAppDialogTitle": "Aprire le mappe nell\'applicazione ArcGIS?",
+                "mobileAppDialogContent": "Da oggi √® disponibile un\'applicazione ArcGIS appositamente pensata per i dispositivi mobili.",
+                "ignore": "Non visualizzare pi√π",
+                "installed": "Gi√† installato",
+                "install": "Installa ora"
             },
             "pagination": {
-                "previous": "È_Previous_»",
-                "next": "È_Next_»",
-                "first": "È_First Page_»",
-                "last": "È_Last Page_»",
+                "previous": "Indietro",
+                "next": "Avanti",
+                "first": "Prima pagina",
+                "last": "Ultima pagina",
                 "helip": "&hellip;",
-                "page": "È_Page_»"
+                "page": "Pagina"
             }
         }
     })

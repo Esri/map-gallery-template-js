@@ -1,4 +1,4 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
@@ -8,62 +8,62 @@ define(
             "errors": {
                 "createMap": "Imposibil de creat harta",
                 "general": "Eroare",
-                "bingError": "Lansarea acestei aplicaþii necesitã propria dvs. cheie de hãrþi Bing.",
-                "noLayers": "Niciun strat tematic operaþional",
-                "noSearchResults": "Ne pare rãu, nu a fost gãsit niciun rezultat.",
-				"noGroupResults": "Grupul nu a putut fi gãsit.",
-                "noMatches": "Nu au fost gãsite concordanþe.",
-                "noMapsFound": "Nu a fost gãsitã nicio hartã."
+                "bingError": "Lansarea acestei aplicaÅ£ii necesitÄƒ propria dvs. cheie de hÄƒrÅ£i Bing.",
+                "noLayers": "Niciun strat tematic operaÅ£ional",
+                "noSearchResults": "Ne pare rÄƒu, nu a fost gÄƒsit niciun rezultat.",
+				"noGroupResults": "Grupul nu a putut fi gÄƒsit.",
+                "noMatches": "Nu au fost gÄƒsite concordanÅ£e.",
+                "noMapsFound": "Nu a fost gÄƒsitÄƒ nicio hartÄƒ."
             },
             "footer": {
-                "label": "O hartã de la:"
+                "label": "O hartÄƒ de la:"
             },
             "sidePanel": {
-                "title": "Legendã",
-                "legendButton": "Legendã",
-                "legendButtonTitle": "Legendã hartã",
+                "title": "LegendÄƒ",
+                "legendButton": "LegendÄƒ",
+                "legendButtonTitle": "LegendÄƒ hartÄƒ",
                 "aboutButton": "Despre",
-                "aboutButtonTitle": "Despre hartã",
-                "message": "Niciun strat tematic operaþional"
+                "aboutButtonTitle": "Despre hartÄƒ",
+                "message": "Niciun strat tematic operaÅ£ional"
             },
             "groupPage": {
-                "showAllMaps": "Afiºare toate hãrþile",
-                "searchTitle": "Cãutare acest grup",
-                "searchTitleShort": "Cãutare",
-                "searchPlaceholder": "Cãutare hãrþi",
-                "itemTitle": "Vizualizare hartã",
-                "gridSwitch": "Comutare la Vizualizare grilã",
-                "listSwitch": "Comutare la Vizualizare listã",
-                "loadingText": "Încãrcare hãrþi&hellip;"
+                "showAllMaps": "AfiÅŸare toate hÄƒrÅ£ile",
+                "searchTitle": "CÄƒutare acest grup",
+                "searchTitleShort": "CÄƒutare",
+                "searchPlaceholder": "CÄƒutare hÄƒrÅ£i",
+                "itemTitle": "Vizualizare hartÄƒ",
+                "gridSwitch": "Comutare la Vizualizare grilÄƒ",
+                "listSwitch": "Comutare la Vizualizare listÄƒ",
+                "loadingText": "ÃŽncÄƒrcare hÄƒrÅ£i&hellip;"
             },
             "mapPage": {
-                "findLocation": "Gãsire locaþie",
-                "findPlaceholder": "Localizare adresã",
-                "aboutHeader": "Despre aceastã hartã",
+                "findLocation": "GÄƒsire locaÅ£ie",
+                "findPlaceholder": "Localizare adresÄƒ",
+                "aboutHeader": "Despre aceastÄƒ hartÄƒ",
                 "layersHeader": "Straturi tematice",
                 "enterFullscreen": "Vizualizare pe tot ecranul",
-                "exitFullscreen": "Ieºire din Tot ecranul",
+                "exitFullscreen": "IeÅŸire din Tot ecranul",
                 "arcgisLink": "Detalii element ArcGIS",
-                "moreInformation": "Informaþii suplimentare",
-                "geoLocateTitle": "Utilizare locaþie curentã",
-                "openInMobile": "Deschidere în aplicaþie mobilã",
+                "moreInformation": "InformaÅ£ii suplimentare",
+                "geoLocateTitle": "Utilizare locaÅ£ie curentÄƒ",
+                "openInMobile": "Deschidere Ã®n aplicaÅ£ie mobilÄƒ",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
                 "ownerHeader": "Proprietar",
-                "switchBasemap": "Schimbare hartã fundal"
+                "switchBasemap": "Schimbare hartÄƒ fundal"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "Deschidere hãrþi în aplicaþia ArcGIS?",
-                "mobileAppDialogContent": "ªtiþi cã existã o aplicaþie ArcGIS pentru dispozitivul dvs. mobil?",
-                "ignore": "Nu se mai afiºeazã din nou",
+                "mobileAppDialogTitle": "Deschidere hÄƒrÅ£i Ã®n aplicaÅ£ia ArcGIS?",
+                "mobileAppDialogContent": "ÅžtiÅ£i cÄƒ existÄƒ o aplicaÅ£ie ArcGIS pentru dispozitivul dvs. mobil?",
+                "ignore": "Nu se mai afiÅŸeazÄƒ din nou",
                 "installed": "Deja instalat",
                 "install": "Instalare acum"
             },
             "pagination": {
-                "previous": "Înapoi",
-                "next": "Înainte",
-                "first": "Prima paginã",
-                "last": "Ultima paginã",
+                "previous": "ÃŽnapoi",
+                "next": "ÃŽnainte",
+                "first": "Prima paginÄƒ",
+                "last": "Ultima paginÄƒ",
                 "helip": "&hellip;",
                 "page": "Pagina"
             }

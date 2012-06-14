@@ -1,71 +1,71 @@
-define(
+๏ปฟdefine(
 ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "ใำอ"
+                "clearSearch": "ู…ุณุญ"
             },
             "errors": {
-                "createMap": "ํสฺะั ลไิวม วแฮัํุษ",
-                "general": "ฮุร",
-                "bingError": "ํสุแศ ไิั ๅะว วแสุศํÞ ใÝสวอ ฮัวฦุ Bing.",
-                "noLayers": "แว สๆฬฯ ุศÞวส สิÛํแํษ",
-                "noSearchResults": "ฺÝๆ๐วก แใ ํสใ วแฺหๆั ฺแ์ รํ ไสวฦฬ.",
-				"noGroupResults": "ํสฺะั วแฺหๆั ฺแ์ ๅะๅ วแใฬใๆฺษ.",
-                "noMatches": "แใ ํสใ วแฺหๆั ฺแ์ สุวศÞวส.",
-                "noMapsFound": "แใ ํสใ วแฺหๆั ฺแ์ รํ ฮัวฦุ."
+                "createMap": "ูุชุนุฐุฑ ุฅูุดุงุก ุงูุฎุฑูุทุฉ",
+                "general": "ุฎุทุฃ",
+                "bingError": "ูุชุทูุจ ูุดุฑ ูุฐุง ุงูุชุทุจูู ู…ูุชุงุญ ุฎุฑุงุฆุท Bing.",
+                "noLayers": "ูุง ุชูุฌุฏ ุทุจูุงุช ุชุดุบูููุฉ",
+                "noSearchResults": "ุนูููุงุ ูู… ูุชู… ุงูุนุซูุฑ ุนูู ุฃู ูุชุงุฆุฌ.",
+				"noGroupResults": "ูุชุนุฐุฑ ุงูุนุซูุฑ ุนูู ูุฐู ุงูู…ุฌู…ูุนุฉ.",
+                "noMatches": "ูู… ูุชู… ุงูุนุซูุฑ ุนูู ุชุทุงุจูุงุช.",
+                "noMapsFound": "ูู… ูุชู… ุงูุนุซูุฑ ุนูู ุฃู ุฎุฑุงุฆุท."
             },
             "footer": {
-                "label": "ฮัํุษ ใไ:"
+                "label": "ุฎุฑูุทุฉ ู…ู:"
             },
             "sidePanel": {
-                "title": "ใÝสวอ วแฮัํุษ",
-                "legendButton": "ใÝสวอ วแฮัํุษ",
-                "legendButtonTitle": "ๆำํแษ ลํึวอ วแฮัํุษ",
-                "aboutButton": "ไศะษ ฺไ",
-                "aboutButtonTitle": "ไศะษ ฺไ วแฮัํุษ",
-                "message": "แว สๆฬฯ ุศÞวส สิÛํแํษ"
+                "title": "ู…ูุชุงุญ ุงูุฎุฑูุทุฉ",
+                "legendButton": "ู…ูุชุงุญ ุงูุฎุฑูุทุฉ",
+                "legendButtonTitle": "ูุณููุฉ ุฅูุถุงุญ ุงูุฎุฑูุทุฉ",
+                "aboutButton": "ูุจุฐุฉ ุนู",
+                "aboutButtonTitle": "ูุจุฐุฉ ุนู ุงูุฎุฑูุทุฉ",
+                "message": "ูุง ุชูุฌุฏ ุทุจูุงุช ุชุดุบูููุฉ"
             },
             "groupPage": {
-                "showAllMaps": "ลูๅวั ฬใํฺ วแฮัวฦุ",
-                "searchTitle": "วแศอห Ýํ ๅะๅ วแใฬใๆฺษ",
-                "searchTitleShort": "ศอห",
-                "searchPlaceholder": "วแศอห Ýํ วแฮัวฦุ",
-                "itemTitle": "ฺัึ วแฮัํุษ",
-                "gridSwitch": "สอๆํแ ลแ์ ฺัึ วแิศ฿ษ",
-                "listSwitch": "สอๆํแ ลแ์ ฺัึ วแÞวฦใษ",
-                "loadingText": "สอใํแ Maps&hellip;"
+                "showAllMaps": "ุฅุธูุงุฑ ุฌู…ูุน ุงูุฎุฑุงุฆุท",
+                "searchTitle": "ุงูุจุญุซ ูู ูุฐู ุงูู…ุฌู…ูุนุฉ",
+                "searchTitleShort": "ุจุญุซ",
+                "searchPlaceholder": "ุงูุจุญุซ ูู ุงูุฎุฑุงุฆุท",
+                "itemTitle": "ุนุฑุถ ุงูุฎุฑูุทุฉ",
+                "gridSwitch": "ุชุญููู ุฅูู ุนุฑุถ ุงูุดุจูุฉ",
+                "listSwitch": "ุชุญููู ุฅูู ุนุฑุถ ุงููุงุฆู…ุฉ",
+                "loadingText": "ุชุญู…ูู Maps&hellip;"
             },
             "mapPage": {
-                "findLocation": "วแฺหๆั ฺแ์ ใๆÞฺ",
-                "findPlaceholder": "สอฯํฯ ฺไๆวไ",
-                "aboutHeader": "ไศะษ ฺไ ๅะๅ วแฮัํุษ",
-                "layersHeader": "ุศÞวส",
-                "enterFullscreen": "ๆึฺ ใแม วแิวิษ",
-                "exitFullscreen": "ฮัๆฬ ใไ ๆึฺ ใแม วแิวิษ",
-                "arcgisLink": "สÝวีํแ ฺไีั ArcGIS",
-                "moreInformation": "ใาํฯ ใไ วแใฺแๆใวส",
-                "geoLocateTitle": "วำสฮฯวใ วแใๆÞฺ วแอวแํ",
-                "openInMobile": "Ýสอ Ýํ Mobile App",
+                "findLocation": "ุงูุนุซูุฑ ุนูู ู…ููุน",
+                "findPlaceholder": "ุชุญุฏูุฏ ุนููุงู",
+                "aboutHeader": "ูุจุฐุฉ ุนู ูุฐู ุงูุฎุฑูุทุฉ",
+                "layersHeader": "ุทุจูุงุช",
+                "enterFullscreen": "ูุถุน ู…ูุก ุงูุดุงุดุฉ",
+                "exitFullscreen": "ุฎุฑูุฌ ู…ู ูุถุน ู…ูุก ุงูุดุงุดุฉ",
+                "arcgisLink": "ุชูุงุตูู ุนูุตุฑ ArcGIS",
+                "moreInformation": "ู…ุฒูุฏ ู…ู ุงูู…ุนููู…ุงุช",
+                "geoLocateTitle": "ุงุณุชุฎุฏุงู… ุงูู…ููุน ุงูุญุงูู",
+                "openInMobile": "ูุชุญ ูู Mobile App",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "วแใวแ฿",
-                "switchBasemap": "สศฯํแ ฮัํุษ วแรำวำ"
+                "ownerHeader": "ุงูู…ุงูู",
+                "switchBasemap": "ุชุจุฏูู ุฎุฑูุทุฉ ุงูุฃุณุงุณ"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "ๅแ สัํฯ Ýสอ วแฮัวฦุ Ýํ ArcGIS Appฟ",
-                "mobileAppDialogContent": "ๅแ สฺแใ ศๆฬๆฯ สุศํÞ ArcGIS แฬๆวแ฿ฟ",
-                "ignore": "ฺฯใ วแฺัึ ใัษ รฮั์",
-                "installed": "ใ๕หศส ศวแÝฺแ",
-                "install": "สหศํส วแยไ"
+                "mobileAppDialogTitle": "ูู ุชุฑูุฏ ูุชุญ ุงูุฎุฑุงุฆุท ูู ArcGIS Appุ",
+                "mobileAppDialogContent": "ูู ุชุนูู… ุจูุฌูุฏ ุชุทุจูู ArcGIS ูุฌูุงููุ",
+                "ignore": "ุนุฏู… ุงูุนุฑุถ ู…ุฑุฉ ุฃุฎุฑู",
+                "installed": "ู…ูุซุจุช ุจุงููุนู",
+                "install": "ุชุซุจูุช ุงูุขู"
             },
             "pagination": {
-                "previous": "วแำวศÞ",
-                "next": "วแสวแํ",
-                "first": "วแีÝอษ วแรๆแ์",
-                "last": "วแีÝอษ วแรฮํัษ",
+                "previous": "ุงูุณุงุจู",
+                "next": "ุงูุชุงูู",
+                "first": "ุงูุตูุญุฉ ุงูุฃููู",
+                "last": "ุงูุตูุญุฉ ุงูุฃุฎูุฑุฉ",
                 "helip": "&hellip;",
-                "page": "ีÝอษ"
+                "page": "ุตูุญุฉ"
             }
         }
     })

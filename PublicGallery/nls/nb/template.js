@@ -1,4 +1,4 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
@@ -8,7 +8,7 @@ define(
             "errors": {
                 "createMap": "Kan ikke opprette kart",
                 "general": "Feil",
-                "bingError": "Bruk av denne applikasjonen krever at du har en egen Bing Maps-nøkkel.",
+                "bingError": "Bruk av denne applikasjonen krever at du har en egen Bing Maps-nÃ¸kkel.",
                 "noLayers": "Ingen funksjonelle lag",
                 "noSearchResults": "Fant dessverre ingen resultater.",
 				"noGroupResults": "Fant ikke gruppen.",
@@ -21,16 +21,16 @@ define(
             "sidePanel": {
                 "title": "Tegnforklaring",
                 "legendButton": "Tegnforklaring",
-                "legendButtonTitle": "Tegnforklaring på kartet",
+                "legendButtonTitle": "Tegnforklaring pÃ¥ kartet",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartet",
                 "message": "Ingen funksjonelle lag"
             },
             "groupPage": {
                 "showAllMaps": "Vis alle kart",
-                "searchTitle": "Søk i denne gruppen",
-                "searchTitleShort": "Søk",
-                "searchPlaceholder": "Søk i kart",
+                "searchTitle": "SÃ¸k i denne gruppen",
+                "searchTitleShort": "SÃ¸k",
+                "searchPlaceholder": "SÃ¸k i kart",
                 "itemTitle": "Vis kart",
                 "gridSwitch": "Bytt til rutenettvisning",
                 "listSwitch": "Bytt til listevisning",
@@ -46,23 +46,23 @@ define(
                 "arcgisLink": "ArcGIS-elementdetaljer",
                 "moreInformation": "Mer informasjon",
                 "geoLocateTitle": "Bruk gjeldende lokasjon",
-                "openInMobile": "Åpne i mobilapp",
+                "openInMobile": "Ã…pne i mobilapp",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
                 "ownerHeader": "Eier",
                 "switchBasemap": "Bytt bakgrunnskart"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "Åpne kartene i ArcGIS-appen?",
+                "mobileAppDialogTitle": "Ã…pne kartene i ArcGIS-appen?",
                 "mobileAppDialogContent": "Visste du at det finnes en ArcGIS-app for mobiltelefoner?",
-                "ignore": "Ikke vis på nytt",
+                "ignore": "Ikke vis pÃ¥ nytt",
                 "installed": "Allerede installert",
-                "install": "Installer nå"
+                "install": "Installer nÃ¥"
             },
             "pagination": {
                 "previous": "Forrige",
                 "next": "Neste",
-                "first": "Første side",
+                "first": "FÃ¸rste side",
                 "last": "Siste side",
                 "helip": "&hellip;",
                 "page": "Side"

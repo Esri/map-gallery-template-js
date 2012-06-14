@@ -1,4 +1,4 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
@@ -6,22 +6,22 @@ define(
                 "clearSearch": "Effacer"
             },
             "errors": {
-                "createMap": "Impossible de créer la carte",
+                "createMap": "Impossible de crÃ©er la carte",
                 "general": "Erreur",
-                "bingError": "Le déploiement de cette application nécessite votre propre clé Bing Maps.",
+                "bingError": "Le dÃ©ploiement de cette application nÃ©cessite votre propre clÃ© Bing Maps.",
                 "noLayers": "Aucune couche fonctionnelle",
-                "noSearchResults": "Aucun résultat n\'a été trouvé.",
+                "noSearchResults": "Aucun rÃ©sultat n\'a Ã©tÃ© trouvÃ©.",
 				"noGroupResults": "Le groupe est introuvable.",
-                "noMatches": "Aucun résultat n\'a été trouvé.",
-                "noMapsFound": "Aucune carte n\'a été trouvée."
+                "noMatches": "Aucun rÃ©sultat n\'a Ã©tÃ© trouvÃ©.",
+                "noMapsFound": "Aucune carte n\'a Ã©tÃ© trouvÃ©e."
             },
             "footer": {
-                "label": "Carte de :"
+                "label": "Carte deÂ :"
             },
             "sidePanel": {
-                "title": "Légende",
-                "legendButton": "Légende",
-                "legendButtonTitle": "Légende de la carte",
+                "title": "LÃ©gende",
+                "legendButton": "LÃ©gende",
+                "legendButtonTitle": "LÃ©gende de la carte",
                 "aboutButton": "A propos",
                 "aboutButtonTitle": "A propos de la carte",
                 "message": "Aucune couche fonctionnelle"
@@ -41,29 +41,29 @@ define(
                 "findPlaceholder": "Localiser une adresse",
                 "aboutHeader": "A propos de cette carte",
                 "layersHeader": "Couches",
-                "enterFullscreen": "Affichage plein écran",
-                "exitFullscreen": "Quitter le plein écran",
-                "arcgisLink": "Détails des éléments ArcGIS",
+                "enterFullscreen": "Affichage plein Ã©cran",
+                "exitFullscreen": "Quitter le plein Ã©cran",
+                "arcgisLink": "DÃ©tails des Ã©lÃ©ments ArcGIS",
                 "moreInformation": "Plus d\'informations",
                 "geoLocateTitle": "Utiliser l\'emplacement actuel",
                 "openInMobile": "Ouvrir dans l\'application mobile",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "Propriétaire",
+                "ownerHeader": "PropriÃ©taire",
                 "switchBasemap": "Changer de fond de carte"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "Ouvrir les cartes dans l\'application ArcGIS ?",
-                "mobileAppDialogContent": "Saviez-vous qu\'il existe une application ArcGIS pour votre appareil mobile ?",
+                "mobileAppDialogTitle": "Ouvrir les cartes dans l\'application ArcGISÂ ?",
+                "mobileAppDialogContent": "Saviez-vous qu\'il existe une application ArcGIS pour votre appareil mobileÂ ?",
                 "ignore": "Ne plus afficher",
-                "installed": "Déjà installée",
+                "installed": "DÃ©jÃ  installÃ©e",
                 "install": "Installer maintenant"
             },
             "pagination": {
-                "previous": "Précédent",
+                "previous": "PrÃ©cÃ©dent",
                 "next": "Suivant",
-                "first": "Première page",
-                "last": "Dernière page",
+                "first": "PremiÃ¨re page",
+                "last": "DerniÃ¨re page",
                 "helip": "&hellip;",
                 "page": "Page"
             }

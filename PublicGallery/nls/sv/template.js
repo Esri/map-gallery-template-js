@@ -1,4 +1,4 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
@@ -6,63 +6,63 @@ define(
                 "clearSearch": "Rensa"
             },
             "errors": {
-                "createMap": "Det går inte att skapa kartan",
+                "createMap": "Det gÃ¥r inte att skapa kartan",
                 "general": "Fel",
-                "bingError": "Du måste ha en egen Bing Maps-nyckel för att starta den här applikationen.",
+                "bingError": "Du mÃ¥ste ha en egen Bing Maps-nyckel fÃ¶r att starta den hÃ¤r applikationen.",
                 "noLayers": "Inga valfria lager",
-                "noSearchResults": "Tyvärr hittades inga resultat.",
+                "noSearchResults": "TyvÃ¤rr hittades inga resultat.",
 				"noGroupResults": "Det gick inte att hitta gruppen.",
                 "noMatches": "Inga matchningar hittades.",
                 "noMapsFound": "Inga kartor hittades."
             },
             "footer": {
-                "label": "En karta från:"
+                "label": "En karta frÃ¥n:"
             },
             "sidePanel": {
-                "title": "Teckenförklaring",
-                "legendButton": "Teckenförklaring",
-                "legendButtonTitle": "Kartteckenförklaring",
+                "title": "TeckenfÃ¶rklaring",
+                "legendButton": "TeckenfÃ¶rklaring",
+                "legendButtonTitle": "KartteckenfÃ¶rklaring",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartan",
                 "message": "Inga valfria lager"
             },
             "groupPage": {
                 "showAllMaps": "Visa alla kartor",
-                "searchTitle": "Sök den här gruppen",
-                "searchTitleShort": "Sök",
-                "searchPlaceholder": "Sök efter kartor",
+                "searchTitle": "SÃ¶k den hÃ¤r gruppen",
+                "searchTitleShort": "SÃ¶k",
+                "searchPlaceholder": "SÃ¶k efter kartor",
                 "itemTitle": "Visa karta",
-                "gridSwitch": "Växla till rutnätsvy",
-                "listSwitch": "Växla till listvy",
-                "loadingText": "Läser in kartor&hellip;"
+                "gridSwitch": "VÃ¤xla till rutnÃ¤tsvy",
+                "listSwitch": "VÃ¤xla till listvy",
+                "loadingText": "LÃ¤ser in kartor&hellip;"
             },
             "mapPage": {
                 "findLocation": "Hitta en plats",
                 "findPlaceholder": "Hitta en adress",
-                "aboutHeader": "Om den här kartan",
+                "aboutHeader": "Om den hÃ¤r kartan",
                 "layersHeader": "Lager",
-                "enterFullscreen": "Helskärmsläge",
-                "exitFullscreen": "Avsluta helskärm",
+                "enterFullscreen": "HelskÃ¤rmslÃ¤ge",
+                "exitFullscreen": "Avsluta helskÃ¤rm",
                 "arcgisLink": "ArcGIS-objektinformation",
                 "moreInformation": "Mer information",
-                "geoLocateTitle": "Använd aktuell plats",
-                "openInMobile": "Öppna i mobilapp",
+                "geoLocateTitle": "AnvÃ¤nd aktuell plats",
+                "openInMobile": "Ã–ppna i mobilapp",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "Ägare",
+                "ownerHeader": "Ã„gare",
                 "switchBasemap": "Byt baskarta"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "Öppna kartor i ArcGIS-appen?",
-                "mobileAppDialogContent": "Visste du att det finns en ArcGIS-app för din mobila enhet?",
+                "mobileAppDialogTitle": "Ã–ppna kartor i ArcGIS-appen?",
+                "mobileAppDialogContent": "Visste du att det finns en ArcGIS-app fÃ¶r din mobila enhet?",
                 "ignore": "Visa inte igen",
                 "installed": "Redan installerat",
                 "install": "Installera nu"
             },
             "pagination": {
-                "previous": "Föregående",
-                "next": "Nästa",
-                "first": "Första sidan",
+                "previous": "FÃ¶regÃ¥ende",
+                "next": "NÃ¤sta",
+                "first": "FÃ¶rsta sidan",
                 "last": "Sista sidan",
                 "helip": "&hellip;",
                 "page": "Sida"

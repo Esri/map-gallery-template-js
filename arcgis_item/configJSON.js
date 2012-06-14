@@ -281,7 +281,7 @@
    "values":{
       "theme":"blueTheme",
       "siteTitle":"My Gallery",
-      "homeSideHeading":"Description",
+      "homeSideHeading":"",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"modified",

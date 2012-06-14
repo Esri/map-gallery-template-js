@@ -1,5 +1,5 @@
 var configOptions = {
-   "development":false,
+   "development":true,
    "group":"69b91f7b857b40a484c4aacbd1b243a7",
    "appid":"",
    "theme":"blueTheme",
@@ -12,7 +12,7 @@ var configOptions = {
    "mapCredits":"",
    "homeHeading":"",
    "homeSnippet":"",
-   "homeSideHeading":"Description",
+   "homeSideHeading":"",
    "homeSideContent":"",
    "footerHeading":"",
    "footerDescription":"",

@@ -1,4 +1,4 @@
-define(
+﻿define(
 ({
         "viewer": {
             "main": {
@@ -13,7 +13,7 @@ define(
                 "noSearchResults": "Er zijn geen resultaten gevonden.",
 				"noGroupResults": "De groep kan niet worden gevonden.",
                 "noMatches": "Geen overeenkomsten gevonden.",
-                "noMapsFound": "Er zijn geen kaarten gevonden."
+                "noMapsFound": "Geen kaarten gevonden."
             },
             "footer": {
                 "label": "Een kaart van:"
@@ -34,7 +34,7 @@ define(
                 "itemTitle": "Kaart weergeven",
                 "gridSwitch": "Omschakelen naar Rasterweergave",
                 "listSwitch": "Omschakelen naar Lijstweergave",
-                "loadingText": "Kaarten&hellip; laden"
+                "loadingText": "Kaarten laden&hellip;"
             },
             "mapPage": {
                 "findLocation": "Een locatie zoeken",
@@ -46,7 +46,7 @@ define(
                 "arcgisLink": "ArcGIS-itemdetails",
                 "moreInformation": "Meer informatie",
                 "geoLocateTitle": "Huidige locatie gebruiken",
-                "openInMobile": "Openen in Mobiele app",
+                "openInMobile": "Openen in mobiele app",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
                 "ownerHeader": "Eigenaar",
@@ -56,7 +56,7 @@ define(
                 "mobileAppDialogTitle": "Kaarten openen in de ArcGIS-app?",
                 "mobileAppDialogContent": "Wist u dat er een ArcGIS-app bestaat voor uw mobiele apparaat?",
                 "ignore": "Niet meer weergeven",
-                "installed": "Al ge�nstalleerd",
+                "installed": "Al geïnstalleerd",
                 "install": "Nu installeren"
             },
             "pagination": {

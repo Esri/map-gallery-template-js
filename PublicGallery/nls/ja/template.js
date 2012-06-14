@@ -1,71 +1,71 @@
-define(
+ï»¿define(
 ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Á‹"
+                "clearSearch": "æ¶ˆå»"
             },
             "errors": {
-                "createMap": "ƒ}ƒbƒv‚ğì¬‚Å‚«‚Ü‚¹‚ñ",
-                "general": "ƒGƒ‰[",
-                "bingError": "‚±‚ÌƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ğ“±“ü‚·‚é‚É‚ÍAƒ†[ƒU©g‚Ì Bing Maps ƒL[‚ª•K—v‚Å‚·B",
-                "noLayers": "‘€ìƒŒƒCƒ„‚ª‚ ‚è‚Ü‚¹‚ñ",
-                "noSearchResults": "ŠY“–‚·‚éŒ‹‰Ê‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B",
-				"noGroupResults": "ƒOƒ‹[ƒv‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B",
-                "noMatches": "ˆê’v‚·‚éŒ‹‰Ê‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñB",
-                "noMapsFound": "ƒ}ƒbƒv‚ÍŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B"
+                "createMap": "ãƒãƒƒãƒ—ã‚’ä½œæˆã§ãã¾ã›ã‚“",
+                "general": "ã‚¨ãƒ©ãƒ¼",
+                "bingError": "ã“ã®ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å°å…¥ã™ã‚‹ã«ã¯ã€ãƒ¦ãƒ¼ã‚¶è‡ªèº«ã® Bing Maps ã‚­ãƒ¼ãŒå¿…è¦ã§ã™ã€‚",
+                "noLayers": "æ“ä½œãƒ¬ã‚¤ãƒ¤ãŒã‚ã‚Šã¾ã›ã‚“",
+                "noSearchResults": "è©²å½“ã™ã‚‹çµæœã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚",
+				"noGroupResults": "ã‚°ãƒ«ãƒ¼ãƒ—ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚",
+                "noMatches": "ä¸€è‡´ã™ã‚‹çµæœã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚",
+                "noMapsFound": "ãƒãƒƒãƒ—ã¯è¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã§ã—ãŸã€‚"
             },
             "footer": {
-                "label": "ƒ}ƒbƒv‚ÌQÆŒ³:"
+                "label": "ãƒãƒƒãƒ—ã®å‚ç…§å…ƒ:"
             },
             "sidePanel": {
-                "title": "–}—á",
-                "legendButton": "–}—á",
-                "legendButtonTitle": "ƒ}ƒbƒv‚Ì–}—á",
-                "aboutButton": "î•ñ",
-                "aboutButtonTitle": "ƒ}ƒbƒv‚É‚Â‚¢‚Ä",
-                "message": "‘€ìƒŒƒCƒ„‚ª‚ ‚è‚Ü‚¹‚ñ"
+                "title": "å‡¡ä¾‹",
+                "legendButton": "å‡¡ä¾‹",
+                "legendButtonTitle": "ãƒãƒƒãƒ—ã®å‡¡ä¾‹",
+                "aboutButton": "æƒ…å ±",
+                "aboutButtonTitle": "ãƒãƒƒãƒ—ã«ã¤ã„ã¦",
+                "message": "æ“ä½œãƒ¬ã‚¤ãƒ¤ãŒã‚ã‚Šã¾ã›ã‚“"
             },
             "groupPage": {
-                "showAllMaps": "‚·‚×‚Ä‚Ìƒ}ƒbƒv‚ğ•\¦",
-                "searchTitle": "‚±‚ÌƒOƒ‹[ƒv‚ğŒŸõ",
-                "searchTitleShort": "ŒŸõ",
-                "searchPlaceholder": "ƒ}ƒbƒv‚ÌŒŸõ",
-                "itemTitle": "ƒ}ƒbƒv‚Ì•\¦",
-                "gridSwitch": "ƒOƒŠƒbƒh ƒrƒ…[‚ÉØ‚è‘Ö‚¦",
-                "listSwitch": "ƒŠƒXƒg ƒrƒ…[‚ÉØ‚è‘Ö‚¦",
-                "loadingText": "ƒ}ƒbƒv‚ğ“Ç‚İ‚ñ‚Å‚¢‚Ü‚·..."
+                "showAllMaps": "ã™ã¹ã¦ã®ãƒãƒƒãƒ—ã‚’è¡¨ç¤º",
+                "searchTitle": "ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã‚’æ¤œç´¢",
+                "searchTitleShort": "æ¤œç´¢",
+                "searchPlaceholder": "ãƒãƒƒãƒ—ã®æ¤œç´¢",
+                "itemTitle": "ãƒãƒƒãƒ—ã®è¡¨ç¤º",
+                "gridSwitch": "ã‚°ãƒªãƒƒãƒ‰ ãƒ“ãƒ¥ãƒ¼ã«åˆ‡ã‚Šæ›¿ãˆ",
+                "listSwitch": "ãƒªã‚¹ãƒˆ ãƒ“ãƒ¥ãƒ¼ã«åˆ‡ã‚Šæ›¿ãˆ",
+                "loadingText": "ãƒãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚“ã§ã„ã¾ã™..."
             },
             "mapPage": {
-                "findLocation": "êŠ‚ğŒŸõ",
-                "findPlaceholder": "ZŠ‚Ì“Á’è",
-                "aboutHeader": "‚±‚Ìƒ}ƒbƒv‚É‚Â‚¢‚Ä",
-                "layersHeader": "ƒŒƒCƒ„",
-                "enterFullscreen": "‘S‰æ–Ê•\¦",
-                "exitFullscreen": "‘S‰æ–Ê‚ğI—¹",
-                "arcgisLink": "ArcGIS ƒAƒCƒeƒ€‚ÌÚ×",
-                "moreInformation": "Ú×î•ñ",
-                "geoLocateTitle": "Œ»İ‚ÌˆÊ’u‚ğg—p",
-                "openInMobile": "ƒ‚ƒoƒCƒ‹ ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÅŠJ‚­",
+                "findLocation": "å ´æ‰€ã‚’æ¤œç´¢",
+                "findPlaceholder": "ä½æ‰€ã®ç‰¹å®š",
+                "aboutHeader": "ã“ã®ãƒãƒƒãƒ—ã«ã¤ã„ã¦",
+                "layersHeader": "ãƒ¬ã‚¤ãƒ¤",
+                "enterFullscreen": "å…¨ç”»é¢è¡¨ç¤º",
+                "exitFullscreen": "å…¨ç”»é¢ã‚’çµ‚äº†",
+                "arcgisLink": "ArcGIS ã‚¢ã‚¤ãƒ†ãƒ ã®è©³ç´°",
+                "moreInformation": "è©³ç´°æƒ…å ±",
+                "geoLocateTitle": "ç¾åœ¨ã®ä½ç½®ã‚’ä½¿ç”¨",
+                "openInMobile": "ãƒ¢ãƒã‚¤ãƒ« ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§é–‹ã",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
-                "ownerHeader": "Š—LÒ",
-                "switchBasemap": "ƒx[ƒXƒ}ƒbƒv‚ÌØ‚è‘Ö‚¦"
+                "ownerHeader": "æ‰€æœ‰è€…",
+                "switchBasemap": "ãƒ™ãƒ¼ã‚¹ãƒãƒƒãƒ—ã®åˆ‡ã‚Šæ›¿ãˆ"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "ArcGIS ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Åƒ}ƒbƒv‚ğŠJ‚«‚Ü‚·‚©H",
-                "mobileAppDialogContent": "‚¨g‚¢‚Ìƒ‚ƒoƒCƒ‹ ƒfƒoƒCƒX‚Åg—p‚Å‚«‚é ArcGIS ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ª‚ ‚é‚Ì‚ğ‚²‘¶’m‚Å‚µ‚½‚©H",
-                "ignore": "¡Œã•\¦‚µ‚È‚¢",
-                "installed": "‚·‚Å‚ÉƒCƒ“ƒXƒg[ƒ‹‚³‚ê‚Ä‚¢‚Ü‚·",
-                "install": "¡‚·‚®ƒCƒ“ƒXƒg[ƒ‹‚·‚é"
+                "mobileAppDialogTitle": "ArcGIS ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã§ãƒãƒƒãƒ—ã‚’é–‹ãã¾ã™ã‹ï¼Ÿ",
+                "mobileAppDialogContent": "ãŠä½¿ã„ã®ãƒ¢ãƒã‚¤ãƒ« ãƒ‡ãƒã‚¤ã‚¹ã§ä½¿ç”¨ã§ãã‚‹ ArcGIS ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ãŒã‚ã‚‹ã®ã‚’ã”å­˜çŸ¥ã§ã—ãŸã‹ï¼Ÿ",
+                "ignore": "ä»Šå¾Œè¡¨ç¤ºã—ãªã„",
+                "installed": "ã™ã§ã«ã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã•ã‚Œã¦ã„ã¾ã™",
+                "install": "ä»Šã™ãã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«ã™ã‚‹"
             },
             "pagination": {
-                "previous": "‘O‚Ö",
-                "next": "Ÿ‚Ö",
-                "first": "æ“ªƒy[ƒW",
-                "last": "ÅIƒy[ƒW",
+                "previous": "å‰ã¸",
+                "next": "æ¬¡ã¸",
+                "first": "å…ˆé ­ãƒšãƒ¼ã‚¸",
+                "last": "æœ€çµ‚ãƒšãƒ¼ã‚¸",
                 "helip": "&hellip;",
-                "page": "ƒy[ƒW"
+                "page": "ãƒšãƒ¼ã‚¸"
             }
         }
     })

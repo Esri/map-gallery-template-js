@@ -1,4 +1,4 @@
-define(
+锘縟efine(
 ({
         "viewer": {
             "main": {
@@ -8,7 +8,7 @@ define(
             "errors": {
                 "createMap": "No se puede crear el mapa",
                 "general": "Error",
-                "bingError": "Para desplegar esta aplicaci髇 necesita su propia llave de mapas bing.",
+                "bingError": "Para desplegar esta aplicaci贸n necesita su propia llave de mapas bing.",
                 "noLayers": "Ninguna capa operativa",
                 "noSearchResults": "Lo sentimos, no se encontraron resultados.",
 				"noGroupResults": "No se pudo encontrar el grupo.",
@@ -32,29 +32,29 @@ define(
                 "searchTitleShort": "Buscar",
                 "searchPlaceholder": "Buscar mapas",
                 "itemTitle": "Ver mapa",
-                "gridSwitch": "Cambiar a vista de cuadr韈ula",
+                "gridSwitch": "Cambiar a vista de cuadr铆cula",
                 "listSwitch": "Cambiar a vista de lista",
                 "loadingText": "Cargando mapas&hellip;"
             },
             "mapPage": {
-                "findLocation": "Encontrar una ubicaci髇",
-                "findPlaceholder": "Localizar una direcci髇",
+                "findLocation": "Encontrar una ubicaci贸n",
+                "findPlaceholder": "Localizar una direcci贸n",
                 "aboutHeader": "Acerca de este mapa",
                 "layersHeader": "Capas",
                 "enterFullscreen": "Vista de pantalla completa",
                 "exitFullscreen": "Salir de pantalla completa",
                 "arcgisLink": "Detalles de elementos de ArcGIS",
-                "moreInformation": "M醩 informaci髇",
-                "geoLocateTitle": "Usar la ubicaci髇 actual",
-                "openInMobile": "Abrir en Aplicaci髇 M髒il",
+                "moreInformation": "M谩s informaci贸n",
+                "geoLocateTitle": "Usar la ubicaci贸n actual",
+                "openInMobile": "Abrir en Aplicaci贸n M贸vil",
                 "openInArcGIS": "ArcGIS Online",
                 "openInExplorer": "ArcGIS Explorer",
                 "ownerHeader": "Propietario",
                 "switchBasemap": "Cambiar mapa base"
             },
             "mobileOptions": {
-                "mobileAppDialogTitle": "緼brir mapas en la Aplicaci髇 ArcGIS?",
-                "mobileAppDialogContent": "縎ab韆 que existe una aplicaci髇 ArcGIS para su dispositivo m髒il?",
+                "mobileAppDialogTitle": "驴Abrir mapas en la Aplicaci贸n ArcGIS?",
+                "mobileAppDialogContent": "驴Sab铆a que existe una aplicaci贸n ArcGIS para su dispositivo m贸vil?",
                 "ignore": "No volver a mostrar",
                 "installed": "Ya instalado",
                 "install": "Instalar ahora"
@@ -62,10 +62,10 @@ define(
             "pagination": {
                 "previous": "Anterior",
                 "next": "Siguiente",
-                "first": "Primera p醙ina",
-                "last": "趌tima p醙ina",
+                "first": "Primera p谩gina",
+                "last": "脷ltima p谩gina",
                 "helip": "&hellip;",
-                "page": "P醙ina"
+                "page": "P谩gina"
             }
         }
     })

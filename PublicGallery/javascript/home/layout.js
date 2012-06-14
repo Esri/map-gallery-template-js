@@ -437,7 +437,8 @@ function buildMapPlaylist(obj,data){
 							html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + snippet + '</span>';
 						}
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
-						html += '<span class="itemTitle">' + itemTitle + '</span>';
+						//html += '<span class="itemTitle">' + itemTitle + '</span>';
+						html += '<span style="font-size:12px;text-align:right; display:block; height:16px; line-height:16px; padding-top:3px;" class="itemCounts"><span style="display:inline-block; width:16px; height:16px; background:#ccc; vertical-align:text-bottom;"></span>' + data.results[i].numRatings + ':'  + data.results[i].numComments + ':' + data.results[i].numViews +  '</span>';
 					html += '</a>';
 				html += '</div>';
 				if(endRow){
