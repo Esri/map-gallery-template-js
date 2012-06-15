@@ -47,8 +47,8 @@
                 "moreInformation": "Mer information",
                 "geoLocateTitle": "Använd aktuell plats",
                 "openInMobile": "Öppna i mobilapp",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Ägare",
                 "switchBasemap": "Byt baskarta"
             },

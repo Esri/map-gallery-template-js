@@ -62,8 +62,8 @@ define({
                 "moreInformation": "More Information",
                 "geoLocateTitle": "Use Current Location",
                 "openInMobile": "Open in Mobile App",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Owner:",
                 "switchBasemap": "Switch Basemap",
 				// new

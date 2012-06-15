@@ -47,8 +47,8 @@
                 "moreInformation": "詳細情報",
                 "geoLocateTitle": "現在の位置を使用",
                 "openInMobile": "モバイル アプリケーションで開く",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "所有者",
                 "switchBasemap": "ベースマップの切り替え"
             },

@@ -47,8 +47,8 @@
                 "moreInformation": "Более подробно",
                 "geoLocateTitle": "Использовать текущее местоположение",
                 "openInMobile": "Открыть в мобильных приложениях",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Владелец",
                 "switchBasemap": "Переключить базовую карту"
             },

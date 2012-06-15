@@ -47,8 +47,8 @@
                 "moreInformation": "مزيد من المعلومات",
                 "geoLocateTitle": "استخدام الموقع الحالي",
                 "openInMobile": "فتح في Mobile App",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "المالك",
                 "switchBasemap": "تبديل خريطة الأساس"
             },

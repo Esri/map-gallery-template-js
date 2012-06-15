@@ -47,8 +47,8 @@
                 "moreInformation": "Weitere Informationen",
                 "geoLocateTitle": "Aktuelle Position verwenden",
                 "openInMobile": "In Mobile App öffnen",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Besitzer",
                 "switchBasemap": "Grundkarte wechseln"
             },

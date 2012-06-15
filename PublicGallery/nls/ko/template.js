@@ -47,8 +47,8 @@
                 "moreInformation": "추가 정보",
                 "geoLocateTitle": "현재 위치 사용",
                 "openInMobile": "모바일 앱에서 열기",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "소유자",
                 "switchBasemap": "기본 맵 보기"
             },

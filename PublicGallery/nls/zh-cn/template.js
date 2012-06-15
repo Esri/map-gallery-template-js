@@ -47,8 +47,8 @@
                 "moreInformation": "详细信息",
                 "geoLocateTitle": "使用当前位置",
                 "openInMobile": "在移动应用程序中打开",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "所有者",
                 "switchBasemap": "切换底图"
             },

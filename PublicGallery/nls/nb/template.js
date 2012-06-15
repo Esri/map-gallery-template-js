@@ -47,8 +47,8 @@
                 "moreInformation": "Mer informasjon",
                 "geoLocateTitle": "Bruk gjeldende lokasjon",
                 "openInMobile": "Åpne i mobilapp",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Eier",
                 "switchBasemap": "Bytt bakgrunnskart"
             },

@@ -47,8 +47,8 @@
                 "moreInformation": "Informaţii suplimentare",
                 "geoLocateTitle": "Utilizare locaţie curentă",
                 "openInMobile": "Deschidere în aplicaţie mobilă",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Proprietar",
                 "switchBasemap": "Schimbare hartă fundal"
             },

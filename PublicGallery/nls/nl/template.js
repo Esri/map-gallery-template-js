@@ -47,8 +47,8 @@
                 "moreInformation": "Meer informatie",
                 "geoLocateTitle": "Huidige locatie gebruiken",
                 "openInMobile": "Openen in mobiele app",
-                "openInArcGIS": "ArcGIS Online",
-                "openInExplorer": "ArcGIS Explorer",
+                "openInArcGIS": "Map Viewer",
+                "openInExplorer": "Explorer Online",
                 "ownerHeader": "Eigenaar",
                 "switchBasemap": "Basiskaart wijzigen"
             },

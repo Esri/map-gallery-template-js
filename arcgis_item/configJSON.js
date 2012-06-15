@@ -1,7 +1,7 @@
 {
    "configurationSettings":[
       {
-         "category":"<b>Site Information</b>",
+         "category":"<b>Content Options</b>",
          "fields":[
             {
                "type":"string",
@@ -187,15 +187,15 @@
                      "value":"simple"
                   },
                   {
-                     "label":"ArcGIS Explorer Online",
+                     "label":"Explorer Online",
                      "value":"explorer"
                   },
                   {
-                     "label":"ArcGIS Explorer Online Presentation Mode",
+                     "label":"Explorer Presentation",
                      "value":"explorer_present"
                   },
                   {
-                     "label":"ArcGIS Online",
+                     "label":"Map Viewer",
                      "value":"arcgis"
                   }
                ]
@@ -231,12 +231,12 @@
          ]
       },
       {
-         "category":"<b>Boolean Options</b>",
+         "category":"<b>Options</b>",
          "fields":[
             {
                "type":"boolean",
                "fieldName":"openGalleryItemsNewWindow",
-               "label":"Open gallery items in new window.",
+               "label":"Open items in new window.",
                "tooltip":""
             },
             {
@@ -266,21 +266,27 @@
             {
                "type":"boolean",
                "fieldName":"showExplorerButton",
-               "label":"Show ArcGIS Explorer Button.",
-               "tooltip":"Display's the button to open the webmap in ArcGIS Explorer."
+               "label":"Show Explorer Online Button.",
+               "tooltip":"Display's the button to open the webmap in Explorer Online viewer."
             },
             {
                "type":"boolean",
                "fieldName":"showArcGISOnlineButton",
-               "label":"Show ArcGIS Online Button.",
-               "tooltip":"Display's the button to open the webmap in ArcGIS Online."
+               "label":"Show Map Viewer Button.",
+               "tooltip":"Display's the button to open the webmap in ArcGIS Online Map Viewer."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showMobileButtons",
+               "label":"Show Mobile Button.",
+               "tooltip":"Display's a mobile button to open the webmap in ArcGIS Online."
             }
          ]
       }
    ],
    "values":{
       "theme":"blueTheme",
-      "siteTitle":"My Gallery",
+      "siteTitle":"",
       "homeSideHeading":"",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
@@ -292,8 +298,8 @@
       "showSocialButtons":true,
       "showFooter":true,
       "showMoreInfo":true,
-      "showExplorerButton":true,
-      "showArcGISOnlineButton":true,
+      "showExplorerButton":false,
+      "showArcGISOnlineButton":false,
       "showMobileButtons":false,
       "openGalleryItemsNewWindow":false,
       "galleryItemsPerPage":"9"

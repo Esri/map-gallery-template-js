@@ -915,8 +915,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	background: #fff;
 	top:100%;
 	right:0;
-	width: 375px;
-	height: 350px;
+	width: 261px;
+	height: 340px;
 	overflow: auto;
 	padding: 10px;
 	-webkit-border-radius: 5px 0px 5px 5px;
