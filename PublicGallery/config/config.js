@@ -1,6 +1,6 @@
 var configOptions = {
    "development":true,
-   "group":"69b91f7b857b40a484c4aacbd1b243a7",
+   "group":"1d1f24e8556642f49448f1c88b5a571b",
    "appid":"",
    "theme":"blueTheme",
    "siteTitle":"My Gallery",
@@ -26,7 +26,7 @@ var configOptions = {
    "mapViewer":"simple",
    "galleryItemsPerPage":9,
    "showProfileUrl":true,
-   "showAboutPage":true,
+   "showAboutPage":false,
    "showSocialButtons":true,
    "showFooter":true,
    "showBasemapGallery":true,

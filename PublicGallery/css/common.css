@@ -39,13 +39,9 @@ h1 {
 	font-size:24px;
 	line-height: normal;
 }
-#homeSideHeading {
-	width:180px;
-	padding:52px 20px 0 20px;
-}
 #homeSideContent {
-	width:180px;
-	padding: 0 20px 20px 20px;
+	zoom:1;
+	padding: 52px 15px 20px 15px;
 }
 h2, h2 a {
 	font-size:24px;
@@ -436,22 +432,66 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	filter:alpha(opacity=0);
 	padding:5px;
 	background:#fff;
-	z-index:2;
+	z-index:4;
 	display:block;
 	overflow:hidden;
-	font-size:11px;
+	font-size:12px;
 }
 .mapsGrid .item .summaryHidden strong {
 	display:block;
+	line-height: 18px;
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
 }
 .mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden {
 	-webkit-transition:opacity 0.25s ease-in;
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
-	opacity:.9;
+	opacity:.95;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=90)";
-	filter:alpha(opacity=90);
+	filter:alpha(opacity=95);
+}
+.mapsGrid .item .itemCounts{
+	font-size:12px;
+	text-align:right; 
+	display:block; 
+	height:16px; 
+	line-height:16px; 
+	padding:6px 0 3px 0;
+}
+.mapsGrid .item .itemCounts .iconCon{
+	display:inline-block;
+	margin:0 5px;
+	vertical-align:text-bottom;
+}
+.mapsGrid .item .itemCounts .icon{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	vertical-align:text-bottom;
+}
+.mapsGrid .item .itemCounts .views{
+	margin:0 2px 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -256px 0px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -256px 0px;
+}
+.esriRtl .mapsGrid .item .itemCounts .views{
+	margin: 0 0 0 2px;
+}
+.mapsGrid .item .itemCounts .ratings{
+	margin: 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -272px 0px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -272px 0px;
+}
+.mapsGrid .item .itemCounts .comments{
+	margin:0 2px 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -288px 0px;
+	_background:url(../images/ui/uiSprite.gif) no-repeat -288px 0px;
+}
+.esriRtl .mapsGrid .item .itemCounts .comments{
+	margin:0 0 0 2px;
 }
 .mapsGrid .alpha .item {
 	margin-right:14px;
@@ -503,8 +543,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	zoom:1;
 	position:absolute;
 	z-index:3;
-	top:0;
-	right:0;
+	top:3px;
+	right:3px;
 	background:#fff url(../images/ui/external.png) no-repeat top right;
 	padding: 0 0 3px 3px;
 	margin: 0;
@@ -516,7 +556,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .esriRtl .mapsGrid .externalLink .externalIcon {
 	right:auto;
-	left:0;
+	left:3px;
 	padding: 0 3px 3px 0;
 	background-position: top left;
 	-webkit-border-radius: 0 0 3px 0;
@@ -953,7 +993,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /* MAP TAB MENU*/
 /*-------------------------------------------------- */
 #tabMenu {
-	margin:0 20px 20px 20px;
+	margin:0 15px 20px 15px;
 }
 #tabMenu .toggleButton {
 	float:left;
@@ -1026,8 +1066,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /* MAP PAGE */
 /*-------------------------------------------------- */
 #description, #legendDiv {
-	width:180px;
-	padding: 0 20px 20px 20px;
+	padding: 0px 15px 20px 15px;
 	zoom:1;
 }
 #mapButtons .mapButton {
@@ -1131,7 +1170,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	font-size:12px;
 	line-height:normal;
 	margin:0;
-	padding:7px 13px;
+	padding:9px 15px;
 	border:0;
 	color:#000;
 	text-decoration:none;
@@ -1241,7 +1280,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	display: none !important;
 }
 .fullScreen #description, .fullScreen #legendDiv {
-	padding:20px;
+	padding:15px;
 }
 .fullScreen .scrollHeight {
 	height: 400px !important;
@@ -1544,11 +1583,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 /* Scroll Div */
 /*-------------------------------------------------- */
 .scrollHeight {
-	overflow:auto;
 	zoom:1;
 	margin:0;
 	padding:0;
 	width:220px;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
+}
+#sidePanel{
+	height:auto !important;
 }
 /*-------------------------------------------------- */
 /* Media Queries */

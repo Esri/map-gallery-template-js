@@ -851,7 +851,7 @@ function initMap() {
 								}
 								html += '" /></td>';
 								// label column
-								html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[-_]/g, " ") + '</label></td>';
 								html += "</tr>";
 							}
 							else{
@@ -865,7 +865,7 @@ function initMap() {
 								html += layers[j].id;
 								html += '" /></td>';
 								// label column
-								html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title + '</label></td>';
+								html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[-_]/g, " ") + '</label></td>';
 								html += "</tr>";
 							}
 						}

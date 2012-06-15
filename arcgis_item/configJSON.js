@@ -243,7 +243,7 @@
                "type":"boolean",
                "fieldName":"showProfileUrl",
                "label":"Show Profile Link.",
-               "tooltip":"Show profile link in footer."
+               "tooltip":"Show profile link on about page."
             },
             {
                "type":"boolean",
@@ -278,8 +278,20 @@
             {
                "type":"boolean",
                "fieldName":"showMobileButtons",
-               "label":"Show Mobile Button.",
+               "label":"Show Mobile Buttons.",
                "tooltip":"Display's a mobile button to open the webmap in ArcGIS Online."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showCredits",
+               "label":"Show Credits.",
+               "tooltip":"Display's credits on the map page."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showLicenseInfo",
+               "label":"Show Credits.",
+               "tooltip":"Display's License info on the map page."
             }
          ]
       }
@@ -294,7 +306,7 @@
       "sortOrder":"desc",
       "mapViewer":"simple",
       "showProfileUrl":true,
-      "showAboutPage":true,
+      "showAboutPage":false,
       "showSocialButtons":true,
       "showFooter":true,
       "showMoreInfo":true,
@@ -302,6 +314,8 @@
       "showArcGISOnlineButton":false,
       "showMobileButtons":false,
       "openGalleryItemsNewWindow":false,
+      "showCredits":true,
+      "showLicenseInfo":true,
       "galleryItemsPerPage":"9"
    }
 }

@@ -172,16 +172,17 @@ function insertHomeContent(){
 		node = dojo.byId('homeSnippet');
 		setNodeHTML(node, configOptions.homeSnippet);
 	}
+	var html = '';
 	// Set home right heading
 	if(configOptions.homeSideHeading){
-		node = dojo.byId('homeSideHeading');
-		setNodeHTML(node, configOptions.homeSideHeading);
+		html += '<h2>' +  configOptions.homeSideHeading + '</h2>';
 	}
 	// Set home right content
 	if(configOptions.homeSideContent){
-		node = dojo.byId('homeSideContent');
-		setNodeHTML(node, configOptions.homeSideContent);
+		html += configOptions.homeSideContent;
 	}
+	node = dojo.byId('homeSideContent');
+	setNodeHTML(node, html);
 }
 /*------------------------------------*/
 // Group auto-complete search
@@ -429,7 +430,7 @@ function buildMapPlaylist(obj,data){
 				}
 				// Build grid item
 				html += '<div class="grid_3' + itemClass + '">';
-					html += '<a class="item' + appClass + '" ' + linkTarget + ' id="mapItem' + i + '" title="' + snippet + '" href="' + itemURL + '">';
+					html += '<a class="item' + appClass + '" ' + linkTarget + ' id="mapItem' + i + '" href="' + itemURL + '">';
 						if(externalLink){
 							html += '<span class="externalIcon"></span>';
 						}
@@ -437,8 +438,17 @@ function buildMapPlaylist(obj,data){
 							html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + snippet + '</span>';
 						}
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
-						//html += '<span class="itemTitle">' + itemTitle + '</span>';
-						html += '<span style="font-size:12px;text-align:right; display:block; height:16px; line-height:16px; padding-top:3px;" class="itemCounts"><span style="display:inline-block; width:16px; height:16px; background:#ccc; vertical-align:text-bottom;"></span>' + data.results[i].numRatings + ':'  + data.results[i].numComments + ':' + data.results[i].numViews +  '</span>';
+						html += '<span class="itemCounts">';
+						if(data.results[i].numViews){
+							html += '<span class="iconCon"><span class="icon views"></span>' + dojo.number.format(data.results[i].numViews) + '</span>';
+						}
+						if(data.results[i].numComments){
+							html += '<span class="iconCon"><span class="icon comments"></span>'  + dojo.number.format(data.results[i].numComments) + '</span>';
+						}
+						if(data.results[i].numRatings){
+							html += '<span class="iconCon"><span class="icon ratings"></span>' + dojo.number.format(data.results[i].numRatings) + '</span>';
+						}
+						html += '</span>';
 					html += '</a>';
 				html += '</div>';
 				if(endRow){

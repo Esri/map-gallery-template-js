@@ -489,25 +489,17 @@ function setNodeHTML(node, htmlString){
 	if(node){
 		// update HTML
 		node.innerHTML = htmlString;
-		// resize sidebar and scrolling div
-		resizeSidebarHeight();
+		// set sidebar height
+		setSidebarHeight();
 	}
 }
 /*------------------------------------*/
-// Resize Sidebar and scrolling div
+// Set sidebar height
 /*------------------------------------*/
-function resizeSidebarHeight(){
+function setSidebarHeight(){
 	// vars
-	var scrollHeight = 0, mainHeight = 0, outerHeight = 0, outerNode = dojo.query('#sidePanel .outerHeight'), scrollNode = dojo.query('#sidePanel .scrollHeight'), sideNode = dojo.byId('sidePanel'), mainNode = dojo.byId('mainPanel');
-	// outer nodes in scroll area
-	if(outerNode){
-		// for each outer node
-		for(var i = 0; i < outerNode.length; i++){
-			// increase outer node height
-			outerHeight = outerHeight + dojo.marginBox(outerNode[i]).h;
-		}
-	}
-	// if main node and side node
+	var mainHeight = 0, mainNode = dojo.byId('mainPanel'), sideNode = dojo.byId('sidePanel');
+	// if nodes
 	if(mainNode && sideNode){
 		// get inner height of main node
 		mainHeight = dojo.contentBox(mainNode).h;
@@ -515,18 +507,11 @@ function resizeSidebarHeight(){
 		if(mainHeight < 750){
 			mainHeight = 750;
 		}
-		// set scrolling height
-		scrollHeight = mainHeight - outerHeight;
-		// set height of side bar
-		dojo.style(sideNode, 'height', mainHeight + 'px');
-	}
-	// if scroll height is set and scroll nodes are there
-	if(scrollHeight && scrollNode){
-		// for each scrolling node
-		for(var j = 0; j < scrollNode.length; j++){
-			// set it's height
-			dojo.style(scrollNode[j], 'height', scrollHeight + 'px');
-		}
+		// set style for sidenode
+		dojo.style(sideNode, {
+			'min-height': mainHeight + 'px',
+			'height': mainHeight + 'px'
+		});
 	}
 }
 /*------------------------------------*/
