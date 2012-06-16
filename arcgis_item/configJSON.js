@@ -78,6 +78,28 @@
                "tooltip":"Content description displayed in the footer.",
                "stringFieldOption":"textarea",
                "placeHolder":""
+            },
+            {
+               "type":"string",
+               "fieldName":"footerLogo",
+               "tooltip":"Image to display in the footer. If empty, the group's thumbnail image is used.",
+               "placeHolder":"http://www.mysite.com/logo.png",
+               "label":"Footer Logo:"
+            },
+            {
+               "type":"paragraph",
+               "value":"Image to display in the footer. If empty, the group's thumbnail image is used."
+            },
+            {
+               "type":"string",
+               "fieldName":"footerLogoUrl",
+               "tooltip":"Link for the image in the footer. If empty, link to the group on ArcGIS Online is used.",
+               "placeHolder":"http://www.mysite.com/",
+               "label":"Footer Logo Link:"
+            },
+            {
+               "type":"paragraph",
+               "value":"Link for the image in the footer. If empty, link to the group on ArcGIS Online is used."
             }
          ]
       },
@@ -243,7 +265,7 @@
                "type":"boolean",
                "fieldName":"showProfileUrl",
                "label":"Show Profile Link.",
-               "tooltip":"Show profile link on about page."
+               "tooltip":"Links usernames to ArcGIS Online profiles."
             },
             {
                "type":"boolean",
@@ -267,55 +289,72 @@
                "type":"boolean",
                "fieldName":"showExplorerButton",
                "label":"Show Explorer Online Button.",
-               "tooltip":"Display's the button to open the webmap in Explorer Online viewer."
+               "tooltip":"Displays the button to open the webmap in Explorer Online viewer."
             },
             {
                "type":"boolean",
                "fieldName":"showArcGISOnlineButton",
                "label":"Show Map Viewer Button.",
-               "tooltip":"Display's the button to open the webmap in ArcGIS Online Map Viewer."
+               "tooltip":"Displays the button to open the webmap in ArcGIS Online Map Viewer."
             },
             {
                "type":"boolean",
                "fieldName":"showMobileButtons",
                "label":"Show Mobile Buttons.",
-               "tooltip":"Display's a mobile button to open the webmap in ArcGIS Online."
+               "tooltip":"Displays a mobile button to open the webmap in ArcGIS mobile app and a button to download the app."
             },
             {
                "type":"boolean",
                "fieldName":"showCredits",
                "label":"Show Credits.",
-               "tooltip":"Display's credits on the map page."
+               "tooltip":"Displays credits on the map page."
             },
             {
                "type":"boolean",
                "fieldName":"showLicenseInfo",
                "label":"Show Credits.",
-               "tooltip":"Display's License info on the map page."
+               "tooltip":"Displays License info on the map page."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showMoreInfo",
+               "label":"Show More Info Links.",
+               "tooltip":"Displays More information links to ArcGIS and the owner on the map page."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showGroupSort",
+               "label":"Show group sort bar",
+               "tooltip":"Displays group sort bar on the home page."
             }
          ]
       }
    ],
    "values":{
       "theme":"blueTheme",
-      "siteTitle":"",
+      "siteTitle":"My Maps",
       "homeSideHeading":"",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"modified",
       "sortOrder":"desc",
       "mapViewer":"simple",
+      "footerHeading":"",
+      "footerDescription":"",
+      "footerLogo":"",
+      "footerLogoUrl":"",
       "showProfileUrl":true,
       "showAboutPage":false,
       "showSocialButtons":true,
       "showFooter":true,
-      "showMoreInfo":true,
+      "showMoreInfo":false,
       "showExplorerButton":false,
       "showArcGISOnlineButton":false,
       "showMobileButtons":false,
       "openGalleryItemsNewWindow":false,
       "showCredits":true,
       "showLicenseInfo":true,
+      "showGroupSort":false,
       "galleryItemsPerPage":"9"
    }
 }

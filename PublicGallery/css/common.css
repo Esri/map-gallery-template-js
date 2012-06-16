@@ -5,9 +5,8 @@ html {
 	overflow-y: scroll;
 }
 html, body {
-	font-family: Verdana, Geneva, sans-serif;
-	font-size:13px;
-	letter-spacing:normal;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:14px;
 	line-height:18px;
 	text-align: left;
 	outline:0;
@@ -28,16 +27,13 @@ h1 {
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: bold;
 	line-height:52px;
-	font-variant:normal;
 	color:#404040;
-	line-height:normal;
-	font-variant:normal;
 	margin-bottom:10px;
 	margin:0;
 }
 .mapPage h1 {
 	font-size:24px;
-	line-height: normal;
+	line-height: 30px;
 }
 #homeSideContent {
 	zoom:1;
@@ -45,15 +41,12 @@ h1 {
 }
 h2, h2 a {
 	font-size:24px;
-	text-shadow: 1px 1px 3px #ffffff; /* Text shadow for newer browsers */
+	text-shadow: 1px 1px 3px #ffffff;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	line-height:normal;
-	font-variant:normal;
-	margin:0 0 10px 0;
+	line-height:30px;
+	margin:0 0 5px 0;
 	padding:0;
-	line-height:normal;
-	font-variant:normal;
 	text-decoration:none;
 }
 h2 a:hover, h2 a:focus {
@@ -61,11 +54,10 @@ h2 a:hover, h2 a:focus {
 }
 h3, h3 a {
 	font-size:21px;
-	text-shadow: 1px 1px 3px #ffffff; /* Text shadow for newer browsers */
+	text-shadow: 1px 1px 3px #ffffff;
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	line-height:normal;
-	font-variant:normal;
+	line-height:25px;
 	margin:15px 0 4px 0;
 	text-decoration:none;
 }
@@ -108,6 +100,7 @@ h4, h5, h6 {
 }
 .mapPage h2, .mapPage h2 a {
 	font-size:18px;
+	line-height:22px;
 	text-decoration:none;
 }
 .mapPage h2 a:hover, .mapPage h2 a:focus {
@@ -115,6 +108,7 @@ h4, h5, h6 {
 }
 .mapPage h3, .mapPage h3 a {
 	font-size:16px;
+	line-height:20px;
 	text-decoration:none;
 }
 .mapPage h2 a:hover, .mapPage h2 a:focus {
@@ -238,7 +232,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 #header ul li a {
 	color:#fff;
-	font-size: 13px;
+	font-size: 14px;
 	text-decoration:none;
 	text-align:left;
 	font-weight:bold;
@@ -355,11 +349,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	height:11px;
 	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -96px 0;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -96px 0;
 }
 .toggleLayout .active .gridView {
 	background:url(../images/ui/uiSprite.png) no-repeat -128px 0;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -128px 0;
 }
 .toggleLayout .listView {
 	display:inline-block;
@@ -367,11 +359,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	height:11px;
 	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -112px 0;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -112px 0;
 }
 .toggleLayout .active .listView {
 	background:url(../images/ui/uiSprite.png) no-repeat -144px 0;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -144px 0;
 }
 .spinnerRemove {
 	margin:0 10px;
@@ -441,6 +431,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:block;
 	overflow:hidden;
 	font-size:12px;
+	line-height:18px;
 }
 .mapsGrid .item .summaryHidden strong {
 	display:block;
@@ -460,9 +451,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
-	opacity:.95;
+	opacity:.90;
 	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=90)";
-	filter:alpha(opacity=95);
+	filter:alpha(opacity=90);
 }
 .mapsGrid .item .itemCounts{
 	font-size:11px;
@@ -484,6 +475,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	width:16px;
 	height:16px;
 	vertical-align:middle;
+	margin:0 2px 0 0;
+}
+.esriRtl .mapsGrid .item .itemCounts .icon{
+	margin: 0 0 0 2px;
 }
 .mapsGrid .item .itemCounts .iconText{
 	display:inline-block;
@@ -491,24 +486,13 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	color:#999;
 }
 .mapsGrid .item .itemCounts .views{
-	margin:0 2px 0 0;
 	background:url(../images/ui/uiSprite.png) no-repeat -256px 0px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -256px 0px;
-}
-.esriRtl .mapsGrid .item .itemCounts .views{
-	margin: 0 0 0 2px;
 }
 .mapsGrid .item .itemCounts .ratings{
 	background:url(../images/ui/uiSprite.png) no-repeat -272px 0px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -272px 0px;
 }
 .mapsGrid .item .itemCounts .comments{
-	margin:0 3px 0 0;
 	background:url(../images/ui/uiSprite.png) no-repeat -288px 0px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -288px 0px;
-}
-.esriRtl .mapsGrid .item .itemCounts .comments{
-	margin:0 0 0 3px;
 }
 .mapsGrid .alpha .item {
 	margin-right:14px;
@@ -552,11 +536,11 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	z-index:3;
 	top:3px;
 	right:3px;
-	background:#fff url(../images/ui/external.png) no-repeat top right;
+	background:#fff url(../images/ui/uiSprite.png) no-repeat -304px 0px;
 	padding: 0 0 3px 3px;
 	margin: 0;
-	width:13px;
-	height:12px;
+	width:16px;
+	height:16px;
 	overflow: hidden;
 	-webkit-border-radius: 0 0 0 3px;
 	border-radius: 0 0 0 3px;
@@ -576,6 +560,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	background:#fff;
 	margin:0 0 10px 0;
 	padding:3px;
+	line-height: 18px;
+	font-size: 12px;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-moz-box-shadow: 0px 0px 6px #ccc;
@@ -602,7 +588,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	z-index:2;
 	top:0;
 	right:0;
-	background:#fff url(../images/ui/external.png) no-repeat top right;
+	background:#fff url(../images/ui/uiSprite.png) no-repeat -304px 0px;
 	padding: 0 0 3px 3px;
 	margin: 0;
 	width:13px;
@@ -673,7 +659,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .mapsList .item .itemInfo .dateInfo {
 	color:#656565;
 	font-size: 11px;
-	line-height:normal;
+	line-height:14px;
 }
 /*-------------------------------------------------- */
 /* DATA LAYERS */
@@ -684,7 +670,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-moz-box-shadow: 0px 1px 10px #999;
 	-webkit-box-shadow: 0px 1px 10px #999;
 	box-shadow: 0px 1px 10px #999;
-	line-height:18px;
 	position:relative;
 }
 .dataLayers ul li {
@@ -765,7 +750,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	height:12px;
 	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -82px -1px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -82px -1px;
 }
 .searchList .iconInput .iconReset {
 	display:none;
@@ -781,7 +765,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	overflow:hidden;
 	cursor:pointer;
 	background:url(../images/ui/uiSprite.png) no-repeat -64px 0;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -64px 0;
 }
 .esriRtl .searchList .iconInput .resetActive {
 	right:auto;
@@ -829,7 +812,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	color:#fff;
 	background:#4d4d4d url(../images/ui/footerBG.jpg) repeat-x top left;
 	_background-image:none;
-	line-height:18px;
 	padding:20px 0;
 }
 #footer .Pad {
@@ -840,10 +822,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	text-shadow: 1px 1px 1px #333; /* Text shadow for newer browsers */
 	font-family:Arial, Helvetica, sans-serif;
 	font-weight: bold;
-	line-height:normal;
-	font-variant:normal;
+	line-height:30px;
 	color:#dddddd;
-	margin:0 0 4px 0;
 }
 #footer .logoDiv {
 	padding:20px;
@@ -918,10 +898,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	height:12px;
 	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -2px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -2px -2px;
 }
 #subtitle {
-	line-height:18px;
 	margin-bottom:10px;
 }
 #geoButton {
@@ -937,7 +915,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	height:12px;
 	overflow:hidden;
 	background:url(../images/ui/uiSprite.png) no-repeat -162px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -162px -2px;
 }
 .basemapConRel {
 	position: relative;
@@ -987,11 +964,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	overflow:hidden;
 	margin-right:2px;
 	background:url(../images/ui/uiSprite.png) no-repeat -194px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -194px -2px;
 }
 .buttonSelected .basemapArrowButton {
 	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -178px -2px;
 }
 .esriRtl .basemapArrowButton {
 	margin-right:0;
@@ -1021,17 +996,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #legendMenu .esriLegendLayerLabel {
 	font-weight:bold;
 	margin-bottom:2px;
-}
-#legendMenu .esriLegendLayer td {
-	line-height:normal;
-	vertical-align:middle;
-}
-#legendMenu .esriLegendLayer img {
-	margin-right:5px;
-}
-.esriRtl #legendMenu .esriLegendLayer img {
-	margin-right:0;
-	margin-left:5px;
 }
 /*-------------------------------------------------- */
 /* MAP */
@@ -1064,7 +1028,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 #accessInformation .credits {
 	margin:5px 0 0 0;
-	font-size:10px;
+	font-size:11px;
+	line-height:16px;
 	color:#656565;
 }
 #mapButtonCon {
@@ -1083,6 +1048,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .esriRtl #mapButtons .mapButton {
 	margin-left:0;
 	margin-right:10px;
+}
+#mapMoreInfo{
+	margin:10px 0 0 0;
+}
+#licenseInfo{
+	margin:10px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* BUTTONS  */
@@ -1176,9 +1147,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	display:inline-block;
 	vertical-align:middle;
 	font-size:12px;
-	line-height:normal;
+	line-height:18px;
 	margin:0;
-	padding:9px 15px;
+	padding:8px 16px;
 	border:0;
 	color:#000;
 	text-decoration:none;
@@ -1255,7 +1226,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 }
 .fullScreen .fullScreenButton {
 	background:url(../images/ui/uiSprite.png) no-repeat -50px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -50px -2px;
 }
 .fullScreen #geoButton {
 	right:290px;
@@ -1291,9 +1261,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	padding:15px;
 }
 .fullScreen .scrollHeight {
-	height: 400px !important;
-	max-height:400px !important;
+	height: 500px !important;
+	max-height:500px !important;
 	zoom:1;
+	overflow:auto;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 	-moz-box-shadow: 1px 1px 3px #666;
@@ -1404,7 +1375,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 .pagination ul .next span {
 	display:inline-block;
 	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -35px -1px;
 	height:12px;
 	width:12px;
 	overflow:hidden;
@@ -1412,18 +1382,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 .pagination ul .previous span {
 	display:inline-block;
 	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -18px -1px;
 	height:12px;
 	width:12px;
 	overflow:hidden;
 }
 .esriRtl .pagination ul .next span {
 	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -18px -1px;
 }
 .esriRtl .pagination ul .previous span {
 	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -35px -1px;
 }
 /*-------------------------------------------------- */
 /* AUTO COMPLETE LIST */
@@ -1440,6 +1407,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	z-index:39;
 	background:#fff;
 	font-size:12px;
+	line-height:18px;
 	-webkit-box-shadow: 1px 1px 3px #999;
 	-moz-box-shadow: 1px 1px 3px #999;
 	box-shadow: 1px 1px 3px #999;
@@ -1550,19 +1518,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 }
 #sortGallery .desc .arrow {
 	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -178px -2px;
 }
 #sortGallery .desc:hover .arrow, #sortGallery .desc:focus .arrow {
 	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -178px -2px;
 }
 #sortGallery .asc .arrow {
 	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -242px -2px;
 }
 #sortGallery .asc:hover .arrow, #sortGallery .asc:focus .arrow {
 	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
-	_background:url(../images/ui/uiSprite.gif) no-repeat -242px -2px;
 }
 /*-------------------------------------------------- */
 /* Comments */
@@ -1586,6 +1550,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 #comments .comment .smallText {
 	color:#656565;
 	font-size: 11px;
+	line-height:16px;
 }
 /*-------------------------------------------------- */
 /* Scroll Div */
@@ -1595,12 +1560,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	margin:0;
 	padding:0;
 	width:220px;
-	-ms-word-break: break-all;
-	word-break: break-all;
-	word-break: break-word;
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	hyphens: auto;
+	-ms-word-break: hyphenate;
+	word-break: hyphenate;
 }
 #sidePanel{
 	height:auto !important;

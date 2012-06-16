@@ -601,7 +601,7 @@ function buildComments(comments){
 			html += '<p>';
 			html += decodeURIComponent(comments[i].comment);
 			html += '</p>';
-			html += '<p class="smallText">';
+			html += '<div class="smallText">';
 			// date object
 			var commentDate = new Date(comments[i].created);
 			// date format for locale
@@ -610,8 +610,15 @@ function buildComments(comments){
 				datePattern:"MMM d, yyyy"
 			});
 			html += i18n.viewer.comments.posted + ' ' + dateLocale;
-			html += ' ' + i18n.viewer.comments.by + ' <a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">' + comments[i].owner + '</a>.';
-			html += '</p>';
+			html += ' ' + i18n.viewer.comments.by + ' ';
+			if(configOptions.showProfileUrl){
+				html += '<a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">'
+			}
+			html += comments[i].owner;
+			if(configOptions.showProfileUrl){
+				html += '</a>.';
+			}
+			html += '</div>';
 			html += '</div>';
 		}
 	}
@@ -719,35 +726,35 @@ function initMap() {
 			// Set subtitle
 			var subTitleNode = dojo.byId("subtitle");
 			setNodeHTML(subTitleNode, configOptions.mapSnippet || "");
+			var d, dateLocale;
+			html = '';
+			html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
+			html += '<ul class="moreInfoList">';
+			// TODO
+			// Created Date
+			if(itemInfo.item.created){
+				// date object
+				d = new Date(itemInfo.item.created);
+				// date format for locale
+				dateLocale = dojo.date.locale.format(d, {
+					selector:"date",
+					datePattern:"MMM d, yyyy"
+				}); 
+				html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale + '</li>';
+			}
+			// Modified Date
+			if(itemInfo.item.modified){
+				// date object
+				d = new Date(itemInfo.item.modified);
+				// date format for locale
+				dateLocale = dojo.date.locale.format(d, {
+					selector:"date",
+					datePattern:"MMM d, yyyy"
+				}); 
+				html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale + '</li>';
+			}
 			// if showMoreInfo is set
 			if(configOptions.showMoreInfo){
-				var d, dateLocale;
-				html = '';
-				html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
-				html += '<ul class="moreInfoList">';
-				// TODO
-				// Created Date
-				if(itemInfo.item.created){
-					// date object
-					d = new Date(itemInfo.item.created);
-					// date format for locale
-					dateLocale = dojo.date.locale.format(d, {
-						selector:"date",
-						datePattern:"MMM d, yyyy"
-					}); 
-					html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale + '</li>';
-				}
-				// Modified Date
-				if(itemInfo.item.modified){
-					// date object
-					d = new Date(itemInfo.item.modified);
-					// date format for locale
-					dateLocale = dojo.date.locale.format(d, {
-						selector:"date",
-						datePattern:"MMM d, yyyy"
-					}); 
-					html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale + '</li>';
-				}
 				// Set owner
 				if(itemInfo.item.owner){
 					html += '<li><strong>' + i18n.viewer.mapPage.ownerHeader + '</strong><br /><a href="' + getViewerURL('owner_page', false, itemInfo.item.owner) + '" target="_blank">' + itemInfo.item.owner + '</a></li>';
@@ -759,10 +766,10 @@ function initMap() {
 				html += '<a id="mapContentsLink" href="' + getViewerURL('item_page') + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
 				html += '</li>';
 				html += '</ul>';
-				// set html to node
-				var mapMoreInfo = dojo.byId("mapMoreInfo");
-				setNodeHTML(mapMoreInfo, html);
 			}
+			// set html to node
+			var mapMoreInfo = dojo.byId("mapMoreInfo");
+			setNodeHTML(mapMoreInfo, html);
 			// TODO
 			// if no license info set in config
 			if(!configOptions.mapLicenseInfo){

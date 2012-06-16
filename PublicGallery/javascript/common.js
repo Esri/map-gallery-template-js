@@ -385,6 +385,7 @@ function insertSocialHTML(){
 		html += '<div class="addthis_toolbox addthis_default_style">';
 		html += '<a class="addthis_button_facebook"></a>';
 		html += '<a class="addthis_button_twitter"></a>';
+		html += '<a class="addthis_button_google_plusone_share"></a>';
 		html += '<a class="addthis_button_linkedin"></a>';
 		html += '<a class="addthis_button_email"></a>';
 		html += '<a class="addthis_button_compact"></a>';

@@ -349,7 +349,15 @@ function buildMapPlaylist(obj,data){
 						// html
 						html += '<p class="dateInfo">';
 						html += data.results[i].type + ' ';
-						html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupOwner + '</a>. ';
+						html += 'by ';
+						if(configOptions.showProfileUrl){
+							html += '<a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">';
+						}
+						html += data.results[i].owner;
+						if(configOptions.showProfileUrl){
+							html += '</a>';
+						}
+						html += '. ';
 						if(createdLocalized){
 							html += ''; // TODO
 							//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
@@ -430,7 +438,7 @@ function buildMapPlaylist(obj,data){
 						if(externalLink){
 							html += '<span class="externalIcon"></span>';
 						}
-						html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + truncate(snippet, 130) + '</span>';
+						html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + truncate(snippet, 120) + '</span>';
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '<span class="itemCounts">';
 						html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
@@ -675,8 +683,10 @@ function init(){
 		insertHomeContent();
 		// Configure grid/list and search
 		configLayoutSearch();
-		//	TODO
-		buildSortingMenu();
+		if(configOptions.showGroupSort){
+			// build sorting menu
+			buildSortingMenu();
+		}
 		// query for maps
 		queryMaps();
 	});
