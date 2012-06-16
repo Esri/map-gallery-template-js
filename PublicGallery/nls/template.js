@@ -31,8 +31,20 @@ define({
                 "itemTitle": "View map",
                 "gridSwitch": "Switch to Grid View",
                 "listSwitch": "Switch to List View",
-                "loadingText": "Loading Maps&hellip;"
+                "loadingText": "Loading Maps&hellip;",
+				// new
+				"sortBy":"Sort by"
             },
+			// new
+			"sortFields":{
+				"modified":"Date",
+				"title":"Title",
+				"type":"Type",
+				"numRatings":"Ratings",
+				"avgRating":"Avg. Rating",
+				"numComments":"Comments",
+				"numViews":"Views"
+			},
 			// new
 			"comments":{
 				"commentsHeader":"Comments",
@@ -49,6 +61,7 @@ define({
 				"commentsLabel":"comment",
 				"commentsLabelPlural":"comments",
 				"modifiedLabel":"Last Modified",
+				"by":"by",
 				"separator":","
 			},
             "mapPage": {

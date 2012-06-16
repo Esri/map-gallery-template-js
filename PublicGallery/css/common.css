@@ -1560,8 +1560,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	margin:0;
 	padding:0;
 	width:220px;
-	-ms-word-break: hyphenate;
-	word-break: hyphenate;
+	overflow:hidden;
 }
 #sidePanel{
 	height:auto !important;

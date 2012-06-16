@@ -30,32 +30,37 @@ function buildSortingMenu(){
 	// sorting fields
 	var sortFields = [
 		{
-			"title":"Date",
+			"title":i18n.viewer.sortFields.modified,
 			"field":"modified",
 			"defaultOrder":"desc"
 		},
 		{
-			"title":"Title",
+			"title":i18n.viewer.sortFields.title,
 			"field":"title",
 			"defaultOrder":"asc"
 		},
 		{
-			"title":"Type",
+			"title":i18n.viewer.sortFields.type,
 			"field":"type",
 			"defaultOrder":"asc"
 		},
 		{
-			"title":"Rating",
+			"title":i18n.viewer.sortFields.numRatings,
+			"field":"numRatings",
+			"defaultOrder":"desc"
+		},
+		{
+			"title":i18n.viewer.sortFields.avgRating,
 			"field":"avgRating",
 			"defaultOrder":"desc"
 		},
 		{
-			"title":"Comments",
+			"title":i18n.viewer.sortFields.numComments,
 			"field":"numComments",
 			"defaultOrder":"desc"
 		},
 		{
-			"title":"Views",
+			"title":i18n.viewer.sortFields.numViews,
 			"field":"numViews",
 			"defaultOrder":"desc"
 		}
@@ -64,7 +69,7 @@ function buildSortingMenu(){
 	var html = '';
 	html += '<div class="grid_9 sigma">';
 		html += '<ul id="sortGallery">';
-			html += '<li class="label"><span>Sort By</span></li>';
+			html += '<li class="label"><span>' + i18n.viewer.groupPage.sortBy + '</span></li>';
 			// for each sort field
 			for(var i = 0; i < sortFields.length; i++){
 				// variables
@@ -324,18 +329,8 @@ function buildMapPlaylist(obj,data){
 						html += '</a>';
 						html += '<div class="itemInfo">';
 						html += '<strong><a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '">' + itemTitle + '</a></strong>';
-						// TODO
-						var createdDate, createdLocalized, modifiedDate, modifiedLocalized;
-						// created date
-						if(data.results[i].created){
-							// date object
-							createdDate = new Date(data.results[i].created);
-							// date format for locale
-							createdLocalized = dojo.date.locale.format(createdDate, {
-								selector:"date",
-								datePattern:"MMM d, yyyy"
-							});
-						}
+						// vars
+						var modifiedDate, modifiedLocalized;
 						// modified date
 						if(data.results[i].modified){
 							// date object
@@ -349,7 +344,7 @@ function buildMapPlaylist(obj,data){
 						// html
 						html += '<p class="dateInfo">';
 						html += data.results[i].type + ' ';
-						html += 'by ';
+						html += i18n.viewer.itemInfo.by + ' ';
 						if(configOptions.showProfileUrl){
 							html += '<a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">';
 						}
@@ -358,16 +353,11 @@ function buildMapPlaylist(obj,data){
 							html += '</a>';
 						}
 						html += '. ';
-						if(createdLocalized){
-							html += ''; // TODO
-							//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
-						}
 						if(modifiedLocalized){
 							html += 'Last modified ' + modifiedLocalized + '. ';
 						}
 						html += '</p>';
 						html += '<p>' + snippet + '</p>';
-						// TODO
 						// rating widget
 						var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
 						// rating container

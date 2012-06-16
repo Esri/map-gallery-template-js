@@ -598,27 +598,27 @@ function buildComments(comments){
 	if(comments && comments.length > 0){
 		for(var i = 0; i < comments.length; i++){
 			html += '<div id="comment_' + comments[i].id + '" class="comment">';
-			html += '<p>';
-			html += decodeURIComponent(comments[i].comment);
-			html += '</p>';
-			html += '<div class="smallText">';
-			// date object
-			var commentDate = new Date(comments[i].created);
-			// date format for locale
-			var dateLocale = dojo.date.locale.format(commentDate, {
-				selector:"date",
-				datePattern:"MMM d, yyyy"
-			});
-			html += i18n.viewer.comments.posted + ' ' + dateLocale;
-			html += ' ' + i18n.viewer.comments.by + ' ';
-			if(configOptions.showProfileUrl){
-				html += '<a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">'
-			}
-			html += comments[i].owner;
-			if(configOptions.showProfileUrl){
-				html += '</a>.';
-			}
-			html += '</div>';
+				html += '<p>';
+				html += decodeURIComponent(comments[i].comment);
+				html += '</p>';
+				html += '<div class="smallText">';
+				// date object
+				var commentDate = new Date(comments[i].created);
+				// date format for locale
+				var dateLocale = dojo.date.locale.format(commentDate, {
+					selector:"date",
+					datePattern:"MMM d, yyyy"
+				});
+				html += i18n.viewer.comments.posted + ' ' + dateLocale;
+				html += ' ' + i18n.viewer.comments.by + ' ';
+				if(configOptions.showProfileUrl){
+					html += '<a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">';
+				}
+				html += comments[i].owner;
+				if(configOptions.showProfileUrl){
+					html += '</a>.';
+				}
+				html += '</div>';
 			html += '</div>';
 		}
 	}
@@ -638,7 +638,6 @@ function initMap() {
 	setDelegations();
 	// set map buttons
 	setInnerMapButtons();
-	// TODO
 	// get comments
 	queryComments({
 		// Group Owner
@@ -663,7 +662,6 @@ function initMap() {
 	});
 	itemDeferred.addCallback(function(itemInfo) {
 		var html = '';
-		// TODO
 		// rating widget
 		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
 		// rating container
@@ -730,7 +728,6 @@ function initMap() {
 			html = '';
 			html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
 			html += '<ul class="moreInfoList">';
-			// TODO
 			// Created Date
 			if(itemInfo.item.created){
 				// date object
@@ -761,7 +758,6 @@ function initMap() {
 				}
 				// item page link
 				html += '<li>';
-				// TODO
 				html += '<strong>' + i18n.viewer.mapPage.detailsLabel + '</strong><br />';
 				html += '<a id="mapContentsLink" href="' + getViewerURL('item_page') + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
 				html += '</li>';
@@ -770,7 +766,6 @@ function initMap() {
 			// set html to node
 			var mapMoreInfo = dojo.byId("mapMoreInfo");
 			setNodeHTML(mapMoreInfo, html);
-			// TODO
 			// if no license info set in config
 			if(!configOptions.mapLicenseInfo){
 				configOptions.mapLicenseInfo = itemInfo.item.licenseInfo;
@@ -854,7 +849,7 @@ function initMap() {
 								}
 								html += '" /></td>';
 								// label column
-								html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[-_]/g, " ") + '</label></td>';
+								html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
 								html += "</tr>";
 							}
 							else{
@@ -868,7 +863,7 @@ function initMap() {
 								html += layers[j].id;
 								html += '" /></td>';
 								// label column
-								html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[-_]/g, " ") + '</label></td>';
+								html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
 								html += "</tr>";
 							}
 						}
