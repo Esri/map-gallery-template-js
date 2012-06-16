@@ -50,9 +50,8 @@ h2, h2 a {
 	font-weight: bold;
 	line-height:normal;
 	font-variant:normal;
-	margin-bottom:4px;
+	margin:0 0 10px 0;
 	padding:0;
-	margin:0;
 	line-height:normal;
 	font-variant:normal;
 	text-decoration:none;
@@ -130,6 +129,12 @@ ol {
 a {
 	text-decoration:none;
 	outline:0;
+	-ms-word-break: break-all;
+	word-break: break-all;
+	word-break: break-word;
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	hyphens: auto;
 }
 a:hover, a:focus {
 	color:#000;
@@ -443,6 +448,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	font-size: 12px;
 	margin: 0;
 	padding: 0;
+	width:190px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	-ms-text-overflow: ellipsis;
 }
 .mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden {
 	-webkit-transition:opacity 0.25s ease-in;
@@ -454,23 +465,30 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	filter:alpha(opacity=95);
 }
 .mapsGrid .item .itemCounts{
-	font-size:12px;
+	font-size:11px;
 	text-align:right; 
 	display:block; 
 	height:16px; 
 	line-height:16px; 
 	padding:6px 0 3px 0;
 }
+.esriRtl .mapsGrid .item .itemCounts{
+	text-align: left;
+}
 .mapsGrid .item .itemCounts .iconCon{
 	display:inline-block;
 	margin:0 5px;
-	vertical-align:text-bottom;
 }
 .mapsGrid .item .itemCounts .icon{
 	display:inline-block;
 	width:16px;
 	height:16px;
-	vertical-align:text-bottom;
+	vertical-align:middle;
+}
+.mapsGrid .item .itemCounts .iconText{
+	display:inline-block;
+	vertical-align:middle;
+	color:#999;
 }
 .mapsGrid .item .itemCounts .views{
 	margin:0 2px 0 0;
@@ -481,17 +499,16 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	margin: 0 0 0 2px;
 }
 .mapsGrid .item .itemCounts .ratings{
-	margin: 0;
 	background:url(../images/ui/uiSprite.png) no-repeat -272px 0px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -272px 0px;
 }
 .mapsGrid .item .itemCounts .comments{
-	margin:0 2px 0 0;
+	margin:0 3px 0 0;
 	background:url(../images/ui/uiSprite.png) no-repeat -288px 0px;
 	_background:url(../images/ui/uiSprite.gif) no-repeat -288px 0px;
 }
 .esriRtl .mapsGrid .item .itemCounts .comments{
-	margin:0 0 0 2px;
+	margin:0 0 0 3px;
 }
 .mapsGrid .alpha .item {
 	margin-right:14px;
@@ -524,16 +541,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-moz-transition:opacity 0.25s ease-in;
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
-}
-.mapsGrid .item .itemTitle {
-	display:block;
-	padding:5px;
-	width:190px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
-	-ms-text-overflow: ellipsis;
 }
 .mapsGrid .externalLink {
 	position:relative;
@@ -956,9 +963,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	top:100%;
 	right:0;
 	width: 261px;
-	height: 340px;
+	height: 261px;
 	overflow: auto;
 	padding: 10px;
+	margin: 0;
 	-webkit-border-radius: 5px 0px 5px 5px;
 	border-radius: 5px 0px 5px 5px;
 	-moz-box-shadow: 1px 1px 3px #666;

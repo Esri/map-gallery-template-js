@@ -1,4 +1,18 @@
 /*------------------------------------*/
+// clip text to desired length
+/*------------------------------------*/
+function truncate(text, length, ellipsis) {
+	if(!ellipsis){
+		ellipsis = i18n.viewer.pagination.helip;
+	}
+	if(!length || length <= 0 || text.length < length){
+		return text;
+	}
+	else{
+		return text.substr(0, length) + ellipsis;
+	}
+}
+/*------------------------------------*/
 // Add Spinner
 /*------------------------------------*/
 function addSpinner(id){

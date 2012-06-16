@@ -326,80 +326,76 @@ function buildMapPlaylist(obj,data){
 						html += '<strong><a ' + linkTarget + ' class="title" id="mapItemLink' + i + '" title="' + snippet + '" href="' + itemURL + '">' + itemTitle + '</a></strong>';
 						// TODO
 						var createdDate, createdLocalized, modifiedDate, modifiedLocalized;
-						if(configOptions.development){
-							// created date
-							if(data.results[i].created){
-								// date object
-								createdDate = new Date(data.results[i].created);
-								// date format for locale
-								createdLocalized = dojo.date.locale.format(createdDate, {
-									selector:"date",
-									datePattern:"MMM d, yyyy"
-								});
-							}
-							// modified date
-							if(data.results[i].modified){
-								// date object
-								modifiedDate = new Date(data.results[i].modified);
-								// date format for locale
-								modifiedLocalized = dojo.date.locale.format(modifiedDate, {
-									selector:"date",
-									datePattern:"MMM d, yyyy"
-								});
-							}
-							// html
-							html += '<p class="dateInfo">';
-							html += data.results[i].type + ' ';
-							html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupOwner + '</a>. ';
-							if(createdLocalized){
-								html += ''; // TODO
-								//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
-							}
-							if(modifiedLocalized){
-								html += 'Last modified ' + modifiedLocalized + '. ';
-							}
-							html += '</p>';
+						// created date
+						if(data.results[i].created){
+							// date object
+							createdDate = new Date(data.results[i].created);
+							// date format for locale
+							createdLocalized = dojo.date.locale.format(createdDate, {
+								selector:"date",
+								datePattern:"MMM d, yyyy"
+							});
 						}
+						// modified date
+						if(data.results[i].modified){
+							// date object
+							modifiedDate = new Date(data.results[i].modified);
+							// date format for locale
+							modifiedLocalized = dojo.date.locale.format(modifiedDate, {
+								selector:"date",
+								datePattern:"MMM d, yyyy"
+							});
+						}
+						// html
+						html += '<p class="dateInfo">';
+						html += data.results[i].type + ' ';
+						html += 'by <a href="' + getViewerURL('owner_page', false, data.results[i].owner) + '">' + configOptions.groupOwner + '</a>. ';
+						if(createdLocalized){
+							html += ''; // TODO
+							//html += i18n.viewer.itemInfo.createdLabel + ' ' + createdLocalized + '. ';
+						}
+						if(modifiedLocalized){
+							html += 'Last modified ' + modifiedLocalized + '. ';
+						}
+						html += '</p>';
 						html += '<p>' + snippet + '</p>';
 						// TODO
-						if(configOptions.development){
-							// rating widget
-							var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
-							// rating container
-							html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
-							// Ratings
-							if(data.results[i].numRatings){
-								var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
-								if(data.results[i].numRatings > 1){
-									pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
-								}
-								html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
+						// rating widget
+						var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
+						// rating container
+						html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
+						// Ratings
+						if(data.results[i].numRatings){
+							var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
+							if(data.results[i].numRatings > 1){
+								pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
 							}
-							// comments
-							if(data.results[i].numComments){
-								if(data.results[i].numRatings){
-									html += i18n.viewer.itemInfo.separator + ' ';
-								}
-								var pluralComments = i18n.viewer.itemInfo.commentsLabel;
-								if(data.results[i].numComments > 1){
-									pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
-								}
-								html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
-							}
-							// views
-							if(data.results[i].numViews){
-								if(data.results[i].numRatings || data.results[i].numComments){
-									html += i18n.viewer.itemInfo.separator + ' ';
-								}
-								var pluralViews = i18n.viewer.itemInfo.viewsLabel;
-								if(data.results[i].numViews > 1){
-									pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
-								}
-								html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
-							}
-							// close container
-							html += ')</div>';
+							html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
 						}
+						// comments
+						if(data.results[i].numComments){
+							if(data.results[i].numRatings){
+								html += i18n.viewer.itemInfo.separator + ' ';
+							}
+							var pluralComments = i18n.viewer.itemInfo.commentsLabel;
+							if(data.results[i].numComments > 1){
+								pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+							}
+							html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
+						}
+						// views
+						if(data.results[i].numViews){
+							if(data.results[i].numRatings || data.results[i].numComments){
+								html += i18n.viewer.itemInfo.separator + ' ';
+							}
+							var pluralViews = i18n.viewer.itemInfo.viewsLabel;
+							if(data.results[i].numViews > 1){
+								pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
+							}
+							html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
+						}
+						// close container
+						html += ')</div>';
 						html += '</div>';
 						html += '<div class="clear"></div>';
 					html += '</div>';
@@ -434,20 +430,12 @@ function buildMapPlaylist(obj,data){
 						if(externalLink){
 							html += '<span class="externalIcon"></span>';
 						}
-						if(configOptions.development){
-							html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + snippet + '</span>';
-						}
+						html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + truncate(snippet, 130) + '</span>';
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '<span class="itemCounts">';
-						if(data.results[i].numViews){
-							html += '<span class="iconCon"><span class="icon views"></span>' + dojo.number.format(data.results[i].numViews) + '</span>';
-						}
-						if(data.results[i].numComments){
-							html += '<span class="iconCon"><span class="icon comments"></span>'  + dojo.number.format(data.results[i].numComments) + '</span>';
-						}
-						if(data.results[i].numRatings){
-							html += '<span class="iconCon"><span class="icon ratings"></span>' + dojo.number.format(data.results[i].numRatings) + '</span>';
-						}
+						html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
+						html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">'  + dojo.number.format(data.results[i].numComments) + '</span></span>';
+						html += '<span class="iconCon"><span class="icon ratings"></span><span class="iconText">' + dojo.number.format(data.results[i].numRatings) + '</span></span>';
 						html += '</span>';
 					html += '</a>';
 				html += '</div>';
@@ -688,9 +676,7 @@ function init(){
 		// Configure grid/list and search
 		configLayoutSearch();
 		//	TODO
-		if(configOptions.development){
-			buildSortingMenu();
-		}
+		buildSortingMenu();
 		// query for maps
 		queryMaps();
 	});

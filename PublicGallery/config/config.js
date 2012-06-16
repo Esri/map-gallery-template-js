@@ -12,7 +12,7 @@ var configOptions = {
    "mapCredits":"",
    "homeHeading":"",
    "homeSnippet":"",
-   "homeSideHeading":"",
+   "homeSideHeading":"Description",
    "homeSideContent":"",
    "footerHeading":"",
    "footerDescription":"",
