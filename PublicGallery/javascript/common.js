@@ -461,7 +461,13 @@ function insertFooterHTML(){
 	var node = dojo.byId('footer');
 	setNodeHTML(node, html);
 	// set Background Color
-	dojo.query("body").style('background-color', '#4d4d4d');
+	var bodyNode = dojo.byId('galleryBody');
+	// if body
+	if(bodyNode){
+		dojo.style(bodyNode, {
+			'background':'#4d4d4d'
+		});
+	}
 }
 /*------------------------------------*/
 // Insert Navigation/Banner
@@ -496,6 +502,15 @@ function insertHeaderContent(){
 			dojo.query(obj).addClass('activeLink');
 		}
 	});
+	// top header background set
+	var topHeader = dojo.byId('topHeader');
+	// if header and bg image set
+	if(topHeader && configOptions.bannerBackground){
+		// set BG image
+		dojo.style(topHeader, {
+			'background': 'url(' + configOptions.bannerBackground + ') no-repeat top left'
+		});
+	}
 }
 /*------------------------------------*/
 // Insert HTML to node reference function

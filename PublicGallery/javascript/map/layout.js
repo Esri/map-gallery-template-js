@@ -665,7 +665,7 @@ function initMap() {
 		// rating widget
 		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
 		// rating container
-		html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
+		html += '<div class="ratingCon" id="ratingCon"> (';
 		// Ratings
 		if(itemInfo.item.numRatings){
 			var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
@@ -700,6 +700,29 @@ function initMap() {
 		html += ')</div>';
 		var ratingNode = dojo.byId("rating");
 		setNodeHTML(ratingNode, html);
+		// rating widget
+		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
+		// rating connects
+		dojo.connect(widget, "onChange", function(value){
+			console.log('set' + value);
+			// TODO
+			//portal.signIn().then(function (loggedInUser) {
+				//console.log(loggedInUser);
+				
+				
+				var params ={
+				  q:'id:' + configOptions.webmap
+				}
+				
+				portal.queryItems(configOptions.webmap).then(function(items) {
+					console.log(items);
+					
+					items.results[0].addRating(value);
+				
+				
+				});
+			//});
+		});
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html
@@ -752,17 +775,13 @@ function initMap() {
 			}
 			// if showMoreInfo is set
 			if(configOptions.showMoreInfo){
-				// Set owner
-				if(itemInfo.item.owner){
-					html += '<li><strong>' + i18n.viewer.mapPage.ownerHeader + '</strong><br /><a href="' + getViewerURL('owner_page', false, itemInfo.item.owner) + '" target="_blank">' + itemInfo.item.owner + '</a></li>';
-				}
 				// item page link
 				html += '<li>';
 				html += '<strong>' + i18n.viewer.mapPage.detailsLabel + '</strong><br />';
 				html += '<a id="mapContentsLink" href="' + getViewerURL('item_page') + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
 				html += '</li>';
-				html += '</ul>';
 			}
+			html += '</ul>';
 			// set html to node
 			var mapMoreInfo = dojo.byId("mapMoreInfo");
 			setNodeHTML(mapMoreInfo, html);

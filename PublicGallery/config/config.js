@@ -43,6 +43,7 @@ var configOptions = {
    "showCredits":true,
    "showMobileButtons":true,
    "openGalleryItemsNewWindow":false,
+   "bannerBackground":"images/ui/banner.png",
    "bingMapsKey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
    "proxyUrl":"",
    "locatorserviceurl":"http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocator/GeocodeServer/",

@@ -268,6 +268,10 @@
                "tooltip":"Links usernames to ArcGIS Online profiles."
             },
             {
+               "type":"paragraph",
+               "value":"Links usernames to ArcGIS Online profiles."
+            },
+            {
                "type":"boolean",
                "fieldName":"showAboutPage",
                "label":"Show About Page.",
@@ -292,16 +296,28 @@
                "tooltip":"Displays the button to open the webmap in Explorer Online viewer."
             },
             {
+               "type":"paragraph",
+               "value":"Displays the button to open the webmap in Explorer Online viewer."
+            },
+            {
                "type":"boolean",
                "fieldName":"showArcGISOnlineButton",
                "label":"Show Map Viewer Button.",
                "tooltip":"Displays the button to open the webmap in ArcGIS Online Map Viewer."
             },
             {
+               "type":"paragraph",
+               "value":"Displays the button to open the webmap in ArcGIS Online Map Viewer."
+            },
+            {
                "type":"boolean",
                "fieldName":"showMobileButtons",
                "label":"Show Mobile Buttons.",
                "tooltip":"Displays a mobile button to open the webmap in ArcGIS mobile app and a button to download the app."
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays a mobile button to open the webmap in ArcGIS mobile app and a button to download the app."
             },
             {
                "type":"boolean",
@@ -319,13 +335,21 @@
                "type":"boolean",
                "fieldName":"showMoreInfo",
                "label":"Show More Info Links.",
-               "tooltip":"Displays More information links to ArcGIS and the owner on the map page."
+               "tooltip":"Displays More information links to the ArcGIS Online item page."
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays More information links to the ArcGIS Online item page."
             },
             {
                "type":"boolean",
                "fieldName":"showGroupSort",
                "label":"Show group sort bar",
                "tooltip":"Displays group sort bar on the home page."
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays group sort bar on the home page."
             }
          ]
       }
