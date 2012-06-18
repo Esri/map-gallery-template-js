@@ -653,7 +653,7 @@ function buildComments(comments){
 		html += '</p>';
 	}
 	html += '<p>';
-	html += '<div style="margin-top:20px; border-top:1px solid #ccc; padding-top:20px;"><textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
+	html += '<div style="margin-top:20px; border-top:1px solid #ccc;"><h3>Add Comment</h3><textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
 	html += '<div><span id="addComment" class="silverButton buttonSingle">Add Comment</span></div>';
 	html += '</p>';
 	var commentsNode = dojo.byId("comments");
