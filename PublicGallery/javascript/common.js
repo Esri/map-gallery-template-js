@@ -641,6 +641,19 @@ function createPortal(callback){
 	});
 }
 /*------------------------------------*/
+// 
+/*------------------------------------*/
+function portalSignIn(callback){
+	portal.signIn().then(function (loggedInUser) {
+		if(loggedInUser){
+			if(typeof callback === 'function'){
+				// call callback function
+				callback.call(this);
+			}
+		}
+	});
+}
+/*------------------------------------*/
 // Query arcgis items
 /*------------------------------------*/
 function queryArcGISGroupItems(obj){

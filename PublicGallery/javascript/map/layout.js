@@ -627,17 +627,47 @@ function buildComments(comments){
 		html += 'no comments';
 		html += '</p>';
 	}
+	html += '<p>';
+	html += '<div style="margin-top:20px; border-top:1px solid #ccc; padding-top:20px;"><textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
+	html += '<div><span id="addComment" class="silverButton buttonSingle">Add Comment</span></div>';
+	html += '</p>';
 	var commentsNode = dojo.byId("comments");
 	setNodeHTML(commentsNode, html);
+	// fullscreen button
+	dojo.query(document).delegate("#addComment", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			addCommentToItem();
+		}
+    });
 }
 /*------------------------------------*/
-// Init Map
+// Add Comment
 /*------------------------------------*/
-function initMap() {
-	// set map content
-	setDelegations();
-	// set map buttons
-	setInnerMapButtons();
+function addCommentToItem(){
+	// TODO
+	portalSignIn(function(){
+		// set item params
+		var params ={
+		  q:'id:' + configOptions.webmap
+		}
+		// get item
+		portal.queryItems(params).then(function(items) {
+			if(items){
+				var text = dojo.byId("commentText").value;
+				if(text){
+					// comment
+					items.results[0].addComment(text);
+					// get comments
+					getComments();
+				}
+			}
+		});
+	});
+}
+/*------------------------------------*/
+// get comments
+/*------------------------------------*/
+function getComments(){
 	// get comments
 	queryComments({
 		// Group Owner
@@ -648,6 +678,17 @@ function initMap() {
 			buildComments(comments);
 		}
 	});
+}
+/*------------------------------------*/
+// Init Map
+/*------------------------------------*/
+function initMap() {
+	// set map content
+	setDelegations();
+	// set map buttons
+	setInnerMapButtons();
+	// get comments
+	getComments();
 	// ITEM
 	var itemDeferred = esri.arcgis.utils.getItem(configOptions.webmap);
 	itemDeferred.addErrback(function(error) {
@@ -704,24 +745,19 @@ function initMap() {
 		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
 		// rating connects
 		dojo.connect(widget, "onChange", function(value){
-			console.log('set' + value);
+			var widgetVal = parseInt(value,10);
 			// TODO
-			//portal.signIn().then(function (loggedInUser) {
-				//console.log(loggedInUser);
-				
-				
+			portalSignIn(function(){
+				// set item params
 				var params ={
 				  q:'id:' + configOptions.webmap
 				}
-				
-				portal.queryItems(configOptions.webmap).then(function(items) {
-					console.log(items);
-					
-					items.results[0].addRating(value);
-				
-				
+				// get item
+				portal.queryItems(params).then(function(items) {
+					// rate
+					items.results[0].addRating(widgetVal);
 				});
-			//});
+			});
 		});
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
