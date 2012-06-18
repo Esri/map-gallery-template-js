@@ -646,6 +646,7 @@ function createPortal(callback){
 function portalSignIn(callback){
 	portal.signIn().then(function (loggedInUser) {
 		if(loggedInUser){
+			userAuth = loggedInUser;
 			if(typeof callback === 'function'){
 				// call callback function
 				callback.call(this);

@@ -590,13 +590,38 @@ function queryComments(obj){
 	});
 }
 /*------------------------------------*/
+// Sort comments by date
+/*------------------------------------*/
+function commentSort(a, b){	
+	if(a.created > b.created){
+		return -1;
+	}
+	else if(a.created == b.created){
+		return 0;
+	}
+	else{
+		return 1;
+	}
+}
+/*------------------------------------*/
 // Builds listing of comments
 /*------------------------------------*/
 function buildComments(comments){
+	// sort comments
+	comments = comments.sort(commentSort);
+	// html
 	var html = '';
 	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
 	if(comments && comments.length > 0){
 		for(var i = 0; i < comments.length; i++){
+			var isOwner = false;
+			if(userAuth){
+				if(comments[i].owner === userAuth.username){
+					isOwner = true;
+				}
+			}
+			console.log(comments[i]);
+		
 			html += '<div id="comment_' + comments[i].id + '" class="comment">';
 				html += '<p>';
 				html += decodeURIComponent(comments[i].comment);
@@ -645,24 +670,27 @@ function buildComments(comments){
 /*------------------------------------*/
 function addCommentToItem(){
 	// TODO
-	portalSignIn(function(){
-		// set item params
-		var params ={
-		  q:'id:' + configOptions.webmap
-		}
-		// get item
-		portal.queryItems(params).then(function(items) {
-			if(items){
-				var text = dojo.byId("commentText").value;
-				if(text){
-					// comment
-					items.results[0].addComment(text);
-					// get comments
-					getComments();
-				}
+	var text = dojo.byId("commentText").value;
+	if(text){
+		portalSignIn(function(){
+			// set item params
+			var params ={
+			  q:'id:' + configOptions.webmap
 			}
+			// get item
+			portal.queryItems(params).then(function(items) {
+				if(items){
+					// spinner
+					addSpinner('comments');
+					// comment
+					items.results[0].addComment(text).then(function(){
+						// get comments
+						getComments();
+					});
+				}
+			});
 		});
-	});
+	}
 }
 /*------------------------------------*/
 // get comments
@@ -754,8 +782,13 @@ function initMap() {
 				}
 				// get item
 				portal.queryItems(params).then(function(items) {
-					// rate
-					items.results[0].addRating(widgetVal);
+					if(items && items.results[0] && widgetVal){
+					
+						console.log(widgetVal);
+					
+						// rate
+						items.results[0].addRating(widgetVal);
+					}
 				});
 			});
 		});
