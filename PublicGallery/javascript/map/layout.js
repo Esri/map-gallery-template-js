@@ -611,7 +611,7 @@ function buildComments(comments){
 	comments = comments.sort(commentSort);
 	// html
 	var html = '';
-	html += '<p style="float:right;"><span>Sign In</span> <span>Register</span></p>';
+	html += '<p style="float:right;"><a>Sign In</a> <a target="_blank" href="' + getViewerURL('signup_page') + '">Register</a></p>';
 	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
 	html += '<div class="clear"></div>';
 	if(comments && comments.length > 0){

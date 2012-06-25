@@ -953,6 +953,10 @@ function getViewerURL(viewer, webmap, owner){
 				retUrl = retUrl.replace('http:', 'https:');
 			}
 			return retUrl;
+		// portal sign up link
+		case 'signup_page':
+			retUrl = configOptions.portalUrl + 'home/createaccount.html';
+			return retUrl;
 		// portal owner page link
 		case 'owner_page':
 			if(configOptions.groupOwner || owner){
