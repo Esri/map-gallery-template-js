@@ -12,7 +12,7 @@
             },
             {
                "type":"paragraph",
-               "value":"<a target=\"_blank\" href=\"http:\/\/help.arcgis.com\/en\/webapi\/javascript\/arcgis\/demos\/portal\/portal_getgroup.html\">Find your group&#39;s ID<\/a>."
+               "value":"<a target=\"_blank\" href=\"https:\/\/servicesbeta.esri.com\/demos\/portal\/portal_getGroup.html\">Find your group&#39;s ID<\/a>."
             },
             {
                "type":"string",
