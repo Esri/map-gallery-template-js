@@ -41,6 +41,8 @@ var configOptions = {
    "showArcGISOnlineButton":false,
    "showLicenseInfo":true,
    "showCredits":true,
+   "showComments":true,
+   "showRatings":true,
    "showMobileButtons":true,
    "openGalleryItemsNewWindow":false,
    "bannerBackground":"images/ui/banner.png",

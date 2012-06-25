@@ -1609,9 +1609,6 @@ a.ownerImage:hover, a.ownerImage:focus {
 	width:220px;
 	overflow:hidden;
 }
-#sidePanel{
-	height:auto !important;
-}
 /*-------------------------------------------------- */
 /* Media Queries */
 /*-------------------------------------------------- */

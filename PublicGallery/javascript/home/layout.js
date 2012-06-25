@@ -358,32 +358,42 @@ function buildMapPlaylist(obj,data){
 						}
 						html += '</p>';
 						html += '<p>' + snippet + '</p>';
-						// rating widget
-						var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
-						// rating container
-						html += '<div class="ratingCon">' + widget.domNode.outerHTML + ' (';
-						// Ratings
-						if(data.results[i].numRatings){
-							var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
-							if(data.results[i].numRatings > 1){
-								pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
-							}
-							html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
+						if(configOptions.showRatings){
+							// rating widget
+							var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
 						}
-						// comments
-						if(data.results[i].numComments){
+						// rating container
+						html += '<div class="ratingCon">';
+						if(configOptions.showRatings){
+							html += widget.domNode.outerHTML;
+						}
+						html += ' (';
+						if(configOptions.showRatings){
+							// Ratings
 							if(data.results[i].numRatings){
-								html += i18n.viewer.itemInfo.separator + ' ';
+								var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
+								if(data.results[i].numRatings > 1){
+									pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
+								}
+								html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
 							}
-							var pluralComments = i18n.viewer.itemInfo.commentsLabel;
-							if(data.results[i].numComments > 1){
-								pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+						}
+						if(configOptions.showComments){
+							// comments
+							if(data.results[i].numComments){
+								if(data.results[i].numRatings){
+									html += i18n.viewer.itemInfo.separator + ' ';
+								}
+								var pluralComments = i18n.viewer.itemInfo.commentsLabel;
+								if(data.results[i].numComments > 1){
+									pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+								}
+								html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
 							}
-							html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
 						}
 						// views
 						if(data.results[i].numViews){
-							if(data.results[i].numRatings || data.results[i].numComments){
+							if((data.results[i].numRatings && configOptions.showRatings) || (data.results[i].numComments && configOptions.showComments)){
 								html += i18n.viewer.itemInfo.separator + ' ';
 							}
 							var pluralViews = i18n.viewer.itemInfo.viewsLabel;
@@ -432,8 +442,12 @@ function buildMapPlaylist(obj,data){
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '<span class="itemCounts">';
 						html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
-						html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">'  + dojo.number.format(data.results[i].numComments) + '</span></span>';
-						html += '<span class="iconCon"><span class="icon ratings"></span><span class="iconText">' + dojo.number.format(data.results[i].numRatings) + '</span></span>';
+						if(configOptions.showComments){
+							html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">'  + dojo.number.format(data.results[i].numComments) + '</span></span>';
+						}
+						if(configOptions.showRatings){
+							html += '<span class="iconCon"><span class="icon ratings"></span><span class="iconText">' + dojo.number.format(data.results[i].numRatings) + '</span></span>';
+						}
 						html += '</span>';
 					html += '</a>';
 				html += '</div>';

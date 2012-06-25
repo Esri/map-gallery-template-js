@@ -611,7 +611,9 @@ function buildComments(comments){
 	comments = comments.sort(commentSort);
 	// html
 	var html = '';
+	html += '<p style="float:right;"><span>Sign In</span> <span>Register</span></p>';
 	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
+	html += '<div class="clear"></div>';
 	if(comments && comments.length > 0){
 		for(var i = 0; i < comments.length; i++){
 			var isOwner = false;
@@ -620,13 +622,19 @@ function buildComments(comments){
 					isOwner = true;
 				}
 			}
-			console.log(comments[i]);
-		
 			html += '<div id="comment_' + comments[i].id + '" class="comment">';
 				html += '<p>';
 				html += decodeURIComponent(comments[i].comment);
 				html += '</p>';
 				html += '<div class="smallText">';
+				if(isOwner){
+					html += '';
+					html += 'delete';
+					html += ' ';
+					html += '';
+					html += 'edit';
+					html += ' ';
+				}
 				// date object
 				var commentDate = new Date(comments[i].created);
 				// date format for locale
@@ -642,7 +650,7 @@ function buildComments(comments){
 				html += comments[i].owner;
 				if(configOptions.showProfileUrl){
 					html += '</a>.';
-				}
+				}	
 				html += '</div>';
 			html += '</div>';
 		}
@@ -715,8 +723,10 @@ function initMap() {
 	setDelegations();
 	// set map buttons
 	setInnerMapButtons();
-	// get comments
-	getComments();
+	if(configOptions.showComments){
+		// get comments
+		getComments();
+	}
 	// ITEM
 	var itemDeferred = esri.arcgis.utils.getItem(configOptions.webmap);
 	itemDeferred.addErrback(function(error) {
@@ -731,32 +741,38 @@ function initMap() {
 	});
 	itemDeferred.addCallback(function(itemInfo) {
 		var html = '';
-		// rating widget
-		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+		if(configOptions.showRatings){
+			// rating widget
+			var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+		}
 		// rating container
 		html += '<div class="ratingCon" id="ratingCon"> (';
-		// Ratings
-		if(itemInfo.item.numRatings){
-			var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
-			if(itemInfo.item.numRatings > 1){
-				pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
-			}
-			html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
-		}
-		// comments
-		if(itemInfo.item.numComments){
+		if(configOptions.showRatings){
+			// Ratings
 			if(itemInfo.item.numRatings){
-				html += i18n.viewer.itemInfo.separator + ' ';
+				var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
+				if(itemInfo.item.numRatings > 1){
+					pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
+				}
+				html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
 			}
-			var pluralComments = i18n.viewer.itemInfo.commentsLabel;
-			if(itemInfo.item.numComments > 1){
-				pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+		}
+		if(configOptions.showComments){
+			// comments
+			if(itemInfo.item.numComments){
+				if(itemInfo.item.numRatings){
+					html += i18n.viewer.itemInfo.separator + ' ';
+				}
+				var pluralComments = i18n.viewer.itemInfo.commentsLabel;
+				if(itemInfo.item.numComments > 1){
+					pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+				}
+				html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
 			}
-			html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
 		}
 		// views
 		if(itemInfo.item.numViews){
-			if(itemInfo.item.numRatings || itemInfo.item.numComments){
+			if((itemInfo.item.numRatings && configOptions.showRatings) || (itemInfo.item.numComments && configOptions.showComments)){
 				html += i18n.viewer.itemInfo.separator + ' ';
 			}
 			var pluralViews = i18n.viewer.itemInfo.viewsLabel;
@@ -769,29 +785,31 @@ function initMap() {
 		html += ')</div>';
 		var ratingNode = dojo.byId("rating");
 		setNodeHTML(ratingNode, html);
-		// rating widget
-		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
-		// rating connects
-		dojo.connect(widget, "onChange", function(value){
-			var widgetVal = parseInt(value,10);
-			// TODO
-			portalSignIn(function(){
-				// set item params
-				var params ={
-				  q:'id:' + configOptions.webmap
-				}
-				// get item
-				portal.queryItems(params).then(function(items) {
-					if(items && items.results[0] && widgetVal){
-					
-						console.log(widgetVal);
-					
-						// rate
-						items.results[0].addRating(widgetVal);
+		if(configOptions.showRatings){
+			// rating widget
+			dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
+			// rating connects
+			dojo.connect(widget, "onChange", function(value){
+				var widgetVal = parseInt(value,10);
+				// TODO
+				portalSignIn(function(){
+					// set item params
+					var params ={
+					  q:'id:' + configOptions.webmap
 					}
+					// get item
+					portal.queryItems(params).then(function(items) {
+						if(items && items.results[0] && widgetVal){
+						
+							console.log(widgetVal);
+						
+							// rate
+							items.results[0].addRating(widgetVal);
+						}
+					});
 				});
 			});
-		});
+		}
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html

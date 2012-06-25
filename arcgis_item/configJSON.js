@@ -350,6 +350,26 @@
             {
                "type":"paragraph",
                "value":"Displays group sort bar on the home page."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showComments",
+               "label":"Show comments",
+               "tooltip":"Shows comments for items and allows items to be commented on"
+            },
+            {
+               "type":"paragraph",
+               "value":"Shows comments for items and allows items to be commented on."
+            },
+            {
+               "type":"boolean",
+               "fieldName":"showRatings",
+               "label":"Show ratings",
+               "tooltip":"Shows ratings for items and allows items to be rated"
+            },
+            {
+               "type":"paragraph",
+               "value":"Shows ratings for items and allows items to be rated."
             }
          ]
       }
