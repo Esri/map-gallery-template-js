@@ -883,6 +883,14 @@ function createPagination(obj, totalItems, pagObject){
 	setNodeHTML(node, html);
 }
 /*------------------------------------*/
+// Parse text for URLs
+/*------------------------------------*/
+function parseURL(text){
+	return text.replace(/[A-Za-z]+:\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9-_:%&~\?\/.=]+/g, function(url) {
+		return '<a target="_blank" href="'+ url +'">' + url + '</a>';
+	});
+}
+/*------------------------------------*/
 // Configure viewer URL to use
 /*------------------------------------*/
 function getViewerURL(viewer, webmap, owner){

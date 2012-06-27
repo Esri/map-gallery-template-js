@@ -49,7 +49,19 @@ define({
 			"comments":{
 				"commentsHeader":"Comments",
 				"posted":"Posted",
-				"by":"by"
+				"by":"by",
+				"deleteComment":"delete",
+				"editComment":"edit",
+				"noComments":"No comments",
+				"addCommentHeader":"Add Comment",
+				"addCommentButton":"Add Comment",
+				"signIn":"Sign In",
+				"register":"register",
+				"toPost":"to post a comment."
+			},
+			"rating":{
+				"signIn":"Sign In",
+				"toRate":"to rate."
 			},
 			// new
 			"itemInfo":{

@@ -307,7 +307,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .socialButtons {
 	margin-bottom:20px;
-	min-width: 138px;
+	min-width: 158px;
 }
 .itemLeft {
 	float:left;
@@ -1585,6 +1585,17 @@ a.ownerImage:hover, a.ownerImage:focus {
 }
 #comments h2 {
 	margin-bottom:10px;
+}
+#comments .addCommentBlock{
+	margin-top:20px;
+	border-top:1px solid #ccc;
+}
+#comments #commentText{
+	width:478px;
+	max-width:678px;
+	border:1px solid #ccc;
+	margin:0 0 5px 0;
+	padding:10px;
 }
 #comments .comment {
 	background:#fff;

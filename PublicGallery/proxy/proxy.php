@@ -36,14 +36,12 @@
    *              empty
    */
   $serverUrls = array(
-	array( 'url' => 'https://localhost/', 'matchAll' => true, 'token' => '' ),
-	array( 'url' => 'http://localhost/', 'matchAll' => true, 'token' => '' ),
+	array( 'url' => 'https://www.test.com/', 'matchAll' => true, 'token' => '' ),
+	array( 'url' => 'http://www.test.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'http://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'https://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
-  	array( 'url' => 'https://arcgis.com/', 'matchAll' => true, 'token' => '' ),
-  	array( 'url' => 'http://arcgis.com/', 'matchAll' => true, 'token' => '' ),
-  	array( 'url' => 'https://www.arcgis.com/', 'matchAll' => true, 'token' => '' ),
-  	array( 'url' => 'http://www.arcgis.com/', 'matchAll' => true, 'token' => '' ),
+  	array( 'url' => 'https://www.arcgis.com/sharing/', 'matchAll' => true, 'token' => '' ),
+  	array( 'url' => 'http://www.arcgis.com/sharing/', 'matchAll' => true, 'token' => '' ),
     array( 'url' => 'http://sampleserver1.arcgisonline.com/ArcGIS/rest/services/', 'matchAll' => true, 'token' => '' ),
     array( 'url' => 'http://sampleserver2.arcgisonline.com/ArcGIS/rest/services/', 'matchAll' => true, 'token' => '' ),
     array( 'url' => 'http://sampleserver1a.arcgisonline.com/arcgisoutput/',        'matchAll' => true, 'token' => '' ),

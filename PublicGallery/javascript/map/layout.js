@@ -623,15 +623,15 @@ function buildComments(comments){
 			}
 			html += '<div id="comment_' + comments[i].id + '" class="comment">';
 				html += '<p>';
-				html += decodeURIComponent(comments[i].comment);
+				html += parseURL(decodeURIComponent(comments[i].comment));
 				html += '</p>';
 				html += '<div class="smallText">';
 				if(isOwner){
 					html += '';
-					html += 'delete';
+					html += i18n.viewer.comments.deleteComment;
 					html += ' ';
 					html += '';
-					html += 'edit';
+					html += i18n.viewer.comments.editComment;
 					html += ' ';
 				}
 				// date object
@@ -656,18 +656,18 @@ function buildComments(comments){
 	}
 	else{
 		html += '<p>';
-		html += 'no comments';
+		html += i18n.viewer.comments.noComments;
 		html += '</p>';
 	}
 	html += '<p>';
-	html += '<div style="margin-top:20px; border-top:1px solid #ccc;">';
-	html += '<h3>Add Comment</h3>';
+	html += '<div class="addCommentBlock">';
+	html += '<h3>' + i18n.viewer.comments.addCommentHeader + '</h3>';
 	if(userAuth){
-		html += '<textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
-		html += '<div><span id="addComment" class="silverButton buttonSingle">Add Comment</span></div>';
+		html += '<textarea id="commentText" rows="5"></textarea></div>';
+		html += '<div><span id="addComment" class="silverButton buttonSingle">' + i18n.viewer.comments.addCommentButton + '</span></div>';
 	}
 	else{
-		html += '<p><a id="signInPortal">Sign In</a> or <a target="_blank" href="' + getViewerURL('signup_page') + '">register</a> to post a comment.</p>';
+		html += '<p><a id="signInPortal">' + i18n.viewer.comments.signIn + '</a> or <a target="_blank" href="' + getViewerURL('signup_page') + '">' + i18n.viewer.comments.register + '</a> ' + i18n.viewer.comments.register + '</p>';
 	}
 	html += '</p>';
 	var commentsNode = dojo.byId("comments");
@@ -742,7 +742,7 @@ function setRatingInfo(itemInfo){
 	html += '<div class="ratingCon" id="ratingCon">';
 	// if not logged in
 	if(!userAuth){
-		html += ' <a id="signInRate">Sign in</a> to rate';
+		html += ' <a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
 		// sign in button
 		dojo.query(document).delegate("#signInRate", "onclick,keyup", function(event){
 			if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
