@@ -611,7 +611,16 @@ function buildComments(comments){
 	comments = comments.sort(commentSort);
 	// html
 	var html = '';
-	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
+	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(comments.length) + ')</h2>';
+	html += '<div class="addCommentBlock">';
+	if(userAuth){
+		html += '<div><textarea id="commentText" rows="5"></textarea></div>';
+		html += '<div><span id="addComment" class="silverButton buttonSingle">' + i18n.viewer.comments.addCommentButton + '</span></div>';
+	}
+	else{
+		html += '<div><a id="signInPortal">' + i18n.viewer.comments.signIn + '</a> ' + i18n.viewer.comments.or + ' <a target="_blank" href="' + getViewerURL('signup_page') + '">' + i18n.viewer.comments.register + '</a> ' + i18n.viewer.comments.toPost + '</div>';
+	}
+	html += '</div>';
 	html += '<div class="clear"></div>';
 	if(comments && comments.length > 0){
 		for(var i = 0; i < comments.length; i++){
@@ -621,7 +630,7 @@ function buildComments(comments){
 					isOwner = true;
 				}
 			}
-			html += '<div id="comment_' + comments[i].id + '" class="comment">';
+			html += '<div id="comment_' + comments[i].id + '" data-comment="' + comments[i].id + '" class="comment">';
 				html += '<p>';
 				html += parseURL(decodeURIComponent(comments[i].comment));
 				html += '</p>';
@@ -659,17 +668,6 @@ function buildComments(comments){
 		html += i18n.viewer.comments.noComments;
 		html += '</p>';
 	}
-	html += '<p>';
-	html += '<div class="addCommentBlock">';
-	html += '<h3>' + i18n.viewer.comments.addCommentHeader + '</h3>';
-	if(userAuth){
-		html += '<textarea id="commentText" rows="5"></textarea></div>';
-		html += '<div><span id="addComment" class="silverButton buttonSingle">' + i18n.viewer.comments.addCommentButton + '</span></div>';
-	}
-	else{
-		html += '<p><a id="signInPortal">' + i18n.viewer.comments.signIn + '</a> or <a target="_blank" href="' + getViewerURL('signup_page') + '">' + i18n.viewer.comments.register + '</a> ' + i18n.viewer.comments.register + '</p>';
-	}
-	html += '</p>';
 	var commentsNode = dojo.byId("comments");
 	setNodeHTML(commentsNode, html);
 	// fullscreen button
@@ -796,21 +794,24 @@ function setRatingInfo(itemInfo){
 		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
 		// rating connects
 		dojo.connect(widget, "onChange", function(value){
-			var widgetVal = parseInt(value,10);
-			// TODO
-			portalSignIn(function(){
-				// set item params
-				var params ={
-				  q:'id:' + configOptions.webmap
-				}
-				// get item
-				portal.queryItems(params).then(function(items) {
-					if(items && items.results[0] && widgetVal){
-						// rate
-						items.results[0].addRating(widgetVal);
-					}
+			if(value > -1 && value < 6 && value !== ratingVal){
+				ratingVal = value;
+				var widgetVal = parseInt(value, 10);
+				// TODO
+				portalSignIn(function(){
+					// set item params
+					var params ={
+					  q: 'id:' + configOptions.webmap
+					};
+					// get item
+					portal.queryItems(params).then(function(items) {
+						if(items && items.results[0] && widgetVal){
+							// rate
+							items.results[0].addRating(widgetVal);
+						}
+					});
 				});
-			});
+			}
 		});
 	}
 }

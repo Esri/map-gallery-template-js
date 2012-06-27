@@ -53,12 +53,13 @@ define({
 				"deleteComment":"delete",
 				"editComment":"edit",
 				"noComments":"No comments",
-				"addCommentHeader":"Add Comment",
 				"addCommentButton":"Add Comment",
 				"signIn":"Sign In",
-				"register":"register",
+				"register":"Register",
+				"or":"or",
 				"toPost":"to post a comment."
 			},
+			// new
 			"rating":{
 				"signIn":"Sign In",
 				"toRate":"to rate."

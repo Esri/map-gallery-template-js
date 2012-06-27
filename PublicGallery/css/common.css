@@ -1587,8 +1587,9 @@ a.ownerImage:hover, a.ownerImage:focus {
 	margin-bottom:10px;
 }
 #comments .addCommentBlock{
-	margin-top:20px;
-	border-top:1px solid #ccc;
+	margin-bottom:20px;
+	padding-bottom:20px;
+	border-bottom:1px solid #ccc;
 }
 #comments #commentText{
 	width:478px;
