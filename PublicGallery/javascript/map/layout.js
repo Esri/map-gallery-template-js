@@ -611,7 +611,6 @@ function buildComments(comments){
 	comments = comments.sort(commentSort);
 	// html
 	var html = '';
-	html += '<p style="float:right;"><a>Sign In</a> <a target="_blank" href="' + getViewerURL('signup_page') + '">Register</a></p>';
 	html += '<h2>' + i18n.viewer.comments.commentsHeader + '</h2>';
 	html += '<div class="clear"></div>';
 	if(comments && comments.length > 0){
@@ -661,8 +660,15 @@ function buildComments(comments){
 		html += '</p>';
 	}
 	html += '<p>';
-	html += '<div style="margin-top:20px; border-top:1px solid #ccc;"><h3>Add Comment</h3><textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
-	html += '<div><span id="addComment" class="silverButton buttonSingle">Add Comment</span></div>';
+	html += '<div style="margin-top:20px; border-top:1px solid #ccc;">';
+	html += '<h3>Add Comment</h3>';
+	if(userAuth){
+		html += '<textarea id="commentText" rows="5" style="width:478px; max-width:678px; border:1px solid #ccc; margin:0 0 5px 0; padding:10px;"></textarea></div>';
+		html += '<div><span id="addComment" class="silverButton buttonSingle">Add Comment</span></div>';
+	}
+	else{
+		html += '<p><a id="signInPortal">Sign In</a> or <a target="_blank" href="' + getViewerURL('signup_page') + '">register</a> to post a comment.</p>';
+	}
 	html += '</p>';
 	var commentsNode = dojo.byId("comments");
 	setNodeHTML(commentsNode, html);
@@ -670,6 +676,14 @@ function buildComments(comments){
 	dojo.query(document).delegate("#addComment", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			addCommentToItem();
+		}
+    });
+	// sign in button
+	dojo.query(document).delegate("#signInPortal", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			portalSignIn(function(){
+				getComments();
+			});
 		}
     });
 }
@@ -716,6 +730,91 @@ function getComments(){
 	});
 }
 /*------------------------------------*/
+// Set Rating Information
+/*------------------------------------*/
+function setRatingInfo(itemInfo){
+	var html = '';
+	if(configOptions.showRatings){
+		// rating widget
+		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+	}
+	// rating container
+	html += '<div class="ratingCon" id="ratingCon">';
+	// if not logged in
+	if(!userAuth){
+		html += ' <a id="signInRate">Sign in</a> to rate';
+		// sign in button
+		dojo.query(document).delegate("#signInRate", "onclick,keyup", function(event){
+			if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+				portalSignIn(function(){
+					setRatingInfo(itemInfo);
+				});
+			}
+		});
+	}
+	html += ' (';
+	if(configOptions.showRatings){
+		// Ratings
+		if(itemInfo.item.numRatings){
+			var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
+			if(itemInfo.item.numRatings > 1){
+				pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
+			}
+			html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
+		}
+	}
+	if(configOptions.showComments){
+		// comments
+		if(itemInfo.item.numComments){
+			if(itemInfo.item.numRatings){
+				html += i18n.viewer.itemInfo.separator + ' ';
+			}
+			var pluralComments = i18n.viewer.itemInfo.commentsLabel;
+			if(itemInfo.item.numComments > 1){
+				pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
+			}
+			html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
+		}
+	}
+	// views
+	if(itemInfo.item.numViews){
+		if((itemInfo.item.numRatings && configOptions.showRatings) || (itemInfo.item.numComments && configOptions.showComments)){
+			html += i18n.viewer.itemInfo.separator + ' ';
+		}
+		var pluralViews = i18n.viewer.itemInfo.viewsLabel;
+		if(itemInfo.item.numViews > 1){
+			pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
+		}
+		html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
+	}
+	// close container
+	html += ')</div>';
+	var ratingNode = dojo.byId("rating");
+	setNodeHTML(ratingNode, html);
+	if(configOptions.showRatings){
+		// rating widget
+		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
+		// rating connects
+		dojo.connect(widget, "onChange", function(value){
+			var widgetVal = parseInt(value,10);
+			// TODO
+			portalSignIn(function(){
+				// set item params
+				var params ={
+				  q:'id:' + configOptions.webmap
+				}
+				// get item
+				portal.queryItems(params).then(function(items) {
+					if(items && items.results[0] && widgetVal){
+						// rate
+						items.results[0].addRating(widgetVal);
+					}
+				});
+			});
+		});
+	}
+}
+/*------------------------------------*/
 // Init Map
 /*------------------------------------*/
 function initMap() {
@@ -740,76 +839,8 @@ function initMap() {
 		hideAllContent();
 	});
 	itemDeferred.addCallback(function(itemInfo) {
-		var html = '';
-		if(configOptions.showRatings){
-			// rating widget
-			var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
-		}
-		// rating container
-		html += '<div class="ratingCon" id="ratingCon"> (';
-		if(configOptions.showRatings){
-			// Ratings
-			if(itemInfo.item.numRatings){
-				var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
-				if(itemInfo.item.numRatings > 1){
-					pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
-				}
-				html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
-			}
-		}
-		if(configOptions.showComments){
-			// comments
-			if(itemInfo.item.numComments){
-				if(itemInfo.item.numRatings){
-					html += i18n.viewer.itemInfo.separator + ' ';
-				}
-				var pluralComments = i18n.viewer.itemInfo.commentsLabel;
-				if(itemInfo.item.numComments > 1){
-					pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
-				}
-				html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
-			}
-		}
-		// views
-		if(itemInfo.item.numViews){
-			if((itemInfo.item.numRatings && configOptions.showRatings) || (itemInfo.item.numComments && configOptions.showComments)){
-				html += i18n.viewer.itemInfo.separator + ' ';
-			}
-			var pluralViews = i18n.viewer.itemInfo.viewsLabel;
-			if(itemInfo.item.numViews > 1){
-				pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
-			}
-			html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
-		}
-		// close container
-		html += ')</div>';
-		var ratingNode = dojo.byId("rating");
-		setNodeHTML(ratingNode, html);
-		if(configOptions.showRatings){
-			// rating widget
-			dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
-			// rating connects
-			dojo.connect(widget, "onChange", function(value){
-				var widgetVal = parseInt(value,10);
-				// TODO
-				portalSignIn(function(){
-					// set item params
-					var params ={
-					  q:'id:' + configOptions.webmap
-					}
-					// get item
-					portal.queryItems(params).then(function(items) {
-						if(items && items.results[0] && widgetVal){
-						
-							console.log(widgetVal);
-						
-							// rate
-							items.results[0].addRating(widgetVal);
-						}
-					});
-				});
-			});
-		}
+		// set rating
+		setRatingInfo(itemInfo);
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html

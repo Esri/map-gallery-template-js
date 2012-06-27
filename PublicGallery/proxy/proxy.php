@@ -36,6 +36,8 @@
    *              empty
    */
   $serverUrls = array(
+	array( 'url' => 'https://localhost/', 'matchAll' => true, 'token' => '' ),
+	array( 'url' => 'http://localhost/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'http://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'https://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'https://arcgis.com/', 'matchAll' => true, 'token' => '' ),

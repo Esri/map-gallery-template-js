@@ -129,10 +129,12 @@ a {
 	-webkit-hyphens: auto;
 	-moz-hyphens: auto;
 	hyphens: auto;
+	cursor:pointer;
 }
 a:hover, a:focus {
 	color:#000;
 	text-decoration:underline;
+	cursor:pointer;
 }
 p {
 	margin-bottom:10px;
