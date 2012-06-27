@@ -864,7 +864,7 @@ function initMap() {
 			setNodeHTML(titleNode, configOptions.mapTitle || "");
 			// Set subtitle
 			var subTitleNode = dojo.byId("subtitle");
-			setNodeHTML(subTitleNode, configOptions.mapSnippet || "");
+			setNodeHTML(subTitleNode, parseURL(configOptions.mapSnippet));
 			var d, dateLocale;
 			html = '';
 			html += '<h2>' + i18n.viewer.mapPage.moreInformation + '</h2>';
@@ -919,7 +919,7 @@ function initMap() {
 			// Set credits
 			var accessInformation = dojo.byId("accessInformation");
 			if(accessInformation && configOptions.mapCredits && configOptions.showCredits){
-				setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + configOptions.mapCredits + '</div>');
+				setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + parseURL(configOptions.mapCredits) + '</div>');
 			}
 			// Set description
 			var descriptionInfo = configOptions.mapItemDescription || "";

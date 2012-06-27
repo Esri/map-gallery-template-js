@@ -358,9 +358,10 @@ function buildMapPlaylist(obj,data){
 						}
 						html += '</p>';
 						html += '<p>' + snippet + '</p>';
+						var widget;
 						if(configOptions.showRatings){
 							// rating widget
-							var widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
+							widget = new dojox.form.Rating({numStars:5,value:data.results[i].avgRating}, null);
 						}
 						// rating container
 						html += '<div class="ratingCon">';
