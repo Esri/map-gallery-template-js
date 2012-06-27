@@ -47,7 +47,7 @@ var configOptions = {
    "openGalleryItemsNewWindow":false,
    "bannerBackground":"images/ui/banner.png",
    "bingMapsKey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
-   "proxyUrl":"proxy/proxy.php",
+   "proxyUrl":"proxy/proxy.ashx",
    "locatorserviceurl":"http://tasks.arcgis.com/ArcGIS/rest/services/WorldLocator/GeocodeServer/",
    "geometryserviceurl":"http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
    "sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
