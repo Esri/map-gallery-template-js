@@ -263,6 +263,48 @@ function setDelegations(){
 			}
 		}
     });
+    // add comment button
+	dojo.query(document).delegate("#addComment", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			addCommentToItem(itemInfo);
+		}
+    });
+	// sign in button
+	dojo.query(document).delegate("#signInPortal", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			portalSignIn(function(){
+				getComments(itemInfo);
+				setRatingInfo(itemInfo);
+			});
+		}
+    });
+    // delete comment
+	dojo.query(document).delegate(".deleteComment", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			var comment = dojo.attr(this, 'data-comment');
+			for(var i = 0; i < commentsList.length; i++){
+				if(commentsList[i].id === comment){
+					globalItem.deleteComment(commentsList[i]);
+					getComments(itemInfo);
+				}
+			}
+		}
+    });
+    // edit comment
+	dojo.query(document).delegate(".editComment", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			
+		}
+    });
+    // sign in button
+	dojo.query(document).delegate("#signInRate", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			portalSignIn(function(){
+				setRatingInfo(itemInfo);
+				getComments(itemInfo);
+			});
+		}
+	});
 }
 /*------------------------------------*/
 // show autocomplete
@@ -581,7 +623,9 @@ function queryComments(obj){
 		f: settings.dataType
 	};
 	portal.queryItems(params).then(function(result){
-		result.results[0].getComments().then(function(comments){
+		globalItem = result.results[0];
+		console.log(globalItem);
+		globalItem.getComments().then(function(comments){
 			if(typeof settings.callback === 'function'){
 				// call callback function with settings and data
 				settings.callback.call(this, comments);
@@ -606,9 +650,11 @@ function commentSort(a, b){
 /*------------------------------------*/
 // Builds listing of comments
 /*------------------------------------*/
-function buildComments(comments){
+function buildComments(comments, itemInfo){
 	// sort comments
 	comments = comments.sort(commentSort);
+	// set global list of comments
+	commentsList = comments;
 	// html
 	var html = '';
 	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(comments.length) + ')</h2>';
@@ -630,19 +676,21 @@ function buildComments(comments){
 					isOwner = true;
 				}
 			}
-			html += '<div id="comment_' + comments[i].id + '" data-comment="' + comments[i].id + '" class="comment">';
+			html += '<div id="comment_' + comments[i].id + '" class="comment">';
 				html += '<p>';
 				html += parseURL(decodeURIComponent(comments[i].comment));
+				if(isOwner){
+					html += '<p>';
+					html += '<a class="editComment" data-comment="' + comments[i].id + '">';
+					html += i18n.viewer.comments.editComment;
+					html += '</a> ';
+					html += '<a class="deleteComment" data-comment="' + comments[i].id + '">';
+					html += i18n.viewer.comments.deleteComment;
+					html += '</a> ';
+					html += '</p>';
+				}
 				html += '</p>';
 				html += '<div class="smallText">';
-				if(isOwner){
-					html += '';
-					html += i18n.viewer.comments.deleteComment;
-					html += ' ';
-					html += '';
-					html += i18n.viewer.comments.editComment;
-					html += ' ';
-				}
 				// date object
 				var commentDate = new Date(comments[i].created);
 				// date format for locale
@@ -670,25 +718,11 @@ function buildComments(comments){
 	}
 	var commentsNode = dojo.byId("comments");
 	setNodeHTML(commentsNode, html);
-	// fullscreen button
-	dojo.query(document).delegate("#addComment", "onclick,keyup", function(event){
-		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
-			addCommentToItem();
-		}
-    });
-	// sign in button
-	dojo.query(document).delegate("#signInPortal", "onclick,keyup", function(event){
-		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
-			portalSignIn(function(){
-				getComments();
-			});
-		}
-    });
 }
 /*------------------------------------*/
 // Add Comment
 /*------------------------------------*/
-function addCommentToItem(){
+function addCommentToItem(itemInfo){
 	// TODO
 	var text = dojo.byId("commentText").value;
 	if(text){
@@ -705,7 +739,7 @@ function addCommentToItem(){
 					// comment
 					items.results[0].addComment(text).then(function(){
 						// get comments
-						getComments();
+						getComments(itemInfo);
 					});
 				}
 			});
@@ -715,7 +749,7 @@ function addCommentToItem(){
 /*------------------------------------*/
 // get comments
 /*------------------------------------*/
-function getComments(){
+function getComments(itemInfo){
 	// get comments
 	queryComments({
 		// Group Owner
@@ -723,7 +757,7 @@ function getComments(){
 		// Executed after ajax returned
 		callback: function(comments){
 			// create comments list
-			buildComments(comments);
+			buildComments(comments, itemInfo);
 		}
 	});
 }
@@ -741,14 +775,6 @@ function setRatingInfo(itemInfo){
 	// if not logged in
 	if(!userAuth){
 		html += ' <a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
-		// sign in button
-		dojo.query(document).delegate("#signInRate", "onclick,keyup", function(event){
-			if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
-				portalSignIn(function(){
-					setRatingInfo(itemInfo);
-				});
-			}
-		});
 	}
 	html += ' (';
 	if(configOptions.showRatings){
@@ -823,10 +849,6 @@ function initMap() {
 	setDelegations();
 	// set map buttons
 	setInnerMapButtons();
-	if(configOptions.showComments){
-		// get comments
-		getComments();
-	}
 	// ITEM
 	var itemDeferred = esri.arcgis.utils.getItem(configOptions.webmap);
 	itemDeferred.addErrback(function(error) {
@@ -842,6 +864,10 @@ function initMap() {
 	itemDeferred.addCallback(function(itemInfo) {
 		// set rating
 		setRatingInfo(itemInfo);
+		if(configOptions.showComments){
+			// get comments
+			getComments(itemInfo);
+		}
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html
