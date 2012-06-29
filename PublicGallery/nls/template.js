@@ -31,51 +31,46 @@ define({
                 "itemTitle": "View map",
                 "gridSwitch": "Switch to Grid View",
                 "listSwitch": "Switch to List View",
-                "loadingText": "Loading Maps&hellip;",
-				// new
-				"sortBy":"Sort by"
+                "loadingText": "Loading Maps&hellip;"
             },
-			// new
 			"sortFields":{
-				"modified":"Date",
-				"title":"Title",
-				"type":"Type",
-				"numRatings":"Ratings",
-				"avgRating":"Avg. Rating",
-				"numComments":"Comments",
-				"numViews":"Views"
+				"sortBy":"Sort by",			// new
+				"modified":"Date",			// new
+				"title":"Title",			// new
+				"type":"Type",				// new
+				"numRatings":"Ratings",		// new
+				"avgRating":"Avg. Rating",	// new
+				"numComments":"Comments",	// new
+				"numViews":"Views"			// new
 			},
-			// new
 			"comments":{
-				"commentsHeader":"Comments",
-				"posted":"Posted",
-				"by":"by",
-				"deleteComment":"delete",
-				"editComment":"edit",
-				"noComments":"No comments",
-				"addCommentButton":"Add Comment",
-				"signIn":"Sign In",
-				"register":"Register",
-				"or":"or",
-				"toPost":"to post a comment."
+				"commentsHeader":"Comments",		// new
+				"posted":"Posted",					// new
+				"by":"by",							// new
+				"deleteComment":"delete",			// new
+				"editComment":"edit",				// new
+				"noComments":"No comments",			// new
+				"addCommentButton":"Add Comment",	// new
+				"signIn":"Sign In",					// new
+				"register":"Register",				// new
+				"or":"or",							// new
+				"toPost":"to post a comment."		// new
 			},
-			// new
 			"rating":{
-				"signIn":"Sign In",
-				"toRate":"to rate."
+				"signIn":"Sign In",					// new
+				"toRate":"to rate."					// new
 			},
-			// new
 			"itemInfo":{
-				"createdLabel":"created",
-				"ratingsLabel":"rating",
-				"ratingsLabelPlural":"ratings",
-				"viewsLabel":"view",
-				"viewsLabelPlural":"views",
-				"commentsLabel":"comment",
-				"commentsLabelPlural":"comments",
-				"modifiedLabel":"Last Modified",
-				"by":"by",
-				"separator":","
+				"createdLabel":"created",			// new
+				"ratingsLabel":"rating",			// new
+				"ratingsLabelPlural":"ratings",		// new
+				"viewsLabel":"view",				// new
+				"viewsLabelPlural":"views",			// new
+				"commentsLabel":"comment",			// new
+				"commentsLabelPlural":"comments",	// new
+				"modifiedLabel":"Last Modified",	// new
+				"by":"by",							// new
+				"separator":","						// new
 			},
             "mapPage": {
                 "findLocation": "Find a location",
@@ -92,12 +87,11 @@ define({
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Owner:",
                 "switchBasemap": "Switch Basemap",
-				// new
-				"getMobileApp": "Get App",
-				"constraintsHeading":"Use Constraints",
-				"creditsHeading":"Credits:",
-				"createdLabel":"Created",
-				"detailsLabel":"Details"
+				"getMobileApp": "Get App",				// new
+				"constraintsHeading":"Use Constraints",	// new
+				"creditsHeading":"Credits:",			// new
+				"createdLabel":"Created",				// new
+				"detailsLabel":"Details"				// new
             },
             "pagination": {
                 "previous": "Previous",

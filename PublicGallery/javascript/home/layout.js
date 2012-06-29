@@ -69,7 +69,7 @@ function buildSortingMenu(){
 	var html = '';
 	html += '<div class="grid_9 sigma">';
 		html += '<ul id="sortGallery">';
-			html += '<li class="label"><span>' + i18n.viewer.groupPage.sortBy + '</span></li>';
+			html += '<li class="label"><span>' + i18n.viewer.sortFields.sortBy + '</span></li>';
 			// for each sort field
 			for(var i = 0; i < sortFields.length; i++){
 				// variables
