@@ -71,6 +71,9 @@ h4, h5, h6 {
 #legendMenu h2, #aboutMenu h2 {
 	margin:0px 0px 10px 0px;
 }
+#sidePanel{
+	height:auto !important;
+}
 #mapLayerToggle {
 	margin:0;
 	padding:0;

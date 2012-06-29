@@ -539,7 +539,8 @@ function setSidebarHeight(){
 		}
 		// set style for sidenode
 		dojo.style(sideNode, {
-			'min-height': mainHeight + 'px'
+			'height': mainHeight + 'px',
+			'minHeight': mainHeight + 'px'
 		});
 	}
 }
