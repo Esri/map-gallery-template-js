@@ -266,15 +266,15 @@ function setDelegations(){
     // add comment button
 	dojo.query(document).delegate("#addComment", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
-			addCommentToItem(itemInfo);
+			addCommentToItem();
 		}
     });
 	// sign in button
 	dojo.query(document).delegate("#signInPortal", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			portalSignIn(function(){
-				getComments(itemInfo);
-				setRatingInfo(itemInfo);
+				getComments();
+				setRatingInfo();
 			});
 		}
     });
@@ -282,12 +282,12 @@ function setDelegations(){
 	dojo.query(document).delegate(".deleteComment", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			var comment = dojo.attr(this, 'data-comment');
-			for(var i = 0; i < commentsList.length; i++){
-				if(commentsList[i].id === comment){
-					globalItem.deleteComment(commentsList[i]);
-					getComments(itemInfo);
+			for(var i = 0; i < globalComments.length; i++){
+				if(globalComments[i].id === comment){
+					globalItem.deleteComment(globalComments[i]);
 				}
 			}
+			getComments();
 		}
     });
     // edit comment
@@ -300,8 +300,8 @@ function setDelegations(){
 	dojo.query(document).delegate("#signInRate", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			portalSignIn(function(){
-				setRatingInfo(itemInfo);
-				getComments(itemInfo);
+				getComments();
+				setRatingInfo();
 			});
 		}
 	});
@@ -599,10 +599,11 @@ function addBottomMapButtons(){
 	var node = dojo.byId("mapButtons");
 	setNodeHTML(node, html);
 }
+
 /*------------------------------------*/
-// Query Comments
+// global item creation
 /*------------------------------------*/
-function queryComments(obj){
+function setGlobalItem(obj){
 	// default values
 	var settings = {
 		// Group Owner
@@ -623,16 +624,16 @@ function queryComments(obj){
 		f: settings.dataType
 	};
 	portal.queryItems(params).then(function(result){
+		// set global item
 		globalItem = result.results[0];
-		console.log(globalItem);
-		globalItem.getComments().then(function(comments){
-			if(typeof settings.callback === 'function'){
-				// call callback function with settings and data
-				settings.callback.call(this, comments);
-			}
-		});
+		// if callback function supplied
+		if(typeof settings.callback === 'function'){
+			// call callback function with settings and data
+			settings.callback.call(this, settings);
+		}
 	});
 }
+
 /*------------------------------------*/
 // Sort comments by date
 /*------------------------------------*/
@@ -650,16 +651,12 @@ function commentSort(a, b){
 /*------------------------------------*/
 // Builds listing of comments
 /*------------------------------------*/
-function buildComments(comments, itemInfo){
-	// sort comments
-	comments = comments.sort(commentSort);
-	// set global list of comments
-	commentsList = comments;
+function buildComments(){
 	// html
 	var html = '';
-	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(comments.length) + ')</h2>';
+	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(globalComments.length) + ')</h2>';
 	html += '<div class="addCommentBlock">';
-	if(userAuth){
+	if(globalUser){
 		html += '<div><textarea id="commentText" rows="5"></textarea></div>';
 		html += '<div><span id="addComment" class="silverButton buttonSingle">' + i18n.viewer.comments.addCommentButton + '</span></div>';
 	}
@@ -668,23 +665,23 @@ function buildComments(comments, itemInfo){
 	}
 	html += '</div>';
 	html += '<div class="clear"></div>';
-	if(comments && comments.length > 0){
-		for(var i = 0; i < comments.length; i++){
+	if(globalComments && globalComments.length > 0){
+		for(var i = 0; i < globalComments.length; i++){
 			var isOwner = false;
-			if(userAuth){
-				if(comments[i].owner === userAuth.username){
+			if(globalUser){
+				if(globalComments[i].owner === globalUser.username){
 					isOwner = true;
 				}
 			}
-			html += '<div id="comment_' + comments[i].id + '" class="comment">';
+			html += '<div id="comment_' + globalComments[i].id + '" class="comment">';
 				html += '<p>';
-				html += parseURL(decodeURIComponent(comments[i].comment));
+				html += parseURL(decodeURIComponent(globalComments[i].comment));
 				if(isOwner){
 					html += '<p>';
-					html += '<a class="editComment" data-comment="' + comments[i].id + '">';
+					html += '<a class="editComment" data-comment="' + globalComments[i].id + '">';
 					html += i18n.viewer.comments.editComment;
 					html += '</a> ';
-					html += '<a class="deleteComment" data-comment="' + comments[i].id + '">';
+					html += '<a class="deleteComment" data-comment="' + globalComments[i].id + '">';
 					html += i18n.viewer.comments.deleteComment;
 					html += '</a> ';
 					html += '</p>';
@@ -692,7 +689,7 @@ function buildComments(comments, itemInfo){
 				html += '</p>';
 				html += '<div class="smallText">';
 				// date object
-				var commentDate = new Date(comments[i].created);
+				var commentDate = new Date(globalComments[i].created);
 				// date format for locale
 				var dateLocale = dojo.date.locale.format(commentDate, {
 					selector:"date",
@@ -701,9 +698,9 @@ function buildComments(comments, itemInfo){
 				html += i18n.viewer.comments.posted + ' ' + dateLocale;
 				html += ' ' + i18n.viewer.comments.by + ' ';
 				if(configOptions.showProfileUrl){
-					html += '<a target="_blank" href="' + getViewerURL('owner_page', false, comments[i].owner) + '">';
+					html += '<a target="_blank" href="' + getViewerURL('owner_page', false, globalComments[i].owner) + '">';
 				}
-				html += comments[i].owner;
+				html += globalComments[i].owner;
 				if(configOptions.showProfileUrl){
 					html += '</a>.';
 				}	
@@ -722,7 +719,7 @@ function buildComments(comments, itemInfo){
 /*------------------------------------*/
 // Add Comment
 /*------------------------------------*/
-function addCommentToItem(itemInfo){
+function addCommentToItem(){
 	// TODO
 	var text = dojo.byId("commentText").value;
 	if(text){
@@ -739,7 +736,7 @@ function addCommentToItem(itemInfo){
 					// comment
 					items.results[0].addComment(text).then(function(){
 						// get comments
-						getComments(itemInfo);
+						getComments();
 					});
 				}
 			});
@@ -749,67 +746,66 @@ function addCommentToItem(itemInfo){
 /*------------------------------------*/
 // get comments
 /*------------------------------------*/
-function getComments(itemInfo){
-	// get comments
-	queryComments({
-		// Group Owner
-		id: configOptions.webmap,
-		// Executed after ajax returned
-		callback: function(comments){
-			// create comments list
-			buildComments(comments, itemInfo);
-		}
+function getComments(){
+	globalItem.getComments().then(function(comments){
+		// set global comments
+		globalComments = comments.sort(commentSort);
+		// create comments list
+		buildComments();
 	});
 }
 /*------------------------------------*/
 // Set Rating Information
 /*------------------------------------*/
-function setRatingInfo(itemInfo){
+function setRatingInfo(){
 	var html = '';
 	if(configOptions.showRatings){
 		// rating widget
-		var widget = new dojox.form.Rating({numStars:5,value:itemInfo.item.avgRating}, null);
+		var widget = new dojox.form.Rating({
+			numStars:5,
+			value:globalItem.avgRating
+		}, null);
 	}
 	// rating container
 	html += '<div class="ratingCon" id="ratingCon">';
 	// if not logged in
-	if(!userAuth){
+	if(!globalUser){
 		html += ' <a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
 	}
 	html += ' (';
 	if(configOptions.showRatings){
 		// Ratings
-		if(itemInfo.item.numRatings){
+		if(globalItem.numRatings){
 			var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
-			if(itemInfo.item.numRatings > 1){
+			if(globalItem.numRatings > 1){
 				pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
 			}
-			html += dojo.number.format(itemInfo.item.numRatings) + ' ' + pluralRatings;
+			html += dojo.number.format(globalItem.numRatings) + ' ' + pluralRatings;
 		}
 	}
 	if(configOptions.showComments){
 		// comments
-		if(itemInfo.item.numComments){
-			if(itemInfo.item.numRatings){
+		if(globalItem.numComments){
+			if(globalItem.numRatings){
 				html += i18n.viewer.itemInfo.separator + ' ';
 			}
 			var pluralComments = i18n.viewer.itemInfo.commentsLabel;
-			if(itemInfo.item.numComments > 1){
+			if(globalItem.numComments > 1){
 				pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
 			}
-			html += dojo.number.format(itemInfo.item.numComments) + ' ' + pluralComments;
+			html += dojo.number.format(globalItem.numComments) + ' ' + pluralComments;
 		}
 	}
 	// views
-	if(itemInfo.item.numViews){
-		if((itemInfo.item.numRatings && configOptions.showRatings) || (itemInfo.item.numComments && configOptions.showComments)){
+	if(globalItem.numViews){
+		if((globalItem.numRatings && configOptions.showRatings) || (globalItem.numComments && configOptions.showComments)){
 			html += i18n.viewer.itemInfo.separator + ' ';
 		}
 		var pluralViews = i18n.viewer.itemInfo.viewsLabel;
-		if(itemInfo.item.numViews > 1){
+		if(globalItem.numViews > 1){
 			pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
 		}
-		html += dojo.number.format(itemInfo.item.numViews) + ' ' + pluralViews;
+		html += dojo.number.format(globalItem.numViews) + ' ' + pluralViews;
 	}
 	// close container
 	html += ')</div>';
@@ -820,8 +816,7 @@ function setRatingInfo(itemInfo){
 		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
 		// rating connects
 		dojo.connect(widget, "onChange", function(value){
-			if(value > -1 && value < 6 && value !== ratingVal){
-				ratingVal = value;
+			if(value > -1 && value < 6){
 				var widgetVal = parseInt(value, 10);
 				// TODO
 				portalSignIn(function(){
@@ -862,12 +857,21 @@ function initMap() {
 		hideAllContent();
 	});
 	itemDeferred.addCallback(function(itemInfo) {
-		// set rating
-		setRatingInfo(itemInfo);
-		if(configOptions.showComments){
-			// get comments
-			getComments(itemInfo);
-		}
+		// set global portal item
+		setGlobalItem({
+			// Group Owner
+			id: configOptions.webmap,
+			// Executed after ajax returned
+			callback: function(comments){
+				// set comments
+				if(configOptions.showComments){
+					// get comments
+					getComments();
+				}
+				// set rating
+				setRatingInfo();
+			}
+		});
 		// if it's a webmap
 		if(itemInfo && itemInfo.item && itemInfo.item.type === 'Web Map'){
 			// insert menu tab html
