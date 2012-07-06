@@ -760,8 +760,14 @@ function getComments(){
 function setRatingInfo(){
 	var html = '';
 	if(configOptions.showRatings){
+		if(ratingConnect){
+			dojo.disconnect(ratingConnect);
+		}
+		if(ratingWidget){
+			ratingWidget.destroy();
+		}
 		// rating widget
-		var widget = new dojox.form.Rating({
+		ratingWidget = new dojox.form.Rating({
 			numStars:5,
 			value:globalItem.avgRating
 		}, null);
@@ -813,9 +819,9 @@ function setRatingInfo(){
 	setNodeHTML(ratingNode, html);
 	if(configOptions.showRatings){
 		// rating widget
-		dojo.place(widget.domNode, dojo.byId("ratingCon"), "first");
+		dojo.place(ratingWidget.domNode, dojo.byId("ratingCon"), "first");
 		// rating connects
-		dojo.connect(widget, "onChange", function(value){
+		ratingConnect = dojo.connect(ratingWidget, "onChange", function(value){
 			if(value > -1 && value < 6){
 				var widgetVal = parseInt(value, 10);
 				// TODO
