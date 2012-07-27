@@ -36,8 +36,8 @@
    *              empty
    */
   $serverUrls = array(
-	array( 'url' => 'https://www.test.com/', 'matchAll' => true, 'token' => '' ),
-	array( 'url' => 'http://www.test.com/', 'matchAll' => true, 'token' => '' ),
+	array( 'url' => 'https://test.com/', 'matchAll' => true, 'token' => '' ),
+	array( 'url' => 'http://test.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'http://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'https://serverapi.arcgisonline.com/', 'matchAll' => true, 'token' => '' ),
   	array( 'url' => 'https://www.arcgis.com/sharing/', 'matchAll' => true, 'token' => '' ),

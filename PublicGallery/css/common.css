@@ -1381,7 +1381,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	background:#dadada;
 	border-top:1px solid #c4c4c4;
 	border-bottom:1px solid #c4c4c4;
-	width:30px;
+	min-width:35px;
 	text-align:center;
 	-moz-box-shadow: 6px 0px 6px #ccc;
 	-webkit-box-shadow: 6px 0px 6px #ccc;
