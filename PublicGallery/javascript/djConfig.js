@@ -18,4 +18,4 @@ var dojoConfig = {
 };
 
 // Global Variables
-var i18n, searchVal = '', dataOffset, prevVal = "", ACObj, ACTimeout, timer, urlObject, portal, map, locateResultLayer, aoGeocoder, aoGeoCoderAutocomplete, mapFullscreen, resizeTimer, mapCenter, globalUser, globalComments, globalItem, ratingWidget, ratingConnect;
+var i18n, searchVal = '', dataOffset, prevVal = "", ACObj, ACTimeout, timer, urlObject, portal, map, locateResultLayer, aoGeocoder, aoGeoCoderAutocomplete, mapFullscreen, resizeTimer, mapCenter, globalUser, globalComments, globalItem, ratingWidget, ratingConnect, ratingToggle;

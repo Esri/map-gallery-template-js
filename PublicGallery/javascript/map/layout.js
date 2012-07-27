@@ -907,13 +907,21 @@ function setRatingInfo(){
 		dojo.place(ratingWidget.domNode, dojo.byId("ratingCon"), "first");
 		// rating connects
 		ratingConnect = dojo.connect(ratingWidget, "onChange", function(value){
-			if(value > -1 && value < 6){
+			if(value > -1 && value < 6 && !ratingToggle){
+				// set currently rating toggle
+				ratingToggle = 1;
+				// parse value
 				var widgetVal = parseInt(value, 10);
 				// TODO
 				portalSignIn(function(){
 					if(globalItem && widgetVal){
 						// rate
-						globalItem.addRating(widgetVal);
+						globalItem.addRating(widgetVal).then(function(){
+							ratingToggle = false;
+						},
+						function(){
+							ratingToggle = false;
+						});
 					}
 				});
 			}
