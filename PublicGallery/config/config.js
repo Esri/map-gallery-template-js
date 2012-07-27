@@ -19,6 +19,7 @@ var configOptions = {
    "footerLogoUrl":"",
    "addThisProfileId":"xa-4f3bf72958320e9e",
    "defaultLayout":"grid",
+   "groupKeywords":"",
    "sortField":"modified",
    "sortOrder":"desc",
    "searchType":"Web Map",

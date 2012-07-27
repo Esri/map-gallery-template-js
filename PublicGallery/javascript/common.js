@@ -156,6 +156,10 @@ function setDefaultConfigOptions(){
 	if(!configOptions.sharingurl){
 		configOptions.sharingurl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
 	}
+	// set default group search keywords
+	if(!configOptions.groupKeywords){
+		configOptions.groupKeywords = '';
+	}
 	// set portal URL
 	if(!configOptions.portalUrl){
 		configOptions.portalUrl = location.protocol + '//' + location.host + "/";
@@ -687,7 +691,7 @@ function queryArcGISGroupItems(obj){
 		// maps per row
 		perRow: '',
 		// offset
-		searchStart: 1,
+		searchStart: 0,
 		// search keywords
 		keywords: '',
 		// style of layout for the results
@@ -767,7 +771,12 @@ function createPagination(obj, totalItems, pagObject){
 		// create pagination list
 		html += '<ul>';
 		// determine offset links
-		current =  parseInt(obj.searchStart, 10);
+		if(obj.searchStart){
+			current =  parseInt(obj.searchStart, 10);
+		}
+		else{
+			current = 1;
+		}
 		// first link
 		first = 1;
 		// previous link
