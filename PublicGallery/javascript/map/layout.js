@@ -840,14 +840,37 @@ function getComments(){
 	});
 }
 /*------------------------------------*/
+// Set Rating Connection
+/*------------------------------------*/
+function setRatingConnect(){
+	console.log(ratingConnect);
+	if(ratingConnect){
+		dojo.disconnect(ratingConnect);
+		console.log(ratingConnect);
+	}
+	// rating connects
+	ratingConnect = dojo.connect(ratingWidget, "onChange", function(value){
+		if(value > -1 && value < 6){
+			// parse value
+			var widgetVal = parseInt(value, 10);
+			if(globalItem && widgetVal){
+				// rate
+				globalItem.addRating(widgetVal).then(function(){
+					setRatingInfo();
+				},
+				function(){
+					setRatingInfo();
+				});
+			}
+		}
+	});
+}
+/*------------------------------------*/
 // Set Rating Information
 /*------------------------------------*/
 function setRatingInfo(){
 	var html = '';
 	if(configOptions.showRatings){
-		if(ratingConnect){
-			dojo.disconnect(ratingConnect);
-		}
 		if(ratingWidget){
 			ratingWidget.destroy();
 		}
@@ -856,12 +879,14 @@ function setRatingInfo(){
 			numStars:5,
 			value:globalItem.avgRating
 		}, null);
+		// connection
+		setRatingConnect();
 	}
 	// rating container
 	html += '<div class="ratingCon" id="ratingCon">';
 	// if not logged in
 	if(!globalUser){
-		html += ' <a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
+		html += '&nbsp;<a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
 	}
 	html += ' (';
 	if(configOptions.showRatings){
@@ -903,29 +928,15 @@ function setRatingInfo(){
 	var ratingNode = dojo.byId("rating");
 	setNodeHTML(ratingNode, html);
 	if(configOptions.showRatings){
-		// rating widget
-		dojo.place(ratingWidget.domNode, dojo.byId("ratingCon"), "first");
-		// rating connects
-		ratingConnect = dojo.connect(ratingWidget, "onChange", function(value){
-			if(value > -1 && value < 6 && !ratingToggle){
-				// set currently rating toggle
-				ratingToggle = 1;
-				// parse value
-				var widgetVal = parseInt(value, 10);
-				// TODO
-				portalSignIn(function(){
-					if(globalItem && widgetVal){
-						// rate
-						globalItem.addRating(widgetVal).then(function(){
-							ratingToggle = false;
-						},
-						function(){
-							ratingToggle = false;
-						});
-					}
-				});
-			}
-		});
+		if(globalUser){
+			// rating widget
+			dojo.place(ratingWidget.domNode, dojo.byId("ratingCon"), "first");
+			
+		}
+		else{
+			// rating widget
+			dojo.place(ratingWidget.domNode.innerHTML, dojo.byId("ratingCon"), "first");
+		}
 	}
 }
 /*------------------------------------*/
