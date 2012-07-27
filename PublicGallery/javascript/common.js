@@ -16,7 +16,7 @@ function truncate(text, length, ellipsis) {
 // Add Spinner
 /*------------------------------------*/
 function addSpinner(id){
-	var html = '<div class="spinnerRemove"><div class="loadingAjax"></div></div>';
+	var html = '<span class="spinnerRemove"><span class="loadingAjax"></span></span>';
 	var node = dojo.byId(id);
 	setNodeHTML(node, html);
 }

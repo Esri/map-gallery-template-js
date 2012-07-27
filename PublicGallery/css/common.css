@@ -375,7 +375,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	margin:0 10px;
 	width:16px;
 	height: 26px;
-	display:block;
+	display:inline-block;
 }
 .loadingAjax {
 	display:inline-block;
@@ -1586,8 +1586,14 @@ a.ownerImage:hover, a.ownerImage:focus {
 #comments {
 	margin:20px 0 0 0;
 }
+#commentSpinner{
+	display: inline-block;
+	height: 26px;
+	vertical-align: middle;
+}
 #comments h2 {
 	margin-bottom:10px;
+	line-height: 26px;
 }
 #comments .addCommentBlock{
 	margin-bottom:20px;
@@ -1610,6 +1616,11 @@ a.ownerImage:hover, a.ownerImage:focus {
 	-moz-box-shadow: 1px 1px 3px #ccc;
 	-webkit-box-shadow: 1px 1px 3px #ccc;
 	box-shadow: 1px 1px 3px #ccc;
+}
+#comments .commentBodySpinner{
+	float:right;
+	width:36px;
+	height:26px;
 }
 #comments .comment .smallText {
 	color:#656565;

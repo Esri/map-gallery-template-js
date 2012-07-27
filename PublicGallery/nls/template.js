@@ -56,6 +56,10 @@ define({
 				"or":"or",							// new
 				"toPost":"to post a comment."		// new
 			},
+			"buttons":{
+				"cancel":"Cancel",					// new
+				"submit":"Submit"					// new
+			},
 			"rating":{
 				"signIn":"Sign In",					// new
 				"toRate":"to rate."					// new

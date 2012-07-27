@@ -162,6 +162,56 @@ function hideAutoComplete(){
 	dojo.query(".searchList").removeClass('autoCompleteOpen');
 	dojo.query("#autoComplete").style('display','none');
 }
+
+// add edit comment box
+function editCommentBox(i){
+	// get text of comment
+	var text = globalComments[i].comment;
+	// set HTML for comment area
+	var html = '';
+	html += '<div class="editArea">';
+	html += '<div><textarea id="editcomment_' + globalComments[i].id + '" rows="5">' + text + '</textarea></div>';
+	html += '<div><span class="silverButton buttonSingle editCommentCancel" data-comment="' + globalComments[i].id + '">' + i18n.viewer.buttons.cancel + '</span>&nbsp;<span class="mapButton buttonSingle editCommentSubmit" data-comment="' + globalComments[i].id + '">' + i18n.viewer.buttons.submit + '</span></div>';
+	html += '</div>';
+	// find node to add edit text area
+	var commentBody = dojo.query('#comment_' + globalComments[i].id + ' .commentBody')[0];
+	// insert it before body
+	dojo.place(html, commentBody, "before");
+	// hide comment
+	commentBody.style.display = 'none';
+}
+
+// submit edited comment
+function editCommentSubmit(i, commentid){
+	// get text of edit comment box
+	var text = dojo.byId("editcomment_" + commentid).value;
+	// set global comment number to new text
+	globalComments[i].comment = text;
+	// spinner
+	addSpinner('commentSpinner');
+	// spinner
+	addSpinner('spinner_' + commentid);
+	// edit comment
+	globalItem.updateComment(globalComments[i]).then(function(value){
+		// requery comments
+		getComments();
+	},
+	function(error){
+		// requery comments
+		getComments();
+	});
+}
+
+// cancel editing of a comment
+function cancelEditComment(i){
+	// get comment body
+	var commentBody = dojo.query('#comment_' + globalComments[i].id + ' .commentBody')[0];
+	// show it
+	commentBody.style.display = 'block';
+	// remove editing comment node area
+	var editArea = dojo.query('#comment_' + globalComments[i].id + ' .editArea').orphan();
+}
+
 /*------------------------------------*/
 // Set map content
 /*------------------------------------*/
@@ -283,17 +333,53 @@ function setDelegations(){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			var comment = dojo.attr(this, 'data-comment');
 			for(var i = 0; i < globalComments.length; i++){
-				if(globalComments[i].id === comment){
-					globalItem.deleteComment(globalComments[i]);
+				if(globalComments[i].id === comment && globalItem){
+					// spinner
+					addSpinner('commentSpinner');
+					// spinner
+					addSpinner('spinner_' + comment);
+					// delete comment
+					globalItem.deleteComment(globalComments[i]).then(function(value){
+						getComments();
+					},
+					function(error){
+						getComments();
+					});
 				}
 			}
-			getComments();
+		}
+    });
+    // edit comment submit
+	dojo.query(document).delegate(".editCommentSubmit", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			var comment = dojo.attr(this, 'data-comment');
+			for(var i = 0; i < globalComments.length; i++){
+				if(globalComments[i].id === comment && globalItem){
+					editCommentSubmit(i, comment);
+				}
+			}
+		}
+    });
+     // cancel edit comment
+	dojo.query(document).delegate(".editCommentCancel", "onclick,keyup", function(event){
+		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
+			var comment = dojo.attr(this, 'data-comment');
+			for(var i = 0; i < globalComments.length; i++){
+				if(globalComments[i].id === comment && globalItem){
+					cancelEditComment(i);
+				}
+			}
 		}
     });
     // edit comment
 	dojo.query(document).delegate(".editComment", "onclick,keyup", function(event){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
-			
+			var comment = dojo.attr(this, 'data-comment');
+			for(var i = 0; i < globalComments.length; i++){
+				if(globalComments[i].id === comment && globalItem){
+					editCommentBox(i);
+				}
+			}
 		}
     });
     // sign in button
@@ -654,7 +740,7 @@ function commentSort(a, b){
 function buildComments(){
 	// html
 	var html = '';
-	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(globalComments.length) + ')</h2>';
+	html += '<h2>' + i18n.viewer.comments.commentsHeader + ' (' + dojo.number.format(globalComments.length) + ') <span id="commentSpinner"></span></h2>';
 	html += '<div class="addCommentBlock">';
 	if(globalUser){
 		html += '<div><textarea id="commentText" rows="5"></textarea></div>';
@@ -674,6 +760,8 @@ function buildComments(){
 				}
 			}
 			html += '<div id="comment_' + globalComments[i].id + '" class="comment">';
+				html += '<div id="spinner_' + globalComments[i].id + '" class="commentBodySpinner"></div>';
+				html += '<div class="commentBody">';
 				html += '<p>';
 				html += parseURL(decodeURIComponent(globalComments[i].comment));
 				if(isOwner){
@@ -705,6 +793,8 @@ function buildComments(){
 					html += '</a>.';
 				}	
 				html += '</div>';
+				html += '</div>';
+				html += '<div class="clear"></div>';
 			html += '</div>';
 		}
 	}
@@ -724,22 +814,15 @@ function addCommentToItem(){
 	var text = dojo.byId("commentText").value;
 	if(text){
 		portalSignIn(function(){
-			// set item params
-			var params ={
-			  q:'id:' + configOptions.webmap
+			if(globalItem){
+				// spinner
+				addSpinner('commentSpinner');
+				// comment
+				globalItem.addComment(text).then(function(){
+					// get comments
+					getComments();
+				});
 			}
-			// get item
-			portal.queryItems(params).then(function(items) {
-				if(items){
-					// spinner
-					addSpinner('comments');
-					// comment
-					items.results[0].addComment(text).then(function(){
-						// get comments
-						getComments();
-					});
-				}
-			});
 		});
 	}
 }
@@ -748,6 +831,8 @@ function addCommentToItem(){
 /*------------------------------------*/
 function getComments(){
 	globalItem.getComments().then(function(comments){
+		// remove any spinners
+		removeSpinner();
 		// set global comments
 		globalComments = comments.sort(commentSort);
 		// create comments list
@@ -826,17 +911,10 @@ function setRatingInfo(){
 				var widgetVal = parseInt(value, 10);
 				// TODO
 				portalSignIn(function(){
-					// set item params
-					var params ={
-					  q: 'id:' + configOptions.webmap
-					};
-					// get item
-					portal.queryItems(params).then(function(items) {
-						if(items && items.results[0] && widgetVal){
-							// rate
-							items.results[0].addRating(widgetVal);
-						}
-					});
+					if(globalItem && widgetVal){
+						// rate
+						globalItem.addRating(widgetVal);
+					}
 				});
 			}
 		});
