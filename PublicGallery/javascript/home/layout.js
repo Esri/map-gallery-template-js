@@ -143,7 +143,7 @@ function queryMaps(data_offset){
 		pagination: configOptions.showPagination,
 		paginationShowFirstLast: true,
 		paginationShowPrevNext: true,
-		keywords: configOptions.groupKeywords,
+		keywords: configOptions.searchString,
 		perPage : parseInt(configOptions.galleryItemsPerPage, 10),
 		perRow : parseInt(configOptions.galleryPerRow, 10),
 		layout: configOptions.defaultLayout,
@@ -479,7 +479,7 @@ function configLayoutSearch(){
 		if(configOptions.showGroupSearch){
 			html += '<ul id="searchListUL" class="searchList">';
 			html += '<li id="mapSearch" class="iconInput">';
-			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="' + configOptions.groupKeywords + '" autocomplete="off" type="text" tabindex="0" />';	
+			html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="' + configOptions.searchString + '" autocomplete="off" type="text" tabindex="0" />';	
 			html += '<div tabindex="0" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
 			html += '</li>';
 			html += '<li title="' + i18n.viewer.groupPage.searchTitleShort + '" class="searchButtonLi">';	
@@ -555,7 +555,7 @@ function setDelegations(){
 		if(event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)){
 			var textVal = dojo.query("#searchGroup").attr('value')[0];
 			if(textVal !== prevVal){
-				configOptions.groupKeywords = textVal;
+				configOptions.searchString = textVal;
 				addSpinner("groupSpinner");
 				queryMaps();
 				prevVal = textVal;
@@ -568,7 +568,7 @@ function setDelegations(){
 			dojo.query('#clearAddress').removeClass('resetActive');
 			dojo.query("#searchGroup").attr('value', '');
 			var textVal = '';
-			configOptions.groupKeywords = textVal;
+			configOptions.searchString = textVal;
 			addSpinner("groupSpinner");
 			queryMaps();
 			prevVal = textVal;
@@ -615,7 +615,7 @@ function setDelegations(){
 			clearTimeout (timer);
 			var textVal = dojo.query(this).attr('value');
 			if(textVal !== prevVal){
-				configOptions.groupKeywords = textVal;
+				configOptions.searchString = textVal;
 				addSpinner("groupSpinner");
 				queryMaps();
 				prevVal = textVal;

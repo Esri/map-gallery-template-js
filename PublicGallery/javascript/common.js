@@ -157,8 +157,8 @@ function setDefaultConfigOptions(){
 		configOptions.sharingurl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
 	}
 	// set default group search keywords
-	if(!configOptions.groupKeywords){
-		configOptions.groupKeywords = '';
+	if(!configOptions.searchString){
+		configOptions.searchString = '';
 	}
 	// set portal URL
 	if(!configOptions.portalUrl){
