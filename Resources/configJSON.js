@@ -17,9 +17,9 @@
             {
                "type":"string",
                "fieldName":"siteTitle",
-               "label":"Website Title:",
+               "label":"Website Banner Title:",
                "tooltip":"The title of this template&#39;s website.",
-               "placeHolder":"My Gallery"
+               "placeHolder":"My Maps"
             },
             {
                "type":"paragraph",
@@ -76,7 +76,7 @@
                "fieldName":"footerDescription",
                "label":"Footer Content:",
                "tooltip":"Content description displayed in the footer.",
-               "stringFieldOption":"textarea",
+               "stringFieldOption":"richtext",
                "placeHolder":""
             },
             {
@@ -197,6 +197,17 @@
                      "value":"asc"
                   }
                ]
+            },
+            {
+               "type":"string",
+               "fieldName":"searchString",
+               "tooltip":"Default search string for group query.",
+               "placeHolder":"",
+               "label":"Search String:"
+            },
+            {
+               "type":"paragraph",
+               "value":"Default search string for group query."
             },
             {
                "type":"string",
@@ -377,6 +388,7 @@
    "values":{
       "theme":"blueTheme",
       "siteTitle":"My Maps",
+      "searchString":"",
       "homeSideHeading":"",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
