@@ -31,7 +31,7 @@ var configOptions = {
    "showFooter":true,
    "showBasemapGallery":true,
    "showGroupSearch":true,
-   "showGroupSort":true,
+   "showGroupSort":false,
    "showMapSearch":true,
    "showLayerToggle":true,
    "showLayoutSwitch":true,
