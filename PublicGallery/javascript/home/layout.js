@@ -284,7 +284,6 @@ function buildMapPlaylist(obj,data){
 		// Create list items
 		for(var i = 0; i < forTotal; i++) {
 			// variables
-			var appClass = '';
 			var itemTitle;
 			var itemURL;
 			var snippet;
@@ -293,7 +292,6 @@ function buildMapPlaylist(obj,data){
 			// If item has URL
 			if(data.results[i].url){
 				itemURL = data.results[i].url;
-				appClass = ' externalLink';
 				externalLink = true;
 			}
 			else{
@@ -312,11 +310,8 @@ function buildMapPlaylist(obj,data){
 				}
 				// Build list item
 				html += '<div class="grid_9 sigma">';
-					html += '<div class="item' + appClass + '">';
+					html += '<div class="item">';
 						html += '<a ' + linkTarget + ' class="block" id="mapItem' + i + '" title="' + itemTitle + '" href="' + itemURL + '">';
-						if(externalLink){
-							html += '<span class="externalIcon"></span>';
-						}
 						html += '<img alt="' + itemTitle + '" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '</a>';
 						html += '<div class="itemInfo">';
@@ -396,7 +391,11 @@ function buildMapPlaylist(obj,data){
 							html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
 						}
 						// close container
-						html += ')</div>';
+						html += ')';
+						if(externalLink){
+							html += '<span class="iconCon"><span class="icon external"></span>';
+						}
+						html += '</div>';
 						html += '</div>';
 						html += '<div class="clear"></div>';
 					html += '</div>';
@@ -427,13 +426,13 @@ function buildMapPlaylist(obj,data){
 				}
 				// Build grid item
 				html += '<div class="grid_3' + itemClass + '">';
-					html += '<a class="item' + appClass + '" ' + linkTarget + ' id="mapItem' + i + '" href="' + itemURL + '">';
-						if(externalLink){
-							html += '<span class="externalIcon"></span>';
-						}
+					html += '<a class="item" ' + linkTarget + ' id="mapItem' + i + '" href="' + itemURL + '">';
 						html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + truncate(snippet, 120) + '</span>';
 						html += '<img alt="' + itemTitle + '" class="gridImg" src="' + data.results[i].thumbnailUrl + '" width="200" height="133" />';
 						html += '<span class="itemCounts">';
+						if(externalLink){
+							html += '<span class="iconCon"><span class="icon external"></span>';
+						}
 						html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
 						if(configOptions.showComments){
 							html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">'  + dojo.number.format(data.results[i].numComments) + '</span></span>';

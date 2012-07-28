@@ -498,6 +498,9 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	vertical-align:middle;
 	color:#999;
 }
+.mapsGrid .item .itemCounts .external{
+	background:url(../images/ui/uiSprite.png) no-repeat -304px 0px;
+}
 .mapsGrid .item .itemCounts .views{
 	background:url(../images/ui/uiSprite.png) no-repeat -256px 0px;
 }
@@ -547,33 +550,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	-o-transition:opacity 0.25s ease-in;
 	transition:opacity 0.25s ease-in;
 }
-.mapsGrid .externalLink {
-	position:relative;
-}
-.mapsGrid .externalLink .externalIcon {
-	display: block;
-	zoom:1;
-	position:absolute;
-	z-index:3;
-	top:3px;
-	right:3px;
-	background:#fff url(../images/ui/uiSprite.png) no-repeat -304px 0px;
-	padding: 0 0 3px 3px;
-	margin: 0;
-	width:16px;
-	height:16px;
-	overflow: hidden;
-	-webkit-border-radius: 0 0 0 3px;
-	border-radius: 0 0 0 3px;
-}
-.esriRtl .mapsGrid .externalLink .externalIcon {
-	right:auto;
-	left:3px;
-	padding: 0 3px 3px 0;
-	background-position: top left;
-	-webkit-border-radius: 0 0 3px 0;
-	border-radius: 0 0 3px 0;
-}
 /*-------------------------------------------------- */
 /* MAPS LIST */
 /*-------------------------------------------------- */
@@ -600,32 +576,27 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .esriRtl .mapsList .item .block {
 	float:right;
 }
-.mapsList .externalLink .block {
-	position:relative;
+.mapsList .item  .iconCon{
+	display:inline-block;
+	margin:0 5px;
 }
-.mapsList .externalLink .externalIcon {
-	display: block;
-	zoom:1;
-	position:absolute;
-	z-index:2;
-	top:0;
-	right:0;
-	background:#fff url(../images/ui/uiSprite.png) no-repeat -304px 0px;
-	padding: 0 0 3px 3px;
-	margin: 0;
-	width:13px;
-	height:12px;
-	overflow: hidden;
-	-webkit-border-radius: 0 0 0 3px;
-	border-radius: 0 0 0 3px;
+.mapsList .item  .icon{
+	display:inline-block;
+	width:16px;
+	height:16px;
+	vertical-align:middle;
+	margin:0 2px 0 0;
 }
-.esriRtl .mapsList .externalLink .externalIcon {
-	right:auto;
-	left:0;
-	padding: 0 3px 3px 0;
-	background-position: top left;
-	-webkit-border-radius: 0 0 3px 0;
-	border-radius: 0 0 3px 0;
+.esriRtl .mapsList .item  .icon{
+	margin: 0 0 0 2px;
+}
+.mapsList .item  .iconText{
+	display:inline-block;
+	vertical-align:middle;
+	color:#999;
+}
+.mapsList .item  .external{
+	background:url(../images/ui/uiSprite.png) no-repeat -304px 0px;
 }
 .mapsList .item .itemInfo {
 	float:left;
