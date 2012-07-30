@@ -790,13 +790,10 @@ function buildComments() {
 // Add Comment
 /*------------------------------------*/
 function addCommentToItem() {
-    // comment value from textarea
+    // TODO
     var text = dojo.byId("commentText").value;
-    // if not empty
     if (text) {
-        // sign in
         portalSignIn(function () {
-            //if global item exists
             if (globalItem) {
                 // spinner
                 addSpinner('commentSpinner');
@@ -823,30 +820,56 @@ function getComments() {
     });
 }
 /*------------------------------------*/
+// Get updated rating
+/*------------------------------------*/
+function reQueryRating() {
+    setGlobalItem({
+        // Group Owner
+        id: configOptions.webmap,
+        // Executed after ajax returned
+        callback: function (comments) {
+            // set rating
+            setRatingInfo();
+        }
+    });
+}
+/*------------------------------------*/
 // Set Rating Connection
 /*------------------------------------*/
 function setRatingConnect() {
-    console.log(ratingConnect);
+    // if connect exists
     if (ratingConnect) {
+        // disconnect it
         dojo.disconnect(ratingConnect);
-        console.log(ratingConnect);
     }
     // rating connects
     ratingConnect = dojo.connect(ratingWidget, "onChange", function (value) {
-        if (value > -1 && value < 6) {
-            // parse value
-            var widgetVal = parseInt(value, 10);
-            if (globalItem && widgetVal) {
-                // rate
-                globalItem.addRating(widgetVal).then(function () {
-                    setRatingInfo();
-                },
+        // clear rating timeout
+        clearTimeout(ratingTimer);
+        // set timeout
+        ratingTimer = setTimeout(function () {
+            // if logged in
+            if (globalUser) {
+                // if value and it's a valid number			
+                if (value > -1 && value < 6) {
+                    // parse value
+                    var widgetVal = parseInt(value, 10);
+                    // if global item and widget exists
+                    if (globalItem && widgetVal) {
+                        // rate
+                        globalItem.addRating(widgetVal).then(function () {
+                            // query new info
+                            reQueryRating();
+                        },
 
-                function () {
-                    setRatingInfo();
-                });
+                        function () {
+                            // query new info
+                            reQueryRating();
+                        });
+                    }
+                }
             }
-        }
+        }, 500);
     });
 }
 /*------------------------------------*/
@@ -854,8 +877,11 @@ function setRatingConnect() {
 /*------------------------------------*/
 function setRatingInfo() {
     var html = '';
+    // if ratings enabled
     if (configOptions.showRatings) {
+        // if widget exists
         if (ratingWidget) {
+            // destroy it
             ratingWidget.destroy();
         }
         // rating widget
@@ -915,7 +941,6 @@ function setRatingInfo() {
         if (globalUser) {
             // rating widget
             dojo.place(ratingWidget.domNode, dojo.byId("ratingCon"), "first");
-
         } else {
             // rating widget
             dojo.place(ratingWidget.domNode.innerHTML, dojo.byId("ratingCon"), "first");
@@ -1039,7 +1064,7 @@ function initMap() {
                 setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + parseURL(configOptions.mapCredits) + '</div>');
             }
             // Set description
-            var descriptionInfo = configOptions.mapItemDescription || i18n.viewer.mapPage.noDescription;
+            var descriptionInfo = configOptions.mapItemDescription || "";
             var descNode = dojo.byId("descriptionContent");
             setNodeHTML(descNode, '<h2>' + i18n.viewer.mapPage.aboutHeader + '</h2>' + descriptionInfo + '<div class="clear"></div>');
             // set page title
