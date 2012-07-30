@@ -790,9 +790,11 @@ function buildComments() {
 // Add Comment
 /*------------------------------------*/
 function addCommentToItem() {
-    // TODO
+    // text value
     var text = dojo.byId("commentText").value;
+    // if set
     if (text) {
+        // sign in
         portalSignIn(function () {
             if (globalItem) {
                 // spinner
@@ -1064,7 +1066,7 @@ function initMap() {
                 setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + parseURL(configOptions.mapCredits) + '</div>');
             }
             // Set description
-            var descriptionInfo = configOptions.mapItemDescription || "";
+            var descriptionInfo = configOptions.mapItemDescription || i18n.viewer.mapPage.noDescription;
             var descNode = dojo.byId("descriptionContent");
             setNodeHTML(descNode, '<h2>' + i18n.viewer.mapPage.aboutHeader + '</h2>' + descriptionInfo + '<div class="clear"></div>');
             // set page title
