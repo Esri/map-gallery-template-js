@@ -639,7 +639,7 @@ function createPortal(callback) {
     });
 }
 /*------------------------------------*/
-// 
+// Signs a user into the portal
 /*------------------------------------*/
 function portalSignIn(callback) {
     portal.signIn().then(function (loggedInUser) {
