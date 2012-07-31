@@ -71,7 +71,7 @@ function setAppIdSettings(callback) {
                 // show error dialog
                 var dialog = new dijit.Dialog({
                     title: i18n.viewer.errors.general,
-                    content: i18n.viewer.errors.createMap + " : " + error
+                    content: error
                 });
                 dialog.show();
                 // hide all content
@@ -621,6 +621,17 @@ function queryArcGISGroupInfo(obj) {
                     settings.callback.call(this, settings, data);
                 }
             });
+        },
+        error: function (response) {
+            var error = response.message;
+            // show error dialog
+            var dialog = new dijit.Dialog({
+                title: i18n.viewer.errors.general,
+                content: error
+            });
+            dialog.show();
+            // hide all content
+            hideAllContent();
         }
     });
 }
