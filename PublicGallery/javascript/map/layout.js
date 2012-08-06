@@ -1056,15 +1056,6 @@ function initMap() {
             if (licenseInfo && configOptions.mapLicenseInfo && configOptions.showLicenseInfo) {
                 setNodeHTML(licenseInfo, '<h2>' + i18n.viewer.mapPage.constraintsHeading + '</h2>' + configOptions.mapLicenseInfo);
             }
-            // if no credits set in config
-            if (!configOptions.mapCredits) {
-                configOptions.mapCredits = itemInfo.item.accessInformation;
-            }
-            // Set credits
-            var accessInformation = dojo.byId("accessInformation");
-            if (accessInformation && configOptions.mapCredits && configOptions.showCredits) {
-                setNodeHTML(accessInformation, '<div class="credits"><strong>' + i18n.viewer.mapPage.creditsHeading + '</strong> ' + parseURL(configOptions.mapCredits) + '</div>');
-            }
             // Set description
             var descriptionInfo = configOptions.mapItemDescription || i18n.viewer.mapPage.noDescription;
             var descNode = dojo.byId("descriptionContent");
@@ -1083,6 +1074,8 @@ function initMap() {
                     slider: true,
                     sliderStyle: "small",
                     wrapAround180: true,
+                    showAttribution: configOptions.showAttribution,
+                    attributionWidth: 0.40,
                     nav: false
                 },
                 ignorePopups: false,
@@ -1093,6 +1086,8 @@ function initMap() {
             mapDeferred.addCallback(function (response) {
                 // set map
                 map = response.map;
+                console.log(map);
+                
                 var layers = response.itemInfo.itemData.operationalLayers;
                 // LAYER TOGGLE
                 if (configOptions.showLayerToggle && layers.length > 0) {

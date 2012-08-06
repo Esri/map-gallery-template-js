@@ -332,8 +332,8 @@
             },
             {
                "type":"boolean",
-               "fieldName":"showCredits",
-               "label":"Show Credits.",
+               "fieldName":"showAttribution",
+               "label":"Show Attribution.",
                "tooltip":"Displays credits on the map page."
             },
             {

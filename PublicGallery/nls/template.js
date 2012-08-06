@@ -93,7 +93,6 @@ define({
                 "switchBasemap": "Switch Basemap",
 				"getMobileApp": "Get App",				// new
 				"constraintsHeading":"Use Constraints",	// new
-				"creditsHeading":"Credits:",			// new
 				"createdLabel":"Created",				// new
 				"noDescription":"No description.",		// new
 				"detailsLabel":"Details"				// new
