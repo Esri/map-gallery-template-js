@@ -12,12 +12,12 @@
             },
             {
                "type":"paragraph",
-               "value":"<a target=\"_blank\" href=\"https:\/\/servicesbeta.esri.com\/demos\/portal\/portal_getGroup.html\">Find your group&#39;s ID<\/a>."
+               "value":"<a target=\"_blank\" href=\"https:\/\/servicesbeta.esri.com\/demos\/portal\/portal_getGroup.html\">Find your group&#39;s ID<\/a>. View the <a target=\"_blank\" href=\"http:\/\/www.arcgis.com\/apps\/PublicGallery\/readme.html\">readme<\/a>."
             },
             {
                "type":"string",
                "fieldName":"siteTitle",
-               "label":"Website Banner Title:",
+               "label":"Website banner title:",
                "tooltip":"The title of this template&#39;s website.",
                "placeHolder":"My Maps"
             },
@@ -30,7 +30,7 @@
                "fieldName":"siteBannerImage",
                "tooltip":"URL for the navigation header logo image. If empty, Site Title text is used.",
                "placeHolder":"http://www.mysite.com/logo.png",
-               "label":"Banner Logo:"
+               "label":"Banner logo:"
             },
             {
                "type":"paragraph",
@@ -39,7 +39,7 @@
             {
                "type":"string",
                "fieldName":"addThisProfileId",
-               "label":"AddThis.com Profile Id:",
+               "label":"AddThis.com profile ID:",
                "tooltip":"Account ID for AddThis.com.",
                "placeHolder":"xa-4f3bf72958320e9e"
             },
@@ -55,7 +55,7 @@
             {
                "type":"string",
                "fieldName":"homeSideHeading",
-               "label":"Homepage Side Heading:",
+               "label":"Homepage side heading:",
                "tooltip":"Heading displayed within the side panel on the index page.",
                "placeHolder":""
             }
@@ -67,24 +67,24 @@
             {
                "type":"string",
                "fieldName":"footerHeading",
-               "label":"Footer Heading:",
+               "label":"Footer heading:",
                "tooltip":"Heading displayed in the footer.",
                "placeHolder":""
             },
             {
                "type":"string",
                "fieldName":"footerDescription",
-               "label":"Footer Content:",
+               "label":"Footer content:",
                "tooltip":"Content description displayed in the footer.",
-               "stringFieldOption":"richtext",
-               "placeHolder":""
+               "stringFieldOption":"textarea",
+               "placeHolder":"Footer Content"
             },
             {
                "type":"string",
                "fieldName":"footerLogo",
                "tooltip":"Image to display in the footer. If empty, the group's thumbnail image is used.",
                "placeHolder":"http://www.mysite.com/logo.png",
-               "label":"Footer Logo:"
+               "label":"Footer logo:"
             },
             {
                "type":"paragraph",
@@ -95,7 +95,7 @@
                "fieldName":"footerLogoUrl",
                "tooltip":"Link for the image in the footer. If empty, link to the group on ArcGIS Online is used.",
                "placeHolder":"http://www.mysite.com/",
-               "label":"Footer Logo Link:"
+               "label":"Footer logo link:"
             },
             {
                "type":"paragraph",
@@ -110,7 +110,7 @@
                "type":"string",
                "fieldName":"theme",
                "tooltip":"Color theme to use.",
-               "label":"Color Theme:",
+               "label":"Color theme:",
                "options":[
                   {
                      "label":"Blue",
@@ -130,7 +130,7 @@
                "type":"string",
                "fieldName":"defaultLayout",
                "tooltip":"Whether to use grid view or list view as the default layout.",
-               "label":"Default Layout:",
+               "label":"Default layout:",
                "options":[
                   {
                      "label":"Grid",
@@ -146,7 +146,7 @@
                "type":"string",
                "fieldName":"sortField",
                "tooltip":"Field to sort the group items by.",
-               "label":"Group Sort Field:",
+               "label":"Group sort field:",
                "options":[
                   {
                      "label":"Modified Date",
@@ -186,7 +186,7 @@
                "type":"string",
                "fieldName":"sortOrder",
                "tooltip":"Order to sort the group field.",
-               "label":"Group Sort Order:",
+               "label":"Group sort order:",
                "options":[
                   {
                      "label":"Descending",
@@ -200,20 +200,9 @@
             },
             {
                "type":"string",
-               "fieldName":"searchString",
-               "tooltip":"Default search string for group query.",
-               "placeHolder":"",
-               "label":"Search String:"
-            },
-            {
-               "type":"paragraph",
-               "value":"Default search string for group query."
-            },
-            {
-               "type":"string",
                "fieldName":"mapViewer",
                "tooltip":"Open maps with this viewer.",
-               "label":"Open Maps With:",
+               "label":"Open maps with:",
                "options":[
                   {
                      "label":"Simple Viewer",
@@ -237,7 +226,7 @@
                "type":"string",
                "fieldName":"galleryItemsPerPage",
                "tooltip":"Gallery items to show per page.",
-               "label":"Items Per Page:",
+               "label":"Items per page:",
                "options":[
                   {
                      "label":"3",
@@ -260,6 +249,17 @@
                      "value":"15"
                   }
                ]
+            },
+            {
+               "type":"string",
+               "fieldName":"searchString",
+               "tooltip":"Default search string for group query.",
+               "placeHolder":"",
+               "label":"Search string:"
+            },
+            {
+               "type":"paragraph",
+               "value":"Default search string for group query."
             }
          ]
       },
@@ -270,12 +270,16 @@
                "type":"boolean",
                "fieldName":"openGalleryItemsNewWindow",
                "label":"Open items in new window.",
-               "tooltip":""
+               "tooltip":"Open group items in a new window."
+            },
+            {
+               "type":"paragraph",
+               "value":"Open group items in a new window."
             },
             {
                "type":"boolean",
                "fieldName":"showProfileUrl",
-               "label":"Show Profile Link.",
+               "label":"Show profile link.",
                "tooltip":"Links usernames to ArcGIS Online profiles."
             },
             {
@@ -285,8 +289,12 @@
             {
                "type":"boolean",
                "fieldName":"showAboutPage",
-               "label":"Show About Page.",
+               "label":"Show about page.",
                "tooltip":"Show about page in top navigation."
+            },
+            {
+               "type":"paragraph",
+               "value":"Show about page in top navigation."
             },
             {
                "type":"boolean",
@@ -295,15 +303,23 @@
                "tooltip":""
             },
             {
+               "type":"paragraph",
+               "value":"Show social media buttons."
+            },
+            {
                "type":"boolean",
                "fieldName":"showFooter",
                "label":"Show footer.",
-               "tooltip":""
+               "tooltip":"Show footer on all pages."
+            },
+            {
+               "type":"paragraph",
+               "value":"Show footer on all pages."
             },
             {
                "type":"boolean",
                "fieldName":"showExplorerButton",
-               "label":"Show Explorer Online Button.",
+               "label":"Show Explorer Online button.",
                "tooltip":"Displays the button to open the webmap in Explorer Online viewer."
             },
             {
@@ -313,7 +329,7 @@
             {
                "type":"boolean",
                "fieldName":"showArcGISOnlineButton",
-               "label":"Show Map Viewer Button.",
+               "label":"Show Map Viewer button.",
                "tooltip":"Displays the button to open the webmap in ArcGIS Online Map Viewer."
             },
             {
@@ -323,7 +339,7 @@
             {
                "type":"boolean",
                "fieldName":"showMobileButtons",
-               "label":"Show Mobile Buttons.",
+               "label":"Show mobile buttons.",
                "tooltip":"Displays a mobile button to open the webmap in ArcGIS mobile app and a button to download the app."
             },
             {
@@ -333,19 +349,27 @@
             {
                "type":"boolean",
                "fieldName":"showAttribution",
-               "label":"Show Attribution.",
+               "label":"Show attribution.",
                "tooltip":"Displays credits on the map page."
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays credits on the map page."
             },
             {
                "type":"boolean",
                "fieldName":"showLicenseInfo",
-               "label":"Show Credits.",
-               "tooltip":"Displays License info on the map page."
+               "label":"Show constraints.",
+               "tooltip":"Displays constraints on the map page."
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays constraints on the map page."
             },
             {
                "type":"boolean",
                "fieldName":"showMoreInfo",
-               "label":"Show More Info Links.",
+               "label":"Show more info links.",
                "tooltip":"Displays More information links to the ArcGIS Online item page."
             },
             {
@@ -408,7 +432,7 @@
       "showArcGISOnlineButton":false,
       "showMobileButtons":false,
       "openGalleryItemsNewWindow":false,
-      "showCredits":true,
+      "showAttribution":true,
       "showLicenseInfo":true,
       "showGroupSort":false,
       "galleryItemsPerPage":"9"
