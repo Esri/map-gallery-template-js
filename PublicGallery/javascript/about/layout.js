@@ -9,20 +9,6 @@ dojo.require("dijit.Dialog");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
 /*------------------------------------*/
-// on dojo load
-/*------------------------------------*/
-dojo.addOnLoad(function () {
-    // set default configuration options
-    setDefaultConfigOptions();
-    // set app ID settings and call init after
-    setAppIdSettings(function () {
-        // create portal
-        createPortal(function () {
-            init();
-        });
-    });
-});
-/*------------------------------------*/
 // Query Owner
 /*------------------------------------*/
 function queryOwnerInfo(obj) {
@@ -48,7 +34,7 @@ function queryOwnerInfo(obj) {
     portal.queryUsers(params).then(function (data) {
         if (typeof settings.callback === 'function') {
             // call callback function with settings and data
-            settings.callback.call(this, settings, data);
+            settings.callback.call(this, data);
         }
     });
 }
@@ -101,7 +87,7 @@ function init() {
             // Group Owner
             owner: configOptions.groupOwner,
             // Executed after ajax returned
-            callback: function (obj, data) {
+            callback: function (data) {
                 if (data.results.length > 0) {
                     // place about content into dom
                     insertAboutContent(data.results[0]);
@@ -117,3 +103,17 @@ function init() {
         });
     });
 }
+/*------------------------------------*/
+// on dojo load
+/*------------------------------------*/
+dojo.addOnLoad(function () {
+    // set default configuration options
+    setDefaultConfigOptions();
+    // set app ID settings and call init after
+    setAppIdSettings(function () {
+        // create portal
+        createPortal(function () {
+            init();
+        });
+    });
+});

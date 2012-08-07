@@ -879,7 +879,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	zoom:1;
 	width:60px;
 	height:60px;
-	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;
 }
@@ -1060,7 +1059,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 /*-------------------------------------------------- */
 /* MAP PAGE */
 /*-------------------------------------------------- */
-#description, #legendDiv {
+#description, #legendDiv, #mapLayersCon {
 	padding: 0px 15px 20px 15px;
 	zoom:1;
 }

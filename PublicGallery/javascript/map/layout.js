@@ -227,6 +227,12 @@ function setDelegations() {
             tabMenu('#legendMenu', this);
         }
     });
+    // show legend button click
+    dojo.query(document).delegate("#showLayers", "onclick,keyup", function (event) {
+        if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
+            tabMenu('#layersMenu', this);
+        }
+    });
     // escape button when in full screen view
     dojo.query(document).delegate("body", "onkeyup", function (e) {
         // if esc key and map is fullscreen
@@ -636,6 +642,7 @@ function setAddressContainer() {
 function insertMenuTabs() {
     var html = '';
     html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected">' + i18n.viewer.sidePanel.legendButton + '</div>';
+    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter">' + i18n.viewer.sidePanel.layersButton + '</div>';
     html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight">' + i18n.viewer.sidePanel.aboutButton + '</div>';
     html += '<div class="clear"></div>';
     // Set
@@ -1087,7 +1094,7 @@ function initMap() {
                 // set map
                 map = response.map;
                 console.log(map);
-                
+
                 var layers = response.itemInfo.itemData.operationalLayers;
                 // LAYER TOGGLE
                 if (configOptions.showLayerToggle && layers.length > 0) {

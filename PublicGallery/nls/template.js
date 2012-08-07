@@ -18,6 +18,7 @@ define({
             "sidePanel": {
                 "title": "Legend",
                 "legendButton": "Legend",
+				"layersButton":"Layers",			// new
                 "legendButtonTitle": "Map Legend",
                 "aboutButton": "About",
                 "aboutButtonTitle": "About Map",
