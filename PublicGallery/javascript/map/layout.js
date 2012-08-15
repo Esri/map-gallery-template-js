@@ -1093,67 +1093,67 @@ function initMap() {
             mapDeferred.addCallback(function (response) {
                 // set map
                 map = response.map;
-                console.log(map);
-
+				// operation layers
                 var layers = response.itemInfo.itemData.operationalLayers;
-                // LAYER TOGGLE
-                if (configOptions.showLayerToggle && layers.length > 0) {
-                    var html = '';
-                    var mapLayersNode = dojo.byId('mapLayers');
-                    if (mapLayersNode) {
-                        html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
-                        html += '<table id="mapLayerToggle">';
-                        html += "<tbody>";
-                        for (j = 0; j < layers.length; j++) {
-                            var checked;
-                            // if feature collection
-                            if (layers[j].featureCollection) {
-                                html += "<tr>";
-                                checked = '';
-                                if (layers[j].visibility) {
-                                    checked = 'checked="checked"';
-                                }
-                                // check column
-                                html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-                                // if feature collection layers
-                                if (layers[j].featureCollection.layers) {
-                                    for (k = 0; k < layers[j].featureCollection.layers.length; k++) {
-                                        html += layers[j].featureCollection.layers[k].id;
-                                        // if not last
-                                        if (k !== (layers[j].featureCollection.layers.length - 1)) {
-                                            html += ",";
-                                        }
-                                    }
-                                }
-                                // csv
-                                else {
-                                    html += layers[j].id;
-                                }
-                                html += '" /></td>';
-                                // label column
-                                html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
-                                html += "</tr>";
-                            } else {
-                                html += "<tr>";
-                                checked = '';
-                                if (layers[j].visibility) {
-                                    checked = 'checked="checked"';
-                                }
-                                // check column
-                                html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-                                html += layers[j].id;
-                                html += '" /></td>';
-                                // label column
-                                html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
-                                html += "</tr>";
-                            }
-                        }
-                        html += "</tbody>";
-                        html += '</table>';
-                        html += '<div class="clear"></div>';
-                        setNodeHTML(mapLayersNode, html);
-                    }
+				var html = '';
+				var mapLayersNode = dojo.byId('mapLayers');
+				html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
+                // Layer toggles
+                if (configOptions.showLayerToggle && layers.length > 0 && mapLayersNode) {
+					html += '<table id="mapLayerToggle">';
+					html += "<tbody>";
+					for (j = 0; j < layers.length; j++) {
+						var checked;
+						// if feature collection
+						if (layers[j].featureCollection) {
+							html += "<tr>";
+							checked = '';
+							if (layers[j].visibility) {
+								checked = 'checked="checked"';
+							}
+							// check column
+							html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+							// if feature collection layers
+							if (layers[j].featureCollection.layers) {
+								for (k = 0; k < layers[j].featureCollection.layers.length; k++) {
+									html += layers[j].featureCollection.layers[k].id;
+									// if not last
+									if (k !== (layers[j].featureCollection.layers.length - 1)) {
+										html += ",";
+									}
+								}
+							}
+							// csv
+							else {
+								html += layers[j].id;
+							}
+							html += '" /></td>';
+							// label column
+							html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
+							html += "</tr>";
+						} else {
+							html += "<tr>";
+							checked = '';
+							if (layers[j].visibility) {
+								checked = 'checked="checked"';
+							}
+							// check column
+							html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+							html += layers[j].id;
+							html += '" /></td>';
+							// label column
+							html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
+							html += "</tr>";
+						}
+					}
+					html += "</tbody>";
+					html += '</table>';
+					html += '<div class="clear"></div>';
                 }
+				else{
+					html += '<div>' + i18n.viewer.errors.noLayers + '</div>';
+				}
+				setNodeHTML(mapLayersNode, html);
                 // ENDLAYER TOGGLE
                 if (map.loaded) {
                     mapNowLoaded(layers);
