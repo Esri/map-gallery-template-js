@@ -1014,6 +1014,31 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	font-weight:bold;
 	margin-bottom:2px;
 }
+#tabMenu .icon{
+	display:inline-block;
+	width:16px;
+	height: 16px;
+	vertical-align: middle;
+	overflow: hidden;
+}
+#showLegend .icon{
+	background:url(../images/tmp/legend.png) no-repeat 0 0;
+}
+#showLegend.buttonSelected .icon{
+	background:url(../images/tmp/legendSelected.png) no-repeat 0 0;
+}
+#showLayers .icon{
+	background:url(../images/tmp/layers.png) no-repeat 0 0;
+}
+#showLayers.buttonSelected .icon{
+	background:url(../images/tmp/layersSelected.png) no-repeat 0 0;
+}
+#showAbout .icon{
+	background:url(../images/tmp/about.png) no-repeat 0 0;
+}
+#showAbout.buttonSelected .icon{
+	background:url(../images/tmp/aboutSelected.png) no-repeat 0 0;
+}
 /*-------------------------------------------------- */
 /* MAP */
 /*-------------------------------------------------- */
@@ -1168,7 +1193,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 	display:inline-block;
 	vertical-align:middle;
 	font-size:12px;
-	line-height:18px;
+	line-height:16px;
+	height: 16px;
+	overflow: hidden;
 	margin:0;
 	padding:8px 16px;
 	border:0;

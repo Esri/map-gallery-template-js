@@ -641,11 +641,11 @@ function setAddressContainer() {
 /*------------------------------------*/
 function insertMenuTabs() {
     var html = '';
-    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected"><img src="images/tmp/legendSelected.png" width="16" height="16" alt="" /></div>';
+    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected"><span class="icon"></span></div>';
     if (configOptions.showLayerToggle){
-    	html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><img src="images/tmp/layers.png" width="16" height="16" alt="" /></div>';
+    	html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><span class="icon"></span></div>';
     }
-    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight"><img src="images/tmp/about.png" width="16" height="16" alt="" /></div>';
+    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight"><span class="icon"></span></div>';
     html += '<div class="clear"></div>';
     // Set
     var node = dojo.byId("tabMenu");
