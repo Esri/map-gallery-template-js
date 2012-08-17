@@ -1018,26 +1018,26 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	display:inline-block;
 	width:16px;
 	height: 16px;
-	vertical-align: middle;
+	vertical-align: text-bottom;
 	overflow: hidden;
 }
 #showLegend .icon{
-	background:url(../images/tmp/legend.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -32px -16px;
 }
 #showLegend.buttonSelected .icon{
-	background:url(../images/tmp/legendSelected.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -48px -16px;
 }
 #showLayers .icon{
-	background:url(../images/tmp/layers.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -64px -16px;
 }
 #showLayers.buttonSelected .icon{
-	background:url(../images/tmp/layersSelected.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -80px -16px;
 }
 #showAbout .icon{
-	background:url(../images/tmp/about.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat 0 -16px;
 }
 #showAbout.buttonSelected .icon{
-	background:url(../images/tmp/aboutSelected.png) no-repeat 0 0;
+	background:url(../images/ui/uiSprite.png) no-repeat -16px -16px;
 }
 /*-------------------------------------------------- */
 /* MAP */
