@@ -641,11 +641,11 @@ function setAddressContainer() {
 /*------------------------------------*/
 function insertMenuTabs() {
     var html = '';
-    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected"><img src="http://png-5.findicons.com/files//icons/1722/gnome_2_18_icon_theme/16/stock_chart_toggle_legend.png" width="16" height="16" alt="" /></div>';
+    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected"><img src="images/tmp/legendSelected.png" width="16" height="16" alt="" /></div>';
     if (configOptions.showLayerToggle){
-    	html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><img src="http://png-2.findicons.com/files//icons/2232/wireframe_mono/16/layers_2.png" width="16" height="16" alt="" /></div>';
+    	html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><img src="images/tmp/layers.png" width="16" height="16" alt="" /></div>';
     }
-    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight"><img src="http://png-2.findicons.com/files//icons/2166/oxygen/16/document_properties.png" width="16" height="16" alt="" /></div>';
+    html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight"><img src="images/tmp/about.png" width="16" height="16" alt="" /></div>';
     html += '<div class="clear"></div>';
     // Set
     var node = dojo.byId("tabMenu");
