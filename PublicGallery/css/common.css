@@ -157,6 +157,12 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #descriptionContent {
 	margin-bottom:10px;
 }
+.esriAttribution{
+	background:rgba(255, 255, 255, 0.75);
+	padding:2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+}
 /*-------------------------------------------------- */
 /* Alerts */
 /*-------------------------------------------------- */
