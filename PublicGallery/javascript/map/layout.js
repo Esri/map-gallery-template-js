@@ -244,7 +244,7 @@ function setDelegations() {
     // Search Button
     dojo.query(document).delegate("#searchAddressButton", "onclick,keyup", function (event) {
         if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
-            locate();
+            locate(showResults);
             hideAutoComplete();
         }
     });
@@ -264,7 +264,7 @@ function setDelegations() {
         if (e.keyCode === 13 && aquery !== '') {
             clearTimeout(timer);
             clearLocate();
-            locate();
+            locate(showResults);
             hideAutoComplete();
         }
         // up arrow key
@@ -279,7 +279,7 @@ function setDelegations() {
         else if (alength >= 2) {
             clearTimeout(timer);
             timer = setTimeout(function () {
-                autoComplete(aquery);
+                locate(showAutoComplete);
             }, 250);
         } else {
             hideAutoComplete();
@@ -392,33 +392,32 @@ function setDelegations() {
 /*------------------------------------*/
 // show autocomplete
 /*------------------------------------*/
-function showAutoComplete(geocodeResults) {
+function showAutoComplete(results) {
     var aResults = '';
     var partialMatch = dojo.query("#searchAddress").attr('value')[0];
     var regex = new RegExp('(' + partialMatch + ')', 'gi');
-    if (geocodeResults !== null) {
+    if (results && results.locations.length > 0) {
         dojo.query(".searchList").addClass('autoCompleteOpen');
-        ACObj = geocodeResults;
+        ACObj = results;
         aResults += '<ul class="zebraStripes">';
-        for (var i = 0; i < geocodeResults.length; i++) {
+        for (var i = 0; i < results.locations.length; i++) {
             var layerClass = '';
             if (i % 2 === 0) {
                 layerClass = '';
             } else {
                 layerClass = 'stripe';
             }
-            aResults += '<li tabindex="0" class="' + layerClass + '">' + geocodeResults[i].address.replace(regex, '<span>' + partialMatch + '</span>') + '</li>';
+            aResults += '<li tabindex="0" class="' + layerClass + '">' + results.locations[i].name.replace(regex, '<span>' + partialMatch + '</span>') + '</li>';
         }
         aResults += '</ul>';
-        if (geocodeResults.length > 0) {
-            var node = dojo.byId('autoComplete');
-            if (node) {
-                setNodeHTML(node, aResults);
-                dojo.style(node, 'display', 'block');
-            }
-        } else {
-            hideAutoComplete();
+
+        var node = dojo.byId('autoComplete');
+        if (node) {
+            setNodeHTML(node, aResults);
+            dojo.style(node, 'display', 'block');
         }
+    } else {
+        hideAutoComplete();
     }
 }
 /*------------------------------------*/
@@ -456,93 +455,90 @@ function clearLocate() {
 /*------------------------------------*/
 // Locate
 /*------------------------------------*/
-function locate() {
+function locate(callback) {
     var query = dojo.byId("searchAddress").value;
-    if (query) {
-        // add loading spinner
-        addSpinner("locateSpinner");
-        // locate string
-        locateString = query;
-        // address object
-        var address = {
-            SingleLine: locateString
+    if (query && map) {
+        var queryContent = {
+            "text": query,
+            "maxLocations": 6,
+            "outSR": map.spatialReference.wkid,
+            "f": "json"
         };
-        // get address and set callback. * includes all fields in query
-        aoGeocoder.addressToLocations(address, ["*"]);
+        // send request
+        var requestHandle = esri.request({
+            url: configOptions.locatorserviceurl + '/find',
+            content: queryContent,
+            handleAs: 'json',
+            callbackParamName: 'callback',
+            // on load
+            load: function (data) {
+                if (typeof callback === 'function') {
+                    // call callback function
+                    callback.call(this, data);
+                }
+            }
+        });
     }
-}
-/*------------------------------------*/
-// search box functions
-/*------------------------------------*/
-function autoComplete(query) {
-    // set global locate string
-    locateString = query;
-    // address object
-    var address = {
-        SingleLine: locateString
-    };
-    // get address and set callback. * includes all fields in query
-    aoGeoCoderAutocomplete.addressToLocations(address, ["*"]);
 }
 /*------------------------------------*/
 // Show search results
 /*------------------------------------*/
-function showResults(geocodeResults, resultNumber) {
+function showResults(results, resultNumber) {
     // remove spinner
     removeSpinner();
     // hide autocomplete
     hideAutoComplete();
     // if result found
-    if (geocodeResults.length > 0) {
+    if (results.locations.length > 0 && map) {
         // num result variable
         var numResult = 0;
         // if result number
         if (resultNumber) {
             numResult = resultNumber;
         }
+        // new extent
+        var extent = new esri.geometry.Extent(results.locations[numResult].extent);
         // if point graphic set
         if (configOptions.pointGraphic) {
             // if locate results
             if (locateResultLayer) {
-                locateResultLayer.clear();
-            } else {
-                locateResultLayer = new esri.layers.GraphicsLayer();
-                map.addLayer(locateResultLayer);
+
+                dojo.disconnect(resultConnect);
+                map.removeLayer(locateResultLayer);
+                locateResultLayer = false;
             }
-            // create point marker
-            var pointMeters = esri.geometry.geographicToWebMercator(geocodeResults[0].location);
+            locateResultLayer = new esri.layers.GraphicsLayer();
+            resultConnect = dojo.connect(locateResultLayer, 'onClick', function (evt) {
+                // stop overriding events
+                dojo.stopEvent(evt);
+                // clear popup
+                map.infoWindow.setContent('');
+                map.infoWindow.setTitle('');
+                map.infoWindow.clearFeatures();
+                map.infoWindow.hide();
+                // set popup content
+                map.infoWindow.setContent('<strong>' + evt.graphic.attributes.address + '</strong>');
+                // set popup title
+                map.infoWindow.setTitle('Address');
+                // set popup geometry
+                map.infoWindow.show(evt.graphic.geometry);
+            });
+            map.addLayer(locateResultLayer);
+
+            // create point marker           
             var pointSymbol = new esri.symbol.PictureMarkerSymbol(configOptions.pointGraphic, 21, 25).setOffset(0, 12);
-            var locationGraphic = new esri.Graphic(pointMeters, pointSymbol);
+            // center of extent
+            var point = extent.getCenter();
+            // create point graphic
+            var locationGraphic = new esri.Graphic(point, pointSymbol);
+            // graphic with address
+            locationGraphic.setAttributes({
+                "address": results.locations[numResult].name
+            });
             locateResultLayer.add(locationGraphic);
         }
-        // set extent variables
-        var xminNew, yminNew, xmaxNew, ymaxNew;
-        // if no attributes set
-        if (!geocodeResults[numResult].hasOwnProperty('attributes')) {
-            geocodeResults[numResult].attributes = {};
-        }
-        // if one of the extent properteis isn't set
-        if (!geocodeResults[numResult].attributes.hasOwnProperty('West_Lon') || !geocodeResults[numResult].attributes.hasOwnProperty('South_Lat') || !geocodeResults[numResult].attributes.hasOwnProperty('East_Lon') || !geocodeResults[numResult].attributes.hasOwnProperty('North_Lat')) {
-            xminNew = parseFloat(geocodeResults[numResult].location.x - 0.011);
-            yminNew = parseFloat(geocodeResults[numResult].location.y - 0.011);
-            xmaxNew = parseFloat(geocodeResults[numResult].location.x + 0.011);
-            ymaxNew = parseFloat(geocodeResults[numResult].location.y + 0.011);
-        } else {
-            xminNew = parseFloat(geocodeResults[numResult].attributes.West_Lon);
-            yminNew = parseFloat(geocodeResults[numResult].attributes.South_Lat);
-            xmaxNew = parseFloat(geocodeResults[numResult].attributes.East_Lon);
-            ymaxNew = parseFloat(geocodeResults[numResult].attributes.North_Lat);
-        }
-        // create new extent
-        var newExtent = new esri.geometry.Extent({
-            xmin: xminNew,
-            ymin: yminNew,
-            xmax: xmaxNew,
-            ymax: ymaxNew,
-            spatialReference: map.extent.spatialReference
-        });
-        // set extent converted to web mercator
-        map.setExtent(esri.geometry.geographicToWebMercator(newExtent));
+        // set map extent to location
+        map.setExtent(extent);
     } else {
         // show error dialog
         var dialog = new dijit.Dialog({
@@ -642,8 +638,8 @@ function setAddressContainer() {
 function insertMenuTabs() {
     var html = '';
     html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.legendButtonTitle + '" id="showLegend" class="toggleButton buttonLeft buttonSelected"><span class="icon"></span></div>';
-    if (configOptions.showLayerToggle){
-    	html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><span class="icon"></span></div>';
+    if (configOptions.showLayerToggle) {
+        html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.layersButton + '" id="showLayers" class="toggleButton buttonCenter"><span class="icon"></span></div>';
     }
     html += '<div tabindex="0" title="' + i18n.viewer.sidePanel.aboutButtonTitle + '" id="showAbout" class="toggleButton buttonRight"><span class="icon"></span></div>';
     html += '<div class="clear"></div>';
@@ -1095,67 +1091,66 @@ function initMap() {
             mapDeferred.addCallback(function (response) {
                 // set map
                 map = response.map;
-				// operation layers
+                // operation layers
                 var layers = response.itemInfo.itemData.operationalLayers;
-				var html = '';
-				var mapLayersNode = dojo.byId('mapLayers');
-				html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
+                var html = '';
+                var mapLayersNode = dojo.byId('mapLayers');
+                html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
                 // Layer toggles
                 if (configOptions.showLayerToggle && layers.length > 0 && mapLayersNode) {
-					html += '<table id="mapLayerToggle">';
-					html += "<tbody>";
-					for (j = 0; j < layers.length; j++) {
-						var checked;
-						// if feature collection
-						if (layers[j].featureCollection) {
-							html += "<tr>";
-							checked = '';
-							if (layers[j].visibility) {
-								checked = 'checked="checked"';
-							}
-							// check column
-							html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-							// if feature collection layers
-							if (layers[j].featureCollection.layers) {
-								for (k = 0; k < layers[j].featureCollection.layers.length; k++) {
-									html += layers[j].featureCollection.layers[k].id;
-									// if not last
-									if (k !== (layers[j].featureCollection.layers.length - 1)) {
-										html += ",";
-									}
-								}
-							}
-							// csv
-							else {
-								html += layers[j].id;
-							}
-							html += '" /></td>';
-							// label column
-							html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
-							html += "</tr>";
-						} else {
-							html += "<tr>";
-							checked = '';
-							if (layers[j].visibility) {
-								checked = 'checked="checked"';
-							}
-							// check column
-							html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
-							html += layers[j].id;
-							html += '" /></td>';
-							// label column
-							html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
-							html += "</tr>";
-						}
-					}
-					html += "</tbody>";
-					html += '</table>';
-					html += '<div class="clear"></div>';
+                    html += '<table id="mapLayerToggle">';
+                    html += "<tbody>";
+                    for (j = 0; j < layers.length; j++) {
+                        var checked;
+                        // if feature collection
+                        if (layers[j].featureCollection) {
+                            html += "<tr>";
+                            checked = '';
+                            if (layers[j].visibility) {
+                                checked = 'checked="checked"';
+                            }
+                            // check column
+                            html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+                            // if feature collection layers
+                            if (layers[j].featureCollection.layers) {
+                                for (k = 0; k < layers[j].featureCollection.layers.length; k++) {
+                                    html += layers[j].featureCollection.layers[k].id;
+                                    // if not last
+                                    if (k !== (layers[j].featureCollection.layers.length - 1)) {
+                                        html += ",";
+                                    }
+                                }
+                            }
+                            // csv
+                            else {
+                                html += layers[j].id;
+                            }
+                            html += '" /></td>';
+                            // label column
+                            html += '<td><label for="layerCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
+                            html += "</tr>";
+                        } else {
+                            html += "<tr>";
+                            checked = '';
+                            if (layers[j].visibility) {
+                                checked = 'checked="checked"';
+                            }
+                            // check column
+                            html += '<td class="checkColumn"><input tabindex="0" class="toggleLayers" id="layerSingleCheckbox' + j + '" ' + checked + ' type="checkbox" data-layers="';
+                            html += layers[j].id;
+                            html += '" /></td>';
+                            // label column
+                            html += '<td><label for="layerSingleCheckbox' + j + '">' + layers[j].title.replace(/[\-_]/g, " ") + '</label></td>';
+                            html += "</tr>";
+                        }
+                    }
+                    html += "</tbody>";
+                    html += '</table>';
+                    html += '<div class="clear"></div>';
+                } else {
+                    html += '<div>' + i18n.viewer.errors.noLayers + '</div>';
                 }
-				else{
-					html += '<div>' + i18n.viewer.errors.noLayers + '</div>';
-				}
-				setNodeHTML(mapLayersNode, html);
+                setNodeHTML(mapLayersNode, html);
                 // ENDLAYER TOGGLE
                 if (map.loaded) {
                     mapNowLoaded(layers);
@@ -1175,11 +1170,6 @@ function initMap() {
                 // hide all content
                 hideAllContent();
             });
-            // LOCATOR
-            aoGeocoder = new esri.tasks.Locator(configOptions.locatorserviceurl);
-            aoGeoCoderAutocomplete = new esri.tasks.Locator(configOptions.locatorserviceurl);
-            dojo.connect(aoGeocoder, "onAddressToLocationsComplete", showResults);
-            dojo.connect(aoGeoCoderAutocomplete, "onAddressToLocationsComplete", showAutoComplete);
             itemDeferred.addErrback(function (error) {
                 var dialog;
                 // don't i18n this. I'ts returned from the server
