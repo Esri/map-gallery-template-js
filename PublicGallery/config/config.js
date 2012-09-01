@@ -55,5 +55,6 @@ var configOptions = {
     "mobilePortalUrl":"arcgis://www.arcgis.com/",
     "iosAppUrl": "itms://itunes.apple.com/us/app/arcgis/id379687930?mt=8",
     "androidAppUrl": "https://market.android.com/details?id=com.esri.android.client",
-    "pointGraphic": "images/ui/bluepoint-21x25.png"
+    "pointGraphic": "images/ui/bluepoint-21x25.png",
+	"sourceCountry":"USA"
 };

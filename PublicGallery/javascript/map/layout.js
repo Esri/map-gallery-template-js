@@ -461,6 +461,7 @@ function locate(callback) {
         var queryContent = {
             "text": query,
             "maxLocations": 6,
+			"sourceCountry": configOptions.sourceCountry,
             "outSR": map.spatialReference.wkid,
             "f": "json"
         };
