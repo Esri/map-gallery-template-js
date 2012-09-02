@@ -157,12 +157,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #descriptionContent {
 	margin-bottom:10px;
 }
-.esriAttribution{
-	background:rgba(255, 255, 255, 0.75);
-	padding:2px;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-}
 /*-------------------------------------------------- */
 /* Alerts */
 /*-------------------------------------------------- */
@@ -1074,15 +1068,20 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .map .bingLogo-lg {
 	left:18px !important;
 }
-#map .esriAttribution {
+#map .esriAttribution{
+	margin: 0 10px 0 0;
+}
+
+#map .esriAttribution .esriAttributionList{
+	padding:2px;
+	background:rgba(255, 255, 255, 0.75);
+	display:inline-block;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
 	font-family:Arial, Helvetica, sans-serif;
 	font-size:11px;
 	line-height:16px;
 	color:#656565;
-	margin: 0 10px 0 0;
-	-moz-user-select: none;
-	-webkit-user-select:none;
-	user-select:none;
 }
 #mapButtonCon {
 	margin:20px 0 0 0;
