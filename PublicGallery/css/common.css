@@ -473,10 +473,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 .mapsGrid .item .itemCounts{
 	font-size:11px;
-	text-align:right; 
-	display:block; 
-	height:16px; 
-	line-height:16px; 
+	text-align:right;
+	display:block;
+	height:16px;
+	line-height:16px;
 	padding:6px 0 3px 0;
 }
 .esriRtl .mapsGrid .item .itemCounts{
@@ -1068,20 +1068,10 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .map .bingLogo-lg {
 	left:18px !important;
 }
-#map .esriAttribution{
-	margin: 0 10px 0 0;
-}
-
-#map .esriAttribution .esriAttributionList{
-	padding:2px;
-	background:rgba(255, 255, 255, 0.75);
-	display:inline-block;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:11px;
-	line-height:16px;
-	color:#656565;
+#map .esriAttribution .esriAttributionList {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    line-height: 16px;
 }
 #mapButtonCon {
 	margin:20px 0 0 0;
