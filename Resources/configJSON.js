@@ -46,6 +46,17 @@
             {
                "type":"paragraph",
                "value":"Register an <a target=\"_blank\" href=\"https:\/\/www.addthis.com\/register\">AddThis.com<\/a> account for social media button analytics."
+            },
+			{
+               "type":"string",
+               "fieldName":"sourceCountry",
+               "label":"Locator Source Country",
+               "tooltip":"Locator Source Country",
+               "placeHolder":""
+            },
+            {
+               "type":"paragraph",
+               "value":"A value representing the country. Providing this value increases geocoding speed."
             }
          ]
       },
@@ -435,6 +446,7 @@
       "showAttribution":true,
       "showLicenseInfo":true,
       "showGroupSort":false,
-      "galleryItemsPerPage":"9"
+      "galleryItemsPerPage":"9",
+	  "sourceCountry":"USA"
    }
 }
