@@ -1,5 +1,5 @@
 var configOptions = {
-    "group": "69b91f7b857b40a484c4aacbd1b243a7",
+    "group": "908dd46e749d4565a17d2b646ace7b1a",
     "appid": "",
     "theme": "blueTheme",
     "siteTitle": "My Maps",
