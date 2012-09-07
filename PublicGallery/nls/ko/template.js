@@ -15,12 +15,10 @@
                 "noMatches": "일치하는 항목이 없습니다.",
                 "noMapsFound": "맵을 찾을 수 없습니다."
             },
-            "footer": {
-                "label": "다음의 맵:"
-            },
             "sidePanel": {
                 "title": "범례",
                 "legendButton": "범례",
+				"layersButton": "레이어", // new
                 "legendButtonTitle": "맵 범례",
                 "aboutButton": "정보",
                 "aboutButtonTitle": "맵 정보",
@@ -36,6 +34,49 @@
                 "listSwitch": "목록 보기로 전환",
                 "loadingText": "맵을 로드하는 중&hellip;"
             },
+			"sortFields":{
+				"sortBy": "정렬", // new
+				"modified": "날짜", // new
+				"title": "제목", // new
+				"type": "유형", // new
+				"numRatings": "등급", // new
+				"avgRating": "평균 등급", // new
+				"numComments": "설명", // new
+				"numViews": "뷰" // new
+			},
+			"comments":{
+				"commentsHeader": "설명", // new
+				"posted": "게시됨", // new
+				"by": "작성자", // new
+				"deleteComment": "삭제", // new
+				"editComment": "편집", // new
+				"noComments": "설명 없음", // new
+				"addCommentButton": "설명 추가", // new
+				"signIn": "로그인", // new
+				"register": "등록", // new
+				"or": "또는", // new
+				"toPost": "설명 게시" // new
+			},
+			"buttons":{
+				"cancel": "취소", // new
+				"submit": "보고" // new
+			},
+			"rating":{
+				"signIn": "로그인", // new
+				"toRate": "등급 지정" // new
+			},
+			"itemInfo":{
+				"createdLabel": "생성됨", // new
+				"ratingsLabel": "등급", // new
+				"ratingsLabelPlural": "등급", // new
+				"viewsLabel": "뷰", // new
+				"viewsLabelPlural": "뷰", // new
+				"commentsLabel": "설명", // new
+				"commentsLabelPlural": "설명", // new
+				"modifiedLabel": "마지막 수정한 날짜", // new
+				"by": "작성자", // new
+				"separator": "," // new
+			},
             "mapPage": {
                 "findLocation": "위치 찾기",
                 "findPlaceholder": "주소 찾기",
@@ -43,21 +84,19 @@
                 "layersHeader": "레이어",
                 "enterFullscreen": "전체 화면 보기",
                 "exitFullscreen": "전체 화면 끝내기",
-                "arcgisLink": "ArcGIS 항목 정보",
+                "arcgisLink": "항목 세부정보",
                 "moreInformation": "추가 정보",
                 "geoLocateTitle": "현재 위치 사용",
                 "openInMobile": "모바일 앱에서 열기",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
-                "ownerHeader": "소유자",
-                "switchBasemap": "기본 맵 보기"
-            },
-            "mobileOptions": {
-                "mobileAppDialogTitle": "ArcGIS 앱에서 맵을 여시겠습니까?",
-                "mobileAppDialogContent": "모바일 장치용 ArcGIS 앱이 있는 것을 아시나요?",
-                "ignore": "다시 표시 안 함",
-                "installed": "이미 설치됨",
-                "install": "지금 설치"
+                "ownerHeader": "소유자:",
+                "switchBasemap": "기본 맵 보기",
+				"getMobileApp": "앱 가져오기", // new
+				"constraintsHeading":"Use Constraints", // new
+				"createdLabel":"Created", // new
+				"noDescription":"No description.", // new
+				"detailsLabel":"Details" // new
             },
             "pagination": {
                 "previous": "이전",

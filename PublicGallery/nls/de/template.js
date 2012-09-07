@@ -15,12 +15,10 @@
                 "noMatches": "Keine Übereinstimmungen gefunden.",
                 "noMapsFound": "Keine Karten gefunden."
             },
-            "footer": {
-                "label": "Eine Karte von:"
-            },
             "sidePanel": {
                 "title": "Legende",
                 "legendButton": "Legende",
+				"layersButton": "Layer", // new
                 "legendButtonTitle": "Kartenlegende",
                 "aboutButton": "Info über",
                 "aboutButtonTitle": "Info zur Karte",
@@ -36,6 +34,49 @@
                 "listSwitch": "Zur Listenansicht wechseln",
                 "loadingText": "Karten&hellip; werden geladen"
             },
+			"sortFields":{
+				"sortBy": "Sortieren nach", // new
+				"modified": "Datum", // new
+				"title": "Titel", // new
+				"type": "Typ", // new
+				"numRatings": "Bewertungen", // new
+				"avgRating": "Durchschn. Bewertung", // new
+				"numComments": "Kommentare", // new
+				"numViews": "Aufrufe" // new
+			},
+			"comments":{
+				"commentsHeader": "Kommentare", // new
+				"posted": "Veröffentlicht", // new
+				"by": "von", // new
+				"deleteComment": "löschen", // new
+				"editComment": "bearbeiten", // new
+				"noComments": "Keine Kommentare", // new
+				"addCommentButton": "Kommentar hinzufügen", // new
+				"signIn": "Anmelden", // new
+				"register": "Registrieren", // new
+				"or": "oder", // new
+				"toPost": "zum Veröffentlichen eines Kommentars." // new
+			},
+			"buttons":{
+				"cancel": "Abbrechen", // new
+				"submit": "Senden" // new
+			},
+			"rating":{
+				"signIn": "Anmelden", // new
+				"toRate": "zum Bewerten." // new
+			},
+			"itemInfo":{
+				"createdLabel": "erstellt", // new
+				"ratingsLabel": "Bewertung", // new
+				"ratingsLabelPlural": "Bewertungen", // new
+				"viewsLabel": "Aufruf", // new
+				"viewsLabelPlural": "Aufrufe", // new
+				"commentsLabel": "Kommentar", // new
+				"commentsLabelPlural": "Kommentare", // new
+				"modifiedLabel": "Zuletzt geändert", // new
+				"by": "von", // new
+				"separator": "," // new
+			},
             "mapPage": {
                 "findLocation": "Position suchen",
                 "findPlaceholder": "Adresse suchen",
@@ -43,21 +84,19 @@
                 "layersHeader": "Layer",
                 "enterFullscreen": "Vollbildansicht",
                 "exitFullscreen": "Vollbild beenden",
-                "arcgisLink": "ArcGIS-Elementdetails",
+                "arcgisLink": "Elementdetails",
                 "moreInformation": "Weitere Informationen",
                 "geoLocateTitle": "Aktuelle Position verwenden",
                 "openInMobile": "In Mobile App öffnen",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
-                "ownerHeader": "Besitzer",
-                "switchBasemap": "Grundkarte wechseln"
-            },
-            "mobileOptions": {
-                "mobileAppDialogTitle": "Karten im ArcGIS App öffnen?",
-                "mobileAppDialogContent": "Wussten Sie schon, dass es ein ArcGIS App für Ihr Mobilgerät gibt?",
-                "ignore": "Nicht mehr anzeigen",
-                "installed": "Bereits installiert",
-                "install": "Jetzt installieren"
+                "ownerHeader": "Besitzer:",
+                "switchBasemap": "Grundkarte wechseln",
+				"getMobileApp": "Anwendung abrufen", // new
+				"constraintsHeading":"Use Constraints", // new
+				"createdLabel":"Created", // new
+				"noDescription":"No description.", // new
+				"detailsLabel":"Details" // new
             },
             "pagination": {
                 "previous": "Zurück",

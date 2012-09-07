@@ -15,12 +15,10 @@
                 "noMatches": "Совпадения не найдены.",
                 "noMapsFound": "Карты не найдены."
             },
-            "footer": {
-                "label": "Карта из:"
-            },
             "sidePanel": {
                 "title": "Легенда",
                 "legendButton": "Легенда",
+				"layersButton": "Слои", // new
                 "legendButtonTitle": "Легенда",
                 "aboutButton": "О",
                 "aboutButtonTitle": "О карте",
@@ -36,6 +34,49 @@
                 "listSwitch": "Переключить в вид списка",
                 "loadingText": "Загрузка карт&hellip;"
             },
+			"sortFields":{
+				"sortBy": "Сортировать по", // new
+				"modified": "Дате", // new
+				"title": "Название", // new
+				"type": "Тип", // new
+				"numRatings": "Рейтингу", // new
+				"avgRating": "Усредненному рейтингу", // new
+				"numComments": "Комментарии", // new
+				"numViews": "Просмотров" // new
+			},
+			"comments":{
+				"commentsHeader": "Комментарии", // new
+				"posted": "Размещению", // new
+				"by": "от", // new
+				"deleteComment": "удалить", // new
+				"editComment": "редактировать", // new
+				"noComments": "Комментарии отсутствуют", // new
+				"addCommentButton": "Добавить комментарий", // new
+				"signIn": "Войти", // new
+				"register": "Регистрация", // new
+				"or": "или", // new
+				"toPost": "чтобы опубликовать комментарий." // new
+			},
+			"buttons":{
+				"cancel": "Отмена", // new
+				"submit": "Отправить" // new
+			},
+			"rating":{
+				"signIn": "Войти", // new
+				"toRate": "чтобы присвоить рейтинг." // new
+			},
+			"itemInfo":{
+				"createdLabel": "создано", // new
+				"ratingsLabel": "рейтинг", // new
+				"ratingsLabelPlural": "рейтинги", // new
+				"viewsLabel": "вид", // new
+				"viewsLabelPlural": "просмотров", // new
+				"commentsLabel": "комментарий", // new
+				"commentsLabelPlural": "комментарии", // new
+				"modifiedLabel": "Последнее изменение", // new
+				"by": "от", // new
+				"separator": "," // new
+			},
             "mapPage": {
                 "findLocation": "Найти местоположение",
                 "findPlaceholder": "Найти адрес",
@@ -43,21 +84,19 @@
                 "layersHeader": "Слои",
                 "enterFullscreen": "Полноэкранный режим",
                 "exitFullscreen": "Выход из полноэкранного режима",
-                "arcgisLink": "Сведения об элементе ArcGIS",
+                "arcgisLink": "Информация об элементе",
                 "moreInformation": "Более подробно",
                 "geoLocateTitle": "Использовать текущее местоположение",
                 "openInMobile": "Открыть в мобильных приложениях",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
-                "ownerHeader": "Владелец",
-                "switchBasemap": "Переключить базовую карту"
-            },
-            "mobileOptions": {
-                "mobileAppDialogTitle": "Открыть карты в приложениях ArcGIS?",
-                "mobileAppDialogContent": "Знаете ли вы, что для вашего мобильного устройства есть приложение ArcGIS?",
-                "ignore": "Больше не показывать",
-                "installed": "Уже установлено",
-                "install": "Установить сейчас"
+                "ownerHeader": "Владелец:",
+                "switchBasemap": "Переключить базовую карту",
+				"getMobileApp": "Получить приложение", // new
+				"constraintsHeading":"Use Constraints", // new
+				"createdLabel":"Created", // new
+				"noDescription":"No description.", // new
+				"detailsLabel":"Details" // new
             },
             "pagination": {
                 "previous": "Предыдущий",

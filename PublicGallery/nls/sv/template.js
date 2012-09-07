@@ -15,12 +15,10 @@
                 "noMatches": "Inga matchningar hittades.",
                 "noMapsFound": "Inga kartor hittades."
             },
-            "footer": {
-                "label": "En karta från:"
-            },
             "sidePanel": {
                 "title": "Teckenförklaring",
                 "legendButton": "Teckenförklaring",
+				"layersButton": "Lager", // new
                 "legendButtonTitle": "Kartteckenförklaring",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartan",
@@ -36,6 +34,49 @@
                 "listSwitch": "Växla till listvy",
                 "loadingText": "Läser in kartor&hellip;"
             },
+			"sortFields":{
+				"sortBy": "Sortera efter", // new
+				"modified": "Datum", // new
+				"title": "Titel", // new
+				"type": "Typ", // new
+				"numRatings": "Betyg", // new
+				"avgRating": "Snittbetyg", // new
+				"numComments": "Kommentarer", // new
+				"numViews": "Visningar" // new
+			},
+			"comments":{
+				"commentsHeader": "Kommentarer", // new
+				"posted": "Skickad", // new
+				"by": "av", // new
+				"deleteComment": "ta bort", // new
+				"editComment": "redigera", // new
+				"noComments": "Inga kommentarer", // new
+				"addCommentButton": "Lägg till kommentar", // new
+				"signIn": "Logga in", // new
+				"register": "Registrera", // new
+				"or": "eller", // new
+				"toPost": "för att skicka en kommentar." // new
+			},
+			"buttons":{
+				"cancel": "Avbryt", // new
+				"submit": "Utför" // new
+			},
+			"rating":{
+				"signIn": "Logga in", // new
+				"toRate": "för att sätta betyg." // new
+			},
+			"itemInfo":{
+				"createdLabel": "skapad", // new
+				"ratingsLabel": "bedömning", // new
+				"ratingsLabelPlural": "bedömningar", // new
+				"viewsLabel": "vy", // new
+				"viewsLabelPlural": "vyer", // new
+				"commentsLabel": "kommentar", // new
+				"commentsLabelPlural": "kommentarer", // new
+				"modifiedLabel": "Senast ändrad", // new
+				"by": "av", // new
+				"separator": "," // new
+			},
             "mapPage": {
                 "findLocation": "Hitta en plats",
                 "findPlaceholder": "Hitta en adress",
@@ -43,21 +84,19 @@
                 "layersHeader": "Lager",
                 "enterFullscreen": "Helskärmsläge",
                 "exitFullscreen": "Avsluta helskärm",
-                "arcgisLink": "ArcGIS-objektinformation",
+                "arcgisLink": "Objektinformation",
                 "moreInformation": "Mer information",
                 "geoLocateTitle": "Använd aktuell plats",
                 "openInMobile": "Öppna i mobilapp",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
-                "ownerHeader": "Ägare",
-                "switchBasemap": "Byt baskarta"
-            },
-            "mobileOptions": {
-                "mobileAppDialogTitle": "Öppna kartor i ArcGIS-appen?",
-                "mobileAppDialogContent": "Visste du att det finns en ArcGIS-app för din mobila enhet?",
-                "ignore": "Visa inte igen",
-                "installed": "Redan installerat",
-                "install": "Installera nu"
+                "ownerHeader": "Ägare:",
+                "switchBasemap": "Byt baskarta",
+				"getMobileApp": "Hämta app", // new
+				"constraintsHeading":"Use Constraints", // new
+				"createdLabel":"Created", // new
+				"noDescription":"No description.", // new
+				"detailsLabel":"Details" // new
             },
             "pagination": {
                 "previous": "Föregående",
