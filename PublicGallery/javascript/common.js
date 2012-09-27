@@ -1,4 +1,52 @@
 /*------------------------------------*/
+// Load sign-in credentials
+/*------------------------------------*/
+function loadCredentials() {
+    var idJson, idObject;
+    if (supports_local_storage()) {
+        // read from local storage
+        idJson = localStorage.getItem(configOptions.cred);
+    } else {
+        // read from a cookie
+        idJson = dojo.cookie(configOptions.cred);
+    }
+    if (idJson && idJson !== "null" && idJson.length > 4) {
+        idObject = dojo.fromJson(idJson);
+        esri.id.initialize(idObject);
+    }
+}
+/*------------------------------------*/
+// Store sign-in credentials
+/*------------------------------------*/
+function storeCredentials() {
+    // make sure there are some credentials to persist
+    if (esri.id.credentials.length === 0) {
+        return;
+    }
+    // serialize the ID manager state to a string
+    var idString = dojo.toJson(esri.id.toJson());
+    // store it client side
+    if (supports_local_storage()) {
+        // use local storage
+        localStorage.setItem(configOptions.cred, idString);
+    } else {
+        // use a cookie
+        dojo.cookie(configOptions.cred, idString, {
+            expires: 1
+        });
+    }
+}
+/*------------------------------------*/
+// detect local storage support
+/*------------------------------------*/
+function supports_local_storage() {
+    try {
+        return "localStorage" in window && window.localStorage !== null;
+    } catch (e) {
+        return false;
+    }
+}
+/*------------------------------------*/
 // clip text to desired length
 /*------------------------------------*/
 function truncate(text, length, ellipsis) {
@@ -33,7 +81,8 @@ function reverseSortOrder(order) {
 // Remove Spinner
 /*------------------------------------*/
 function removeSpinner() {
-    dojo.query('.spinnerRemove').orphan();
+    dojo.query('.spinnerRemove')
+        .orphan();
 }
 /*------------------------------------*/
 // Hide all content
@@ -104,9 +153,11 @@ function clearAddress(obj) {
 /*------------------------------------*/
 function checkAddressStatus(obj) {
     // get value of node
-    var cAVal = dojo.query(obj).attr('value')[0];
+    var cAVal = dojo.query(obj)
+        .attr('value')[0];
     // get reset node
-    var iconReset = dojo.query(obj).next('.iconReset');
+    var iconReset = dojo.query(obj)
+        .next('.iconReset');
     // if value is not empty
     if (cAVal !== '') {
         // add reset class
@@ -130,6 +181,8 @@ function setDefaultConfigOptions() {
     }
     // Template Version. Used for development and version recognition.
     configOptions.templateVersion = "2.05a";
+    // credential name
+    configOptions.cred = "esri_jsapi_id_manager_data";
     // ArcGIS Rest Version
     configOptions.arcgisRestVersion = 1;
     // row items
@@ -342,7 +395,8 @@ function zoomToLocation(x, y, IPAccuracy) {
             map.addLayer(locateResultLayer);
         }
         // Create point symbol
-        var pointSymbol = new esri.symbol.PictureMarkerSymbol(configOptions.pointGraphic, 21, 25).setOffset(0, 12);
+        var pointSymbol = new esri.symbol.PictureMarkerSymbol(configOptions.pointGraphic, 21, 25)
+            .setOffset(0, 12);
         // Set graphic
         var locationGraphic = new esri.Graphic(pt, pointSymbol);
         // Add graphic to layer
@@ -496,7 +550,8 @@ function insertHeaderContent() {
         // if link HREF equals page HREF
         if (obj.href === location.href) {
             // add selected class
-            dojo.query(obj).addClass('activeLink');
+            dojo.query(obj)
+                .addClass('activeLink');
         }
     });
     // top header background set
@@ -531,7 +586,8 @@ function setSidebarHeight() {
     // if nodes
     if (mainNode && sideNode) {
         // get inner height of main node
-        mainHeight = dojo.contentBox(mainNode).h;
+        mainHeight = dojo.contentBox(mainNode)
+            .h;
         // if inner height is less than 750. make that the default.
         if (mainHeight < 750) {
             mainHeight = 750;
@@ -562,9 +618,11 @@ function insertContent() {
         dirNode.attr('dir', 'ltr');
     }
     // add sidepanel class
-    dojo.query('#sidePanel').addClass('dataLayers');
+    dojo.query('#sidePanel')
+        .addClass('dataLayers');
     // add main panel class
-    dojo.query('#mainPanel').addClass('contentLeft');
+    dojo.query('#mainPanel')
+        .addClass('contentLeft');
     // Set Theme
     dirNode.addClass(configOptions.theme);
     // Insert banner and navigation
@@ -606,21 +664,40 @@ function queryArcGISGroupInfo(obj) {
             var signInRequired = (response.access !== 'public') ? true : false;
             // if sign-in is required
             if (signInRequired) {
-                portal.signIn();
+                storeCredentials();
+                loadCredentials();
+                portalSignIn(function () {
+                    // query
+                    var q = 'id:"' + settings.id_group + '"';
+                    var params = {
+                        q: q,
+                        v: configOptions.arcgisRestVersion,
+                        f: settings.dataType
+                    };
+                    portal.queryGroups(params)
+                        .then(function (data) {
+                        if (typeof settings.callback === 'function') {
+                            // call callback function with settings and data
+                            settings.callback.call(this, settings, data);
+                        }
+                    });
+                });
+            } else {
+                // query
+                var q = 'id:"' + settings.id_group + '"';
+                var params = {
+                    q: q,
+                    v: configOptions.arcgisRestVersion,
+                    f: settings.dataType
+                };
+                portal.queryGroups(params)
+                    .then(function (data) {
+                    if (typeof settings.callback === 'function') {
+                        // call callback function with settings and data
+                        settings.callback.call(this, settings, data);
+                    }
+                });
             }
-            // query
-            var q = 'id:"' + settings.id_group + '"';
-            var params = {
-                q: q,
-                v: configOptions.arcgisRestVersion,
-                f: settings.dataType
-            };
-            portal.queryGroups(params).then(function (data) {
-                if (typeof settings.callback === 'function') {
-                    // call callback function with settings and data
-                    settings.callback.call(this, settings, data);
-                }
-            });
         },
         error: function (response) {
             var error = response.message;
@@ -639,6 +716,10 @@ function queryArcGISGroupInfo(obj) {
 // Create portal and proceed
 /*------------------------------------*/
 function createPortal(callback) {
+    // store credentials/serverInfos before the page unloads
+    dojo.addOnUnload(storeCredentials);
+    // look for credentials in local storage
+    loadCredentials();
     // create portal
     portal = new esri.arcgis.Portal(configOptions.portalUrl);
     // portal loaded
@@ -653,7 +734,8 @@ function createPortal(callback) {
 // Signs a user into the portal
 /*------------------------------------*/
 function portalSignIn(callback) {
-    portal.signIn().then(function (loggedInUser) {
+    portal.signIn()
+        .then(function (loggedInUser) {
         if (loggedInUser) {
             globalUser = loggedInUser;
             if (typeof callback === 'function') {
@@ -746,7 +828,8 @@ function queryArcGISGroupItems(obj) {
     if (settings.searchStart > 1) {
         params.start = (((settings.searchStart - 1) * settings.perPage) + 1);
     }
-    portal.queryItems(params).then(function (data) {
+    portal.queryItems(params)
+        .then(function (data) {
         if (typeof settings.callback === 'function') {
             // call callback function with settings and data
             settings.callback.call(this, settings, data);
@@ -887,7 +970,7 @@ function createPagination(obj, totalItems, pagObject) {
                 remainderStart++;
             }
         }
-        // add up HTML	
+        // add up HTML
         html += startHTML + middleHTML + endHTML;
         // Pagination Spinner Container
         html += '<li id="paginationSpinner" class="spinnerCon"></li>';

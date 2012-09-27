@@ -428,7 +428,7 @@ function mapNowLoaded(layers) {
     dojo.query("#map").addClass('mapLoaded');
     // if overview map
     if (configOptions.showOverviewMap) {
-        //add the overview map 
+        //add the overview map
         var overviewMapDijit = new esri.dijit.OverviewMap({
             map: map,
             attachTo: "bottom-left",
@@ -526,7 +526,7 @@ function showResults(results, resultNumber) {
             });
             map.addLayer(locateResultLayer);
 
-            // create point marker           
+            // create point marker
             var pointSymbol = new esri.symbol.PictureMarkerSymbol(configOptions.pointGraphic, 21, 25).setOffset(0, 12);
             // center of extent
             var point = extent.getCenter();
@@ -858,7 +858,7 @@ function setRatingConnect() {
         ratingTimer = setTimeout(function () {
             // if logged in
             if (globalUser) {
-                // if value and it's a valid number			
+                // if value and it's a valid number
                 if (value > -1 && value < 6) {
                     // parse value
                     var widgetVal = parseInt(value, 10);
