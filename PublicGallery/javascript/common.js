@@ -801,7 +801,7 @@ function queryArcGISGroupItems(obj) {
         q += ' ) ';
     }
     if (settings.searchType) {
-        q += ' AND type:"' + settings.searchType + '"';
+        q += ' AND typekeywords:"' + settings.searchType + '"';
     }
     if (settings.searchType && settings.filterType) {
         q += ' -type:"' + settings.filterType + '"';
@@ -1048,6 +1048,8 @@ function getViewerURL(viewer, webmap, owner) {
         retUrl = 'about.html' + queryString;
         return retUrl;
         // portal viewer link
+    case 'cityengine':
+        return configOptions.portalUrl + 'apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
     case 'arcgis':
         return configOptions.portalUrl + 'home/webmap/viewer.html?webmap=' + webmap;
         // arcgis explorer link

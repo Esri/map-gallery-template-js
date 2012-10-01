@@ -21,7 +21,7 @@ var configOptions = {
     "searchString": "",
     "sortField": "modified",
     "sortOrder": "desc",
-    "searchType": "Web Map",
+    "searchType": "Maps",
     "mapViewer": "simple",
     "galleryItemsPerPage": 9,
     "showProfileUrl": false,

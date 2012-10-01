@@ -283,7 +283,11 @@ function buildMapPlaylist(obj, data) {
             if (data.results[i].url) {
                 itemURL = data.results[i].url;
                 externalLink = true;
-            } else {
+            }
+            else if(data.results[i].type === "CityEngine Web Scene"){
+                itemURL = getViewerURL('cityengine', data.results[i].id);
+                externalLink = true;
+            }else {
                 // url variable
                 itemURL = getViewerURL(configOptions.mapViewer, data.results[i].id);
             }
