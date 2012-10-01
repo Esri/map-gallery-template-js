@@ -664,7 +664,6 @@ function queryArcGISGroupInfo(obj) {
             var signInRequired = (response.access !== 'public') ? true : false;
             // if sign-in is required
             if (signInRequired) {
-                storeCredentials();
                 loadCredentials();
                 portalSignIn(function () {
                     // query
