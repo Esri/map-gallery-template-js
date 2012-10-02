@@ -664,7 +664,7 @@ function queryArcGISGroupInfo(obj) {
             var signInRequired = (response.access !== 'public') ? true : false;
             // if sign-in is required
             if (signInRequired) {
-                loadCredentials();
+                // todo loadCredentials();
                 portalSignIn(function () {
                     // query
                     var q = 'id:"' + settings.id_group + '"';
@@ -716,9 +716,9 @@ function queryArcGISGroupInfo(obj) {
 /*------------------------------------*/
 function createPortal(callback) {
     // store credentials/serverInfos before the page unloads
-    dojo.addOnUnload(storeCredentials);
+    // todo dojo.addOnUnload(storeCredentials);
     // look for credentials in local storage
-    loadCredentials();
+    // todo loadCredentials();
     // create portal
     portal = new esri.arcgis.Portal(configOptions.portalUrl);
     // portal loaded
