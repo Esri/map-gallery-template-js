@@ -396,21 +396,20 @@ function showAutoComplete(results) {
     var aResults = '';
     var partialMatch = dojo.query("#searchAddress").attr('value')[0];
     var regex = new RegExp('(' + partialMatch + ')', 'gi');
-    if (results && results.locations.length > 0) {
+    if (results && results.candidates.length > 0) {
         dojo.query(".searchList").addClass('autoCompleteOpen');
         ACObj = results;
         aResults += '<ul class="zebraStripes">';
-        for (var i = 0; i < results.locations.length; i++) {
+        for (var i = 0; i < results.candidates.length && i < 6; i++) {
             var layerClass = '';
             if (i % 2 === 0) {
                 layerClass = '';
             } else {
                 layerClass = 'stripe';
             }
-            aResults += '<li tabindex="0" class="' + layerClass + '">' + results.locations[i].name.replace(regex, '<span>' + partialMatch + '</span>') + '</li>';
+            aResults += '<li tabindex="0" class="' + layerClass + '">' + results.candidates[i].address.replace(regex, '<span>' + partialMatch + '</span>') + '</li>';
         }
         aResults += '</ul>';
-
         var node = dojo.byId('autoComplete');
         if (node) {
             setNodeHTML(node, aResults);
@@ -459,15 +458,14 @@ function locate(callback) {
     var query = dojo.byId("searchAddress").value;
     if (query && map) {
         var queryContent = {
-            "text": query,
-            "maxLocations": 6,
-			"sourceCountry": configOptions.sourceCountry,
+            "SingleLine": query,
             "outSR": map.spatialReference.wkid,
+			"outFields": "*",
             "f": "json"
         };
         // send request
         var requestHandle = esri.request({
-            url: configOptions.locatorserviceurl + '/find',
+            url: configOptions.locatorserviceurl + '/findAddressCandidates',
             content: queryContent,
             handleAs: 'json',
             callbackParamName: 'callback',
@@ -489,21 +487,51 @@ function showResults(results, resultNumber) {
     removeSpinner();
     // hide autocomplete
     hideAutoComplete();
+	var candidates = results.candidates;
     // if result found
-    if (results.locations.length > 0 && map) {
+    if (candidates.length > 0 && map) {
         // num result variable
         var numResult = 0;
         // if result number
         if (resultNumber) {
             numResult = resultNumber;
         }
-        // new extent
-        var extent = new esri.geometry.Extent(results.locations[numResult].extent);
+		var extent, point;
+		if (
+		candidates[numResult].attributes.hasOwnProperty('Xmin') && candidates[numResult].attributes.hasOwnProperty('Ymin') && candidates[numResult].attributes.hasOwnProperty('Xmax') && candidates[numResult].attributes.hasOwnProperty('Ymax')) {
+			// if result has extent attributes
+			// new extent
+			extent = new esri.geometry.Extent({
+				"xmin": candidates[numResult].attributes.Xmin,
+				"ymin": candidates[numResult].attributes.Ymin,
+				"xmax": candidates[numResult].attributes.Xmax,
+				"ymax": candidates[numResult].attributes.Ymax,
+				"spatialReference": results.spatialReference
+			});
+			// set map extent to location
+			map.setExtent(esri.geometry.geographicToWebMercator(extent));
+		} else if (
+		candidates[numResult].attributes.hasOwnProperty('westLon') && candidates[numResult].attributes.hasOwnProperty('southLat') && candidates[numResult].attributes.hasOwnProperty('eastLon') && candidates[numResult].attributes.hasOwnProperty('northLat')) {
+			// result has lat/lon extent attributes
+			// new extent
+			extent = new esri.geometry.Extent({
+				"xmin": candidates[numResult].attributes.westLon,
+				"ymin": candidates[numResult].attributes.southLat,
+				"xmax": candidates[numResult].attributes.eastLon,
+				"ymax": candidates[numResult].attributes.northLat,
+				"spatialReference": results.spatialReference
+			});
+			// set map extent to location
+			map.setExtent(esri.geometry.geographicToWebMercator(extent));
+		} else {
+			// use point
+			map.centerAndZoom(candidates[numResult].location, 14);
+		}
+		point = new esri.geometry.Point( {"x": candidates[numResult].location.x, "y": candidates[numResult].location.y," spatialReference": results.spatialReference });
         // if point graphic set
         if (configOptions.pointGraphic) {
             // if locate results
             if (locateResultLayer) {
-
                 dojo.disconnect(resultConnect);
                 map.removeLayer(locateResultLayer);
                 locateResultLayer = false;
@@ -513,33 +541,25 @@ function showResults(results, resultNumber) {
                 // stop overriding events
                 dojo.stopEvent(evt);
                 // clear popup
-                map.infoWindow.setContent('');
-                map.infoWindow.setTitle('');
                 map.infoWindow.clearFeatures();
-                map.infoWindow.hide();
                 // set popup content
                 map.infoWindow.setContent('<strong>' + evt.graphic.attributes.address + '</strong>');
                 // set popup title
                 map.infoWindow.setTitle('Address');
                 // set popup geometry
-                map.infoWindow.show(evt.graphic.geometry);
+                map.infoWindow.show(evt.mapPoint);
             });
             map.addLayer(locateResultLayer);
-
             // create point marker
             var pointSymbol = new esri.symbol.PictureMarkerSymbol(configOptions.pointGraphic, 21, 25).setOffset(0, 12);
-            // center of extent
-            var point = extent.getCenter();
             // create point graphic
             var locationGraphic = new esri.Graphic(point, pointSymbol);
             // graphic with address
             locationGraphic.setAttributes({
-                "address": results.locations[numResult].name
+                "address": candidates[numResult].address
             });
             locateResultLayer.add(locationGraphic);
         }
-        // set map extent to location
-        map.setExtent(extent);
     } else {
         // show error dialog
         var dialog = new dijit.Dialog({
