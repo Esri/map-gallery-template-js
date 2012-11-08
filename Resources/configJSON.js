@@ -399,6 +399,16 @@
             },
             {
                "type":"boolean",
+               "fieldName":"showViews",
+               "label":"Show Views",
+               "tooltip":"Displays view counts for maps"
+            },
+            {
+               "type":"paragraph",
+               "value":"Displays view counts for maps."
+            },
+            {
+               "type":"boolean",
                "fieldName":"showComments",
                "label":"Show comments",
                "tooltip":"Shows comments for items and allows items to be commented on"
@@ -439,6 +449,9 @@
       "showSocialButtons":true,
       "showFooter":true,
       "showMoreInfo":false,
+      "showComments": true,
+      "showRatings": true,
+      "showViews":true,
       "showExplorerButton":false,
       "showArcGISOnlineButton":false,
       "showMobileButtons":false,

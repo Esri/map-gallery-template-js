@@ -926,7 +926,7 @@ function setRatingInfo() {
     if (!globalUser) {
         html += '&nbsp;<a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
     }
-    html += ' (';
+    var rating = '';
     if (configOptions.showRatings) {
         // Ratings
         if (globalItem.numRatings) {
@@ -934,35 +934,38 @@ function setRatingInfo() {
             if (globalItem.numRatings > 1) {
                 pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
             }
-            html += dojo.number.format(globalItem.numRatings) + ' ' + pluralRatings;
+            rating += dojo.number.format(globalItem.numRatings) + ' ' + pluralRatings;
         }
     }
     if (configOptions.showComments) {
         // comments
         if (globalItem.numComments) {
             if (globalItem.numRatings) {
-                html += i18n.viewer.itemInfo.separator + ' ';
+                rating += i18n.viewer.itemInfo.separator + ' ';
             }
             var pluralComments = i18n.viewer.itemInfo.commentsLabel;
             if (globalItem.numComments > 1) {
                 pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
             }
-            html += dojo.number.format(globalItem.numComments) + ' ' + pluralComments;
+            rating += dojo.number.format(globalItem.numComments) + ' ' + pluralComments;
         }
     }
     // views
-    if (globalItem.numViews) {
+    if (configOptions.showViews && globalItem.numViews) {
         if ((globalItem.numRatings && configOptions.showRatings) || (globalItem.numComments && configOptions.showComments)) {
-            html += i18n.viewer.itemInfo.separator + ' ';
+            rating += i18n.viewer.itemInfo.separator + ' ';
         }
         var pluralViews = i18n.viewer.itemInfo.viewsLabel;
         if (globalItem.numViews > 1) {
             pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
         }
-        html += dojo.number.format(globalItem.numViews) + ' ' + pluralViews;
+        rating += dojo.number.format(globalItem.numViews) + ' ' + pluralViews;
+    }
+    if(rating){
+        html += ' (' + rating + ')';
     }
     // close container
-    html += ')</div>';
+    html += '</div>';
     var ratingNode = dojo.byId("rating");
     setNodeHTML(ratingNode, html);
     if (configOptions.showRatings) {

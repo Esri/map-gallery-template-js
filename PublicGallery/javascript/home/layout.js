@@ -351,7 +351,7 @@ function buildMapPlaylist(obj, data) {
                 if (configOptions.showRatings) {
                     html += widget.domNode.outerHTML;
                 }
-                html += ' (';
+                var rating = '';
                 if (configOptions.showRatings) {
                     // Ratings
                     if (data.results[i].numRatings) {
@@ -359,35 +359,36 @@ function buildMapPlaylist(obj, data) {
                         if (data.results[i].numRatings > 1) {
                             pluralRatings = i18n.viewer.itemInfo.ratingsLabelPlural;
                         }
-                        html += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
+                        rating += dojo.number.format(data.results[i].numRatings) + ' ' + pluralRatings;
                     }
                 }
                 if (configOptions.showComments) {
                     // comments
                     if (data.results[i].numComments) {
                         if (data.results[i].numRatings) {
-                            html += i18n.viewer.itemInfo.separator + ' ';
+                            rating += i18n.viewer.itemInfo.separator + ' ';
                         }
                         var pluralComments = i18n.viewer.itemInfo.commentsLabel;
                         if (data.results[i].numComments > 1) {
                             pluralComments = i18n.viewer.itemInfo.commentsLabelPlural;
                         }
-                        html += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
+                        rating += dojo.number.format(data.results[i].numComments) + ' ' + pluralComments;
                     }
                 }
                 // views
-                if (data.results[i].numViews) {
+                if (configOptions.showViews && data.results[i].numViews) {
                     if ((data.results[i].numRatings && configOptions.showRatings) || (data.results[i].numComments && configOptions.showComments)) {
-                        html += i18n.viewer.itemInfo.separator + ' ';
+                        rating += i18n.viewer.itemInfo.separator + ' ';
                     }
                     var pluralViews = i18n.viewer.itemInfo.viewsLabel;
                     if (data.results[i].numViews > 1) {
                         pluralViews = i18n.viewer.itemInfo.viewsLabelPlural;
                     }
-                    html += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
+                    rating += dojo.number.format(data.results[i].numViews) + ' ' + pluralViews;
                 }
-                // close container
-                html += ')';
+                if(rating){
+                    html += ' (' + rating + ')';
+                }
                 if (externalLink) {
                     html += '<span class="iconCon"><span class="icon external"></span>';
                 }
@@ -429,7 +430,9 @@ function buildMapPlaylist(obj, data) {
                 if (externalLink) {
                     html += '<span class="iconCon"><span class="icon external"></span>';
                 }
-                html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
+                if(configOptions.showViews){
+                    html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + dojo.number.format(data.results[i].numViews) + '</span></span>';
+                }
                 if (configOptions.showComments) {
                     html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">' + dojo.number.format(data.results[i].numComments) + '</span></span>';
                 }
