@@ -35,47 +35,47 @@ define({
                 "loadingText": "Loading Maps&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sort by", // new
-				"modified": "Date", // new
-				"title": "Title", // new
-				"type": "Type", // new
-				"numRatings": "Ratings", // new
-				"avgRating": "Avg. Rating", // new
-				"numComments": "Comments", // new
-				"numViews": "Views" // new
+				"sortBy": "Sort by",
+				"modified": "Date",
+				"title": "Title",
+				"type": "Type",
+				"numRatings": "Ratings",
+				"avgRating": "Avg. Rating",
+				"numComments": "Comments",
+				"numViews": "Views"
 			},
 			"comments":{
-				"commentsHeader": "Comments", // new
-				"posted": "Posted", // new
-				"by": "by", // new
-				"deleteComment": "delete", // new
-				"editComment": "edit", // new
-				"noComments": "No comments", // new
-				"addCommentButton": "Add Comment", // new
-				"signIn": "Sign In", // new
-				"register": "Register", // new
-				"or": "or", // new
-				"toPost": "to post a comment." // new
+				"commentsHeader": "Comments",
+				"posted": "Posted",
+				"by": "by",
+				"deleteComment": "delete",
+				"editComment": "edit",
+				"noComments": "No comments",
+				"addCommentButton": "Add Comment",
+				"signIn": "Sign In",
+				"register": "Register",
+				"or": "or",
+				"toPost": "to post a comment."
 			},
 			"buttons":{
-				"cancel": "Cancel", // new
-				"submit": "Submit" // new
+				"cancel": "Cancel",
+				"submit": "Submit"
 			},
 			"rating":{
-				"signIn": "Sign In", // new
-				"toRate": "to rate." // new
+				"signIn": "Sign In",
+				"toRate": "to rate."
 			},
 			"itemInfo":{
-				"createdLabel": "created", // new
-				"ratingsLabel": "rating", // new
-				"ratingsLabelPlural": "ratings", // new
-				"viewsLabel": "view", // new
-				"viewsLabelPlural": "views", // new
-				"commentsLabel": "comment", // new
-				"commentsLabelPlural": "comments", // new
-				"modifiedLabel": "Last Modified", // new
-				"by": "by", // new
-				"separator": "," // new
+				"createdLabel": "created",
+				"ratingsLabel": "rating",
+				"ratingsLabelPlural": "ratings",
+				"viewsLabel": "view",
+				"viewsLabelPlural": "views",
+				"commentsLabel": "comment",
+				"commentsLabelPlural": "comments",
+				"modifiedLabel": "Last Modified",
+				"by": "by",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Find a location",
@@ -92,11 +92,11 @@ define({
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Owner:",
                 "switchBasemap": "Switch Basemap",
-				"getMobileApp": "Get App", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Get App",
+				"constraintsHeading":"Use Constraints",
+				"createdLabel":"Created",
+				"noDescription":"No description.",
+				"detailsLabel":"Details"
             },
             "pagination": {
                 "previous": "Previous",
