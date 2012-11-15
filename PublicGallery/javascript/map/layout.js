@@ -1091,7 +1091,7 @@ function initMap() {
             setNodeHTML(descNode, '<h2>' + i18n.viewer.mapPage.aboutHeader + '</h2>' + descriptionInfo + '<div class="clear"></div>');
             // set page title
             if (configOptions.mapTitle) {
-                document.title = configOptions.siteTitle + ' | ' + configOptions.mapTitle;
+                document.title = configOptions.siteTitle + ' - ' + configOptions.mapTitle;
             } else {
                 document.title = configOptions.siteTitle;
             }

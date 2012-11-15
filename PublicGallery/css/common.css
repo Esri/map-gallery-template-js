@@ -40,10 +40,13 @@ h1 {
 }
 #homeSideContent {
 	zoom:1;
-	padding: 52px 15px 20px 15px;
+	padding: 0 15px 20px 15px;
 }
 #homeSideContent img{
 	max-width:190px;
+}
+#homeSideContent h2{
+    padding-top:22px;
 }
 h2, h2 a {
 	font-size:24px;
@@ -311,6 +314,7 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 .socialButtons {
 	margin-bottom:20px;
 	min-width: 158px;
+	min-height: 16px;
 }
 .itemLeft {
 	float:left;
@@ -1478,47 +1482,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', end
 /*-------------------------------------------------- */
 .zebraStripes .stripe {
 	background-color: #eee;
-}
-/*-------------------------------------------------- */
-/* About Page */
-/*-------------------------------------------------- */
-#thumbnailUrl {
-	text-align: center;
-}
-.ownerImage {
-	display: inline-block;
-	margin:0 0 5px 0;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	-moz-opacity:1;
-	-khtml-opacity:1;
-	opacity:1;
-}
-a.ownerImage:hover, a.ownerImage:focus {
-	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
-	-moz-transition:-moz-box-shadow 0.25s ease-in;
-	-o-transition:box-shadow 0.25s ease-in;
-	transition:box-shadow 0.25s ease-in;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
-}
-.ownerImage img {
-	display: block;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
-}
-.ownerImage:hover img, .ownerImage:focus img {
-	background-image:none;
 }
 /*-------------------------------------------------- */
 /* RTL */

@@ -304,12 +304,12 @@ function setGroupContent(groupInfo) {
         configOptions.groupOwner = groupInfo.owner;
     }
     // Set group title
+    if (!configOptions.siteTitle) {
+        configOptions.siteTitle = groupInfo.title;
+    }
+    // Set group title
     if (!configOptions.groupTitle) {
         configOptions.groupTitle = groupInfo.title;
-    }
-    // Set home heading
-    if (!configOptions.homeHeading) {
-        configOptions.homeHeading = groupInfo.title;
     }
     // Set home snippet
     if (!configOptions.homeSnippet) {
@@ -328,7 +328,7 @@ function setGroupContent(groupInfo) {
         configOptions.footerLogoUrl = getViewerURL('group_page');
     }
     // set page title
-    document.title = configOptions.siteTitle + ' - ' + groupInfo.title;
+    document.title = groupInfo.title;
     // insert all the group content
     insertContent();
 }
@@ -495,9 +495,9 @@ function insertFooterHTML() {
         html += '<div>';
         // if logo url
         if (configOptions.footerLogoUrl) {
-            html += '<a id="yourLogo" href="' + configOptions.footerLogoUrl + '" title="' + configOptions.homeHeading + '">';
+            html += '<a id="yourLogo" href="' + configOptions.footerLogoUrl + '" title="' + configOptions.siteTitle + '">';
         }
-        html += '<img src="' + configOptions.footerLogo + '" alt="' + configOptions.homeHeading + '" title="' + configOptions.homeHeading + '" />';
+        html += '<img src="' + configOptions.footerLogo + '" alt="' + configOptions.siteTitle + '" title="' + configOptions.siteTitle + '" />';
         // if logo url
         if (configOptions.footerLogoUrl) {
             html += '</a>';
@@ -538,10 +538,6 @@ function insertHeaderContent() {
     // copy if any current lists are in there that users may have set
     if (node) {
         html += node.innerHTML;
-    }
-    // if show about page
-    if (configOptions.showAboutPage) {
-        html += '<li><a tabindex="0" href="' + getViewerURL('about_page') + '">' + i18n.viewer.sidePanel.aboutButton + '</a></li>';
     }
     // insert HTML
     setNodeHTML(node, html);
@@ -1041,10 +1037,6 @@ function getViewerURL(viewer, webmap, owner) {
         // home page link
     case 'index_page':
         retUrl = 'index.html' + queryString;
-        return retUrl;
-        // about page link
-    case 'about_page':
-        retUrl = 'about.html' + queryString;
         return retUrl;
         // portal viewer link
     case 'cityengine':

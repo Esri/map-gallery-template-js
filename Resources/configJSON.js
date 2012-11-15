@@ -23,7 +23,7 @@
             },
             {
                "type":"paragraph",
-               "value":"The text above will be displayed in the top banner if no banner image is set."
+               "value":"The text above will be displayed in the top banner if no banner image is set. Uses group title by default."
             },
             {
                "type":"string",
@@ -65,9 +65,30 @@
          "fields":[
             {
                "type":"string",
+               "fieldName":"homeHeading",
+               "label":"Homepage heading:",
+               "tooltip":"Heading displayed within the main panel on the index page.",
+               "placeHolder":""
+            },
+            {
+               "type":"string",
                "fieldName":"homeSideHeading",
                "label":"Homepage side heading:",
                "tooltip":"Heading displayed within the side panel on the index page.",
+               "placeHolder":""
+            },
+            {
+               "type":"string",
+               "fieldName":"homeSnippet",
+               "label":"Homepage snippet:",
+               "tooltip":"Brief text displayed on the index page.",
+               "placeHolder":""
+            },
+            {
+               "type":"string",
+               "fieldName":"homeSideContent",
+               "label":"Homepage side content:",
+               "tooltip":"Content displayed within the side panel on the index page.",
                "placeHolder":""
             }
          ]
@@ -299,16 +320,6 @@
             },
             {
                "type":"boolean",
-               "fieldName":"showAboutPage",
-               "label":"Show about page.",
-               "tooltip":"Show about page in top navigation."
-            },
-            {
-               "type":"paragraph",
-               "value":"Show about page in top navigation."
-            },
-            {
-               "type":"boolean",
                "fieldName":"showSocialButtons",
                "label":"Show social media buttons.",
                "tooltip":""
@@ -432,9 +443,12 @@
    ],
    "values":{
       "theme":"blueTheme",
-      "siteTitle":"My Maps",
+      "siteTitle":"",
       "searchString":"",
+      "homeHeading": "",
       "homeSideHeading":"",
+      "homeSideContent": "",
+      "homeSnippet": "",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"modified",
@@ -445,7 +459,6 @@
       "footerLogo":"",
       "footerLogoUrl":"",
       "showProfileUrl":true,
-      "showAboutPage":false,
       "showSocialButtons":true,
       "showFooter":true,
       "showMoreInfo":false,
