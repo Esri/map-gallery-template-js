@@ -46,7 +46,7 @@ var configOptions = {
     "showMobileButtons": true,
     "openGalleryItemsNewWindow": false,
     "bannerBackground": "images/ui/banner.png",
-    "bingMapsKey": "",
+    "bingMapsKey":"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",
     "locatorserviceurl": "http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer",
     "geometryserviceurl": "http://tasks.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer",
     "proxyUrl":"proxy/proxy.php",
