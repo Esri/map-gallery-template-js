@@ -47,7 +47,7 @@
                "type":"paragraph",
                "value":"Register an <a target=\"_blank\" href=\"https:\/\/www.addthis.com\/register\">AddThis.com<\/a> account for social media button analytics."
             },
-			{
+            {
                "type":"string",
                "fieldName":"sourceCountry",
                "label":"Locator Source Country",
@@ -445,10 +445,10 @@
       "theme":"blueTheme",
       "siteTitle":"",
       "searchString":"",
-      "homeHeading": "",
+      "homeHeading":"",
       "homeSideHeading":"",
-      "homeSideContent": "",
-      "homeSnippet": "",
+      "homeSideContent":"",
+      "homeSnippet":"",
       "addThisProfileId":"xa-4f3bf72958320e9e",
       "defaultLayout":"grid",
       "sortField":"modified",
@@ -462,8 +462,8 @@
       "showSocialButtons":true,
       "showFooter":true,
       "showMoreInfo":false,
-      "showComments": true,
-      "showRatings": true,
+      "showComments":true,
+      "showRatings":true,
       "showViews":true,
       "showExplorerButton":false,
       "showArcGISOnlineButton":false,
@@ -473,6 +473,6 @@
       "showLicenseInfo":true,
       "showGroupSort":false,
       "galleryItemsPerPage":"9",
-	  "sourceCountry":"USA"
+      "sourceCountry":"USA"
    }
 }
