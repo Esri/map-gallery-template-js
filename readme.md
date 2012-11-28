@@ -4,11 +4,11 @@ This PublicGallery template is designed for anyone who wants to showcase their A
 
 [View it live](http://www.arcgis.com/apps/PublicGallery/index.html)
 
-![App](https://raw.github.com/Esri/map-gallery-template-js/master/Resources/item.png) 
+![App](https://raw.github.com/Esri/map-gallery-template-js/master/Resources/item.png)
 
 ## Features
 The Public Maps Gallery (PMG) template is designed for anyone who wants to showcase their ArcGIS Online maps, layers, and mobile apps in a dynamic web gallery. The template allows you to control the content that fills the gallery using tools available in your ArcGIS Online account. This means that once you deploy a gallery, keeping gallery content up-to-date is as simple as sharing or un-sharing items in your ArcGIS Online group.
-The PMG template is also easily configurable. A complete list of features and enhancements is included with the template as is a quick start guide. 
+The PMG template is also easily configurable. A complete list of features and enhancements is included with the template as is a quick start guide.
 
 ## Instructions
 
@@ -37,7 +37,7 @@ Find a bug or want to request a new feature?  Please let us know by submitting a
 
 ## Contributing
 
-Anyone and everyone is welcome to contribute. 
+Anyone and everyone is welcome to contribute.
 
 ## Licensing
 Copyright 2012 Esri
@@ -54,4 +54,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-A copy of the license is available in the repository's [license.txt](https://raw.github.com/Esri/switch-basemaps-js/master/license.txt) file.
+A copy of the license is available in the repository's [license.txt](https://raw.github.com/Esri/map-gallery-template-js/master/license.txt) file.
