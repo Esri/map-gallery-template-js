@@ -11,10 +11,7 @@ dojo.require("dojo.number");
 dojo.require("dojox.form.Rating");
 // Map Only
 dojo.require("esri.map");
-dojo.require("esri.dijit.Legend");
-dojo.require("esri.dijit.Scalebar");
-dojo.require("esri.dijit.OverviewMap");
-dojo.require("esri.dijit.BasemapGallery");
+dojo.require("esri.widgets");
 dojo.require("esri.tasks.locator");
 // Localization
 dojo.requireLocalization("esriTemplate", "template");
