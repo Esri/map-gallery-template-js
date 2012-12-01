@@ -920,7 +920,7 @@ function setRatingInfo() {
     // rating container
     html += '<div class="ratingCon" id="ratingCon">';
     // if not logged in
-    if (!globalUser) {
+    if (!globalUser && configOptions.showRatings) {
         html += '&nbsp;<a id="signInRate">' + i18n.viewer.rating.signIn + '</a> ' + i18n.viewer.rating.toRate;
     }
     var rating = '';
