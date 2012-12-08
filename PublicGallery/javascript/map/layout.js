@@ -1019,19 +1019,19 @@ function initMap() {
             setAddressContainer();
             // if no title set in config
             if (!configOptions.mapTitle) {
-                configOptions.mapTitle = itemInfo.item.title;
+                configOptions.mapTitle = itemInfo.item.title || "";
             }
             // if no subtitle set in config
             if (!configOptions.mapSnippet) {
-                configOptions.mapSnippet = itemInfo.item.snippet;
+                configOptions.mapSnippet = itemInfo.item.snippet || "";
             }
             // if no description set in config
             if (!configOptions.mapItemDescription) {
-                configOptions.mapItemDescription = itemInfo.item.description;
+                configOptions.mapItemDescription = itemInfo.item.description || "";
             }
             // Set title
             var titleNode = dojo.byId("title");
-            setNodeHTML(titleNode, configOptions.mapTitle || "");
+            setNodeHTML(titleNode, configOptions.mapTitle);
             // Set subtitle
             var subTitleNode = dojo.byId("subtitle");
             setNodeHTML(subTitleNode, parseURL(configOptions.mapSnippet));
@@ -1075,7 +1075,7 @@ function initMap() {
             setNodeHTML(mapMoreInfo, html);
             // if no license info set in config
             if (!configOptions.mapLicenseInfo) {
-                configOptions.mapLicenseInfo = itemInfo.item.licenseInfo;
+                configOptions.mapLicenseInfo = itemInfo.item.licenseInfo || "";
             }
             // Set license info
             var licenseInfo = dojo.byId("licenseInfo");

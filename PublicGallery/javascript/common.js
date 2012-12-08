@@ -301,34 +301,34 @@ function setGroupContent(groupInfo) {
     }
     // Set owner
     if (!configOptions.groupOwner) {
-        configOptions.groupOwner = groupInfo.owner;
+        configOptions.groupOwner = groupInfo.owner || "";
     }
     // Set group title
     if (!configOptions.siteTitle) {
-        configOptions.siteTitle = groupInfo.title;
+        configOptions.siteTitle = groupInfo.title || "";
     }
     // Set group title
     if (!configOptions.groupTitle) {
-        configOptions.groupTitle = groupInfo.title;
+        configOptions.groupTitle = groupInfo.title || "";
     }
     // Set home snippet
     if (!configOptions.homeSnippet) {
-        configOptions.homeSnippet = groupInfo.snippet;
+        configOptions.homeSnippet = groupInfo.snippet || "";
     }
     // Set home side content
     if (!configOptions.homeSideContent) {
-        configOptions.homeSideContent = groupInfo.description;
+        configOptions.homeSideContent = groupInfo.description || "";
     }
     // set footer image
     if (!configOptions.footerLogo) {
-        configOptions.footerLogo = groupInfo.thumbnailUrl;
+        configOptions.footerLogo = groupInfo.thumbnailUrl || "";
     }
     // set footer image link
     if (!configOptions.footerLogoUrl) {
         configOptions.footerLogoUrl = getViewerURL('group_page');
     }
     // set page title
-    document.title = groupInfo.title;
+    document.title = groupInfo.title || "";
     // insert all the group content
     insertContent();
 }
