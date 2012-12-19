@@ -535,7 +535,6 @@ function setDelegations() {
         if (event.type === 'click' || (event.type === 'keyup' && event.keyCode === 13)) {
             // clicked
             dojo.query(this).addClass('clicked');
-            var placeDom = dojo.query("#maps_pagination ul");
             // add loading spinner
             addSpinner("paginationSpinner");
             // get offset number
