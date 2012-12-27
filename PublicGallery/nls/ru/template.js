@@ -9,7 +9,7 @@
                 "createMap": "Не удалось создать карту",
                 "general": "Ошибка",
                 "bingError": "Для размещения этого приложения необходимо иметь собственный ключ Bing Map.",
-                "noLayers": "Нет операционных слоев",
+                "noLayers": "Нет рабочих слоев",
                 "noSearchResults": "Результаты не найдены.",
 				"noGroupResults": "Не удалось найти группу.",
                 "noMatches": "Совпадения не найдены.",
@@ -22,7 +22,7 @@
                 "legendButtonTitle": "Легенда",
                 "aboutButton": "О",
                 "aboutButtonTitle": "О карте",
-                "message": "Нет операционных слоев"
+                "message": "Нет рабочих слоев"
             },
             "groupPage": {
                 "showAllMaps": "Показать все карты",
@@ -73,7 +73,7 @@
 				"viewsLabelPlural": "просмотров", // new
 				"commentsLabel": "комментарий", // new
 				"commentsLabelPlural": "комментарии", // new
-				"modifiedLabel": "Последнее изменение", // new
+				"modifiedLabel": "Последние изменения", // new
 				"by": "от", // new
 				"separator": "," // new
 			},

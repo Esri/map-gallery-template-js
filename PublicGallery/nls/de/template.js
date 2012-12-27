@@ -20,7 +20,7 @@
                 "legendButton": "Legende",
 				"layersButton": "Layer", // new
                 "legendButtonTitle": "Kartenlegende",
-                "aboutButton": "Info über",
+                "aboutButton": "Info zu",
                 "aboutButtonTitle": "Info zur Karte",
                 "message": "Keine operationalen Layer"
             },

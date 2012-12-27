@@ -35,7 +35,7 @@
                 "loadingText": "マップを読み込んでいます..."
             },
 			"sortFields":{
-				"sortBy": "並べ替え方法", // new
+				"sortBy": "並べ替え", // new
 				"modified": "日付", // new
 				"title": "タイトル", // new
 				"type": "タイプ", // new

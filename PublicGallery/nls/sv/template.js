@@ -9,7 +9,7 @@
                 "createMap": "Det går inte att skapa kartan",
                 "general": "Fel",
                 "bingError": "Du måste ha en egen Bing Maps-nyckel för att starta den här applikationen.",
-                "noLayers": "Inga valfria lager",
+                "noLayers": "Inga operativa lager",
                 "noSearchResults": "Tyvärr hittades inga resultat.",
 				"noGroupResults": "Det gick inte att hitta gruppen.",
                 "noMatches": "Inga matchningar hittades.",
@@ -22,7 +22,7 @@
                 "legendButtonTitle": "Kartteckenförklaring",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartan",
-                "message": "Inga valfria lager"
+                "message": "Inga operativa lager"
             },
             "groupPage": {
                 "showAllMaps": "Visa alla kartor",

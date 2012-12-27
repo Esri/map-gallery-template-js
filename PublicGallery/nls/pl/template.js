@@ -69,7 +69,7 @@
 				"createdLabel": "utworzono", // new
 				"ratingsLabel": "ocena", // new
 				"ratingsLabelPlural": "oceny", // new
-				"viewsLabel": "wyświetlać", // new
+				"viewsLabel": "wyświetlenie", // new
 				"viewsLabelPlural": "liczba wyświetleń", // new
 				"commentsLabel": "komentarz", // new
 				"commentsLabelPlural": "komentarze/-y", // new
@@ -80,8 +80,8 @@
             "mapPage": {
                 "findLocation": "Znajdź lokalizację",
                 "findPlaceholder": "Zlokalizuj adres",
-                "aboutHeader": "Informacje o tej mapie",
-                "layersHeader": "Warstwy tematyczne",
+                "aboutHeader": "Informacje o mapie",
+                "layersHeader": "Warstwy",
                 "enterFullscreen": "Widok pełnoekranowy",
                 "exitFullscreen": "Zamknij widok pełnoekranowy",
                 "arcgisLink": "Szczegóły elementu",

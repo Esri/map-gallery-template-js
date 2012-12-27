@@ -67,7 +67,7 @@
 			},
 			"itemInfo":{
 				"createdLabel": "تم إنشاء", // new
-				"ratingsLabel": "التقييم", // new
+				"ratingsLabel": "تصنيف", // new
 				"ratingsLabelPlural": "تصنيفات", // new
 				"viewsLabel": "عرض", // new
 				"viewsLabelPlural": "المشاهدات", // new

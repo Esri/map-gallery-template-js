@@ -41,7 +41,7 @@
 				"type": "类型", // new
 				"numRatings": "评级", // new
 				"avgRating": "平均评级", // new
-				"numComments": "次评论", // new
+				"numComments": "评论次数", // new
 				"numViews": "查看次数" // new
 			},
 			"comments":{
@@ -67,12 +67,12 @@
 			},
 			"itemInfo":{
 				"createdLabel": "已创建", // new
-				"ratingsLabel": "次评级", // new
+				"ratingsLabel": "评级", // new
 				"ratingsLabelPlural": "次评级", // new
-				"viewsLabel": "次浏览", // new
+				"viewsLabel": "浏览", // new
 				"viewsLabelPlural": "次浏览", // new
 				"commentsLabel": "评论", // new
-				"commentsLabelPlural": "评论", // new
+				"commentsLabelPlural": "次评论", // new
 				"modifiedLabel": "上次修改时间", // new
 				"by": "修改者", // new
 				"separator": "," // new
@@ -100,7 +100,7 @@
             },
             "pagination": {
                 "previous": "上一页",
-                "next": "下一步",
+                "next": "下一页",
                 "first": "第一页",
                 "last": "最后一页",
                 "helip": "&hellip;",
