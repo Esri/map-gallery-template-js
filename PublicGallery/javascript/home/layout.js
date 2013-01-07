@@ -279,8 +279,11 @@ function buildMapPlaylist(obj, data) {
             var snippet;
             var linkTarget;
             var externalLink = false;
+
+            console.log(data.results[i]);
+
             // If item has URL
-            if (data.results[i].url) {
+            if (data.results[i].url && data.results[i].type === 'url') {
                 itemURL = data.results[i].url;
                 externalLink = true;
             }
@@ -637,9 +640,13 @@ function setDelegations() {
             var locNum = dojo.indexOf(dojo.query('#groupAutoComplete ul li'), this);
             // if map has a url
             var mapURL;
-            if (ACObj[locNum].url) {
+            if (ACObj[locNum].url && data.results[i].type === 'url') {
                 mapURL = ACObj[locNum].url;
-            } else {
+            }
+            else if(ACObj[locNum].type === "CityEngine Web Scene"){
+                mapURL = getViewerURL('cityengine', ACObj[locNum].id);
+            }
+            else {
                 // item url
                 mapURL = getViewerURL(configOptions.mapViewer, ACObj[locNum].id);
             }
