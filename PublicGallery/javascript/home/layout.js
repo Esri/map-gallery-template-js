@@ -280,7 +280,7 @@ function buildMapPlaylist(obj, data) {
             var linkTarget;
             var externalLink = false;
             // If item has URL
-            if (data.results[i].url && (data.results[i].type === 'url' || data.results[i].type === "Web Mapping Application")) {
+            if (data.results[i].url && data.results[i].type === "Web Mapping Application") {
                 itemURL = data.results[i].url;
                 externalLink = true;
             }
