@@ -637,7 +637,7 @@ function setDelegations() {
             var locNum = dojo.indexOf(dojo.query('#groupAutoComplete ul li'), this);
             // if map has a url
             var mapURL;
-            if (ACObj[locNum].url && (ACObj[locNum].type === 'url' || ACObj[locNum].type === "Web Mapping Application")) {
+            if (ACObj[locNum].url && ACObj[locNum].type === "Web Mapping Application") {
                 mapURL = ACObj[locNum].url;
             }
             else if(ACObj[locNum].type === "CityEngine Web Scene"){
