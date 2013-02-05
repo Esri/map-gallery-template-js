@@ -786,7 +786,7 @@ function buildComments() {
             // date format for locale
             var dateLocale = dojo.date.locale.format(commentDate, {
                 selector: "date",
-                datePattern: "MMM d, yyyy"
+                datePattern: i18n.viewer.main.datePattern
             });
             html += i18n.viewer.comments.posted + ' ' + dateLocale;
             html += ' ' + i18n.viewer.comments.by + ' ';
@@ -1047,7 +1047,7 @@ function initMap() {
                 // date format for locale
                 dateLocale = dojo.date.locale.format(d, {
                     selector: "date",
-                    datePattern: "MMM d, yyyy"
+                    datePattern: i18n.viewer.main.datePattern
                 });
                 html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale + '</li>';
             }
@@ -1058,7 +1058,7 @@ function initMap() {
                 // date format for locale
                 dateLocale = dojo.date.locale.format(d, {
                     selector: "date",
-                    datePattern: "MMM d, yyyy"
+                    datePattern: i18n.viewer.main.datePattern
                 });
                 html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale + '</li>';
             }

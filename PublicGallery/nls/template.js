@@ -3,7 +3,8 @@ define({
         "viewer": {
             "main": {
                 "scaleBarUnits": "english",
-                "clearSearch": "Clear"
+                "clearSearch": "Clear",
+                "datePattern": "MMM d, yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Unable to create map",

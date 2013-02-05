@@ -318,7 +318,7 @@ function buildMapPlaylist(obj, data) {
                     // date format for locale
                     modifiedLocalized = dojo.date.locale.format(modifiedDate, {
                         selector: "date",
-                        datePattern: "MMM d, yyyy"
+                        datePattern: i18n.viewer.main.datePattern
                     });
                 }
                 // html
