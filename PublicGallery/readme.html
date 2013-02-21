@@ -164,7 +164,6 @@ img {
 			<li><b>locatorserviceurl:</b> Service for locating addresses.</li>
 			<li><b>geometryserviceurl:</b> Geometry service URL.</li>
 			<li><b>sharingurl:</b> Portal sharing URL.</li>
-			<li><b>portalUrl:</b> Portal URL.</li>
 			<li><b>mobilePortalUrl:</b> Mobile Portal URL.</li>
 			<li><b>pointGraphic:</b> Graphic displayed when locating addresses.</li>
 		</ul>
@@ -258,11 +257,10 @@ img {
 <p>You can use this template with your organization's ArcGIS Portal by setting a few configuration options.</p>
 <ol>
 	<li>Open config.js in a text editor.</li>
-	<li>Locate the options for "sharingurl", "portalUrl" and "mobilePortalUrl".
+	<li>Locate the options for "sharingurl" and "mobilePortalUrl".
 		<div>
 			<pre>
-	"sharingurl":"http://www.arcgis.com/sharing/rest/content/items",
-	"portalUrl":"http://www.arcgis.com/",
+	"sharingurl":"http://www.arcgis.com/",
 	"mobilePortalUrl":"arcgis://www.arcgis.com/",
 </pre>
 		</div>
@@ -270,8 +268,7 @@ img {
 	<li>Change these settings to point to your portal's URL instead of using ArcGIS.com's URL.
 		<div>
 			<pre>
-	"sharingurl":"<span class="selector">http://www.myorg.com/sharing/rest/content/items</span>",
-	"portalUrl":"<span class="selector">http://www.myorg.com/</span>",
+	"sharingurl":"<span class="selector">http://www.myorg.com/</span>",
 	"mobilePortalUrl":"arcgis://<span class="selector">www.myorg.com/</span>",
 </pre>
 		</div>
