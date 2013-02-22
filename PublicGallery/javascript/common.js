@@ -238,20 +238,23 @@ function setDefaultConfigOptions() {
     // set defaults
     //need to set the sharing url here so that when we query the applciation and organization the correct
     //location is searched.
-    if(location.host.indexOf("arcgis.com") === -1){ //default (Not Hosted no org specified)
+    if (location.host.indexOf("arcgis.com") === -1) {
+        //default (Not Hosted no org specified)
         esri.arcgis.utils.arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/content/items";
-     }else{ //hosted app
-         esri.arcgis.utils.arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
-         configOptions.proxyUrl =  location.protocol + '//' + location.host + "/sharing/proxy";
-     }
-     //if the sharing url is set overwrite value
-    if(configOptions.sharingurl !== ""){
-       esri.arcgis.utils.arcgisUrl = configOptions.sharingurl + "/sharing/rest/content/items";
+    } else {
+        // org app
+        esri.arcgis.utils.arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
+        configOptions.proxyUrl = location.protocol + '//' + location.host + "/sharing/proxy";
     }
-    else{
-        configOptions.sharingurl = location.protocol + "//www.arcgis.com/";
+    //if the sharing url is set overwrite value
+    if (configOptions.sharingurl) {
+        esri.arcgis.utils.arcgisUrl = configOptions.sharingurl + 'sharing/rest/content/items';
+        esri.dijit._arcgisUrl = configOptions.sharingurl + 'sharing/rest';
+        configOptions._portalUrl = configOptions.sharingurl;
+    } else {
+        esri.dijit._arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/";
+        configOptions._portalUrl = location.protocol + "//www.arcgis.com/";
     }
-    esri.dijit._arcgisUrl = configOptions.sharingurl + 'sharing/rest';
     esri.config.defaults.geometryService = new esri.tasks.GeometryService(configOptions.geometryserviceurl);
     esri.config.defaults.io.proxyUrl = configOptions.proxyUrl;
     esri.config.defaults.io.corsEnabledServers = [location.protocol + '//' + location.host];
@@ -645,7 +648,7 @@ function queryArcGISGroupInfo(obj) {
     // first, request the group to see if it's public or private
     esri.request({
         // group rest URL
-        url: configOptions.sharingurl + '/sharing/rest/community/groups/' + settings.id_group,
+        url: configOptions._portalUrl + '/sharing/rest/community/groups/' + settings.id_group,
         content: {
             'f': settings.dataType
         },
@@ -711,7 +714,7 @@ function createPortal(callback) {
     // look for credentials in local storage
     // todo loadCredentials();
     // create portal
-    portal = new esri.arcgis.Portal(configOptions.sharingurl);
+    portal = new esri.arcgis.Portal(configOptions._portalUrl);
     // portal loaded
     dojo.connect(portal, 'onLoad', function () {
         if (typeof callback === 'function') {
@@ -1035,9 +1038,9 @@ function getViewerURL(viewer, webmap, owner) {
         return retUrl;
         // portal viewer link
     case 'cityengine':
-        return configOptions.sharingurl + 'apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
+        return configOptions._portalUrl + 'apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
     case 'arcgis':
-        return configOptions.sharingurl + 'home/webmap/viewer.html?webmap=' + webmap;
+        return configOptions._portalUrl + 'home/webmap/viewer.html?webmap=' + webmap;
         // arcgis explorer link
     case 'explorer':
         retUrl = "http://explorer.arcgis.com/?open=" + webmap;
@@ -1054,28 +1057,28 @@ function getViewerURL(viewer, webmap, owner) {
         return retUrl;
         // portal sign up link
     case 'signup_page':
-        retUrl = configOptions.sharingurl + 'home/createaccount.html';
+        retUrl = configOptions._portalUrl + 'home/createaccount.html';
         return retUrl;
         // portal owner page link
     case 'owner_page':
         if (configOptions.groupOwner || owner) {
             if (owner) {
-                retUrl = configOptions.sharingurl + 'home/user.html?user=' + encodeURIComponent(owner);
+                retUrl = configOptions._portalUrl + 'home/user.html?user=' + encodeURIComponent(owner);
             } else {
-                retUrl = configOptions.sharingurl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupOwner);
+                retUrl = configOptions._portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupOwner);
             }
         }
         return retUrl;
         // portal item page
     case 'item_page':
         if (configOptions.webmap) {
-            retUrl = configOptions.sharingurl + 'home/item.html?id=' + configOptions.webmap;
+            retUrl = configOptions._portalUrl + 'home/item.html?id=' + configOptions.webmap;
         }
         return retUrl;
         // portal group page
     case 'group_page':
         if (configOptions.groupOwner && configOptions.groupTitle) {
-            retUrl = configOptions.sharingurl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupOwner) + '&title=' + encodeURIComponent(configOptions.groupTitle);
+            retUrl = configOptions._portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupOwner) + '&title=' + encodeURIComponent(configOptions.groupTitle);
         }
         return retUrl;
         // portal mobile URL data
