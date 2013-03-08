@@ -419,7 +419,7 @@ function showAutoComplete(results) {
 /*------------------------------------*/
 // map now loaded
 /*------------------------------------*/
-function mapNowLoaded(layers) {
+function mapNowLoaded(layers, response) {
     // Map Loaded Class
     dojo.query("#map").addClass('mapLoaded');
     // if overview map
@@ -432,7 +432,7 @@ function mapNowLoaded(layers) {
         });
         overviewMapDijit.startup();
     }
-    initUI(layers);
+    initUI(layers, response);
     // add popup theme
     dojo.addClass(map.infoWindow.domNode, configOptions.theme);
 }
@@ -1175,7 +1175,7 @@ function initMap() {
                 setNodeHTML(mapLayersNode, html);
                 // ENDLAYER TOGGLE
                 if (map.loaded) {
-                    mapNowLoaded(layers);
+                    mapNowLoaded(layers, response);
                 } else {
                     dojo.connect(map, "onLoad", function () {
                         mapNowLoaded(layers);
@@ -1241,59 +1241,9 @@ function toggleLayerSwitch(layerid) {
     }
 }
 /*------------------------------------*/
-// BUILD LAYERS LIST
-/*------------------------------------*/
-function buildLayersList(layers) {
-    //layers  arg is  response.itemInfo.itemData.operationalLayers;
-    var layerInfos = [];
-    dojo.forEach(layers, function (mapLayer, index) {
-        var layerInfo = {};
-        if (mapLayer.featureCollection && mapLayer.type !== "CSV") {
-            if (mapLayer.featureCollection.showLegend === true) {
-                dojo.forEach(mapLayer.featureCollection.layers, function (fcMapLayer) {
-                    if (fcMapLayer.showLegend !== false) {
-                        layerInfo = {
-                            "layer": fcMapLayer.layerObject,
-                            "title": mapLayer.title,
-                            "defaultSymbol": false
-                        };
-                        if (mapLayer.featureCollection.layers.length > 1) {
-                            layerInfo.title += " - " + fcMapLayer.layerDefinition.name;
-                        }
-                        layerInfos.push(layerInfo);
-                    }
-                });
-            }
-        } else if (mapLayer.showLegend !== false && mapLayer.layerObject) {
-            var showDefaultSymbol = false;
-            if (mapLayer.layerObject.version < 10.1 && (mapLayer.layerObject instanceof esri.layers.ArcGISDynamicMapServiceLayer || mapLayer.layerObject instanceof esri.layers.ArcGISTiledMapServiceLayer)) {
-                showDefaultSymbol = true;
-            }
-            layerInfo = {
-                "layer": mapLayer.layerObject,
-                "title": mapLayer.title,
-                "defaultSymbol": showDefaultSymbol
-            };
-            //does it have layers too? If so check to see if showLegend is false
-            if (mapLayer.layers) {
-                var hideLayers = dojo.map(dojo.filter(mapLayer.layers, function (lyr) {
-                    return (lyr.showLegend === false);
-                }), function (lyr) {
-                    return lyr.id;
-                });
-                if (hideLayers.length) {
-                    layerInfo.hideLayers = hideLayers;
-                }
-            }
-            layerInfos.push(layerInfo);
-        }
-    });
-    return layerInfos;
-}
-/*------------------------------------*/
 // INIT UI
 /*------------------------------------*/
-function initUI(layers) {
+function initUI(layers, response) {
     // Set legend header
     var node = dojo.byId('legendHeader');
     setNodeHTML(node, i18n.viewer.sidePanel.title);
@@ -1311,7 +1261,7 @@ function initUI(layers) {
         scalebarUnit: i18n.viewer.main.scaleBarUnits
     });
     // Legend Information
-    var layerInfo = buildLayersList(layers);
+    var layerInfo = esri.arcgis.utils.getLegendLayers(response);
     // Build Legend
     if (layerInfo.length > 0) {
         var legendDijit = new esri.dijit.Legend({
