@@ -241,19 +241,22 @@ function setDefaultConfigOptions() {
     if (location.host.indexOf("arcgis.com") === -1) {
         //default (Not Hosted no org specified)
         esri.arcgis.utils.arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/content/items";
+        esri.dijit._arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/";
+        configOptions._portalUrl = location.protocol + "//www.arcgis.com/";
+        configOptions.mobilePortalUrl = "arcgis://www.arcgis.com/";
     } else {
         // org app
         esri.arcgis.utils.arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
+        esri.dijit._arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/";
+        configOptions._portalUrl = location.protocol + '//' + location.host + "/";
         configOptions.proxyUrl = location.protocol + '//' + location.host + "/sharing/proxy";
+        configOptions.mobilePortalUrl = 'arcgis:' + '//' + location.host + '/';
     }
     //if the sharing url is set overwrite value
     if (configOptions.sharingurl) {
         esri.arcgis.utils.arcgisUrl = configOptions.sharingurl + 'sharing/rest/content/items';
         esri.dijit._arcgisUrl = configOptions.sharingurl + 'sharing/rest';
         configOptions._portalUrl = configOptions.sharingurl;
-    } else {
-        esri.dijit._arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/";
-        configOptions._portalUrl = location.protocol + "//www.arcgis.com/";
     }
     esri.config.defaults.geometryService = new esri.tasks.GeometryService(configOptions.geometryserviceurl);
     esri.config.defaults.io.proxyUrl = configOptions.proxyUrl;
