@@ -581,7 +581,6 @@ function createBasemapGallery() {
     //add the basemap gallery, in this case we'll display maps from ArcGIS.com including bing maps
     var basemapGallery = new esri.dijit.BasemapGallery({
         showArcGISBasemaps: configOptions.showArcGISBasemaps,
-        bingMapsKey: configOptions.bingMapsKey,
         basemapsGroup: configOptions.basemapsGroup,
         map: map
     }, dojo.create("div"));
