@@ -16,40 +16,10 @@ dojo.require("esri.tasks.locator");
 // Localization
 dojo.requireLocalization("esriTemplate", "template");
 
-
-dojo.ready( function(){
-    //Patch for shape query on old servers.  Remove at jsapi 3.5.
-    esri.setRequestPreCallback(removeShapeField);
-    //Patch for shape query on old servers.  Remove at jsapi 3.5.                 
-    init();
- });
-    function init(){
-        // set default options
-        setDefaultConfigOptions();
-        // set app ID settings and call setWebmap after
-        setAppIdSettings(function () {
-            // create portal
-            createPortal(function () {
-                // query group info
-                queryGroup(function () {
-                    // set webmap info
-                    setWebmap();
-                });
-            });
-        });
-    }
-    //Patch for shape query on old servers.  Remove at jsapi 3.5.
-  function removeShapeField(ioArgs) {
-    if (/\/query$/i.test(ioArgs.url) && ioArgs.content && ioArgs.content.outFields) {
-      ioArgs.content.outFields = ioArgs.content.outFields.replace(/,shape,/gi, ",");  
-      ioArgs.content.outFields = ioArgs.content.outFields.replace(/^shape,|,shape$/i, "");
-    }
-    return ioArgs;
-  }
 /*------------------------------------*/
 // on dojo load
 /*------------------------------------*/
-/*dojo.addOnLoad(function () {
+dojo.addOnLoad(function () {
     // set default options
     setDefaultConfigOptions();
     // set app ID settings and call setWebmap after
@@ -63,7 +33,7 @@ dojo.ready( function(){
             });
         });
     });
-});*/
+});
 /*------------------------------------*/
 // Sets the webmap to load
 /*------------------------------------*/
@@ -493,7 +463,7 @@ function locate(callback) {
         };
         // send request
         var requestHandle = esri.request({
-            url: configOptions.locatorserviceurl + '/findAddressCandidates',
+            url: templateConfig.helperServices.geocode.url + '/findAddressCandidates',
             content: queryContent,
             handleAs: 'json',
             callbackParamName: 'callback',
@@ -656,7 +626,7 @@ function createBasemapGallery() {
 function setAddressContainer() {
     var html = '';
     html += '<div class="grid_4 alpha searchListCon">';
-    if (configOptions.locatorserviceurl && configOptions.showMapSearch) {
+    if (templateConfig.helperServices.geocode.url && configOptions.showMapSearch) {
         html += '<ul class="searchList">';
         html += '<li id="mapSearch" class="iconInput">';
         html += '<input tabindex="0" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
@@ -1136,8 +1106,8 @@ function initMap() {
                     nav: false
                 },
                 ignorePopups: false,
-                bingMapsKey: configOptions.bingMapsKey,
-                geometryServiceURL: configOptions.geometryserviceurl
+                bingMapsKey: templateConfig.bingMapsKey,
+                geometryServiceURL: templateConfig.helperServices.geometry.url
             });
             // map response
             mapDeferred.addCallback(function (response) {
