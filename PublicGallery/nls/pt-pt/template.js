@@ -32,7 +32,7 @@
                 "itemTitle": "Visualizar mapas",
                 "gridSwitch": "Mudar para Visualização GRID",
                 "listSwitch": "Mudar para Visualização de Lista",
-                "loadingText": "Carregando Maps&hellip;"
+                "loadingText": "A Carregar Mapas&hellip;"
             },
 			"sortFields":{
 				"sortBy": "Ordenar por", // new
@@ -100,7 +100,7 @@
             },
             "pagination": {
                 "previous": "Anterior",
-                "next": "Avançar",
+                "next": "Seguinte",
                 "first": "Primeira Página",
                 "last": "Última Página",
                 "helip": "&hellip;",

@@ -100,7 +100,7 @@
             },
             "pagination": {
                 "previous": "Wstecz",
-                "next": "Następny",
+                "next": "Dalej",
                 "first": "Pierwsza strona",
                 "last": "Ostatnia strona",
                 "helip": "&hellip;",

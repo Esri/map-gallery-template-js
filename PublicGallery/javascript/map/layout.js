@@ -15,10 +15,41 @@ dojo.require("esri.widgets");
 dojo.require("esri.tasks.locator");
 // Localization
 dojo.requireLocalization("esriTemplate", "template");
+
+
+dojo.ready( function(){
+    //Patch for shape query on old servers.  Remove at jsapi 3.5.
+    esri.setRequestPreCallback(removeShapeField);
+    //Patch for shape query on old servers.  Remove at jsapi 3.5.                 
+    init();
+ });
+    function init(){
+        // set default options
+        setDefaultConfigOptions();
+        // set app ID settings and call setWebmap after
+        setAppIdSettings(function () {
+            // create portal
+            createPortal(function () {
+                // query group info
+                queryGroup(function () {
+                    // set webmap info
+                    setWebmap();
+                });
+            });
+        });
+    }
+    //Patch for shape query on old servers.  Remove at jsapi 3.5.
+  function removeShapeField(ioArgs) {
+    if (/\/query$/i.test(ioArgs.url) && ioArgs.content && ioArgs.content.outFields) {
+      ioArgs.content.outFields = ioArgs.content.outFields.replace(/,shape,/gi, ",");  
+      ioArgs.content.outFields = ioArgs.content.outFields.replace(/^shape,|,shape$/i, "");
+    }
+    return ioArgs;
+  }
 /*------------------------------------*/
 // on dojo load
 /*------------------------------------*/
-dojo.addOnLoad(function () {
+/*dojo.addOnLoad(function () {
     // set default options
     setDefaultConfigOptions();
     // set app ID settings and call setWebmap after
@@ -32,7 +63,7 @@ dojo.addOnLoad(function () {
             });
         });
     });
-});
+});*/
 /*------------------------------------*/
 // Sets the webmap to load
 /*------------------------------------*/

@@ -84,7 +84,7 @@
                 "layersHeader": "Couches",
                 "enterFullscreen": "Affichage plein écran",
                 "exitFullscreen": "Quitter le plein écran",
-                "arcgisLink": "Détails de l\'élément",
+                "arcgisLink": "Détails des éléments",
                 "moreInformation": "Plus d\'informations",
                 "geoLocateTitle": "Utiliser l\'emplacement actuel",
                 "openInMobile": "Ouvrir dans l\'application mobile",

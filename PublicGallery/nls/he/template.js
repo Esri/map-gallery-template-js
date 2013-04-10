@@ -8,7 +8,7 @@
             "errors": {
                 "createMap": "לא ניתן ליצור מפה",
                 "general": "שגיאה",
-                "bingError": "בפריסת האפליקציה הזו נדרש מפתח מפות ה- Bing שלך.",
+                "bingError": "הפצת אפליקציה זו דורשת מפתח מפות Bing משלך.",
                 "noLayers": "אין שכבות אופרטיביות",
                 "noSearchResults": "מצטערים, לא נמצאו תוצאות.",
 				"noGroupResults": "הקבוצה לא נמצאה.",
@@ -30,7 +30,7 @@
                 "searchTitleShort": "חפש",
                 "searchPlaceholder": "חפש מפות",
                 "itemTitle": "צפה במפה",
-                "gridSwitch": "עבור למבט רשת",
+                "gridSwitch": "עבור לתצוגת רשת",
                 "listSwitch": "עבור למבט רשימה",
                 "loadingText": "טוען מפות&hellip;"
             },
@@ -52,7 +52,7 @@
 				"editComment": "עריכה", // new
 				"noComments": "אין הערות", // new
 				"addCommentButton": "הוסף הערה", // new
-				"signIn": "הירשם", // new
+				"signIn": "התחבר", // new
 				"register": "רגיסטרציה", // new
 				"or": "או", // new
 				"toPost": "לפרסם הערה." // new
@@ -62,7 +62,7 @@
 				"submit": "שלח" // new
 			},
 			"rating":{
-				"signIn": "הירשם", // new
+				"signIn": "התחבר", // new
 				"toRate": "לדרג." // new
 			},
 			"itemInfo":{
@@ -79,7 +79,7 @@
 			},
             "mapPage": {
                 "findLocation": "מצא מיקום",
-                "findPlaceholder": "מקם כתובת",
+                "findPlaceholder": "אתר כתובת",
                 "aboutHeader": "אודות מפה זו",
                 "layersHeader": "שכבות",
                 "enterFullscreen": "מבט מסך מלא",
@@ -87,12 +87,12 @@
                 "arcgisLink": "פרטי פריט",
                 "moreInformation": "עוד מידע",
                 "geoLocateTitle": "השתמש במיקום נוכחי",
-                "openInMobile": "פתח ב- App למכשיר נייד",
+                "openInMobile": "פתח באפליקציה של המכשיר נייד",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "יוצר:",
                 "switchBasemap": "החלף מפת בסיס",
-				"getMobileApp": "השג App", // new
+				"getMobileApp": "השג אפליקציה", // new
 				"constraintsHeading":"Use Constraints", // new
 				"createdLabel":"Created", // new
 				"noDescription":"No description.", // new

@@ -6,9 +6,9 @@
                 "clearSearch": "지우기"
             },
             "errors": {
-                "createMap": "맵을 만들 수 없습니다.",
+                "createMap": "맵을 생성할 수 없음",
                 "general": "오류",
-                "bingError": "이 애플리케이션을 보급하려면 자체 Bing 맵 키가 필요합니다.",
+                "bingError": "이 응용프로그램을 보급하려면 자체 Bing 맵 키가 필요합니다.",
                 "noLayers": "운영 레이어 없음",
                 "noSearchResults": "죄송하지만 결과를 찾을 수 없습니다.",
 				"noGroupResults": "그룹을 찾을 수 없습니다.",
@@ -91,7 +91,7 @@
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "소유자:",
-                "switchBasemap": "기본 맵 보기",
+                "switchBasemap": "베이스맵 전환",
 				"getMobileApp": "앱 가져오기", // new
 				"constraintsHeading":"Use Constraints", // new
 				"createdLabel":"Created", // new
