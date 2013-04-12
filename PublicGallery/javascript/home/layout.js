@@ -9,6 +9,7 @@ dojo.require("dijit.Dialog");
 dojo.require("dojo.io.script");
 dojo.require("dojo.number");
 dojo.require("dojox.form.Rating");
+dojo.require("config.commonConfig");
 /*------------------------------------*/
 // on dojo load
 /*------------------------------------*/

@@ -188,12 +188,12 @@ function setDefaultConfigOptions() {
     // row items
     configOptions.galleryPerRow = 3;
     // Set geometry to HTTPS if protocol is used
-    if (templateConfig.helperServices.geometry.url && location.protocol === "https:") {
-        templateConfig.helperServices.geometry.url = templateConfig.helperServices.geometry.url.replace('http:', 'https:');
+    if (commonConfig.helperServices.geometry.url && location.protocol === "https:") {
+        commonConfig.helperServices.geometry.url = commonConfig.helperServices.geometry.url.replace('http:', 'https:');
     }
     // https locator url
-    if (templateConfig.helperServices.geocode.url && location.protocol === "https:") {
-        templateConfig.helperServices.geocode.url = templateConfig.helperServices.geocode.url.replace('http:', 'https:');
+    if (commonConfig.helperServices.geocode.url && location.protocol === "https:") {
+        commonConfig.helperServices.geocode.url = commonConfig.helperServices.geocode.url.replace('http:', 'https:');
     }
     // set default group search keywords
     if (!configOptions.searchString) {
@@ -258,7 +258,7 @@ function setDefaultConfigOptions() {
         esri.dijit._arcgisUrl = configOptions.sharingurl + 'sharing/rest';
         configOptions._portalUrl = configOptions.sharingurl;
     }
-    esri.config.defaults.geometryService = new esri.tasks.GeometryService(templateConfig.helperServices.geometry.url);
+    esri.config.defaults.geometryService = new esri.tasks.GeometryService(commonConfig.helperServices.geometry.url);
     esri.config.defaults.io.proxyUrl = configOptions.proxyUrl;
     esri.config.defaults.io.corsEnabledServers = [location.protocol + '//' + location.host];
     esri.config.defaults.io.alwaysUseProxy = false;

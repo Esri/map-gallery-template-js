@@ -463,7 +463,7 @@ function locate(callback) {
         };
         // send request
         var requestHandle = esri.request({
-            url: templateConfig.helperServices.geocode.url + '/findAddressCandidates',
+            url: commonConfig.helperServices.geocode.url + '/findAddressCandidates',
             content: queryContent,
             handleAs: 'json',
             callbackParamName: 'callback',
@@ -626,7 +626,7 @@ function createBasemapGallery() {
 function setAddressContainer() {
     var html = '';
     html += '<div class="grid_4 alpha searchListCon">';
-    if (templateConfig.helperServices.geocode.url && configOptions.showMapSearch) {
+    if (commonConfig.helperServices.geocode.url && configOptions.showMapSearch) {
         html += '<ul class="searchList">';
         html += '<li id="mapSearch" class="iconInput">';
         html += '<input tabindex="0" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
@@ -1106,8 +1106,8 @@ function initMap() {
                     nav: false
                 },
                 ignorePopups: false,
-                bingMapsKey: templateConfig.bingMapsKey,
-                geometryServiceURL: templateConfig.helperServices.geometry.url
+                bingMapsKey: commonConfig.bingMapsKey,
+                geometryServiceURL: commonConfig.helperServices.geometry.url
             });
             // map response
             mapDeferred.addCallback(function (response) {

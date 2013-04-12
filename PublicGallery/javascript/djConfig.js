@@ -12,8 +12,8 @@ var dojoConfig = {
         name: "myModules",
         location: locationPath + '/javascript'
     }, {
-        name: "apl",
-        location: locationPath + '/apl'
+        name: "config",
+        location: locationPath + '/config'
     }]
 };
 
