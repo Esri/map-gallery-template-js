@@ -23,14 +23,16 @@ dojo.requireLocalization("esriTemplate", "template");
 dojo.addOnLoad(function () {
     // set default options
     setDefaultConfigOptions();
-    // set app ID settings and call setWebmap after
-    setAppIdSettings(function () {
-        // create portal
-        createPortal(function () {
-            // query group info
-            queryGroup(function () {
-                // set webmap info
-                setWebmap();
+    queryOrganization().then(function(){
+        // set app ID settings and call setWebmap after
+        setAppIdSettings(function () {
+            // create portal
+            createPortal(function () {
+                // query group info
+                queryGroup(function () {
+                    // set webmap info
+                    setWebmap();
+                });
             });
         });
     });
@@ -464,7 +466,7 @@ function locate(callback) {
         };
         // send request
         var requestHandle = esri.request({
-            url: commonConfig.helperServices.geocode.url + '/findAddressCandidates',
+            url: configOptions.helperServices.geocode.url + '/findAddressCandidates',
             content: queryContent,
             handleAs: 'json',
             callbackParamName: 'callback',
@@ -627,7 +629,7 @@ function createBasemapGallery() {
 function setAddressContainer() {
     var html = '';
     html += '<div class="grid_4 alpha searchListCon">';
-    if (commonConfig.helperServices.geocode.url && configOptions.showMapSearch) {
+    if (configOptions.helperServices.geocode.url && configOptions.showMapSearch) {
         html += '<ul class="searchList">';
         html += '<li id="mapSearch" class="iconInput">';
         html += '<input tabindex="0" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
@@ -1107,8 +1109,8 @@ function initMap() {
                     nav: false
                 },
                 ignorePopups: false,
-                bingMapsKey: commonConfig.bingMapsKey,
-                geometryServiceURL: commonConfig.helperServices.geometry.url
+                bingMapsKey: configOptions.bingMapsKey,
+                geometryServiceURL: configOptions.helperServices.geometry.url
             });
             // map response
             mapDeferred.addCallback(function (response) {

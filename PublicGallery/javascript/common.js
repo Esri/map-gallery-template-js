@@ -1,3 +1,40 @@
+function queryOrganization () {
+    var deferred = new dojo.Deferred();
+      //templates can be at /apps or /home/webmap/templates
+    var appLocation = location.pathname.indexOf("/apps/");
+    if (appLocation === -1) {
+        appLocation = location.pathname.indexOf("/home/");
+    }
+    if(appLocation !== -1){ //hosted or portal  
+        var instance = location.pathname.substr(0,appLocation);
+     configOptions.sharingurl = location.protocol + "//" + location.host + instance;
+     configOptions.proxyUrl =  location.protocol + '//' + location.host + instance +  "/sharing/proxy";
+
+     var req = esri.request({
+        url: configOptions.sharingurl + "/sharing/rest/portals/self",
+        content:{"f": "json"},
+        callbackParamName:"callback"
+     });
+     req.then(dojo.hitch(this, function(response){
+            //look for helper services and if they exist set them
+            if(response.isPortal && response.portalMode === "single tenant"){
+               configOptions.sharingurl = response.portalHostname;
+               configOptions.portalurl = configOptions.sharingurl;
+               esri.arcgis.utils.arcgisUrl = response.portalHostname + "/sharing/rest/content/items";
+            }
+            dojo.mixin(configOptions.helperServices, response.helperServices);
+            //update geometry service (note: replaced the setDefaults call again)
+            if(configOptions.helperServices && configOptions.helperServices.geometry && configOptions.helperServices.geometry.url){
+              esri.config.defaults.geometryService = new esri.tasks.GeometryService(configOptions.helperServices.geometry.url);
+            }
+
+            deferred.resolve(true); 
+     }));
+    }else{
+      deferred.resolve(true);
+    }
+    return deferred.promise;
+}
 /*------------------------------------*/
 // Load sign-in credentials
 /*------------------------------------*/
@@ -172,6 +209,8 @@ function setDefaultConfigOptions() {
     setUserAgent();
     // set up params
     configUrlParams();
+    // set defaults
+    setDefaults();
     // set localization
     i18n = dojo.i18n.getLocalization("esriTemplate", "template");
     // if RTL
@@ -179,29 +218,15 @@ function setDefaultConfigOptions() {
         //right now checking for Arabic only, to generalize for all RTL languages
         configOptions.isRightToLeft = true; // configOptions.isRightToLeft property setting to true when the locale is 'ar'
     }
-    // Template Version. Used for development and version recognition.
-    configOptions.templateVersion = "2.05a";
     // credential name
     configOptions.cred = "esri_jsapi_id_manager_data";
     // ArcGIS Rest Version
     configOptions.arcgisRestVersion = 1;
     // row items
     configOptions.galleryPerRow = 3;
-    // Set geometry to HTTPS if protocol is used
-    if (commonConfig.helperServices.geometry.url && location.protocol === "https:") {
-        commonConfig.helperServices.geometry.url = commonConfig.helperServices.geometry.url.replace('http:', 'https:');
-    }
-    // https locator url
-    if (commonConfig.helperServices.geocode.url && location.protocol === "https:") {
-        commonConfig.helperServices.geocode.url = commonConfig.helperServices.geocode.url.replace('http:', 'https:');
-    }
     // set default group search keywords
     if (!configOptions.searchString) {
         configOptions.searchString = '';
-    }
-    // set mobile portal URL
-    if (!configOptions.mobilePortalUrl) {
-        configOptions.mobilePortalUrl = 'arcgis://' + location.host + "/";
     }
     // lowercase layout
     if (configOptions.defaultLayout) {
@@ -235,34 +260,51 @@ function setDefaultConfigOptions() {
     if (!configOptions.hasOwnProperty('defaultLayout')) {
         configOptions.defaultLayout = 'grid';
     }
-    // set defaults
-    //need to set the sharing url here so that when we query the applciation and organization the correct
-    //location is searched.
-    if (location.host.indexOf("arcgis.com") === -1) {
-        //default (Not Hosted no org specified)
-        esri.arcgis.utils.arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/content/items";
-        esri.dijit._arcgisUrl = location.protocol + "//www.arcgis.com/sharing/rest/";
-        configOptions._portalUrl = location.protocol + "//www.arcgis.com/";
-        configOptions.mobilePortalUrl = "arcgis://www.arcgis.com/";
-    } else {
-        // org app
-        esri.arcgis.utils.arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/content/items";
-        esri.dijit._arcgisUrl = location.protocol + '//' + location.host + "/sharing/rest/";
-        configOptions._portalUrl = location.protocol + '//' + location.host + "/";
-        configOptions.proxyUrl = location.protocol + '//' + location.host + "/sharing/proxy";
-        configOptions.mobilePortalUrl = 'arcgis:' + '//' + location.host + '/';
-    }
-    //if the sharing url is set overwrite value
-    if (configOptions.sharingurl) {
-        esri.arcgis.utils.arcgisUrl = configOptions.sharingurl + 'sharing/rest/content/items';
-        esri.dijit._arcgisUrl = configOptions.sharingurl + 'sharing/rest';
-        configOptions._portalUrl = configOptions.sharingurl;
-    }
-    esri.config.defaults.geometryService = new esri.tasks.GeometryService(commonConfig.helperServices.geometry.url);
-    esri.config.defaults.io.proxyUrl = configOptions.proxyUrl;
-    esri.config.defaults.io.corsEnabledServers = [location.protocol + '//' + location.host];
-    esri.config.defaults.io.alwaysUseProxy = false;
 }
+function setDefaults () {
+    if(commonConfig){
+        dojo.mixin(configOptions, commonConfig);
+    }
+    //Check to see if the app is hosted or a portal. In those cases set the sharing url and the proxy. Otherwise use
+    //the sharing url set it to arcgis.com. We know app is hosted (or portal) if it has /apps/ in the url 
+    //templates can be at /apps or /home/webmap/templates
+    var appLocation = location.pathname.indexOf("/apps/");
+    if (appLocation === -1) {
+        appLocation = location.pathname.indexOf("/home/");
+    }
+    configOptions.isOrg = false;
+  if(configOptions.sharingurl){ //sharing url specified 
+    configOptions.mobilePortalUrl = 'arcgis:' + '//' + location.host + '/';
+    //sharing url set in config file so use default services 
+  }else if(appLocation!== -1){ //hosted or portal 
+    configOptions.isOrg = true;
+    var instance = location.pathname.substr(0,appLocation);
+    configOptions.sharingurl = location.protocol + "//" + location.host + instance;
+    
+    configOptions.proxyurl =  location.protocol + '//' + location.host + instance +  "/sharing/proxy";
+    configOptions.mobilePortalUrl = 'arcgis:' + '//' + location.host + '/';
+  }else{ //default to arcgis.com 
+    configOptions.sharingurl = location.protocol + "//" +  "www.arcgis.com";
+    configOptions.mobilePortalUrl = "arcgis://www.arcgis.com/";
+
+  }
+
+  esri.arcgis.utils.arcgisUrl = configOptions.sharingurl + "/sharing/rest/content/items";
+  esri.dijit._arcgisUrl = configOptions.sharingurl + "/sharing/rest";  
+  configOptions.portalurl = configOptions.sharingurl;
+
+    //Set the proxy. If the app is hosted use the default proxy. 
+    if (configOptions.proxyurl) {
+        esri.config.defaults.io.proxyUrl = configOptions.proxyurl;
+        esri.config.defaults.io.alwaysUseProxy = false;
+    }
+
+    //setup any helper services (geometry, print, routing, geocoding)
+    if (configOptions.helperServices && configOptions.helperServices.geometry && configOptions.helperServices.geometry.url) {
+        esri.config.defaults.geometryService = new esri.tasks.GeometryService(configOptions.helperServices.geometry.url);
+    }
+}
+
 /*------------------------------------*/
 // query group
 /*------------------------------------*/
@@ -651,7 +693,7 @@ function queryArcGISGroupInfo(obj) {
     // first, request the group to see if it's public or private
     esri.request({
         // group rest URL
-        url: configOptions._portalUrl + '/sharing/rest/community/groups/' + settings.id_group,
+        url: configOptions.sharingurl + '/sharing/rest/community/groups/' + settings.id_group,
         content: {
             'f': settings.dataType
         },
@@ -717,7 +759,7 @@ function createPortal(callback) {
     // look for credentials in local storage
     // todo loadCredentials();
     // create portal
-    portal = new esri.arcgis.Portal(configOptions._portalUrl);
+    portal = new esri.arcgis.Portal(configOptions.sharingurl);
     // portal loaded
     dojo.connect(portal, 'onLoad', function () {
         if (typeof callback === 'function') {
@@ -1041,9 +1083,9 @@ function getViewerURL(viewer, webmap, owner) {
         return retUrl;
         // portal viewer link
     case 'cityengine':
-        return configOptions._portalUrl + 'apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
+        return configOptions.sharingurl + 'apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
     case 'arcgis':
-        return configOptions._portalUrl + 'home/webmap/viewer.html?webmap=' + webmap;
+        return configOptions.sharingurl + 'home/webmap/viewer.html?webmap=' + webmap;
         // arcgis explorer link
     case 'explorer':
         retUrl = "http://explorer.arcgis.com/?open=" + webmap;
@@ -1060,28 +1102,28 @@ function getViewerURL(viewer, webmap, owner) {
         return retUrl;
         // portal sign up link
     case 'signup_page':
-        retUrl = configOptions._portalUrl + 'home/createaccount.html';
+        retUrl = configOptions.sharingurl + 'home/createaccount.html';
         return retUrl;
         // portal owner page link
     case 'owner_page':
         if (configOptions.groupOwner || owner) {
             if (owner) {
-                retUrl = configOptions._portalUrl + 'home/user.html?user=' + encodeURIComponent(owner);
+                retUrl = configOptions.sharingurl + 'home/user.html?user=' + encodeURIComponent(owner);
             } else {
-                retUrl = configOptions._portalUrl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupOwner);
+                retUrl = configOptions.sharingurl + 'home/user.html?user=' + encodeURIComponent(configOptions.groupOwner);
             }
         }
         return retUrl;
         // portal item page
     case 'item_page':
         if (configOptions.webmap) {
-            retUrl = configOptions._portalUrl + 'home/item.html?id=' + configOptions.webmap;
+            retUrl = configOptions.sharingurl + 'home/item.html?id=' + configOptions.webmap;
         }
         return retUrl;
         // portal group page
     case 'group_page':
         if (configOptions.groupOwner && configOptions.groupTitle) {
-            retUrl = configOptions._portalUrl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupOwner) + '&title=' + encodeURIComponent(configOptions.groupTitle);
+            retUrl = configOptions.sharingurl + 'home/group.html?owner=' + encodeURIComponent(configOptions.groupOwner) + '&title=' + encodeURIComponent(configOptions.groupTitle);
         }
         return retUrl;
         // portal mobile URL data

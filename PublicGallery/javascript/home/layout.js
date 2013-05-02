@@ -16,12 +16,14 @@ dojo.require("config.commonConfig");
 dojo.addOnLoad(function () {
     // set default configuration options
     setDefaultConfigOptions();
-    // set app ID settings and call init after
-    setAppIdSettings(function () {
-        // create portal
-        createPortal(function () {
-            init();
-        });
+    queryOrganization().then(function(){
+        // set app ID settings and call init after
+        setAppIdSettings(function () {
+            // create portal
+            createPortal(function () {
+                init();
+            });
+        }); 
     });
 });
 /*------------------------------------*/
