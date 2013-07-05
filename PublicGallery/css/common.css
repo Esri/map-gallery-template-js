@@ -1053,12 +1053,15 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 	position:relative;
 }
 #map {
-	text-align: left;
 	direction: ltr;
+	text-align: left;
 	width:694px;
 	height:584px;
 	position:relative;
 	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+}
+.esriRtl #map .titlePane{
+    text-align: right;
 }
 #map.mapLoaded {
 	background-image:none !important;

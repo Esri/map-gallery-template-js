@@ -1,21 +1,23 @@
-// host path regular expression
-var pathRegex = new RegExp(/\/[^\/]+$/);
-var locationPath = location.pathname.replace(pathRegex, '');
-
+var path_location = location.pathname.replace(/\/[^/]+$/, '');
+var path_location_tc = path_location + '/config';
+if (path_location.search(/\/apps\/|\/home\//) !== -1) {
+    path_location_tc = path_location.substr(0, path_location.lastIndexOf('/PublicGallery'));
+}
 // Dojo Config
 var dojoConfig = {
     parseOnLoad: true,
+    //locale: 'ar',
     packages: [{
         name: "esriTemplate",
-        location: locationPath
+        location: path_location
     }, {
-        name: "myModules",
-        location: locationPath + '/javascript'
+        name: "application",
+        location: path_location + '/javascript'
+    }, {
+        name: "templateConfig",
+        location: path_location_tc
     }, {
         name: "config",
-        location: locationPath + '/config'
+        location: path_location + '/config'
     }]
 };
-
-// Global Variables
-var i18n, dataOffset, prevVal, ACObj, ACTimeout, timer, urlObject, portal, map, locateResultLayer, resultConnect, mapFullscreen, resizeTimer, mapCenter, globalUser, globalComments, globalItem, ratingWidget, ratingConnect, ratingTimer;

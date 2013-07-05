@@ -2,7 +2,7 @@ define(
 [],
 function() {
   var config = {
-    bingMapsKey:"Akt3ZoeZ089qyG3zWQZSWpwV3r864AHStal7Aon21-Fyxwq_KdydAH32LTwhieA8",   
+    bingMapsKey:"ArAavTvIHoG3w9HwhroJuCFAzUttY_pQQvjdmHmZHQQfv6wahgxcyOiT3op-SCni",   
     helperServices: {
        geometry:{
         url: location.protocol + "//utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
@@ -11,7 +11,7 @@ function() {
         url: location.protocol + "//utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
        },
        geocode: {
-        url: location.protocol + "//geocode.arcgis.com/arcgis/rest/servcies/World/GeocodeServer"
+        url: location.protocol + "//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
        }
     }
 };
