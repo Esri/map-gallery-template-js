@@ -147,6 +147,7 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                 sortField: _self._options.sortField,
                 sortOrder: _self._options.sortOrder,
                 pagination: _self._options.showPagination,
+                paginationSize: _self._options.paginationSize,
                 paginationShowFirstLast: true,
                 paginationShowPrevNext: true,
                 keywords: _self._options.searchString,
@@ -315,6 +316,10 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                     }
                     else if (data.results[i].url) {
                         itemURL = data.results[i].url;
+                        externalLink = true;
+                    }
+                    else{
+                        itemURL = _self.getViewerURL('item_data', data.results[i].id);
                         externalLink = true;
                     }
                     if (obj.layout === 'list') {
@@ -705,6 +710,10 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                     }
                     else if (_self.ACObj[locNum].url) {
                         mapURL = _self.ACObj[locNum].url;
+                        externalLink = true;
+                    }
+                    else{
+                        mapURL = _self.getViewerURL('item_data', _self.ACObj[locNum].id);
                         externalLink = true;
                     }
                     if(externalLink){

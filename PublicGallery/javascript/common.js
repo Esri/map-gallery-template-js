@@ -994,6 +994,10 @@ function(require, declare, connect, lang, array, Deferred, dom, query, i18n, ioS
             }
             // return correct url
             switch (viewer) {
+            case 'item_data':
+                // item data url
+                // http://www.arcgis.com/sharing/rest/content/items/af01df44bf36437fa8daed01407138ab/data
+                return _self._options.sharingurl + '/sharing/rest/content/items/' + webmap + "/data";
                 // home page link
             case 'index_page':
                 retUrl = 'index.html' + queryString;
