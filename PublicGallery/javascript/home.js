@@ -202,7 +202,7 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                 // SORTING COLUMN: The allowed field names are title, modified, type, owner, avgRating, numRatings, numComments and numViews.
                 sortOrder: _self._options.sortOrder,
                 // SORTING ORDER: Values: asc | desc
-                keywords: acQuery,
+                keywords: "\"" + acQuery + "\"",
                 perPage: 10,
                 searchStart: 1
             };
@@ -305,16 +305,17 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                     var snippet;
                     var linkTarget;
                     var externalLink = false;
-                    // If item has URL
-                    if (data.results[i].url && data.results[i].type === "Web Mapping Application") {
-                        itemURL = data.results[i].url;
-                        externalLink = true;
-                    } else if (data.results[i].type === "CityEngine Web Scene") {
-                        itemURL = _self.getViewerURL('cityengine', data.results[i].id);
-                        externalLink = true;
-                    } else {
+                    if(data.results[i].type === "Web Map") {
                         // url variable
                         itemURL = _self.getViewerURL(_self._options.mapViewer, data.results[i].id);
+                    }
+                    else if (data.results[i].type === "CityEngine Web Scene") {
+                        itemURL = _self.getViewerURL('cityengine', data.results[i].id);
+                        externalLink = true;
+                    }
+                    else if (data.results[i].url) {
+                        itemURL = data.results[i].url;
+                        externalLink = true;
                     }
                     if (obj.layout === 'list') {
                         itemTitle = data.results[i].title;
@@ -694,16 +695,25 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                     _self.hideGroupAutoComplete();
                     // if map has a url
                     var mapURL;
-                    if (_self.ACObj[locNum].url && _self.ACObj[locNum].type === "Web Mapping Application") {
-                        mapURL = _self.ACObj[locNum].url;
-                    } else if (_self.ACObj[locNum].type === "CityEngine Web Scene") {
-                        mapURL = _self.getViewerURL('cityengine', _self.ACObj[locNum].id);
-                    } else {
-                        // item url
+                    var externalLink = false;
+                    if(_self.ACObj[locNum].type === "Web Map") {
                         mapURL = _self.getViewerURL(_self._options.mapViewer, _self.ACObj[locNum].id);
                     }
-                    // load map
-                    window.location = mapURL;
+                    else if (_self.ACObj[locNum].type === "CityEngine Web Scene") {
+                        mapURL = _self.getViewerURL('cityengine', _self.ACObj[locNum].id);
+                        externalLink = true;
+                    }
+                    else if (_self.ACObj[locNum].url) {
+                        mapURL = _self.ACObj[locNum].url;
+                        externalLink = true;
+                    }
+                    if(externalLink){
+                        window.open(mapURL);
+                    }
+                    else{
+                        // load map
+                        window.location = mapURL;   
+                    }
                 } else if (e.keyCode === keys.DOWN_ARROW) {
                     if (all[locNum + 1]) {
                         all[locNum + 1].focus();

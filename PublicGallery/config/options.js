@@ -22,7 +22,7 @@ define([], function() {
         "searchString": "",
         "sortField": "modified",
         "sortOrder": "desc",
-        "searchType": "Maps",
+        "searchType": "\"Maps\" OR \"Document Link\"",
         "mapViewer": "simple",
         "galleryItemsPerPage": 9,
         "showProfileUrl": false,

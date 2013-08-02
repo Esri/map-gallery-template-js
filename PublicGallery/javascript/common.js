@@ -749,20 +749,20 @@ function(require, declare, connect, lang, array, Deferred, dom, query, i18n, ioS
             q += 'group:"' + settings.id_group + '"';
             if (settings.keywords) {
                 q += ' AND (';
-                q += ' title:"' + settings.keywords + '"';
-                q += ' OR tags:"' + settings.keywords + '"';
-                q += ' OR typeKeywords:"' + settings.keywords + '"';
-                q += ' OR snippet:"' + settings.keywords + '"';
+                q += ' title:' + settings.keywords;
+                q += ' OR tags:' + settings.keywords;
+                q += ' OR typeKeywords:' + settings.keywords;
+                q += ' OR snippet:' + settings.keywords;
                 q += ' ) ';
             }
             if (settings.searchType) {
-                q += ' AND typekeywords:"' + settings.searchType + '"';
+                q += ' AND type:' + settings.searchType;
             }
             if (settings.searchType && settings.filterType) {
-                q += ' -type:"' + settings.filterType + '"';
+                q += ' -type:' + settings.filterType;
             }
             if (settings.searchAccess) {
-                q += ' AND access:"' + settings.searchAccess + '"';
+                q += ' AND access:' + settings.searchAccess;
             }
             var params = {
                 q: q,
