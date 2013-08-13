@@ -535,7 +535,7 @@ function(require, declare, connect, lang, array, Deferred, dom, on, query, i18n,
                 };
                 // send request
                 esriRequest({
-                    url: _self._options.helperServices.geocode.url + '/findAddressCandidates',
+                    url: _self._options.helperServices.geocode[0].url + '/findAddressCandidates',
                     content: queryContent,
                     handleAs: 'json',
                     callbackParamName: 'callback',
@@ -707,7 +707,7 @@ function(require, declare, connect, lang, array, Deferred, dom, on, query, i18n,
             var _self = this;
             var html = '';
             html += '<div class="grid_4 alpha searchListCon">';
-            if (_self._options.helperServices.geocode.url && _self._options.showMapSearch) {
+            if (_self._options.helperServices.geocode[0].url && _self._options.showMapSearch) {
                 html += '<ul class="searchList">';
                 html += '<li id="mapSearch" class="iconInput">';
                 html += '<input tabindex="0" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
