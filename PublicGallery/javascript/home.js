@@ -306,6 +306,9 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                     var snippet;
                     var linkTarget;
                     var externalLink = false;
+                    if(_self._options.openGalleryItemsNewWindow){
+                        externalLink = true;
+                    }
                     if(data.results[i].type === "Web Map") {
                         // url variable
                         itemURL = _self.getViewerURL(_self._options.mapViewer, data.results[i].id);
@@ -329,7 +332,7 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                             snippet = data.results[i].snippet;
                         }
                         linkTarget = '';
-                        if (_self._options.openGalleryItemsNewWindow || externalLink) {
+                        if (externalLink) {
                             linkTarget = 'target="_blank"';
                         }
                         // Build list item
@@ -443,7 +446,7 @@ function(require, declare, array, dom, on, query, i18n, domStyle, number, Option
                             snippet = data.results[i].snippet;
                         }
                         linkTarget = '';
-                        if (_self._options.openGalleryItemsNewWindow || externalLink) {
+                        if (externalLink) {
                             linkTarget = 'target="_blank"';
                         }
                         // Last row item
