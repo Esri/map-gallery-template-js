@@ -1,6 +1,7 @@
 define([
     "require",
     "dojo/_base/declare",
+    "dojo/_base/lang",
     "dojo/_base/array",
     "dojo/dom",
     "dojo/on",
@@ -17,7 +18,7 @@ define([
     "dojo/dom-class",
     "dojo/keys"
 ],
-function(require, declare, array, dom, on, query, i18n, domStyle, number, Options, Common, locale, ready, Rating, domAttr, domClass, keys) {
+function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, Options, Common, locale, ready, Rating, domAttr, domClass, keys) {
     return declare("application.home", [Common], {
         constructor: function() {
             var _self = this;
