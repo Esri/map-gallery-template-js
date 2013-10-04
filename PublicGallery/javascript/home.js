@@ -1,5 +1,4 @@
 define([
-    "require",
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
@@ -18,30 +17,28 @@ define([
     "dojo/dom-class",
     "dojo/keys"
 ],
-function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, Options, Common, locale, ready, Rating, domAttr, domClass, keys) {
+function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, Common, locale, ready, Rating, domAttr, domClass, keys) {
     return declare("application.home", [Common], {
         constructor: function() {
-            var _self = this;
-            ready(function() {
-                _self._options = Options;
+            ready(lang.hitch(this, function() {
+                this._options = Options;
                 // set default configuration options
-                _self.setDefaultOptions();
-                _self.queryOrganization().then(function() {
+                this.setDefaultOptions();
+                this.queryOrganization().then(lang.hitch(this, function() {
                     // set app ID settings and call init after
-                    _self.setAppIdSettings().then(function() {
+                    this.setAppIdSettings().then(lang.hitch(this, function() {
                         // create portal
-                        _self.createPortal().then(function() {
-                            _self.init();
-                        });
-                    });
-                });
-            });
+                        this.createPortal().then(lang.hitch(this, function() {
+                            this.init();
+                        }));
+                    }));
+                }));
+            }));
         },
         /*------------------------------------*/
         // On sort button click
         /*------------------------------------*/
         buildSortingMenu: function() {
-            var _self = this;
             // sorting fields
             var sortFields = [{
                 "title": i18n.viewer.sortFields.modified,
@@ -92,9 +89,9 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                     buttonClass = ' buttonRight';
                 }
                 // if default selected button
-                if (sortFields[i].field === _self._options.sortField) {
+                if (sortFields[i].field === this._options.sortField) {
                     selectedClass = ' ' + sortFields[i].defaultOrder + ' active';
-                    dataSortOrder = 'data-sort-order="' + _self._options.sortOrder + '"';
+                    dataSortOrder = 'data-sort-order="' + this._options.sortOrder + '"';
                 }
                 // button html
                 html += '<li class="sort' + selectedClass + '" data-default-order="' + sortFields[i].defaultOrder + '" ' + dataSortOrder + ' data-sort-field="' + sortFields[i].field + '"><span tabindex="0" class="silverButton' + buttonClass + '">' + sortFields[i].title + '<span class="arrow">&nbsp;</span></span></li>';
@@ -105,140 +102,136 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
             // html node
             var node = dom.byId('groupSortOptions');
             // insert html
-            _self.setNodeHTML(node, html);
+            this.setNodeHTML(node, html);
             // sort map gallery bar
-            on(dom.byId("sortGallery"), ".sort:click, .sort:keyup", function(e) {
+            on(query('.sort', dom.byId("sortGallery")), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    _self.addSpinner("groupSpinner");
+                    this.addSpinner("groupSpinner");
                     // variables for attributes
-                    var sortColumn = domAttr.get(this, "data-sort-field");
-                    var defaultOrder = domAttr.get(this, "data-default-order");
-                    var sortOrder = domAttr.get(this, "data-sort-order");
+                    var sortColumn = domAttr.get(e.currentTarget, "data-sort-field");
+                    var defaultOrder = domAttr.get(e.currentTarget, "data-default-order");
+                    var sortOrder = domAttr.get(e.currentTarget, "data-sort-order");
                     // sort field
-                    _self._options.sortField = sortColumn;
+                    this._options.sortField = sortColumn;
                     // sort order
                     if (sortOrder) {
-                        _self._options.sortOrder = _self.reverseSortOrder(sortOrder);
+                        this._options.sortOrder = this.reverseSortOrder(sortOrder);
                     } else {
-                        _self._options.sortOrder = defaultOrder;
+                        this._options.sortOrder = defaultOrder;
                     }
                     // remove classes and data sort order
-                    query("#sortGallery .sort").forEach(function(entry) {
+                    query("#sortGallery .sort").forEach(lang.hitch(this, function(entry) {
                         domClass.remove(entry, 'asc desc active');
                         domAttr.set(entry, 'data-sort-order', '');
-                    });
+                    }));
                     // set sort order
-                    domAttr.set(this, "data-sort-order", _self._options.sortOrder);
+                    domAttr.set(e.currentTarget, "data-sort-order", this._options.sortOrder);
                     // set current to active
-                    domClass.add(this, _self._options.sortOrder + ' active');
+                    domClass.add(e.currentTarget, this._options.sortOrder + ' active');
                     // get maps
-                    _self.queryMaps();
+                    this.queryMaps();
                 }
-            });
+            }));
         },
         /*------------------------------------*/
         // QUERY FEATURED MAPS
         /*------------------------------------*/
         queryMaps: function(data_offset) {
-            var _self = this;
             var settings = {
                 // Settings
-                id_group: _self._options.group,
-                searchType: _self._options.searchType,
-                sortField: _self._options.sortField,
-                sortOrder: _self._options.sortOrder,
-                pagination: _self._options.showPagination,
-                paginationSize: _self._options.paginationSize,
+                id_group: this._options.group,
+                searchType: this._options.searchType,
+                sortField: this._options.sortField,
+                sortOrder: this._options.sortOrder,
+                pagination: this._options.showPagination,
+                paginationSize: this._options.paginationSize,
                 paginationShowFirstLast: true,
                 paginationShowPrevNext: true,
-                keywords: _self._options.searchString,
-                perPage: parseInt(_self._options.galleryItemsPerPage, 10),
-                perRow: parseInt(_self._options.galleryPerRow, 10),
-                layout: _self._options.defaultLayout,
+                keywords: this._options.searchString,
+                perPage: parseInt(this._options.galleryItemsPerPage, 10),
+                perRow: parseInt(this._options.galleryPerRow, 10),
+                layout: this._options.defaultLayout,
                 searchStart: data_offset
             };
             // Call featured maps
-            _self.queryArcGISGroupItems(settings).then(function(data) {
+            this.queryArcGISGroupItems(settings).then(lang.hitch(this, function(data) {
                 // Build featured items
-                _self.buildMapPlaylist(settings, data);
-            });
+                this.buildMapPlaylist(settings, data);
+            }));
         },
         /*------------------------------------*/
         // Insert Home Content
         /*------------------------------------*/
         insertHomeContent: function() {
-            var _self = this;
             var node;
             // Set home heading
-            if (_self._options.homeHeading) {
+            if (this._options.homeHeading) {
                 node = dom.byId('homeHeading');
-                _self.setNodeHTML(node, _self._options.homeHeading);
+                this.setNodeHTML(node, this._options.homeHeading);
             }
             // Set home intro text
-            if (_self._options.homeSnippet) {
+            if (this._options.homeSnippet) {
                 node = dom.byId('homeSnippet');
-                _self.setNodeHTML(node, _self._options.homeSnippet);
+                this.setNodeHTML(node, this._options.homeSnippet);
             }
             var html = '';
             // Set home right heading
-            if (_self._options.homeSideHeading) {
-                html += '<h2>' + _self._options.homeSideHeading + '</h2>';
+            if (this._options.homeSideHeading) {
+                html += '<h2>' + this._options.homeSideHeading + '</h2>';
             }
             // Set home right content
-            if (_self._options.homeSideContent) {
-                html += _self._options.homeSideContent;
+            if (this._options.homeSideContent) {
+                html += this._options.homeSideContent;
             }
             node = dom.byId('homeSideContent');
-            _self.setNodeHTML(node, html);
+            this.setNodeHTML(node, html);
         },
         /*------------------------------------*/
         // Group auto-complete search
         /*------------------------------------*/
         groupAutoComplete: function(acQuery) {
-            var _self = this;
             var settings = {
                 // Settings
-                id_group: _self._options.group,
-                searchType: _self._options.searchType,
-                sortField: _self._options.sortField,
+                id_group: this._options.group,
+                searchType: this._options.searchType,
+                sortField: this._options.sortField,
                 // SORTING COLUMN: The allowed field names are title, modified, type, owner, avgRating, numRatings, numComments and numViews.
-                sortOrder: _self._options.sortOrder,
+                sortOrder: this._options.sortOrder,
                 // SORTING ORDER: Values: asc | desc
                 keywords: "\"" + acQuery + "\"",
                 perPage: 10,
                 searchStart: 1
             };
             // Called when searching (Autocomplete)
-            _self.queryArcGISGroupItems(settings).then(function(data) {
+            this.queryArcGISGroupItems(settings).then(lang.hitch(this, function(data) {
                 // Show auto-complete
-                _self.showGroupAutoComplete(settings, data);
-            });
+                this.showGroupAutoComplete(settings, data);
+            }));
         },
         /*------------------------------------*/
         // Hide auto-complete
         /*------------------------------------*/
         hideGroupAutoComplete: function() {
-            query("#searchListUL").forEach(function(entry) {
+            query("#searchListUL").forEach(lang.hitch(this, function(entry) {
                 domClass.remove(entry, 'autoCompleteOpen');
-            });
-            query("#groupAutoComplete").forEach(function(entry) {
+            }));
+            query("#groupAutoComplete").forEach(lang.hitch(this, function(entry) {
                 domStyle.set(entry, 'display', 'none');
-            });
+            }));
         },
         /*------------------------------------*/
         // Show auto-complete
         /*------------------------------------*/
         showGroupAutoComplete: function(obj, data) {
-            var _self = this;
             var aResults = '';
             var node;
             var partialMatch = domAttr.get(dom.byId('searchGroup'), 'value');
             var regex = new RegExp('(' + partialMatch + ')', 'gi');
             if (data.results !== null) {
-                query(".searchList").forEach(function(entry) {
+                query(".searchList").forEach(lang.hitch(this, function(entry) {
                     domClass.add(entry, 'autoCompleteOpen');
-                });
-                _self.ACObj = data.results;
+                }));
+                this.ACObj = data.results;
                 aResults += '<ul class="zebraStripes">';
                 for (var i = 0; i < data.results.length; i++) {
                     var layerClass = '';
@@ -253,30 +246,72 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                 node = dom.byId('groupAutoComplete');
                 if (node) {
                     if (data.results.length > 0) {
-                        _self.setNodeHTML(node, aResults);
+                        this.setNodeHTML(node, aResults);
                     } else {
-                        _self.setNodeHTML(node, '<p>' + i18n.viewer.errors.noMatches + '</p>');
-                        clearTimeout(_self.ACTimeout);
-                        _self.ACTimeout = setTimeout(function() {
-                            _self.hideGroupAutoComplete();
-                        }, 3000);
+                        this.setNodeHTML(node, '<p>' + i18n.viewer.errors.noMatches + '</p>');
+                        clearTimeout(this.ACTimeout);
+                        this.ACTimeout = setTimeout(lang.hitch(this, function() {
+                            this.hideGroupAutoComplete();
+                        }), 3000);
                     }
                     domStyle.set(node, 'display', 'block');
                 }
+                // Autocomplete key up and click
+                on(query('li', dom.byId("groupAutoComplete")), "click, keyup", lang.hitch(this, function(e) {
+                    var all = query('#groupAutoComplete li');
+                    // get result number
+                    var locNum = array.indexOf(all, e.currentTarget);
+                    if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
+                        // hide auto complete
+                        this.hideGroupAutoComplete();
+                        // if map has a url
+                        var mapURL;
+                        var externalLink = false;
+                        if (this.ACObj[locNum].type === "Web Map") {
+                            mapURL = this.getViewerURL(this._options.mapViewer, this.ACObj[locNum].id);
+                        } else if (this.ACObj[locNum].type === "CityEngine Web Scene") {
+                            mapURL = this.getViewerURL('cityengine', this.ACObj[locNum].id);
+                            externalLink = true;
+                        } else if (this.ACObj[locNum].url) {
+                            mapURL = this.ACObj[locNum].url;
+                            externalLink = true;
+                        } else {
+                            mapURL = this.getViewerURL('item_data', this.ACObj[locNum].id);
+                            externalLink = true;
+                        }
+                        if (externalLink) {
+                            window.open(mapURL);
+                        } else {
+                            // load map
+                            window.location = mapURL;
+                        }
+                    } else if (e.keyCode === keys.DOWN_ARROW) {
+                        if (all[locNum + 1]) {
+                            all[locNum + 1].focus();
+                        } else {
+                            all[0].focus();
+                        }
+                    } else if (e.keyCode === keys.UP_ARROW) {
+                        if (all[locNum - 1]) {
+                            all[locNum - 1].focus();
+                        } else {
+                            all[all.length - 1].focus();
+                        }
+                    }
+                }));
             }
         },
         /*------------------------------------*/
         // Build Map Playlist
         /*------------------------------------*/
         buildMapPlaylist: function(obj, data) {
-            var _self = this;
             // hide auto complete
-            _self.hideGroupAutoComplete();
+            this.hideGroupAutoComplete();
             // Remove Spinner
-            _self.removeSpinner();
+            this.removeSpinner();
             // Clear Pagination
             var node = dom.byId('maps_pagination');
-            _self.setNodeHTML(node, '');
+            this.setNodeHTML(node, '');
             // HTML Variable
             var html = '';
             // Get total results
@@ -307,23 +342,20 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                     var snippet;
                     var linkTarget;
                     var externalLink = false;
-                    if(_self._options.openGalleryItemsNewWindow){
+                    if (this._options.openGalleryItemsNewWindow) {
                         externalLink = true;
                     }
-                    if(data.results[i].type === "Web Map") {
+                    if (data.results[i].type === "Web Map") {
                         // url variable
-                        itemURL = _self.getViewerURL(_self._options.mapViewer, data.results[i].id);
-                    }
-                    else if (data.results[i].type === "CityEngine Web Scene") {
-                        itemURL = _self.getViewerURL('cityengine', data.results[i].id);
+                        itemURL = this.getViewerURL(this._options.mapViewer, data.results[i].id);
+                    } else if (data.results[i].type === "CityEngine Web Scene") {
+                        itemURL = this.getViewerURL('cityengine', data.results[i].id);
                         externalLink = true;
-                    }
-                    else if (data.results[i].url) {
+                    } else if (data.results[i].url) {
                         itemURL = data.results[i].url;
                         externalLink = true;
-                    }
-                    else{
-                        itemURL = _self.getViewerURL('item_data', data.results[i].id);
+                    } else {
+                        itemURL = this.getViewerURL('item_data', data.results[i].id);
                         externalLink = true;
                     }
                     if (obj.layout === 'list') {
@@ -364,11 +396,11 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         html += '<p class="dateInfo">';
                         html += data.results[i].type + ' ';
                         html += i18n.viewer.itemInfo.by + ' ';
-                        if (_self._options.showProfileUrl) {
-                            html += '<a href="' + _self.getViewerURL('owner_page', false, data.results[i].owner) + '">';
+                        if (this._options.showProfileUrl) {
+                            html += '<a href="' + this.getViewerURL('owner_page', false, data.results[i].owner) + '">';
                         }
                         html += data.results[i].owner;
-                        if (_self._options.showProfileUrl) {
+                        if (this._options.showProfileUrl) {
                             html += '</a>';
                         }
                         html += '. ';
@@ -378,7 +410,7 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         html += '</p>';
                         html += '<p>' + snippet + '</p>';
                         var widget;
-                        if (_self._options.showRatings) {
+                        if (this._options.showRatings) {
                             // rating widget
                             widget = new Rating({
                                 numStars: 5,
@@ -387,11 +419,11 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         }
                         // rating container
                         html += '<div class="ratingCon">';
-                        if (_self._options.showRatings) {
+                        if (this._options.showRatings) {
                             html += widget.domNode.outerHTML;
                         }
                         var rating = '';
-                        if (_self._options.showRatings) {
+                        if (this._options.showRatings) {
                             // Ratings
                             if (data.results[i].numRatings) {
                                 var pluralRatings = i18n.viewer.itemInfo.ratingsLabel;
@@ -401,7 +433,7 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                                 rating += number.format(data.results[i].numRatings) + ' ' + pluralRatings;
                             }
                         }
-                        if (_self._options.showComments) {
+                        if (this._options.showComments) {
                             // comments
                             if (data.results[i].numComments) {
                                 if (data.results[i].numRatings) {
@@ -415,8 +447,8 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                             }
                         }
                         // views
-                        if (_self._options.showViews && data.results[i].numViews) {
-                            if ((data.results[i].numRatings && _self._options.showRatings) || (data.results[i].numComments && _self._options.showComments)) {
+                        if (this._options.showViews && data.results[i].numViews) {
+                            if ((data.results[i].numRatings && this._options.showRatings) || (data.results[i].numComments && this._options.showComments)) {
                                 rating += i18n.viewer.itemInfo.separator + ' ';
                             }
                             var pluralViews = i18n.viewer.itemInfo.viewsLabel;
@@ -463,7 +495,7 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         // Build grid item
                         html += '<div class="grid_3' + itemClass + '">';
                         html += '<a class="item" ' + linkTarget + ' id="mapItem' + i + '" href="' + itemURL + '">';
-                        html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + _self.truncate(snippet, 120) + '</span>';
+                        html += '<span class="summaryHidden"><strong>' + itemTitle + '</strong>' + this.truncate(snippet, 120) + '</span>';
                         thumb = data.results[i].thumbnailUrl;
                         if (!thumb) {
                             thumb = 'images/defaultThumb.png';
@@ -473,13 +505,13 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         if (externalLink) {
                             html += '<span class="iconCon"><span class="icon external"></span>';
                         }
-                        if (_self._options.showViews) {
+                        if (this._options.showViews) {
                             html += '<span class="iconCon"><span class="icon views"></span><span class="iconText">' + number.format(data.results[i].numViews) + '</span></span>';
                         }
-                        if (_self._options.showComments) {
+                        if (this._options.showComments) {
                             html += '<span class="iconCon"><span class="icon comments"></span><span class="iconText">' + number.format(data.results[i].numComments) + '</span></span>';
                         }
-                        if (_self._options.showRatings) {
+                        if (this._options.showRatings) {
                             html += '<span class="iconCon"><span class="icon ratings"></span><span class="iconText">' + number.format(data.results[i].numRatings) + '</span></span>';
                         }
                         html += '</span>';
@@ -502,27 +534,55 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
             if (node) {
                 domClass.remove(node, 'mapsGrid mapsList');
                 domClass.add(node, layout);
-                _self.setNodeHTML(node, html);
+                this.setNodeHTML(node, html);
             }
             // Create pagination
-            _self.createPagination(obj, totalItems, 'maps_pagination');
+            this.createPagination(obj, totalItems, 'maps_pagination');
+            // Featured maps pagination onclick function
+            on(query('.enabled', dom.byId("maps_pagination")), "click, keyup", lang.hitch(this, function(e) {
+                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
+                    // clicked
+                    domClass.add(e.currentTarget, 'clicked');
+                    // add loading spinner
+                    this.addSpinner("paginationSpinner");
+                    // get offset number
+                    var data_offset = domAttr.get(e.currentTarget, 'data-offset');
+                    this.dataOffset = data_offset;
+                    // query maps function
+                    this.queryMaps(data_offset);
+                }
+            }));
+            if (dom.byId("resetGroupSearch")) {
+                // search reset button
+                on(dom.byId("resetGroupSearch"), "click, keyup", lang.hitch(this, function(e) {
+                    if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
+                        domClass.remove(dom.byId('clearAddress'), 'resetActive');
+                        domAttr.set(dom.byId('searchGroup'), 'value', '');
+                        var textVal = '';
+                        this._options.searchString = textVal;
+                        this.addSpinner("groupSpinner");
+                        this.queryMaps();
+                        this.prevVal = textVal;
+                        this.hideGroupAutoComplete();
+                    }
+                }));
+            }
         },
         /*------------------------------------*/
         // Enalbe layout and search options
         /*------------------------------------*/
         configLayoutSearch: function() {
-            var _self = this;
             // if show search or show layout switch
-            if (_self._options.showGroupSearch || _self._options.showLayoutSwitch) {
+            if (this._options.showGroupSearch || this._options.showLayoutSwitch) {
                 // create HTML
                 var html = '',
                     listClass, gridClass;
                 // if show search
                 html += '<div id="searchListCon" class="grid_5 alpha">';
-                if (_self._options.showGroupSearch) {
+                if (this._options.showGroupSearch) {
                     html += '<ul id="searchListUL" class="searchList">';
                     html += '<li id="mapSearch" class="iconInput">';
-                    html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="' + _self._options.searchString + '" autocomplete="off" type="text" tabindex="0" />';
+                    html += '<input placeholder="' + i18n.viewer.groupPage.searchPlaceholder + '" id="searchGroup" title="' + i18n.viewer.groupPage.searchTitle + '" value="' + this._options.searchString + '" autocomplete="off" type="text" tabindex="0" />';
                     html += '<div tabindex="0" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
                     html += '</li>';
                     html += '<li title="' + i18n.viewer.groupPage.searchTitleShort + '" class="searchButtonLi">';
@@ -539,8 +599,8 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                 html += '</div>';
                 // if show switch
                 html += '<div class="grid_4 omega">';
-                if (_self._options.showLayoutSwitch) {
-                    if (_self._options.defaultLayout === "list") {
+                if (this._options.showLayoutSwitch) {
+                    if (this._options.defaultLayout === "list") {
                         listClass = 'active';
                         gridClass = '';
                     } else {
@@ -567,114 +627,86 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                 html += '<div class="clear"></div>';
                 // if node, insert HTML
                 var node = dom.byId('layoutAndSearch');
-                _self.setNodeHTML(node, html);
-                _self.checkAddressStatus(dom.byId("searchGroup"), dom.byId('clearAddress'));
+                this.setNodeHTML(node, html);
+                this.checkAddressStatus(dom.byId("searchGroup"), dom.byId('clearAddress'));
             }
         },
         /*------------------------------------*/
         // Event Delegations
         /*------------------------------------*/
         setDelegations: function() {
-            var _self = this;
-            // Featured maps pagination onclick function
-            on(dom.byId('maps_pagination'), ".enabled:click, .enabled:keyup", function(e) {
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    // clicked
-                    domClass.add(this, 'clicked');
-                    // add loading spinner
-                    _self.addSpinner("paginationSpinner");
-                    // get offset number
-                    var data_offset = domAttr.get(this, 'data-offset');
-                    _self.dataOffset = data_offset;
-                    // query maps function
-                    _self.queryMaps(data_offset);
-                }
-            });
             // search button
-            on(dom.byId("mainPanel"), "#searchGroupButton:click, #searchGroupButton:keyup", function(e) {
+            on(dom.byId("searchGroupButton"), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
                     var textVal = domAttr.get(dom.byId('searchGroup'), 'value');
-                    if (textVal !== _self.prevVal) {
-                        _self._options.searchString = textVal;
-                        _self.addSpinner("groupSpinner");
-                        _self.queryMaps();
-                        _self.prevVal = textVal;
+                    if (textVal !== this.prevVal) {
+                        this._options.searchString = textVal;
+                        this.addSpinner("groupSpinner");
+                        this.queryMaps();
+                        this.prevVal = textVal;
                     }
                 }
-            });
-            // search reset button
-            on(dom.byId("mainPanel"), "#resetGroupSearch:click, #resetGroupSearch:keyup", function(e) {
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    domClass.remove(dom.byId('clearAddress'), 'resetActive');
-                    domAttr.set(dom.byId('searchGroup'), 'value', '');
-                    var textVal = '';
-                    _self._options.searchString = textVal;
-                    _self.addSpinner("groupSpinner");
-                    _self.queryMaps();
-                    _self.prevVal = textVal;
-                    _self.hideGroupAutoComplete();
-                }
-            });
+            }));
             // list view
-            on(dom.byId("mainPanel"), "#layoutList:click, #layoutList:keyup", function(e) {
+            on(dom.byId("layoutList"), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    if (_self._options.defaultLayout !== 'list') {
-                        _self._options.defaultLayout = 'list';
-                        query('.toggleLayout li').forEach(function(entry) {
+                    if (this._options.defaultLayout !== 'list') {
+                        this._options.defaultLayout = 'list';
+                        query('.toggleLayout li').forEach(lang.hitch(this, function(entry) {
                             domClass.remove(entry, 'active');
-                        });
-                        domClass.add(this, 'active');
-                        _self.addSpinner("layoutSpinner");
-                        _self.queryMaps(_self.dataOffset);
+                        }));
+                        domClass.add(e.currentTarget, 'active');
+                        this.addSpinner("layoutSpinner");
+                        this.queryMaps(this.dataOffset);
                     }
                 }
-            });
+            }));
             // grid view
-            on(dom.byId("mainPanel"), "#layoutGrid:click, #layoutGrid:keyup", function(e) {
+            on(dom.byId("layoutGrid"), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    if (_self._options.defaultLayout !== 'grid') {
-                        _self._options.defaultLayout = 'grid';
-                        query('.toggleLayout li').forEach(function(entry) {
+                    if (this._options.defaultLayout !== 'grid') {
+                        this._options.defaultLayout = 'grid';
+                        query('.toggleLayout li').forEach(lang.hitch(this, function(entry) {
                             domClass.remove(entry, 'active');
-                        });
-                        domClass.add(this, 'active');
-                        _self.addSpinner("layoutSpinner");
-                        _self.queryMaps(_self.dataOffset);
+                        }));
+                        domClass.add(e.currentTarget, 'active');
+                        this.addSpinner("layoutSpinner");
+                        this.queryMaps(this.dataOffset);
                     }
                 }
-            });
+            }));
             // Reset X click
-            on(dom.byId('mainPanel'), ".iconReset:click, .iconReset:keyup", function(e) {
+            on(query('.iconReset', dom.byId("mainPanel")), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
                     var obj = dom.byId('searchGroup');
-                    _self.clearAddress(obj, this);
+                    this.clearAddress(obj, e.currentTarget);
                     var textVal = '';
-                    _self._options.searchString = textVal;
-                    _self.addSpinner("groupSpinner");
-                    _self.queryMaps();
-                    _self.prevVal = textVal;
-                    _self.hideGroupAutoComplete();
+                    this._options.searchString = textVal;
+                    this.addSpinner("groupSpinner");
+                    this.queryMaps();
+                    this.prevVal = textVal;
+                    this.hideGroupAutoComplete();
                 }
-            });
+            }));
             // auto complete && address specific action listeners
-            on(dom.byId("mainPanel"), "#searchGroup:keyup", function(e) {
-                _self.checkAddressStatus(this, dom.byId('clearAddress'));
-                var aquery = domAttr.get(this, 'value');
+            on(dom.byId("searchGroup"), "keyup", lang.hitch(this, function(e) {
+                this.checkAddressStatus(e.currentTarget, dom.byId('clearAddress'));
+                var aquery = domAttr.get(e.currentTarget, 'value');
                 var all = query('#groupAutoComplete li');
-                var locNum = array.indexOf(all, this);
+                var locNum = array.indexOf(all, e.currentTarget);
                 var alength = aquery.length;
                 if (e.keyCode === keys.ENTER) {
-                    clearTimeout(_self.timer);
-                    var textVal = domAttr.get(this, 'value');
-                    if (textVal !== _self.prevVal) {
-                        _self._options.searchString = textVal;
-                        _self.addSpinner("groupSpinner");
-                        _self.queryMaps();
-                        _self.prevVal = textVal;
+                    clearTimeout(this.timer);
+                    var textVal = domAttr.get(e.currentTarget, 'value');
+                    if (textVal !== this.prevVal) {
+                        this._options.searchString = textVal;
+                        this.addSpinner("groupSpinner");
+                        this.queryMaps();
+                        this.prevVal = textVal;
                     }
-                    _self.hideGroupAutoComplete();
+                    this.hideGroupAutoComplete();
                 } else if (e.keyCode === keys.UP_ARROW) {
-                   if (all[locNum - 1]) {
+                    if (all[locNum - 1]) {
                         all[locNum - 1].focus();
                     } else {
                         all[all.length - 1].focus();
@@ -686,89 +718,41 @@ function(require, declare, lang, array, dom, on, query, i18n, domStyle, number, 
                         all[0].focus();
                     }
                 } else if (alength >= 2) {
-                    clearTimeout(_self.timer);
-                    _self.timer = setTimeout(function() {
-                        _self.groupAutoComplete(aquery);
-                    }, 250);
+                    clearTimeout(this.timer);
+                    this.timer = setTimeout(lang.hitch(this, function() {
+                        this.groupAutoComplete(aquery);
+                    }), 250);
                 } else {
-                    _self.hideGroupAutoComplete();
+                    this.hideGroupAutoComplete();
                 }
-            });
-            // Autocomplete key up and click
-            on(dom.byId("mainPanel"), "#groupAutoComplete li:click, #groupAutoComplete li:keyup", function(e) {
-                var all = query('#groupAutoComplete li');
-                // get result number
-                var locNum = array.indexOf(all, this);
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    // hide auto complete
-                    _self.hideGroupAutoComplete();
-                    // if map has a url
-                    var mapURL;
-                    var externalLink = false;
-                    if(_self.ACObj[locNum].type === "Web Map") {
-                        mapURL = _self.getViewerURL(_self._options.mapViewer, _self.ACObj[locNum].id);
-                    }
-                    else if (_self.ACObj[locNum].type === "CityEngine Web Scene") {
-                        mapURL = _self.getViewerURL('cityengine', _self.ACObj[locNum].id);
-                        externalLink = true;
-                    }
-                    else if (_self.ACObj[locNum].url) {
-                        mapURL = _self.ACObj[locNum].url;
-                        externalLink = true;
-                    }
-                    else{
-                        mapURL = _self.getViewerURL('item_data', _self.ACObj[locNum].id);
-                        externalLink = true;
-                    }
-                    if(externalLink){
-                        window.open(mapURL);
-                    }
-                    else{
-                        // load map
-                        window.location = mapURL;   
-                    }
-                } else if (e.keyCode === keys.DOWN_ARROW) {
-                    if (all[locNum + 1]) {
-                        all[locNum + 1].focus();
-                    } else {
-                        all[0].focus();
-                    }
-                } else if (e.keyCode === keys.UP_ARROW) {
-                    if (all[locNum - 1]) {
-                        all[locNum - 1].focus();
-                    } else {
-                        all[all.length - 1].focus();
-                    }
-                }
-            });
+            }));
         },
         /*------------------------------------*/
         // Init
         /*------------------------------------*/
         init: function() {
-            var _self = this;
             // set default data offset
-            if (!_self.dataOffset) {
-                _self.dataOffset = 0;
+            if (!this.dataOffset) {
+                this.dataOffset = 0;
             }
             // set loading text
             var node = dom.byId('featuredLoading');
-            _self.setNodeHTML(node, i18n.viewer.groupPage.loadingText);
+            this.setNodeHTML(node, i18n.viewer.groupPage.loadingText);
             // Query group and then query maps
-            _self.queryGroup().then(function() {
+            this.queryGroup().then(lang.hitch(this, function() {
                 // insert home items
-                _self.insertHomeContent();
+                this.insertHomeContent();
                 // Configure grid/list and search
-                _self.configLayoutSearch();
-                if (_self._options.showGroupSort) {
+                this.configLayoutSearch();
+                if (this._options.showGroupSort) {
                     // build sorting menu
-                    _self.buildSortingMenu();
+                    this.buildSortingMenu();
                 }
                 // query for maps
-                _self.queryMaps();
-            });
-            // set up event delegations
-            _self.setDelegations();
+                this.queryMaps();
+                // set up event delegations
+                this.setDelegations();
+            }));
         }
     });
 });
