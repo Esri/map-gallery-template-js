@@ -693,7 +693,7 @@ function(require, declare, lang, array, Deferred, dom, query, i18n, ioScript, do
                 // type of item
                 searchType: '',
                 // filter these items
-                filterType: '',
+                filterType: '"Code Attachment"',
                 // access type
                 searchAccess: '',
                 // format
@@ -738,8 +738,8 @@ function(require, declare, lang, array, Deferred, dom, query, i18n, ioScript, do
             if (settings.searchType) {
                 q += ' AND type:' + settings.searchType;
             }
-            if (settings.searchType && settings.filterType) {
-                q += ' -type:' + settings.filterType;
+            if (settings.filterType) {
+                q += ' AND -type:' + settings.filterType;
             }
             if (settings.searchAccess) {
                 q += ' AND access:' + settings.searchAccess;
