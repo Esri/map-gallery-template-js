@@ -1111,7 +1111,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
         /*------------------------------------*/
         initUI: function(response) {
             var options = this.createOptions();
-            console.log(options);
             var gc = new Geocoder(options, "gc_search");
             gc.startup();
             // Set legend header
