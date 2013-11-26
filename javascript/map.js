@@ -24,16 +24,16 @@ define([
     "dojox/form/Rating",
     "dojo/dom-attr",
     "dojo/dom-class",
-    "dojo/_base/event",
     "dojo/dom-construct",
     "esri/dijit/OverviewMap",
-    "esri/geometry/Extent",
     "esri/dijit/BasemapGallery",
     "esri/dijit/Scalebar",
     "esri/dijit/Legend",
-    "dojo/keys"
+    "dojo/keys",
+    "esri/dijit/Geocoder",
+    "esri/lang"
 ],
-function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, esriRequest, arcgisUtils, webMercatorUtils, GraphicsLayer, Point, PictureMarkerSymbol, Graphic, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, event, domConstruct, OverviewMap, Extent, BasemapGallery, Scalebar, Legend, keys) {
+function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, esriRequest, arcgisUtils, webMercatorUtils, GraphicsLayer, Point, PictureMarkerSymbol, Graphic, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, keys, Geocoder, esriLang) {
     return declare("application.map", [Common], {
         constructor: function() { /*------------------------------------*/
             // on dojo load
@@ -181,15 +181,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                 }));
             }
         },
-        /*------------------------------------*/
-        // Hide auto-complete
-        /*------------------------------------*/
-        hideAutoComplete: function() {
-            query(".searchList").forEach(lang.hitch(this, function(entry) {
-                domClass.remove(entry, 'autoCompleteOpen');
-            }));
-            domStyle.set(dom.byId('autoComplete'), 'display', 'none');
-        },
         // add edit comment box
         editCommentBox: function(i) {
             // get text of comment
@@ -271,64 +262,9 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             }));
         },
         /*------------------------------------*/
-        // show autocomplete
-        /*------------------------------------*/
-        showAutoComplete: function(results) {
-            var aResults = '';
-            var partialMatch = domAttr.get(dom.byId('searchAddress'), 'value');
-            var regex = new RegExp('(' + partialMatch + ')', 'gi');
-            if (results && results.candidates.length > 0) {
-                query(".searchList").forEach(lang.hitch(this, function(entry) {
-                    domClass.add(entry, 'autoCompleteOpen');
-                }));
-                this.ACObj = results;
-                aResults += '<ul class="zebraStripes">';
-                for (var i = 0; i < results.candidates.length && i < 6; i++) {
-                    var layerClass = '';
-                    if (i % 2 === 0) {
-                        layerClass = '';
-                    } else {
-                        layerClass = 'stripe';
-                    }
-                    aResults += '<li tabindex="0" class="' + layerClass + '" data-text="' + results.candidates[i].address + '">' + results.candidates[i].address.replace(regex, '<span>' + partialMatch + '</span>') + '</li>';
-                }
-                aResults += '</ul>';
-                var node = dom.byId('autoComplete');
-                if (node) {
-                    this.setNodeHTML(node, aResults);
-                    domStyle.set(node, 'display', 'block');
-                }
-                // autocomplete result key up
-                on(query('li', dom.byId("autoComplete")), "click, keyup", lang.hitch(this, function(e) {
-                    var all = query('#autoComplete li');
-                    var locNum = array.indexOf(all, e.currentTarget);
-                    if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                        var locTxt = domAttr.get(e.currentTarget, 'data-text');
-                        domAttr.set(dom.byId('searchAddress'), 'value', locTxt);
-                        this.showResults(this.ACObj, locNum);
-                        this.hideAutoComplete();
-                    } else if (e.keyCode === keys.DOWN_ARROW) {
-                        if (all[locNum + 1]) {
-                            all[locNum + 1].focus();
-                        } else {
-                            all[0].focus();
-                        }
-                    } else if (e.keyCode === keys.UP_ARROW) {
-                        if (all[locNum - 1]) {
-                            all[locNum - 1].focus();
-                        } else {
-                            all[all.length - 1].focus();
-                        }
-                    }
-                }));
-            } else {
-                this.hideAutoComplete();
-            }
-        },
-        /*------------------------------------*/
         // map now loaded
         /*------------------------------------*/
-        mapNowLoaded: function(layers, response) {
+        mapNowLoaded: function(response) {
             // Map Loaded Class
             domClass.add(dom.byId('map'), 'mapLoaded');
             // if overview map
@@ -341,7 +277,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                 });
                 overviewMapDijit.startup();
             }
-            this.initUI(layers, response);
+            this.initUI(response);
             // add popup theme
             domClass.add(this.map.infoWindow.domNode, this._options.theme);
         },
@@ -383,100 +319,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                 });
             }
             return def;
-        },
-        /*------------------------------------*/
-        // Show search results
-        /*------------------------------------*/
-        showResults: function(results, resultNumber) {
-            // remove spinner
-            this.removeSpinner();
-            // hide autocomplete
-            this.hideAutoComplete();
-            var candidates = results.candidates;
-            // if result found
-            if (candidates.length > 0 && this.map) {
-                // num result variable
-                var numResult = 0;
-                // if result number
-                if (resultNumber) {
-                    numResult = resultNumber;
-                }
-                var extent, point;
-                if (
-                candidates[numResult].attributes.hasOwnProperty('Xmin') && candidates[numResult].attributes.hasOwnProperty('Ymin') && candidates[numResult].attributes.hasOwnProperty('Xmax') && candidates[numResult].attributes.hasOwnProperty('Ymax')) {
-                    // if result has extent attributes
-                    // new extent
-                    extent = new Extent({
-                        "xmin": candidates[numResult].attributes.Xmin,
-                        "ymin": candidates[numResult].attributes.Ymin,
-                        "xmax": candidates[numResult].attributes.Xmax,
-                        "ymax": candidates[numResult].attributes.Ymax,
-                        "spatialReference": results.spatialReference
-                    });
-                    // set map extent to location
-                    this.map.setExtent(webMercatorUtils.geographicToWebMercator(extent));
-                } else if (
-                candidates[numResult].attributes.hasOwnProperty('westLon') && candidates[numResult].attributes.hasOwnProperty('southLat') && candidates[numResult].attributes.hasOwnProperty('eastLon') && candidates[numResult].attributes.hasOwnProperty('northLat')) {
-                    // result has lat/lon extent attributes
-                    // new extent
-                    extent = new Extent({
-                        "xmin": candidates[numResult].attributes.westLon,
-                        "ymin": candidates[numResult].attributes.southLat,
-                        "xmax": candidates[numResult].attributes.eastLon,
-                        "ymax": candidates[numResult].attributes.northLat,
-                        "spatialReference": results.spatialReference
-                    });
-                    // set map extent to location
-                    this.map.setExtent(webMercatorUtils.geographicToWebMercator(extent));
-                } else {
-                    // use point
-                    this.map.centerAndZoom(candidates[numResult].location, 14);
-                }
-                point = new Point({
-                    "x": candidates[numResult].location.x,
-                    "y": candidates[numResult].location.y,
-                    " spatialReference": results.spatialReference
-                });
-                // if point graphic set
-                if (this._options.pointGraphic) {
-                    // if locate results
-                    if (this.locateResultLayer) {
-                        this.resultConnect.remove();
-                        this.map.removeLayer(this.locateResultLayer);
-                        this.locateResultLayer = false;
-                    }
-                    this.locateResultLayer = new GraphicsLayer();
-                    this.resultConnect = on(this.locateResultLayer, 'click', lang.hitch(this, function(evt) {
-                        // stop overriding events
-                        event.stop(evt);
-                        // clear popup
-                        this.map.infoWindow.clearFeatures();
-                        // set popup content
-                        this.map.infoWindow.setContent('<strong>' + evt.graphic.attributes.address + '</strong>');
-                        // set popup title
-                        this.map.infoWindow.setTitle('Address');
-                        // set popup geometry
-                        this.map.infoWindow.show(evt.mapPoint);
-                    }));
-                    this.map.addLayer(this.locateResultLayer);
-                    // create point marker
-                    var pointSymbol = new PictureMarkerSymbol(this._options.pointGraphic, 21, 25).setOffset(0, 12);
-                    // create point graphic
-                    var locationGraphic = new Graphic(point, pointSymbol);
-                    // graphic with address
-                    locationGraphic.setAttributes({
-                        "address": candidates[numResult].address
-                    });
-                    this.locateResultLayer.add(locationGraphic);
-                }
-            } else {
-                // show error dialog
-                var dialog = new Dialog({
-                    title: i18n.viewer.errors.general,
-                    content: i18n.viewer.errors.noSearchResults
-                });
-                dialog.show();
-            }
         },
         /*------------------------------------*/
         // Basemap Gallery
@@ -542,19 +384,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             var html = '';
             html += '<div class="grid_4 alpha searchListCon">';
             if (this._options.helperServices.geocode[0].url && this._options.showMapSearch) {
-                html += '<ul class="searchList">';
-                html += '<li id="mapSearch" class="iconInput">';
-                html += '<input tabindex="0" placeholder="' + i18n.viewer.mapPage.findPlaceholder + '" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddress" value="" autocomplete="off" type="text" tabindex="1">';
-                html += '<div tabindex="0" title="' + i18n.viewer.main.clearSearch + '" class="iconReset" id="clearAddress"></div>';
-                html += '</li>';
-                html += '<li class="searchButtonLi" title="' + i18n.viewer.mapPage.findLocation + '" id="searchAddressButton"><span tabindex="0" class="silverButton buttonRight"><span class="searchButton">&nbsp;</span></span></li>';
-                html += '<li id="locateSpinner" class="spinnerCon"></li>';
-                html += '</ul>';
-                html += '<div class="clear"></div>';
-                html += '<div id="acCon">';
-                html += '<div id="autoComplete" class="autoComplete"></div>';
-                html += '</div>';
-                html += '<div class="clear"></div>';
+                html += '<div id="gc_search""></div>';
             } else {
                 html += '&nbsp;';
             }
@@ -565,73 +395,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             // Set
             var node = dom.byId("addressContainer");
             this.setNodeHTML(node, html);
-            // Search Button
-            on(dom.byId("searchAddressButton"), "click, keyup", lang.hitch(this, function(e) {
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    this.locate().then(lang.hitch(this, function(data) {
-                        this.showResults(data);
-                    }));
-                    this.hideAutoComplete();
-                }
-            }));
-            // clear address
-            on(dom.byId("clearAddress"), "click, keyup", lang.hitch(this, function(e) {
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    this.clearLocate();
-                    this.hideAutoComplete();
-                }
-            }));
-            // Clear address button
-            on(query('.iconReset', dom.byId("mainPanel")), "click, keyup", lang.hitch(this, function(e) {
-                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                    var obj = dom.byId('searchAddress');
-                    this.clearAddress(obj, e.currentTarget);
-                }
-            }));
-            // auto complete && address specific action listeners
-            on(dom.byId("searchAddress"), "keyup", lang.hitch(this, function(e) {
-                this.checkAddressStatus(this, dom.byId('clearAddress'));
-                var all = query('#autoComplete li');
-                var locNum = array.indexOf(all, e.currentTarget);
-                var aquery = domAttr.get(e.currentTarget, 'value');
-                var alength = aquery.length;
-                // enter key
-                if (e.keyCode === keys.ENTER && aquery !== '') {
-                    clearTimeout(this.timer);
-                    this.clearLocate();
-                    this.locate().then(lang.hitch(this, function(data) {
-                        this.showResults(data);
-                    }));
-                    this.hideAutoComplete();
-                }
-                // up arrow key
-                else if (e.keyCode === keys.UP_ARROW) {
-                    if (all[locNum - 1]) {
-                        all[locNum - 1].focus();
-                    } else {
-                        all[all.length - 1].focus();
-                    }
-                }
-                // down arrow key
-                else if (e.keyCode === keys.DOWN_ARROW) {
-                    if (all[locNum + 1]) {
-                        all[locNum + 1].focus();
-                    } else {
-                        all[0].focus();
-                    }
-                }
-                // more than 3 chars
-                else if (alength >= 2) {
-                    clearTimeout(this.timer);
-                    this.timer = setTimeout(lang.hitch(this, function() {
-                        this.locate().then(lang.hitch(this, function(data) {
-                            this.showAutoComplete(data);
-                        }));
-                    }), 250);
-                } else {
-                    this.hideAutoComplete();
-                }
-            }));
         },
         /*------------------------------------*/
         // Insert Menu Tab HTML
@@ -1232,10 +995,10 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                         }));
                         // ENDLAYER TOGGLE
                         if (this.map.loaded) {
-                            this.mapNowLoaded(layers, response);
+                            this.mapNowLoaded(response);
                         } else {
                             on(this.map, "load", lang.hitch(this, function() {
-                                this.mapNowLoaded(layers);
+                                this.mapNowLoaded(response);
                             }));
                         }
                     }));
@@ -1297,10 +1060,60 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                 }
             }
         },
+        createOptions: function() {
+            var hasEsri = false,
+                geocoders = lang.clone(this._options.helperServices.geocode);
+            array.forEach(geocoders, function(geocoder, index) {
+                if (geocoder.url.indexOf(".arcgis.com/arcgis/rest/services/World/GeocodeServer") > -1) {
+                    hasEsri = true;
+                    geocoder.name = "Esri World Geocoder";
+                    geocoder.outFields = "Match_addr, stAddr, City";
+                    geocoder.singleLineFieldName = "Single Line";
+                    geocoder.placeholder = i18n.viewer.mapPage.findPlaceholder;
+                    geocoder.esri = geocoder.placefinding = true;
+                }
+            });
+            //only use geocoders with a singleLineFieldName that allow placefinding
+            geocoders = array.filter(geocoders, function(geocoder) {
+                return (esriLang.isDefined(geocoder.singleLineFieldName) && esriLang.isDefined(geocoder.placefinding) && geocoder.placefinding);
+            });
+            var esriIdx;
+            if (hasEsri) {
+                for (var i = 0; i < geocoders.length; i++) {
+                    if (esriLang.isDefined(geocoders[i].esri) && geocoders[i].esri === true) {
+                        esriIdx = i;
+                        break;
+                    }
+                }
+            }
+            var options = {
+                map: this.map,
+                theme: "simpleGeocoder"
+            };
+            //If the World geocoder is primary enable auto complete 
+            if (hasEsri && esriIdx === 0) {
+                options.autoComplete = true;
+                options.minCharacters = 0;
+                options.maxLocations = 5;
+                options.searchDelay = 100;
+                options.arcgisGeocoder = geocoders.splice(0, 1)[0]; //geocoders[0];
+                if (geocoders.length > 0) {
+                    options.geocoders = geocoders;
+                }
+            } else {
+                options.arcgisGeocoder = false;
+                options.geocoders = geocoders;
+            }
+            return options;
+        },
         /*------------------------------------*/
         // INIT UI
         /*------------------------------------*/
-        initUI: function(layers, response) {
+        initUI: function(response) {
+            var options = this.createOptions();
+            console.log(options);
+            var gc = new Geocoder(options, "gc_search");
+            gc.startup();
             // Set legend header
             var node = dom.byId('legendHeader');
             this.setNodeHTML(node, i18n.viewer.sidePanel.title);
