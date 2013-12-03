@@ -1,5 +1,4 @@
 define([
-    "require",
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/_base/array",
@@ -16,21 +15,51 @@ define([
     "esri/arcgis/utils",
     "esri/tasks/GeometryService",
     "esri/urlUtils",
-    "esri/geometry/webMercatorUtils",
-    "esri/layers/GraphicsLayer",
-    "esri/geometry/Point",
-    "esri/symbols/PictureMarkerSymbol",
-    "esri/graphic",
     "esri/arcgis/Portal",
     "templateConfig/commonConfig",
     "dijit/Dialog",
     "dojo/dom-attr",
     "dojo/dom-class",
     "dojo/dom-construct",
-    "dojo/on"
+    "dojo/on",
+    "esri/IdentityManager"
 ],
-function(require, declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, domGeom, number, esriRequest, config, arcgisUtils, GeometryService, urlUtils, webMercatorUtils, GraphicsLayer, Point, PictureMarkerSymbol, Graphic, esriPortal, commonConfig, Dialog, domAttr, domClass, domConstruct, on) {
+function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, domGeom, number, esriRequest, config, arcgisUtils, GeometryService, urlUtils, esriPortal, commonConfig, Dialog, domAttr, domClass, domConstruct, on, IdentityManager) {
     return declare(null, {
+        orgRequest: function(){
+            var deferred = new Deferred();
+            var req = esriRequest({
+                url: this._options.sharingurl + "/sharing/rest/portals/self",
+                content: {
+                    "f": "json"
+                },
+                callbackParamName: "callback"
+            });
+            req.then(lang.hitch(this, function(response) {
+                //look for helper services and if they exist set them
+                if (response.isPortal && response.portalMode === "single tenant") {
+                    this._options.sharingurl = response.portalHostname;
+                    this._options.portalurl = this._options.sharingurl;
+                    arcgisUtils.arcgisUrl = response.portalHostname + "/sharing/rest/content/items";
+                }
+                //Set units 
+                if(response.units){
+                  this._options.units = response.units;
+                }else{
+                  //use english 
+                  this._options.units = "english";
+                }
+                lang.mixin(this._options.helperServices, response.helperServices);
+                //update geometry service (note: replaced the setDefaults call again)
+                if (this._options.helperServices && this._options.helperServices.geometry && this._options.helperServices.geometry.url) {
+                    config.defaults.geometryService = new GeometryService(this._options.helperServices.geometry.url);
+                }
+                deferred.resolve();
+            }), function(){
+                deferred.resolve();
+            });
+            return deferred;
+        },
         queryOrganization: function() {
             var deferred = new Deferred();
             //templates can be at /apps or /home/webmap/templates
@@ -42,27 +71,19 @@ function(require, declare, lang, array, Deferred, dom, query, i18n, ioScript, do
                 var instance = location.pathname.substr(0, appLocation);
                 this._options.sharingurl = location.protocol + "//" + location.host + instance;
                 this._options.proxyUrl = location.protocol + '//' + location.host + instance + "/sharing/proxy";
-                var req = esriRequest({
-                    url: this._options.sharingurl + "/sharing/rest/portals/self",
-                    content: {
-                        "f": "json"
-                    },
-                    callbackParamName: "callback"
-                });
-                req.then(lang.hitch(this, function(response) {
-                    //look for helper services and if they exist set them
-                    if (response.isPortal && response.portalMode === "single tenant") {
-                        this._options.sharingurl = response.portalHostname;
-                        this._options.portalurl = this._options.sharingurl;
-                        arcgisUtils.arcgisUrl = response.portalHostname + "/sharing/rest/content/items";
-                    }
-                    lang.mixin(this._options.helperServices, response.helperServices);
-                    //update geometry service (note: replaced the setDefaults call again)
-                    if (this._options.helperServices && this._options.helperServices.geometry && this._options.helperServices.geometry.url) {
-                        config.defaults.geometryService = new GeometryService(this._options.helperServices.geometry.url);
-                    }
-                    deferred.resolve(true);
-                }));
+                //check sign-in status 
+                IdentityManager.checkSignInStatus(this._options.sharingurl + "/sharing").then(
+                    lang.hitch(this, function(credential){
+                        this.orgRequest().then(function(){
+                            deferred.resolve(credential);    
+                        });
+                    }),
+                    lang.hitch(this, function(error){
+                        this.orgRequest().then(function(){
+                            deferred.resolve(error);    
+                        });
+                    })
+                );
             } else {
                 deferred.resolve(true);
             }

@@ -1078,7 +1078,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             //add scalebar
             this.scalebar = new Scalebar({
                 map: this.map,
-                scalebarUnit: i18n.viewer.main.scaleBarUnits
+                scalebarUnit: this._options.units || i18n.viewer.main.scaleBarUnits
             });
             // Legend Information
             var layerInfo = arcgisUtils.getLegendLayers(response);
