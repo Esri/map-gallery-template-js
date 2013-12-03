@@ -1,0 +1,962 @@
+﻿@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    html, body {
+        font-size: 14px !important;
+    }
+}
+
+@media only screen and (min-device-width : 641px) and (max-device-width : 1280px) {
+
+    html, body {
+        font-size: 14px !important;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px !important;
+    }
+}
+
+@media screen and (min-width: 1080px) and (max-width: 1280px) {
+    html, body {
+        font-size: 14px !important;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px !important;
+    }
+
+    .esriCTContentdiv {
+        width: 100% !important;
+    }
+
+    .esriCTResetfilter {
+        font-size: 14px;
+    }
+
+    .esriCTLeftPanel {
+        width: 35%;
+    }
+
+    .esriCTRightPanel {
+        width: 65%;
+    }
+
+    .esriCTListAppcontent {
+        line-height: 16px;
+    }
+
+    .esriCTApplicationBox {
+        padding: 0 5% 0 0;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1080px) {
+    html, body {
+        font-size: 14px !important;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px !important;
+    }
+
+    .esriCTContentdiv {
+        width: 100% !important;
+    }
+
+    .esriCTResetfilter {
+        font-size: 14px;
+    }
+
+    .esriCTSearch {
+        width: 180px;
+    }
+
+    .esriCTSearchIcon {
+        margin-left: 91%;
+    }
+
+    .esriCTLeftPanel {
+        width: 35%;
+    }
+
+    .esriCTRightPanel {
+        width: 65%;
+    }
+
+    .esriCTListAppcontent {
+        line-height: 16px;
+    }
+
+    .esriCTautosuggest {
+        width: 180px;
+    }
+
+    .esriCTApplicationBox {
+        padding: 0 5% 0 0;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width:767px) {
+    html, body {
+        font-size: 14px !important;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px !important;
+    }
+
+    .esriCTContentdiv {
+        width: 100% !important;
+    }
+
+    .esriCTResetfilter {
+        font-size: 14px;
+    }
+
+    .esriCTSearch {
+        width: 150px;
+    }
+
+    .esriCTSearchIcon {
+        margin-left: 91%;
+    }
+
+    .esriCTLeftPanel {
+        width: 35%;
+    }
+
+    .esriCTRightPanel {
+        width: 65%;
+    }
+
+    .esriCTListAppcontent {
+        line-height: 16px;
+    }
+
+    .esriCTautosuggest {
+        width: 150px;
+    }
+
+    .esriCTApplicationBox {
+        padding: 0 12% 0 0;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width: 640px) {
+    html, body {
+        font-size: 14px !important;
+        overflow-x: hidden;
+        -webkit-text-size-adjust: none;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    .esriCTContentdiv {
+        width: 100% !important;
+    }
+
+    .esriCTMenuTabLeft {
+        width: 100%;
+    }
+
+    .esriCTSignIn {
+        float: left;
+        padding: 0 5px;
+        position: absolute !important;
+        right: 0px;
+        top: 0px;
+    }
+
+    .esriCTSignInIcon, .esriCTLayout, .esriCTSortViews {
+        display: none;
+    }
+
+    .esriCTMenuTabRight {
+        width: 100%;
+        height: 48px;
+    }
+
+    .esriCTMenuIcon {
+        background-position: right center;
+        cursor: pointer;
+        margin: 5px 0px 0 0;
+        font-size: 21px;
+        color: white;
+    }
+
+    .esriCTInfoIcon {
+        background-position: right center;
+        float: right;
+        cursor: pointer;
+        margin: 5px 0px 0 0;
+        font-size: 28px;
+        color: white;
+    }
+
+    .esriCTLeftPanel {
+        width: 100%;
+    }
+    /*
+        .esriCTInnerLeftPanelTop{border-left: 2px solid #007AC2;
+            margin-left: 45px;
+            padding: 0;
+            position: relative;
+            width: 90%;
+        	top:-48px;
+        	background:#ddd;
+        	}
+        .esriCTInnerLeftPanelBottom{border-right: 2px solid #007AC2;
+            margin-right: 45px;
+
+            position: relative;
+            width: 90%;
+        	top:-48px;
+        	background:#ddd;
+        	}
+        	*/
+    .esriCTPadding {
+        padding: 15px;
+        clear: both;
+    }
+
+    .esriCTInnerLeftPanelBottom {
+        float: left;
+        padding: 0;
+    }
+
+    .esriCTInnerLeftPanelTop {
+        float: right;
+        padding: 0;
+    }
+
+    .esriCTListView {
+        display: block;
+    }
+
+    .esriCTGridView {
+        display: none;
+    }
+
+    .esriCTAppIcon {
+        display: none;
+    }
+
+    .esriCTAppTitle {
+        display: block;
+    }
+
+    .esriCTGalleryNameCategories, .esriCTGalleryNameSample {
+        display: block;
+        padding: 0px 15px;
+        font-size: 24px;
+    }
+
+    .esriCTImageTopPanel {
+        background: none;
+        border: none;
+        width: 100%;
+    }
+
+    .esriCTRightPanel {
+        width: 100%;
+    }
+
+    .esriCTApplicationListBox {
+        padding-left: 10px !important;
+        margin-bottom: 10px;
+    }
+
+    .esriCTImageContainerList {
+        width: 30%;
+    }
+
+    .esriCTListContent {
+        padding-left: 0px;
+        margin-left: 32%;
+    }
+
+    .esriCTListMdfDate {
+        display: none;
+    }
+
+    .esriCTEyewatch {
+        clear: both;
+        padding-left: 5px;
+    }
+
+    .esriCTListAppcontent {
+        border: none;
+        line-height: 16px;
+    }
+
+    .esriCTEyewatch span.eye {
+        padding-top: 3px;
+    }
+
+    .esriCTText {
+        height: 40px;
+        overflow: hidden;
+    }
+
+    .esriCTLogo {
+        /* float: left;*/
+        padding: 15px 0 0 15px;
+    }
+
+    .esriCTLeftText {
+        padding: 0 15px;
+    }
+    /*input display*/
+    .esriCTSettinInfoMenu {
+        display: block;
+        float: left;
+        width: 10%;
+    }
+
+    .esriCTSettinInfo {
+        display: block;
+        float: left;
+        width: 12%;
+    }
+
+    .esriCTSearchInput {
+        float: left;
+        width: 78%;
+        overflow: hidden;
+        margin: 0px;
+    }
+
+    .esriCTSearch {
+        width: 100% !important;
+    }
+
+    /*//input display*/
+
+    .esriCTDetailsLeftPanel {
+        float: left;
+        width: 100%;
+    }
+
+    .esriCTDetailsRightPanel {
+        float: left;
+        width: 100%;
+    }
+
+    .esriCTDetailLeftInfo {
+        display: none;
+    }
+
+    .esriCTDetailsApplicationType {
+        padding: 4px;
+    }
+
+    .esriCTInnerLeftPanelTopMap {
+        display: none;
+    }
+
+    .esriCTRightPanelmap {
+        display: none;
+    }
+
+    .esriCTlegendLayer {
+        margin-top: 1px;
+    }
+
+    .esriCTCategoriesHead {
+        font-size: 14px;
+        padding: 10px 0px;
+    }
+
+    .esriCTsortby {
+        display: block;
+        width: 100%;
+        padding-top: 10px;
+        font-size: 14px !important;
+    }
+
+    .esriCTsorthead {
+        padding: 0 0px 15px 15px;
+    }
+
+    .esriCTSortMenu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .esriCTSortMenu ul li {
+        padding: 5px 15px;
+        cursor: pointer;
+    }
+
+    .esriCTShiftRight {
+        left: 90%;
+        position: absolute;
+        width: 10%;
+        overflow: hidden;
+    }
+
+    .esriCTShiftLeft {
+        position: absolute;
+        right: 90%;
+        overflow: hidden;
+    }
+
+    .esriCTInnerLeftPanelBottomShift {
+        width: 90%;
+    }
+
+    .esriCTShiftLeftPanel {
+        position: absolute;
+        left: 10%;
+        width: 90%;
+    }
+
+    .displayNone {
+        display: none;
+    }
+
+    .displayBlock {
+        display: block;
+    }
+
+    .esriCTCategoriesMedia {
+        float: left;
+        padding-left: 15px;
+    }
+
+    /*leftpanel adsulte*/
+    .esriCTRightPanel {
+        position: absolute;
+        height: 100%;
+        z-index: 10;
+    }
+
+    .esriCTInnerLeftPanelBottom {
+        position: absolute;
+        z-index: 9;
+    }
+
+    .esriCTInnerLeftPanelTop {
+        position: absolute;
+        z-index: 8;
+        left: -1px;
+    }
+
+    .esriCTResetfilter {
+        font-size: 14px;
+        padding-right: 15px;
+        padding-top: 0px;
+    }
+
+    .esriCTLeftHead {
+        padding: 5px 15px;
+        margin-bottom: 10px;
+    }
+
+    .blueTheme .esriCTListAppcontent {
+        border: none;
+    }
+
+    .esriCTAppImage {
+        width: auto;
+        height: 92px;
+    }
+
+    .esriCTAppTitle {
+        width: 75%;
+        display: none;
+    }
+
+    .esriCTImageTopPanel {
+        background: none !important;
+        border: none;
+    }
+
+    .esriCTListAppcontent {
+        margin-bottom: 5px;
+    }
+
+    .esriCTautosuggest {
+        position: absolute;
+        top: 84px;
+        width: 77.6% !important;
+        background: #fff;
+        height: 100px;
+        overflow: auto;
+        border-left: 1px solid #ededed;
+        border-right: 1px solid #ededed;
+        border-bottom: 1px solid #ededed;
+        z-index: 100;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    html, body {
+        overflow-x: hidden;
+        font-size: 14px !important;
+        -webkit-text-size-adjust: none;
+    }
+
+    font {
+        font-family: Verdana !important;
+        font-size: 14px;
+    }
+
+    input {
+        font-size: 14px !important;
+    }
+
+    textarea {
+        font-size: 14px !important;
+    }
+
+    .esriCTContentdiv {
+        width: 100% !important;
+    }
+
+    .esriCTMenuTabLeft {
+        width: 100%;
+    }
+
+    .esriCTSignIn {
+        float: left;
+        padding: 0 0px;
+        position: absolute !important;
+        right: 0px;
+        top: 0px;
+    }
+
+    .esriCTSignInIcon, .esriCTLayout, .esriCTSortViews {
+        display: none;
+    }
+
+    .esriCTMenuTabRight {
+        width: 100%;
+        height: 48px;
+    }
+
+    .esriCTMenuIcon {
+        background-position: right center;
+        cursor: pointer;
+        margin: 5px 0px 0 0;
+        font-size: 21px;
+        color: white;
+    }
+
+    .esriCTInfoIcon {
+        background-position: right center;
+        float: right;
+        cursor: pointer;
+        margin: 5px 0px 0 0;
+        font-size: 28px;
+        color: white;
+    }
+
+    .esriCTLeftPanel {
+        width: 100%;
+    }
+    /*
+        .esriCTInnerLeftPanelTop{border-left: 2px solid #007AC2;
+            margin-left: 45px;
+            padding: 0;
+            position: relative;
+            width: 90%;
+        	top:-48px;
+        	background:#ddd;
+        	}
+        .esriCTInnerLeftPanelBottom{border-right: 2px solid #007AC2;
+            margin-right: 45px;
+
+            position: relative;
+            width: 90%;
+        	top:-48px;
+        	background:#ddd;
+        	}
+        	*/
+    .esriCTPadding {
+        padding: 15px;
+        clear: both;
+    }
+
+    .esriCTInnerLeftPanelBottom {
+        float: left;
+        padding: 0;
+    }
+
+    .esriCTInnerLeftPanelTop {
+        float: right;
+        padding: 0;
+    }
+
+    .esriCTListView {
+        display: block;
+    }
+
+    .esriCTGridView {
+        display: none;
+    }
+
+    .esriCTAppIcon {
+        display: none;
+    }
+
+    .esriCTAppTitle {
+        display: block;
+    }
+
+    .esriCTGalleryNameCategories, .esriCTGalleryNameSample {
+        display: block;
+        padding: 0px 15px;
+        font-size: 24px;
+    }
+
+    .esriCTImageTopPanel {
+        background: none;
+        border: none;
+        width: 100%;
+    }
+
+    .esriCTRightPanel {
+        width: 100%;
+    }
+
+    .esriCTApplicationListBox {
+        padding-left: 10px !important;
+        margin-bottom: 10px;
+    }
+
+    .esriCTListContent {
+        padding-left: 0px;
+        margin-left: 33%;
+    }
+
+    .esriCTListMdfDate {
+        display: none;
+    }
+
+    .esriCTEyewatch {
+        clear: both;
+        padding-left: 5px;
+    }
+
+    .esriCTListAppcontent {
+        border: none;
+        line-height: 16px;
+    }
+
+    .esriCTEyewatch span.eye {
+        padding-top: 3px;
+    }
+
+    .esriCTText {
+        height: 40px;
+        overflow: hidden;
+    }
+
+    .esriCTLogo {
+        /* float: left;*/
+        padding: 15px 0 0 15px;
+    }
+
+    .esriCTLeftText {
+        padding: 0 15px;
+    }
+    /*input display*/
+    .esriCTSettinInfoMenu {
+        display: block;
+        float: left;
+        width: 10%;
+    }
+
+    .esriCTSettinInfo {
+        display: block;
+        float: left;
+        width: 12%;
+    }
+
+    .esriCTSearchInput {
+        float: left;
+        width: 78%;
+        overflow: hidden;
+        margin: 0px;
+    }
+
+    .esriCTSearch {
+        width: 100% !important;
+    }
+
+
+    /*//input display*/
+    .esriCTDetailsLeftPanel {
+        float: left;
+        width: 100%;
+    }
+
+    .esriCTDetailsRightPanel {
+        float: left;
+        width: 100%;
+    }
+
+    .esriCTDetailLeftInfo {
+        display: none;
+    }
+
+    .esriCTDetailsApplicationType {
+        padding: 4px;
+    }
+
+    .esriCTInnerLeftPanelTopMap {
+        display: none;
+    }
+
+    .esriCTRightPanelmap {
+        display: none;
+    }
+
+    .esriCTlegendLayer {
+        margin-top: 1px;
+    }
+
+    .blueTheme .esriCTCategoriesHead {
+        font-size: 14px;
+        padding: 10px 0px;
+    }
+
+    .esriCTsortby {
+        display: block;
+        width: 100%;
+        padding-top: 10px;
+    }
+
+    .esriCTsorthead {
+        padding: 0 0px 15px 15px;
+    }
+
+    .esriCTSortMenu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .esriCTSortMenu ul li {
+        padding: 5px 15px;
+        cursor: pointer;
+    }
+
+    .esriCTShiftRight {
+        position: absolute;
+        left: 86%;
+        width: 14%;
+        overflow: hidden;
+    }
+
+    .esriCTShiftLeft {
+        position: absolute;
+        right: 86%;
+        overflow: hidden;
+    }
+
+    .esriCTInnerLeftPanelBottomShift {
+        width: 86%;
+    }
+
+    .esriCTShiftLeftPanel {
+        position: absolute;
+        left: 14%;
+        width: 86%;
+    }
+
+    .displayNone {
+        display: none;
+    }
+
+    .displayBlock {
+        display: block;
+    }
+
+    .esriCTCategoriesMedia {
+        float: left;
+        padding-left: 15px;
+    }
+
+    /*leftpanel adsulte*/
+    .esriCTRightPanel {
+        position: absolute;
+        height: 100%;
+        z-index: 10;
+    }
+
+    .esriCTInnerLeftPanelBottom {
+        position: absolute;
+        z-index: 9;
+    }
+
+    .esriCTInnerLeftPanelTop {
+        position: absolute;
+        z-index: 8;
+        left: -1px;
+    }
+
+    .esriCTResetfilter {
+        font-size: 14px;
+        padding-right: 15px;
+        padding-top: 0px;
+    }
+
+    .esriCTLeftHead {
+        padding: 5px 15px;
+        margin-bottom: 10px;
+    }
+
+    .blueTheme .esriCTListAppcontent {
+        border: none;
+        padding: 0px;
+    }
+
+    .esriCTAppImage {
+        width: auto;
+        height: 54px;
+    }
+
+    .esriCTAppTitle {
+        width: 75%;
+        display: none;
+    }
+
+    .esriCTImageTopPanel {
+        background: none !important;
+        border: none !important;
+    }
+
+    .esriCTAppListTitle {
+        margin: 0px;
+    }
+
+    .esriCTImageContainerList {
+        width: 30%;
+    }
+
+    .esriCTautosuggest {
+        position: absolute;
+        top: 84px;
+        width: 77% !important;
+        background: #fff;
+        height: 100px;
+        overflow: auto;
+        border-left: 1px solid #ededed;
+        border-right: 1px solid #ededed;
+        border-bottom: 1px solid #ededed;
+        z-index: 100;
+    }
+
+    .esriCTListAppcontent {
+        margin-bottom: 5px;
+    }
+
+    .esriCTApplicationType {
+        margin-top: -1px;
+        width: 100%;
+        padding: 2px 0px;
+    }
+}
+
+@media screen and (max-width: 240px) {
+    .esriCTSettinInfoMenu {
+        display: block;
+        float: left;
+        width: 10%;
+    }
+
+    .esriCTSettinInfo {
+        display: block;
+        float: left;
+        width: 12%;
+    }
+
+    .esriCTSearchInput {
+        float: left;
+        width: 78%;
+        overflow: hidden;
+        margin: 0px;
+    }
+
+    .esriCTSearch {
+        width: 100% !important;
+    }
+
+    .esriCTInfoIcon {
+        font-size: 20px;
+    }
+
+    .esriCTMenuIcon {
+        font-size: 16px;
+    }
+
+    .esriCTAppImage {
+        height: 41px;
+    }
+
+    .esriCTautosuggest {
+        position: absolute;
+        top: 84px;
+        width: 77% !important;
+        background: #fff;
+        height: 100px;
+        overflow: auto;
+        border-left: 1px solid #ededed;
+        border-right: 1px solid #ededed;
+        border-bottom: 1px solid #ededed;
+        z-index: 100;
+    }
+
+    .esriCTGalleryName {
+        font-size: 18px;
+    }
+}
