@@ -1021,7 +1021,8 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                     geocoder.outFields = "Match_addr, stAddr, City";
                     geocoder.singleLineFieldName = "Single Line";
                     geocoder.placeholder = i18n.viewer.mapPage.findPlaceholder;
-                    geocoder.esri = geocoder.placefinding = true;
+                    geocoder.esri = true;
+                    geocoder.placefinding = true;
                 }
             });
             //only use geocoders with a singleLineFieldName that allow placefinding
@@ -1039,7 +1040,8 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             }
             var options = {
                 map: this.map,
-                theme: "simpleGeocoder"
+                theme: "simpleGeocoder",
+                autoComplete:hasEsri
             };
             //If the World geocoder is primary enable auto complete 
             if (hasEsri && esriIdx === 0) {
@@ -1054,6 +1056,10 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             } else {
                 options.arcgisGeocoder = false;
                 options.geocoders = geocoders;
+            }
+            if(options.geocoders.length === 0){
+                options.arcgisGeocoder = true;
+                options.geocoders = null;
             }
             return options;
         },
