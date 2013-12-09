@@ -1057,10 +1057,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                 options.arcgisGeocoder = false;
                 options.geocoders = geocoders;
             }
-            if(options.geocoders.length === 0){
-                options.arcgisGeocoder = true;
-                options.geocoders = null;
-            }
             return options;
         },
         /*------------------------------------*/
