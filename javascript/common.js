@@ -79,6 +79,7 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                         });
                     }),
                     lang.hitch(this, function(error){
+                        IdentityManager.credentials = [];
                         this.orgRequest().then(function(){
                             deferred.resolve(error);    
                         });
