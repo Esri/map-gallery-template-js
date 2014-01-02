@@ -377,10 +377,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
         /*------------------------------------*/
         addBottomMapButtons: function() {
             var html = '';
-            if (this._options.showExplorerButton && !this.isMobileUser()) {
-                // add open in explorer button
-                html += '<a tabindex="0" target="_blank" href="' + this.getViewerURL('explorer', this._options.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInExplorer + '</a>';
-            }
             if (this._options.showArcGISOnlineButton) {
                 // add open in arcgis button
                 html += '<a tabindex="0" target="_blank" href="' + this.getViewerURL('arcgis', this._options.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';

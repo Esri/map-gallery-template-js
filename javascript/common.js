@@ -1007,20 +1007,6 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                 return this._options.sharingurl + '/apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
             case 'arcgis':
                 return this._options.sharingurl + '/home/webmap/viewer.html?webmap=' + webmap;
-                // arcgis explorer link
-            case 'explorer':
-                retUrl = "http://explorer.arcgis.com/?open=" + webmap;
-                if (retUrl && location.protocol === "https:") {
-                    retUrl = retUrl.replace('http:', 'https:');
-                }
-                return retUrl;
-                // arcgis explorer presentation mode link
-            case 'explorer_present':
-                retUrl = "http://explorer.arcgis.com/?present=" + webmap;
-                if (retUrl && location.protocol === "https:") {
-                    retUrl = retUrl.replace('http:', 'https:');
-                }
-                return retUrl;
                 // portal sign up link
             case 'signup_page':
                 retUrl = this._options.sharingurl + '/home/createaccount.html';

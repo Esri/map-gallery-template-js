@@ -182,12 +182,6 @@
                 "label": "Simple Viewer",
                 "value": "simple"
             }, {
-                "label": "Explorer Online",
-                "value": "explorer"
-            }, {
-                "label": "Explorer Presentation",
-                "value": "explorer_present"
-            }, {
                 "label": "Map Viewer",
                 "value": "arcgis"
             }]
@@ -256,14 +250,6 @@
         }, {
             "type": "paragraph",
             "value": "Show footer on all pages."
-        }, {
-            "type": "boolean",
-            "fieldName": "showExplorerButton",
-            "label": "Show Explorer Online button.",
-            "tooltip": "Displays the button to open the webmap in Explorer Online viewer."
-        }, {
-            "type": "paragraph",
-            "value": "Displays the button to open the webmap in Explorer Online viewer."
         }, {
             "type": "boolean",
             "fieldName": "showArcGISOnlineButton",
@@ -362,7 +348,6 @@
         "showComments": false,
         "showRatings": false,
         "showViews": true,
-        "showExplorerButton": false,
         "showArcGISOnlineButton": false,
         "showMobileButtons": false,
         "openGalleryItemsNewWindow": false,
