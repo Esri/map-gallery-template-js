@@ -347,7 +347,7 @@
         "showMoreInfo": false,
         "showComments": false,
         "showRatings": false,
-        "showViews": true,
+        "showViews": false,
         "showArcGISOnlineButton": false,
         "showMobileButtons": false,
         "openGalleryItemsNewWindow": false,
