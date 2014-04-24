@@ -992,12 +992,17 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                     queryString += key + '=' + encodeURIComponent(this.urlObject.query[key]);
                 }
             }
+            var token = '';
+            // if signed in
+            if(this.globalUser){
+                token = this.globalUser.credential.token;
+            }
             // return correct url
             switch (viewer) {
             case 'item_data':
                 // item data url
                 // http://www.arcgis.com/sharing/rest/content/items/af01df44bf36437fa8daed01407138ab/data
-                return this._options.sharingurl + '/sharing/rest/content/items/' + webmap + "/data";
+                return this._options.sharingurl + '/sharing/rest/content/items/' + webmap + "/data?token=" + token;
                 // home page link
             case 'index_page':
                 retUrl = 'index.html' + queryString;
@@ -1036,7 +1041,7 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                 // portal mobile URL data
             case 'mobile':
                 if (this._options.agent_ios) {
-                    retUrl = this._options.mobilePortalUrl + '/sharing/rest/content/items/' + webmap + '/data';
+                    retUrl = this._options.mobilePortalUrl + '/sharing/rest/content/items/' + webmap + '/data' + '?token=' + token;;
                 } else if (this._options.agent_android) {
                     retUrl = this._options.mobilePortalUrl + '?webmap=' + webmap;
                 }
