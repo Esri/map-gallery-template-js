@@ -157,6 +157,15 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #descriptionContent {
 	margin-bottom:10px;
 }
+#mapButtonsLeft{
+    position: absolute;
+    top: 95px;
+    left: 20px;
+    z-index: 50;
+}
+#homeButton{
+    margin-bottom: 10px;
+}
 /*-------------------------------------------------- */
 /* Alerts */
 /*-------------------------------------------------- */
@@ -906,8 +915,8 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 #fullScreen {
 	display:block;
 	position:absolute;
-	top:10px;
-	right:10px;
+	top:20px;
+	right:20px;
 	z-index:30;
 }
 .fullScreenButton {
@@ -919,20 +928,6 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
 }
 #subtitle {
 	margin-bottom:10px;
-}
-#geoButton {
-	display:block;
-	position:absolute;
-	top:10px;
-	right:58px;
-	z-index:30;
-}
-.geoLocateButton {
-	display:inline-block;
-	width:12px;
-	height:12px;
-	overflow:hidden;
-	background:url(../images/ui/uiSprite.png) no-repeat -162px -2px;
 }
 .basemapConRel {
 	position: relative;
@@ -1269,7 +1264,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	min-width:100%;
 }
 .fullScreen #fullScreen {
-	right:242px;
+	right:252px;
 }
 .fullScreen .fullScreenButton {
 	background:url(../images/ui/uiSprite.png) no-repeat -50px -2px;
@@ -1297,8 +1292,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 	display: block !important;
 	position:absolute;
 	z-index:38;
-	top:10px;
-	right:10px;
+	top:20px;
+	right:20px;
 	background:#F1F1F1;
 }
 .fullScreen #aboutMenu {
@@ -1330,10 +1325,23 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 .fullScreen .searchListCon {
 	position:absolute;
 	z-index:38;
-	top:10px;
+	top:20px;
 	margin: 0;
 	left:75px;
 }
+.fullScreen #content .simpleGeocoder .esriGeocoder{
+    border:2px solid #666;
+}
+
+.fullScreen #content .simpleGeocoder .esriGeocoderResults{
+    border:2px solid #666;
+    border-top: 0;
+}
+
+.fullScreen #content .simpleGeocoder .esriGeocoderActive, .fullScreen #content .simpleGeocoder .esriGeocoderMenuActive{
+    border-bottom: 0;
+}
+
 .fullScreen .addressContainer, .fullScreen .searchList {
 	margin:0;
 }
@@ -1352,8 +1360,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', end
 }
 .fullScreen .basemapConRel {
 	position: absolute;
-	top:10px;
-	right:338px;
+	top:20px;
+	right:310px;
 	z-index:38;
 }
 /*-------------------------------------------------- */

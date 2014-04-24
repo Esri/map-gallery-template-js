@@ -9,13 +9,7 @@ define([
     "dojo/i18n!./nls/template.js",
     "dojo/dom-style",
     "dojo/number",
-    "esri/request",
     "esri/arcgis/utils",
-    "esri/geometry/webMercatorUtils",
-    "esri/layers/GraphicsLayer",
-    "esri/geometry/Point",
-    "esri/symbols/PictureMarkerSymbol",
-    "esri/graphic",
     "config/options",
     "dijit/Dialog",
     "application/common",
@@ -31,9 +25,11 @@ define([
     "esri/dijit/Legend",
     "dojo/keys",
     "esri/dijit/Geocoder",
+    "esri/dijit/LocateButton",
+    "esri/dijit/HomeButton",
     "esri/lang"
 ],
-function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, esriRequest, arcgisUtils, webMercatorUtils, GraphicsLayer, Point, PictureMarkerSymbol, Graphic, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, keys, Geocoder, esriLang) {
+function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, keys, Geocoder, LocateButton, HomeButton, esriLang) {
     return declare("application.map", [Common], {
         constructor: function() { /*------------------------------------*/
             // on dojo load
@@ -151,10 +147,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             var html = '';
             // fullscreen button
             html += '<div tabindex="0" title="' + i18n.viewer.mapPage.enterFullscreen + '" class="mapButton buttonSingle" id="fullScreen"><span class="fullScreenButton">&nbsp;</span></div>';
-            // if gelocation is available
-            if (navigator.geolocation) {
-                html += '<div tabindex="0" id="geoButton" title="' + i18n.viewer.mapPage.geoLocateTitle + '" class="mapButton buttonSingle"><span class="geoLocateButton">&nbsp;</span></div>';
-            }
             // insert html
             domConstruct.place(html, "map", "last");
             // fullscreen button
@@ -170,16 +162,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                     }
                 }
             }));
-            // if gelocation is available
-            if (navigator.geolocation) {
-                on(dom.byId("geoButton"), "click, keyup", lang.hitch(this, function(e) {
-                    if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
-                        navigator.geolocation.getCurrentPosition(lang.hitch(this, function(position) {
-                            this.geoLocateMap(position);
-                        }));
-                    }
-                }));
-            }
         },
         // add edit comment box
         editCommentBox: function(i) {
@@ -280,45 +262,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             this.initUI(response);
             // add popup theme
             domClass.add(this.map.infoWindow.domNode, this._options.theme);
-        },
-        /*------------------------------------*/
-        // clear the locate graphic
-        /*------------------------------------*/
-        clearLocate: function() {
-            // if locate layer exists
-            if (this.locateResultLayer) {
-                // clear it
-                this.locateResultLayer.clear();
-            }
-            // reset locate string
-            this.locateString = "";
-        },
-        /*------------------------------------*/
-        // Locate
-        /*------------------------------------*/
-        locate: function() {
-            var def = new Deferred();
-            var query = dom.byId("searchAddress").value;
-            if (query && this.map) {
-                var queryContent = {
-                    "SingleLine": query,
-                    "outSR": this.map.spatialReference.wkid,
-                    "outFields": "*",
-                    "f": "json"
-                };
-                // send request
-                esriRequest({
-                    url: this._options.helperServices.geocode[0].url + '/findAddressCandidates',
-                    content: queryContent,
-                    handleAs: 'json',
-                    callbackParamName: 'callback',
-                    // on load
-                    load: function(data) {
-                        def.resolve(data);
-                    }
-                });
-            }
-            return def;
         },
         /*------------------------------------*/
         // Basemap Gallery
@@ -434,10 +377,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
         /*------------------------------------*/
         addBottomMapButtons: function() {
             var html = '';
-            if (this._options.showExplorerButton && !this.isMobileUser()) {
-                // add open in explorer button
-                html += '<a tabindex="0" target="_blank" href="' + this.getViewerURL('explorer', this._options.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInExplorer + '</a>';
-            }
             if (this._options.showArcGISOnlineButton) {
                 // add open in arcgis button
                 html += '<a tabindex="0" target="_blank" href="' + this.getViewerURL('arcgis', this._options.webmap) + '" class="mapButton buttonSingle">' + i18n.viewer.mapPage.openInArcGIS + '</a>';
@@ -928,6 +867,14 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                         var layers = response.itemInfo.itemData.operationalLayers;
                         var html = '';
                         var mapLayersNode = dom.byId('mapLayers');
+                        var lb = new LocateButton({
+                            map: this.map
+                        },"locateButton");
+                        lb.startup();
+                        var hb = new HomeButton({
+                            map: this.map
+                        },"homeButton");
+                        hb.startup();
                         html += '<h2>' + i18n.viewer.mapPage.layersHeader + '</h2>';
                         // Layer toggles
                         if (this._options.showLayerToggle && layers.length > 0 && mapLayersNode) {
@@ -1070,7 +1017,8 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                     geocoder.outFields = "Match_addr, stAddr, City";
                     geocoder.singleLineFieldName = "Single Line";
                     geocoder.placeholder = i18n.viewer.mapPage.findPlaceholder;
-                    geocoder.esri = geocoder.placefinding = true;
+                    geocoder.esri = true;
+                    geocoder.placefinding = true;
                 }
             });
             //only use geocoders with a singleLineFieldName that allow placefinding
@@ -1088,7 +1036,8 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             }
             var options = {
                 map: this.map,
-                theme: "simpleGeocoder"
+                theme: "simpleGeocoder",
+                autoComplete:hasEsri
             };
             //If the World geocoder is primary enable auto complete 
             if (hasEsri && esriIdx === 0) {
@@ -1127,7 +1076,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             //add scalebar
             this.scalebar = new Scalebar({
                 map: this.map,
-                scalebarUnit: i18n.viewer.main.scaleBarUnits
+                scalebarUnit: this._options.units || i18n.viewer.main.scaleBarUnits
             });
             // Legend Information
             var layerInfo = arcgisUtils.getLegendLayers(response);
@@ -1177,47 +1126,6 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                     }
                 }), 500);
             }
-        },
-        /*------------------------------------*/
-        // ZOOM TO LOCATION: ZOOMS MAP TO LOCATION POINT
-        /*------------------------------------*/
-        zoomToLocation: function(x, y) {
-            // calculate lod
-            var lod = 16;
-            // set point
-            var pt = webMercatorUtils.geographicToWebMercator(new Point(x, y));
-            // if point graphic set
-            if (Options.pointGraphic) {
-                // If locate layer
-                if (this.locateResultLayer) {
-                    // clear layer
-                    this.locateResultLayer.clear();
-                } else {
-                    // Create layer for result
-                    this.locateResultLayer = new GraphicsLayer();
-                    // Add layer to map
-                    this.map.addLayer(this.locateResultLayer);
-                }
-                // Create point symbol
-                var pointSymbol = new PictureMarkerSymbol(Options.pointGraphic, 21, 25).setOffset(0, 12);
-                // Set graphic
-                var locationGraphic = new Graphic(pt, pointSymbol);
-                // Add graphic to layer
-                this.locateResultLayer.add(locationGraphic);
-            }
-            // zoom and center
-            this.map.centerAndZoom(pt, lod);
-        },
-        /*------------------------------------*/
-        // GEOLOCATE FUNCTION: SETS MAP LOCATION TO USERS LOCATION
-        /*------------------------------------*/
-        geoLocateMap: function(position) {
-            // Get lattitude
-            var latitude = position.coords.latitude;
-            // Get longitude
-            var longitude = position.coords.longitude;
-            // Zoom to location
-            this.zoomToLocation(longitude, latitude);
         }
     });
 });
