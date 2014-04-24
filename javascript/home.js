@@ -405,7 +405,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         }
                         html += '. ';
                         if (modifiedLocalized) {
-                            html += 'Last modified ' + modifiedLocalized + '. ';
+                            html += i18n.viewer.itemInfo.modifiedLabel + ' ' + modifiedLocalized + '. ';
                         }
                         html += '</p>';
                         html += '<p>' + snippet + '</p>';
