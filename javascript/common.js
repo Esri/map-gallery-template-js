@@ -749,6 +749,9 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
             }
             var q = '';
             q += 'group:"' + settings.id_group + '"';
+            if(settings.customFilter){
+                q += ' ' + settings.customFilter;
+            }
             if (settings.keywords) {
                 q += ' AND (';
                 q += ' title:' + settings.keywords;

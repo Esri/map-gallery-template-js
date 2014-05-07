@@ -167,6 +167,36 @@ input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-s
     margin-bottom: 10px;
 }
 /*-------------------------------------------------- */
+/* Filter by type */
+/*-------------------------------------------------- */
+#filterByType{
+    padding: 0 15px 20px 15px;
+}
+#filterByType ul{
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+#filterByType li{
+    margin: 0;
+    padding: 5px 10px;
+    cursor: pointer;
+    -webkit-border-radius: 5px;
+	border-radius: 5px;
+}
+#filterByType li:hover{
+    background: #ddd;
+    -moz-box-shadow: inset 1px 1px 3px #ddd;
+	-webkit-box-shadow: inset 1px 1px 3px #ddd;
+	box-shadow: inset 1px 1px 3px #ddd;
+}
+#filterByType li.selected, #filterByType li.selected:hover{
+    cursor: default;
+    -moz-box-shadow: 1px 1px 3px #ccc;
+	-webkit-box-shadow: 1px 1px 3px #ccc;
+	box-shadow: 1px 1px 3px #ccc;
+}
+/*-------------------------------------------------- */
 /* Alerts */
 /*-------------------------------------------------- */
 .alert {

@@ -99,6 +99,15 @@ define({
 				"noDescription":"No description.",
 				"detailsLabel":"Details"
             },
+            "filterItems":{
+                "show": "Show",
+                "all": "All Results",
+                "maps": "Maps",
+                "layers": "Layers",
+                "applications": "Applications",
+                "tools": "Tools",
+                "files": "Files"
+            },
             "pagination": {
                 "previous": "Previous",
                 "next": "Next",

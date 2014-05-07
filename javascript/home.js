@@ -151,6 +151,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                 perPage: parseInt(this._options.galleryItemsPerPage, 10),
                 perRow: parseInt(this._options.galleryPerRow, 10),
                 layout: this._options.defaultLayout,
+                customFilter: this._options.customFilter,
                 searchStart: data_offset
             };
             // Call featured maps
@@ -159,11 +160,34 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                 this.buildMapPlaylist(settings, data);
             }));
         },
+        getSelectedClass: function(item){
+            if(this._options.customFilterType === item){
+                return 'class="selected"';
+            }
+            return "";
+        },
         /*------------------------------------*/
         // Insert Home Content
         /*------------------------------------*/
         insertHomeContent: function() {
             var node;
+            // Set home heading
+            if (this._options.showFilterType) {
+                node = dom.byId('filterByType');
+                if(!this._options.customFilterType){
+                    this._options.customFilterType = "";
+                }
+                var html = '<strong>' + i18n.viewer.filterItems.show + '</strong>';
+                html += '<ul>';
+                html += '<li ' + this.getSelectedClass("") + ' data-type="">' + i18n.viewer.filterItems.all + '</li>';
+                html += '<li ' + this.getSelectedClass("Maps") + ' data-type="Maps">' + i18n.viewer.filterItems.maps + '</li>';
+                html += '<li ' + this.getSelectedClass("Layers") + ' data-type="Layers">' + i18n.viewer.filterItems.layers + '</li>';
+                html += '<li ' + this.getSelectedClass("Applications") + ' data-type="Applications">' + i18n.viewer.filterItems.applications + '</li>';
+                html += '<li ' + this.getSelectedClass("Tools") + ' data-type="Tools">' + i18n.viewer.filterItems.tools + '</li>';
+                html += '<li ' + this.getSelectedClass("Datafiles") + ' data-type="Datafiles">' + i18n.viewer.filterItems.files + '</li>';
+                html += '</ul>';
+                this.setNodeHTML(node, html);
+            }
             // Set home heading
             if (this._options.homeHeading) {
                 node = dom.byId('homeHeading');
@@ -526,7 +550,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                 html += '<div class="clear"></div>';
             } else {
                 // No results
-                html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMapsFound + ' <a tabindex="0" id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
+                html += '<div class="grid_5 suffix_4 sigma"><p class="alert error">' + i18n.viewer.errors.noMatches + ' <a tabindex="0" id="resetGroupSearch">' + i18n.viewer.groupPage.showAllMaps + '</a></p></div>';
                 html += '<div class="clear"></div>';
             }
             // Insert HTML
@@ -635,6 +659,45 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
         // Event Delegations
         /*------------------------------------*/
         setDelegations: function() {
+            // search button
+            on(dom.byId("filterByType"), "li:click, li:keyup", lang.hitch(this, function(e) {
+                if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
+                    var hasClass = domClass.contains(e.target, 'selected');
+                    if(!hasClass){
+                        var list = query('#filterByType li');
+                        for(var i = 0; i < list.length; i++){
+                            domClass.remove(list[i], 'selected');   
+                        }
+                        domClass.add(e.target, 'selected');
+                        var value = domAttr.get(e.target, 'data-type');
+                        var filter;
+                        switch(value){
+                            case "Maps":
+                                filter = '-type:"web mapping application" -type:"Layer Package" (type:"Project Package" OR type:"Windows Mobile Package" OR type:"Map Package" OR type:"Project Package" OR type:"Web Map" OR type:"CityEngine Web Scene" OR type:"Map Document" OR type:"Globe Document" OR type:"Scene Document" OR type:"Published Map" OR type:"Explorer Map" OR type:"ArcPad Package" OR type:"Map Template") -type:"Layer" -type: "Map Document" -type:"Map Package" -type:"ArcPad Package" -type:"Project Package" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Published Map" -type:"Map Template" -type:"Windows Mobile Package" -type:"Layer Package" -type:"Explorer Layer" -type:"Geoprocessing Package" -type:"Application Template" -type:"Code Sample" -type:"Geoprocessing Package" -type:"Geoprocessing Sample" -type:"Locator Package" -type:"Workflow Manager Package" -type:"Windows Mobile Package" -type:"Explorer Add In" -type:"Desktop Add In" -type:"File Geodatabase" -type:"Feature Collection Template" -type:"Code Attachment" -type:"Featured Items" -type:"Symbol Set" -type:"Color Set" -type:"Windows Viewer Add In" -type:"Windows Viewer Configuration"';
+                                break;
+                            case "Layers":
+                                filter = '-type:"web mapping application" -type:"Geodata Service" (type: "Feature Collection" OR type:"Layer" OR type: "Explorer Layer" OR type: "Tile Package" OR type:"Layer Package" OR type:"Feature Service" OR type:"Map Service" OR type:"Image Service" OR type:"WMS" OR type:"KML" OR typekeywords:"OGC" OR typekeywords:"Geodata Service" OR type:"Globe Service" OR type:"CSV" OR type: "Shapefile" OR type: "Service Definition" OR type: "File Geodatabase") -type:"Layer" -type: "Map Document" -type:"Map Package" -type:"ArcPad Package" -type:"Project Package" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Published Map" -type:"Map Template" -type:"Windows Mobile Package" -type:"Layer Package" -type:"Explorer Layer" -type:"Geoprocessing Package" -type:"Application Template" -type:"Code Sample" -type:"Geoprocessing Package" -type:"Geoprocessing Sample" -type:"Locator Package" -type:"Workflow Manager Package" -type:"Windows Mobile Package" -type:"Explorer Add In" -type:"Desktop Add In" -type:"File Geodatabase" -type:"Feature Collection Template" -type:"Code Attachment" -type:"Featured Items" -type:"Symbol Set" -type:"Color Set" -type:"Windows Viewer Add In" -type:"Windows Viewer Configuration"';
+                                break;
+                            case "Applications":
+                                filter = '(type:"Code Sample" OR type:"Web Mapping Application" OR type:"Mobile Application" OR type:"Application" OR type:"Desktop Application Template" OR type:"Desktop Application" OR type:"Operation View") -type:"Layer" -type: "Map Document" -type:"Map Package" -type:"ArcPad Package" -type:"Project Package" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Published Map" -type:"Map Template" -type:"Windows Mobile Package" -type:"Layer Package" -type:"Explorer Layer" -type:"Geoprocessing Package" -type:"Application Template" -type:"Code Sample" -type:"Geoprocessing Package" -type:"Geoprocessing Sample" -type:"Locator Package" -type:"Workflow Manager Package" -type:"Windows Mobile Package" -type:"Explorer Add In" -type:"Desktop Add In" -type:"File Geodatabase" -type:"Feature Collection Template" -type:"Code Attachment" -type:"Featured Items" -type:"Symbol Set" -type:"Color Set" -type:"Windows Viewer Add In" -type:"Windows Viewer Configuration"';
+                                break;
+                            case "Tools":
+                                filter = '-type:"KML" (typekeywords:"tool" OR type:"Geodata Service" OR type: "Workflow Manager Package" OR type:"Rule Package" OR type:"Operations Dashboard Add In" OR type:"Workflow Manager Service") -type:"Layer" -type: "Map Document" -type:"Map Package" -type:"ArcPad Package" -type:"Project Package" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Published Map" -type:"Map Template" -type:"Windows Mobile Package" -type:"Layer Package" -type:"Explorer Layer" -type:"Geoprocessing Package" -type:"Application Template" -type:"Code Sample" -type:"Geoprocessing Package" -type:"Geoprocessing Sample" -type:"Locator Package" -type:"Workflow Manager Package" -type:"Windows Mobile Package" -type:"Explorer Add In" -type:"Desktop Add In" -type:"File Geodatabase" -type:"Feature Collection Template" -type:"Code Attachment" -type:"Featured Items" -type:"Symbol Set" -type:"Color Set" -type:"Windows Viewer Add In" -type:"Windows Viewer Configuration"';
+                                break;
+                            case "Datafiles":
+                                filter = '(typekeywords:"Document" OR type:"Image") -type:"Map Document" -type:"Image Service" -type:"Explorer Document" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Layer" -type: "Map Document" -type:"Map Package" -type:"ArcPad Package" -type:"Project Package" -type:"Explorer Map" -type:"Globe Document" -type:"Scene Document" -type:"Published Map" -type:"Map Template" -type:"Windows Mobile Package" -type:"Layer Package" -type:"Explorer Layer" -type:"Geoprocessing Package" -type:"Application Template" -type:"Code Sample" -type:"Geoprocessing Package" -type:"Geoprocessing Sample" -type:"Locator Package" -type:"Workflow Manager Package" -type:"Windows Mobile Package" -type:"Explorer Add In" -type:"Desktop Add In" -type:"File Geodatabase" -type:"Feature Collection Template" -type:"Code Attachment" -type:"Featured Items" -type:"Symbol Set" -type:"Color Set" -type:"Windows Viewer Add In" -type:"Windows Viewer Configuration"';
+                                break;
+                            default:
+                                filter = "";
+                        };
+                        // set filter options
+                        this._options.customFilterType = value;
+                        this._options.customFilter = filter;
+                        this.addSpinner("groupSpinner");
+                        this.queryMaps();
+                    }
+                }
+            }));
             // search button
             on(dom.byId("searchGroupButton"), "click, keyup", lang.hitch(this, function(e) {
                 if (e.type === 'click' || (e.keyCode === keys.ENTER)) {
