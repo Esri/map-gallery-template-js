@@ -1015,7 +1015,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                     hasEsri = true;
                     geocoder.name = "Esri World Geocoder";
                     geocoder.outFields = "Match_addr, stAddr, City";
-                    geocoder.singleLineFieldName = "Single Line";
+                    geocoder.singleLineFieldName = "SingleLine";
                     geocoder.placeholder = i18n.viewer.mapPage.findPlaceholder;
                     geocoder.esri = true;
                     geocoder.placefinding = true;
