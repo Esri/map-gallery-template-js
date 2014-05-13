@@ -1002,6 +1002,9 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
             }
             // return correct url
             switch (viewer) {
+            case 'operation_view':
+                    // http://www.arcgis.com/apps/dashboard/index.html#/66c198533f724f1ca8be5f91fa0beab5
+                    return this._options.sharingurl + '/apps/dashboard/index.html#/' + webmap;
             case 'item_data':
                 // item data url
                 // http://www.arcgis.com/sharing/rest/content/items/af01df44bf36437fa8daed01407138ab/data

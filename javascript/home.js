@@ -293,7 +293,10 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         var externalLink = false;
                         if (this.ACObj[locNum].type === "Web Map") {
                             mapURL = this.getViewerURL(this._options.mapViewer, this.ACObj[locNum].id);
-                        } else if (this.ACObj[locNum].type === "CityEngine Web Scene") {
+                        } else if (this.ACObj[locNum].type === "Operation View") {
+                            mapURL = this.getViewerURL('operation_view', this.ACObj[locNum].id);
+                            externalLink = true;
+                        }else if (this.ACObj[locNum].type === "CityEngine Web Scene") {
                             mapURL = this.getViewerURL('cityengine', this.ACObj[locNum].id);
                             externalLink = true;
                         } else if (this.ACObj[locNum].url) {
@@ -372,6 +375,9 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                     if (data.results[i].type === "Web Map") {
                         // url variable
                         itemURL = this.getViewerURL(this._options.mapViewer, data.results[i].id);
+                    } else if (data.results[i].type === "Operation View") {
+                        itemURL = this.getViewerURL('operation_view', data.results[i].id);
+                        externalLink = true;
                     } else if (data.results[i].type === "CityEngine Web Scene") {
                         itemURL = this.getViewerURL('cityengine', data.results[i].id);
                         externalLink = true;
@@ -584,6 +590,18 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         domAttr.set(dom.byId('searchGroup'), 'value', '');
                         var textVal = '';
                         this._options.searchString = textVal;
+                        this._options.customFilterType = "";
+                        this._options.customFilter = "";
+                        
+                        var list = query('#filterByType li');
+                        for(var i = 0; i < list.length; i++){
+                            if(i === 0){
+                                domClass.add(list[i], 'selected');
+                            }
+                            else{
+                                domClass.remove(list[i], 'selected');
+                            }  
+                        }
                         this.addSpinner("groupSpinner");
                         this.queryMaps();
                         this.prevVal = textVal;
