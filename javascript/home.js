@@ -291,7 +291,12 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         // if map has a url
                         var mapURL;
                         var externalLink = false;
-                        if (this.ACObj[locNum].type === "Web Map") {
+                        // open everything in item page
+                        if(this._options.mapViewer === "item_page"){
+                            // url variable
+                            mapURL = this.getViewerURL("item_page", this.ACObj[locNum].id);
+                        }
+                        else if (this.ACObj[locNum].type === "Web Map") {
                             mapURL = this.getViewerURL(this._options.mapViewer, this.ACObj[locNum].id);
                         } else if (this.ACObj[locNum].type === "Operation View") {
                             mapURL = this.getViewerURL('operation_view', this.ACObj[locNum].id);
@@ -372,7 +377,12 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                     if (this._options.openGalleryItemsNewWindow) {
                         externalLink = true;
                     }
-                    if (data.results[i].type === "Web Map") {
+                    // open everything in item page
+                    if(this._options.mapViewer === "item_page"){
+                        // url variable
+                        itemURL = this.getViewerURL("item_page", data.results[i].id);
+                    }
+                    else if (data.results[i].type === "Web Map") {
                         // url variable
                         itemURL = this.getViewerURL(this._options.mapViewer, data.results[i].id);
                     } else if (data.results[i].type === "Operation View") {
