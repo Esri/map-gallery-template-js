@@ -1034,9 +1034,7 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                 return retUrl;
                 // portal item page
             case 'item_page':
-                if (this._options.webmap) {
-                    retUrl = this._options.sharingurl + '/home/item.html?id=' + this._options.webmap;
-                }
+                retUrl = this._options.sharingurl + '/home/item.html?id=' + webmap;
                 return retUrl;
                 // portal group page
             case 'group_page':

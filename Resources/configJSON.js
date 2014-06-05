@@ -236,6 +236,10 @@
                   {
                      "label":"Map Viewer",
                      "value":"arcgis"
+                  },
+                  {
+                     "label":"ArcGIS Item Page",
+                     "value":"item_page"
                   }
                ]
             },
