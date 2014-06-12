@@ -855,6 +855,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                             attributionWidth: 0.40,
                             nav: false
                         },
+                        usePopupManager: true,
                         ignorePopups: false,
                         bingMapsKey: this._options.bingMapsKey,
                         geometryServiceURL: this._options.helperServices.geometry.url
