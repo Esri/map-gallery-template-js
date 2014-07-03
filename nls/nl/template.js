@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Wissen"
+                "clearSearch": "Wissen",
+                "datePattern": "d MMM yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Kan kaart niet maken",
@@ -35,47 +36,47 @@
                 "loadingText": "Kaarten laden&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sorteren op", // new
-				"modified": "Datum", // new
-				"title": "Titel", // new
-				"type": "Type", // new
-				"numRatings": "Beoordelingen", // new
-				"avgRating": "Gemiddelde beoordeling", // new
-				"numComments": "Opmerkingen", // new
-				"numViews": "Weergaven" // new
+				"sortBy": "Sorteren op",
+				"modified": "Datum",
+				"title": "Titel",
+				"type": "Type",
+				"numRatings": "Beoordelingen",
+				"avgRating": "Gemiddelde beoordeling",
+				"numComments": "Opmerkingen",
+				"numViews": "Weergaven"
 			},
 			"comments":{
-				"commentsHeader": "Opmerkingen", // new
-				"posted": "Geplaatst", // new
-				"by": "van", // new
-				"deleteComment": "verwijderen", // new
-				"editComment": "bewerken", // new
-				"noComments": "Geen opmerkingen", // new
-				"addCommentButton": "Opmerking toevoegen", // new
-				"signIn": "Aanmelden", // new
-				"register": "Registreren", // new
-				"or": "of", // new
-				"toPost": "om een opmerking te plaatsen." // new
+				"commentsHeader": "Opmerkingen",
+				"posted": "Geplaatst",
+				"by": "van",
+				"deleteComment": "verwijderen",
+				"editComment": "bewerken",
+				"noComments": "Geen opmerkingen",
+				"addCommentButton": "Opmerking toevoegen",
+				"signIn": "Aanmelden",
+				"register": "Registreren",
+				"or": "of",
+				"toPost": "om een opmerking te plaatsen."
 			},
 			"buttons":{
-				"cancel": "Annuleren", // new
-				"submit": "Verzenden" // new
+				"cancel": "Annuleren",
+				"submit": "Verzenden"
 			},
 			"rating":{
-				"signIn": "Aanmelden", // new
-				"toRate": "om te beoordelen." // new
+				"signIn": "Aanmelden",
+				"toRate": "om te beoordelen."
 			},
 			"itemInfo":{
-				"createdLabel": "gemaakt", // new
-				"ratingsLabel": "beoordeling", // new
-				"ratingsLabelPlural": "beoordelingen", // new
-				"viewsLabel": "weergave", // new
-				"viewsLabelPlural": "keer bekeken", // new
-				"commentsLabel": "opmerking", // new
-				"commentsLabelPlural": "opmerkingen", // new
-				"modifiedLabel": "Laatst gewijzigd", // new
-				"by": "van", // new
-				"separator": "," // new
+				"createdLabel": "gemaakt",
+				"ratingsLabel": "beoordeling",
+				"ratingsLabelPlural": "beoordelingen",
+				"viewsLabel": "weergave",
+				"viewsLabelPlural": "keer bekeken",
+				"commentsLabel": "opmerking",
+				"commentsLabelPlural": "opmerkingen",
+				"modifiedLabel": "Laatst gewijzigd",
+				"by": "van",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Een locatie zoeken",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Eigenaar:",
                 "switchBasemap": "Basiskaart wijzigen",
-				"getMobileApp": "App downloaden", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "App downloaden",
+				"constraintsHeading":"Gebruiksbeperkingen",
+				"createdLabel":"Gemaakt",
+				"noDescription":"Geen beschrijving.",
+				"detailsLabel":"Details"
+            },
+            "filterItems":{
+                "show": "Weergeven",
+                "all": "Alle resultaten",
+                "maps": "Kaarten",
+                "layers": "Kaartlagen",
+                "applications": "Applicaties",
+                "tools": "Tools",
+                "files": "Bestanden"
             },
             "pagination": {
                 "previous": "Vorige",

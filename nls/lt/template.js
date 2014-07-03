@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Ištrinti"
+                "clearSearch": "Valyti",
+                "datePattern": "yyyy MMM dd" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Žemėlapio sukurti nepavyko",
@@ -27,7 +28,7 @@
             "groupPage": {
                 "showAllMaps": "Rodyti visus žemėlapius",
                 "searchTitle": "Ieškoti šioje grupėje",
-                "searchTitleShort": "Paieška",
+                "searchTitleShort": "Ieškoti",
                 "searchPlaceholder": "Ieškoti žemėlapių",
                 "itemTitle": "Peržiūrėti žemėlapį",
                 "gridSwitch": "Perjungti į vaizdavimą tinkleliu",
@@ -35,47 +36,47 @@
                 "loadingText": "Įkeliami žemėlapiai&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Rūšiuoti pagal", // new
-				"modified": "Data", // new
-				"title": "Antraštė", // new
-				"type": "Tipas", // new
-				"numRatings": "Vertinimai", // new
-				"avgRating": "Vid. vertinimas", // new
-				"numComments": "Komentarai", // new
-				"numViews": "Peržiūrų sk." // new
+				"sortBy": "Rūšiuoti pagal",
+				"modified": "Data",
+				"title": "Pavadinimas",
+				"type": "Tipas",
+				"numRatings": "Vertinimai",
+				"avgRating": "Vid. vertinimas",
+				"numComments": "Komentarai",
+				"numViews": "Peržiūros"
 			},
 			"comments":{
-				"commentsHeader": "Komentarai", // new
-				"posted": "Paskelbta", // new
-				"by": "pagal", // new
-				"deleteComment": "pašalinti", // new
-				"editComment": "redaguoti", // new
-				"noComments": "Komentarų nėra", // new
-				"addCommentButton": "Pridėti komentarą", // new
-				"signIn": "Prisijungti", // new
-				"register": "Registruotis", // new
-				"or": "arba", // new
-				"toPost": "skelbti komentarą." // new
+				"commentsHeader": "Komentarai",
+				"posted": "Paskelbta",
+				"by": "sukūrė",
+				"deleteComment": "pašalinti",
+				"editComment": "redaguoti",
+				"noComments": "Komentarų nėra",
+				"addCommentButton": "Pridėti komentarą",
+				"signIn": "Prisijungti",
+				"register": "Registruoti",
+				"or": "or",
+				"toPost": "skelbti komentarą."
 			},
 			"buttons":{
-				"cancel": "Atsisakyti", // new
-				"submit": "Išsiųsti" // new
+				"cancel": "Atšaukti",
+				"submit": "Pateikti"
 			},
 			"rating":{
-				"signIn": "Prisijungti", // new
-				"toRate": "vertinti." // new
+				"signIn": "Prisijungti",
+				"toRate": "vertinti."
 			},
 			"itemInfo":{
-				"createdLabel": "sukurtas", // new
-				"ratingsLabel": "vertinimas", // new
-				"ratingsLabelPlural": "vertinimai", // new
-				"viewsLabel": "peržiūra", // new
-				"viewsLabelPlural": "peržiūros", // new
-				"commentsLabel": "komentaras", // new
-				"commentsLabelPlural": "komentarai", // new
-				"modifiedLabel": "Paskutinį kartą keistas", // new
-				"by": "pagal", // new
-				"separator": "," // new
+				"createdLabel": "sukurtas",
+				"ratingsLabel": "įvertinimas",
+				"ratingsLabelPlural": "reitingai",
+				"viewsLabel": "peržiūra",
+				"viewsLabelPlural": "peržiūros",
+				"commentsLabel": "komentaras",
+				"commentsLabelPlural": "komentarai",
+				"modifiedLabel": "Pakeitimo data",
+				"by": "sukūrė",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Rasti vietą",
@@ -84,23 +85,32 @@
                 "layersHeader": "Sluoksniai",
                 "enterFullscreen": "Rodyti visame ekrane",
                 "exitFullscreen": "Grįžti iš viso ekrano rėžimo",
-                "arcgisLink": "Elemento apibūdinimas",
+                "arcgisLink": "Elemento aprašas",
                 "moreInformation": "Daugiau informacijos",
                 "geoLocateTitle": "Naudoti esamą padėtį",
                 "openInMobile": "Atverti mobilioje aplikacijoje",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Savininkas:",
-                "switchBasemap": "Pakeisti pagrindo žėmėlapį",
-				"getMobileApp": "Gauti aplikaciją", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+                "switchBasemap": "Pakeisti pagrindo žemėlapį",
+				"getMobileApp": "Gauti aplikaciją",
+				"constraintsHeading":"Naudojimo apribojimai",
+				"createdLabel":"Sukurtas",
+				"noDescription":"Aprašymo nėra.",
+				"detailsLabel":"Detali informacija"
+            },
+            "filterItems":{
+                "show": "Rodyti",
+                "all": "Visi rezultatai",
+                "maps": "Žemėlapiai",
+                "layers": "Sluoksniai",
+                "applications": "Aplikacijos",
+                "tools": "Įrankiai",
+                "files": "Failai"
             },
             "pagination": {
                 "previous": "Ankstesnis",
-                "next": "Kitas",
+                "next": "Sekantis",
                 "first": "Pirmas puslapis",
                 "last": "Paskutinis puslapis",
                 "helip": "&hellip;",

@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Golire"
+                "clearSearch": "Golire",
+                "datePattern": "d. MMM yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Imposibil de creat harta",
@@ -35,47 +36,47 @@
                 "loadingText": "Încărcare hărţi&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sortare după", // new
-				"modified": "Dată", // new
-				"title": "Titlu", // new
-				"type": "Tip", // new
-				"numRatings": "Calificative", // new
-				"avgRating": "Calificativ mediu", // new
-				"numComments": "Comentarii", // new
-				"numViews": "Vizualizări" // new
+				"sortBy": "Sortare după",
+				"modified": "Dată",
+				"title": "Titlu",
+				"type": "Tip",
+				"numRatings": "Calificative",
+				"avgRating": "Calificativ mediu",
+				"numComments": "Comentarii",
+				"numViews": "Vizualizări"
 			},
 			"comments":{
-				"commentsHeader": "Comentarii", // new
-				"posted": "Postat", // new
-				"by": "de", // new
-				"deleteComment": "ştergere", // new
-				"editComment": "editare", // new
-				"noComments": "Niciun comentariu", // new
-				"addCommentButton": "Adăugare comentariu", // new
-				"signIn": "Autentificare", // new
-				"register": "Înregistrare", // new
-				"or": "sau", // new
-				"toPost": "pentru a posta un comentariu." // new
+				"commentsHeader": "Comentarii",
+				"posted": "Postat",
+				"by": "de",
+				"deleteComment": "ştergere",
+				"editComment": "editare",
+				"noComments": "Niciun comentariu",
+				"addCommentButton": "Adăugare comentariu",
+				"signIn": "Autentificare",
+				"register": "Înregistrare",
+				"or": "sau",
+				"toPost": "pentru a posta un comentariu."
 			},
 			"buttons":{
-				"cancel": "Anulare", // new
-				"submit": "Trimitere" // new
+				"cancel": "Anulare",
+				"submit": "Trimitere"
 			},
 			"rating":{
-				"signIn": "Autentificare", // new
-				"toRate": "pentru a furniza un calificativ." // new
+				"signIn": "Autentificare",
+				"toRate": "pentru a furniza un calificativ."
 			},
 			"itemInfo":{
-				"createdLabel": "creat", // new
-				"ratingsLabel": "calificativ", // new
-				"ratingsLabelPlural": "calificative", // new
-				"viewsLabel": "vizualizare", // new
-				"viewsLabelPlural": "vizualizări", // new
-				"commentsLabel": "comentariu", // new
-				"commentsLabelPlural": "comentarii", // new
-				"modifiedLabel": "Ultima modificare", // new
-				"by": "de", // new
-				"separator": "," // new
+				"createdLabel": "creat",
+				"ratingsLabel": "calificativ",
+				"ratingsLabelPlural": "calificative",
+				"viewsLabel": "vizualizare",
+				"viewsLabelPlural": "vizualizări",
+				"commentsLabel": "comentariu",
+				"commentsLabelPlural": "comentarii",
+				"modifiedLabel": "Ultima modificare",
+				"by": "de",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Găsire locaţie",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Proprietar:",
                 "switchBasemap": "Schimbare hartă fundal",
-				"getMobileApp": "Obţinere aplicaţie", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Obţinere aplicaţie",
+				"constraintsHeading":"Utilizare restricţii",
+				"createdLabel":"Creat",
+				"noDescription":"Nicio descriere.",
+				"detailsLabel":"Detalii"
+            },
+            "filterItems":{
+                "show": "Afişare",
+                "all": "Toate rezultatele",
+                "maps": "Hărţi",
+                "layers": "Straturi tematice",
+                "applications": "Aplicaţii",
+                "tools": "Instrumente",
+                "files": "Fişiere"
             },
             "pagination": {
                 "previous": "Înapoi",

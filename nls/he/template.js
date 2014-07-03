@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "נקה"
+                "clearSearch": "נקה",
+                "datePattern": "d, MMM,  yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "לא ניתן ליצור מפה",
@@ -35,47 +36,47 @@
                 "loadingText": "טוען מפות&hellip;"
             },
 			"sortFields":{
-				"sortBy": "מיון על ידי", // new
-				"modified": "תאריך", // new
-				"title": "כותרת", // new
-				"type": "סוג", // new
-				"numRatings": "דירוגים", // new
-				"avgRating": "דירוג ממוצע", // new
-				"numComments": "הערות", // new
-				"numViews": "צפיות" // new
+				"sortBy": "מיון על ידי",
+				"modified": "תאריך",
+				"title": "כותרת",
+				"type": "סוג",
+				"numRatings": "דירוגים",
+				"avgRating": "דירוג ממוצע",
+				"numComments": "הערות",
+				"numViews": "צפיות"
 			},
 			"comments":{
-				"commentsHeader": "הערות", // new
-				"posted": "פורסם", // new
-				"by": "ע\"י", // new
-				"deleteComment": "מחק", // new
-				"editComment": "עריכה", // new
-				"noComments": "אין הערות", // new
-				"addCommentButton": "הוסף הערה", // new
-				"signIn": "התחבר", // new
-				"register": "רגיסטרציה", // new
-				"or": "או", // new
-				"toPost": "לפרסם הערה." // new
+				"commentsHeader": "הערות",
+				"posted": "פורסם",
+				"by": "ע\"י",
+				"deleteComment": "מחק",
+				"editComment": "עריכה",
+				"noComments": "אין הערות",
+				"addCommentButton": "הוסף הערה",
+				"signIn": "התחבר",
+				"register": "רגיסטרציה",
+				"or": "או",
+				"toPost": "לפרסם הערה."
 			},
 			"buttons":{
-				"cancel": "ביטול", // new
-				"submit": "שלח" // new
+				"cancel": "ביטול",
+				"submit": "שלח"
 			},
 			"rating":{
-				"signIn": "התחבר", // new
-				"toRate": "לדרג." // new
+				"signIn": "התחבר",
+				"toRate": "לדרג."
 			},
 			"itemInfo":{
-				"createdLabel": "נוצר", // new
-				"ratingsLabel": "דירוג", // new
-				"ratingsLabelPlural": "דירוגים", // new
-				"viewsLabel": "תצוגה", // new
-				"viewsLabelPlural": "תצוגות", // new
-				"commentsLabel": "הערה", // new
-				"commentsLabelPlural": "הערות", // new
-				"modifiedLabel": "שונה לאחרונה", // new
-				"by": "ע\"י", // new
-				"separator": "," // new
+				"createdLabel": "נוצר",
+				"ratingsLabel": "דירוג",
+				"ratingsLabelPlural": "דירוגים",
+				"viewsLabel": "תצוגה",
+				"viewsLabelPlural": "תצוגות",
+				"commentsLabel": "הערה",
+				"commentsLabelPlural": "הערות",
+				"modifiedLabel": "שונה לאחרונה",
+				"by": "ע\"י",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "מצא מיקום",
@@ -85,18 +86,27 @@
                 "enterFullscreen": "מבט מסך מלא",
                 "exitFullscreen": "צא ממסך מלא",
                 "arcgisLink": "פרטי פריט",
-                "moreInformation": "עוד מידע",
+                "moreInformation": "מידע נוסף",
                 "geoLocateTitle": "השתמש במיקום נוכחי",
                 "openInMobile": "פתח באפליקציה של המכשיר נייד",
                 "openInArcGIS": "Map Viewer",
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "יוצר:",
                 "switchBasemap": "החלף מפת בסיס",
-				"getMobileApp": "השג אפליקציה", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "השג אפליקציה",
+				"constraintsHeading":"השתמש במגבלות",
+				"createdLabel":"נוצר",
+				"noDescription":"אין תיאור.",
+				"detailsLabel":"פרטים"
+            },
+            "filterItems":{
+                "show": "הצג",
+                "all": "כל התוצאות",
+                "maps": "מפות",
+                "layers": "שכבות",
+                "applications": "אפליקציות",
+                "tools": "כלים",
+                "files": "קבצים"
             },
             "pagination": {
                 "previous": "קודם",

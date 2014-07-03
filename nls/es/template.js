@@ -3,12 +3,13 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Borrar"
+                "clearSearch": "Borrar",
+                "datePattern": "MMM d, aaaa" // added 2.5.2013
             },
             "errors": {
                 "createMap": "No se puede crear el mapa",
                 "general": "Error",
-                "bingError": "Para desplegar esta aplicación necesita su propia llave de mapas bing.",
+                "bingError": "Para desplegar esta aplicación necesitas tu propia llave de mapas bing.",
                 "noLayers": "Ninguna capa operativa",
                 "noSearchResults": "Lo sentimos, no se encontraron resultados.",
 				"noGroupResults": "No se pudo encontrar el grupo.",
@@ -35,47 +36,47 @@
                 "loadingText": "Cargando mapas&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Ordenar por", // new
-				"modified": "Fecha", // new
-				"title": "Título", // new
-				"type": "Tipo", // new
-				"numRatings": "Calificaciones", // new
-				"avgRating": "Clasificación media", // new
-				"numComments": "Comentarios", // new
-				"numViews": "Vistas" // new
+				"sortBy": "Ordenar por",
+				"modified": "Fecha",
+				"title": "Título",
+				"type": "Tipo",
+				"numRatings": "Calificaciones",
+				"avgRating": "Clasificación media",
+				"numComments": "Comentarios",
+				"numViews": "Vistas"
 			},
 			"comments":{
-				"commentsHeader": "Comentarios", // new
-				"posted": "Publicado", // new
-				"by": "de", // new
-				"deleteComment": "eliminar", // new
-				"editComment": "editar", // new
-				"noComments": "Sin comentarios", // new
-				"addCommentButton": "Agregar comentario", // new
-				"signIn": "Iniciar sesión", // new
-				"register": "Registrarse", // new
-				"or": "o", // new
-				"toPost": "para publicar un comentario." // new
+				"commentsHeader": "Comentarios",
+				"posted": "Publicado",
+				"by": "de",
+				"deleteComment": "eliminar",
+				"editComment": "editar",
+				"noComments": "Sin comentarios",
+				"addCommentButton": "Agregar comentario",
+				"signIn": "Iniciar sesión",
+				"register": "Registrarse",
+				"or": "o",
+				"toPost": "para publicar un comentario."
 			},
 			"buttons":{
-				"cancel": "Cancelar", // new
-				"submit": "Enviar" // new
+				"cancel": "Cancelar",
+				"submit": "Enviar"
 			},
 			"rating":{
-				"signIn": "Iniciar sesión", // new
-				"toRate": "para clasificar." // new
+				"signIn": "Iniciar sesión",
+				"toRate": "para clasificar."
 			},
 			"itemInfo":{
-				"createdLabel": "creado", // new
-				"ratingsLabel": "calificación", // new
-				"ratingsLabelPlural": "calificaciones", // new
-				"viewsLabel": "vista", // new
-				"viewsLabelPlural": "vistas", // new
-				"commentsLabel": "comentario", // new
-				"commentsLabelPlural": "comentarios", // new
-				"modifiedLabel": "Última modificación", // new
-				"by": "de", // new
-				"separator": "," // new
+				"createdLabel": "creado",
+				"ratingsLabel": "calificación",
+				"ratingsLabelPlural": "calificaciones",
+				"viewsLabel": "vista",
+				"viewsLabelPlural": "vistas",
+				"commentsLabel": "comentario",
+				"commentsLabelPlural": "comentarios",
+				"modifiedLabel": "Última modificación",
+				"by": "de",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Encontrar una ubicación",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Propietario:",
                 "switchBasemap": "Cambiar mapa base",
-				"getMobileApp": "Obtener aplicación", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Obtener aplicación",
+				"constraintsHeading":"Usar restricciones",
+				"createdLabel":"Creado",
+				"noDescription":"No hay ninguna descripción.",
+				"detailsLabel":"Detalles"
+            },
+            "filterItems":{
+                "show": "Mostrar",
+                "all": "Todos los resultados",
+                "maps": "Mapas",
+                "layers": "Capas",
+                "applications": "Aplicaciones",
+                "tools": "Herramientas",
+                "files": "Archivos"
             },
             "pagination": {
                 "previous": "Anterior",

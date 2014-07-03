@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Löschen"
+                "clearSearch": "Löschen",
+                "datePattern": "d. MMMM yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Karte kann nicht erstellt werden",
@@ -20,7 +21,7 @@
                 "legendButton": "Legende",
 				"layersButton": "Layer", // new
                 "legendButtonTitle": "Kartenlegende",
-                "aboutButton": "Info zu",
+                "aboutButton": "Info",
                 "aboutButtonTitle": "Info zur Karte",
                 "message": "Keine operationalen Layer"
             },
@@ -35,47 +36,47 @@
                 "loadingText": "Karten&hellip; werden geladen"
             },
 			"sortFields":{
-				"sortBy": "Sortieren nach", // new
-				"modified": "Datum", // new
-				"title": "Titel", // new
-				"type": "Typ", // new
-				"numRatings": "Bewertungen", // new
-				"avgRating": "Durchschn. Bewertung", // new
-				"numComments": "Kommentare", // new
-				"numViews": "Aufrufe" // new
+				"sortBy": "Sortieren nach",
+				"modified": "Datum",
+				"title": "Titel",
+				"type": "Typ",
+				"numRatings": "Bewertungen",
+				"avgRating": "Durchschn. Bewertung",
+				"numComments": "Kommentare",
+				"numViews": "Aufrufe"
 			},
 			"comments":{
-				"commentsHeader": "Kommentare", // new
-				"posted": "Veröffentlicht", // new
-				"by": "von", // new
-				"deleteComment": "löschen", // new
-				"editComment": "bearbeiten", // new
-				"noComments": "Keine Kommentare", // new
-				"addCommentButton": "Kommentar hinzufügen", // new
-				"signIn": "Anmelden", // new
-				"register": "Registrieren", // new
-				"or": "oder", // new
-				"toPost": "zum Veröffentlichen eines Kommentars." // new
+				"commentsHeader": "Kommentare",
+				"posted": "Veröffentlicht",
+				"by": "von",
+				"deleteComment": "löschen",
+				"editComment": "bearbeiten",
+				"noComments": "Keine Kommentare",
+				"addCommentButton": "Kommentar hinzufügen",
+				"signIn": "Anmelden",
+				"register": "Registrieren",
+				"or": "oder",
+				"toPost": "zum Veröffentlichen eines Kommentars."
 			},
 			"buttons":{
-				"cancel": "Abbrechen", // new
-				"submit": "Senden" // new
+				"cancel": "Abbrechen",
+				"submit": "Senden"
 			},
 			"rating":{
-				"signIn": "Anmelden", // new
-				"toRate": "zum Bewerten." // new
+				"signIn": "Anmelden",
+				"toRate": "zum Bewerten."
 			},
 			"itemInfo":{
-				"createdLabel": "erstellt", // new
-				"ratingsLabel": "Bewertung", // new
-				"ratingsLabelPlural": "Bewertungen", // new
-				"viewsLabel": "Aufruf", // new
-				"viewsLabelPlural": "Aufrufe", // new
-				"commentsLabel": "Kommentar", // new
-				"commentsLabelPlural": "Kommentare", // new
-				"modifiedLabel": "Zuletzt geändert", // new
-				"by": "von", // new
-				"separator": "," // new
+				"createdLabel": "erstellt",
+				"ratingsLabel": "Bewertung",
+				"ratingsLabelPlural": "Bewertungen",
+				"viewsLabel": "Aufruf",
+				"viewsLabelPlural": "Aufrufe",
+				"commentsLabel": "Kommentar",
+				"commentsLabelPlural": "Kommentare",
+				"modifiedLabel": "Zuletzt geändert",
+				"by": "von",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Position suchen",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Besitzer:",
                 "switchBasemap": "Grundkarte wechseln",
-				"getMobileApp": "Anwendung abrufen", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Anwendung abrufen",
+				"constraintsHeading":"Nutzungsbeschränkungen",
+				"createdLabel":"Erstellt",
+				"noDescription":"Keine Beschreibung.",
+				"detailsLabel":"Details"
+            },
+            "filterItems":{
+                "show": "Anzeigen",
+                "all": "Alle Ergebnisse",
+                "maps": "Karten",
+                "layers": "Layer",
+                "applications": "Anwendungen",
+                "tools": "Werkzeuge",
+                "files": "Dateien"
             },
             "pagination": {
                 "previous": "Zurück",

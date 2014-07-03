@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Очистить"
+                "clearSearch": "Очистить",
+                "datePattern": "МММ д, гггг" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Не удалось создать карту",
@@ -35,47 +36,47 @@
                 "loadingText": "Загрузка карт&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Сортировать по", // new
-				"modified": "Дате", // new
-				"title": "Название", // new
-				"type": "Тип", // new
-				"numRatings": "Рейтингу", // new
-				"avgRating": "Усредненному рейтингу", // new
-				"numComments": "Комментарии", // new
-				"numViews": "Просмотров" // new
+				"sortBy": "Сортировать по",
+				"modified": "Дате",
+				"title": "Название",
+				"type": "Тип",
+				"numRatings": "Рейтингу",
+				"avgRating": "Усредненному рейтингу",
+				"numComments": "Комментарии",
+				"numViews": "Просмотров"
 			},
 			"comments":{
-				"commentsHeader": "Комментарии", // new
-				"posted": "Размещению", // new
-				"by": "от", // new
-				"deleteComment": "удалить", // new
-				"editComment": "редактировать", // new
-				"noComments": "Комментарии отсутствуют", // new
-				"addCommentButton": "Добавить комментарий", // new
-				"signIn": "Войти", // new
-				"register": "Регистрация", // new
-				"or": "или", // new
-				"toPost": "чтобы опубликовать комментарий." // new
+				"commentsHeader": "Комментарии",
+				"posted": "Размещению",
+				"by": "от",
+				"deleteComment": "удалить",
+				"editComment": "редактировать",
+				"noComments": "Комментарии отсутствуют",
+				"addCommentButton": "Добавить комментарий",
+				"signIn": "Войти",
+				"register": "Регистрация",
+				"or": "или",
+				"toPost": "чтобы опубликовать комментарий."
 			},
 			"buttons":{
-				"cancel": "Отмена", // new
-				"submit": "Отправить" // new
+				"cancel": "Отмена",
+				"submit": "Отправить"
 			},
 			"rating":{
-				"signIn": "Войти", // new
-				"toRate": "чтобы присвоить рейтинг." // new
+				"signIn": "Войти",
+				"toRate": "чтобы присвоить рейтинг."
 			},
 			"itemInfo":{
-				"createdLabel": "создано", // new
-				"ratingsLabel": "рейтинг", // new
-				"ratingsLabelPlural": "рейтинги", // new
-				"viewsLabel": "вид", // new
-				"viewsLabelPlural": "просмотров", // new
-				"commentsLabel": "комментарий", // new
-				"commentsLabelPlural": "комментарии", // new
-				"modifiedLabel": "Последние изменения", // new
-				"by": "от", // new
-				"separator": "," // new
+				"createdLabel": "создано",
+				"ratingsLabel": "рейтинг",
+				"ratingsLabelPlural": "рейтинги",
+				"viewsLabel": "вид",
+				"viewsLabelPlural": "просмотров",
+				"commentsLabel": "комментарий",
+				"commentsLabelPlural": "комментарии",
+				"modifiedLabel": "Последние изменения",
+				"by": "от",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Найти местоположение",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Владелец:",
                 "switchBasemap": "Переключить базовую карту",
-				"getMobileApp": "Получить приложение", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Получить приложение",
+				"constraintsHeading":"Ограничения на использование",
+				"createdLabel":"Создано",
+				"noDescription":"Описание отсутствует.",
+				"detailsLabel":"Детали"
+            },
+            "filterItems":{
+                "show": "Показать",
+                "all": "Все результаты",
+                "maps": "Карты",
+                "layers": "Слои",
+                "applications": "Приложения",
+                "tools": "Инструменты",
+                "files": "Файлы"
             },
             "pagination": {
                 "previous": "Предыдущий",

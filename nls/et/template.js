@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Puhasta"
+                "clearSearch": "Puhasta",
+                "datePattern": "d. MMMM yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Kaarti ei saa luua",
@@ -35,47 +36,47 @@
                 "loadingText": "Laen kaarte&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sorteeri:", // new
-				"modified": "Kuupäev", // new
-				"title": "Pealkiri", // new
-				"type": "Tüüp", // new
-				"numRatings": "Hinnangud", // new
-				"avgRating": "Keskmine hinnang", // new
-				"numComments": "Kommentaarid", // new
-				"numViews": "Vaated" // new
+				"sortBy": "Sorteeri:",
+				"modified": "Kuupäev",
+				"title": "Pealkiri",
+				"type": "Tüüp",
+				"numRatings": "Hinnangut",
+				"avgRating": "Keskm. hinnang",
+				"numComments": "Kommentaari",
+				"numViews": "Vaatamist"
 			},
 			"comments":{
-				"commentsHeader": "Kommentaarid", // new
-				"posted": "Postitatud", // new
-				"by": "autor:", // new
-				"deleteComment": "kustuta", // new
-				"editComment": "redigeeri", // new
-				"noComments": "Kommentaarid puuduvad", // new
-				"addCommentButton": "Lisa kommentaar", // new
-				"signIn": "Logi sisse", // new
-				"register": "Registreeri", // new
-				"or": "või", // new
-				"toPost": "kommentaari postitamiseks." // new
+				"commentsHeader": "Kommentaari",
+				"posted": "Postitatud",
+				"by": "autor:",
+				"deleteComment": "kustuta",
+				"editComment": "redigeeri",
+				"noComments": "Kommentaarid puuduvad",
+				"addCommentButton": "Lisa kommentaar",
+				"signIn": "Logi sisse",
+				"register": "Registreeri",
+				"or": "või",
+				"toPost": "kommentaari postitamiseks."
 			},
 			"buttons":{
-				"cancel": "Tühista", // new
-				"submit": "Saada" // new
+				"cancel": "Tühista",
+				"submit": "Saada"
 			},
 			"rating":{
-				"signIn": "Logi sisse", // new
-				"toRate": "hindamiseks." // new
+				"signIn": "Logi sisse",
+				"toRate": "hindamiseks."
 			},
 			"itemInfo":{
-				"createdLabel": "loodud", // new
-				"ratingsLabel": "hinnang", // new
-				"ratingsLabelPlural": "hinnangud", // new
-				"viewsLabel": "vaade", // new
-				"viewsLabelPlural": "vaated", // new
-				"commentsLabel": "kommentaar", // new
-				"commentsLabelPlural": "kommentaarid", // new
-				"modifiedLabel": "Viimati muudetud", // new
-				"by": "autor:", // new
-				"separator": "," // new
+				"createdLabel": "loodud",
+				"ratingsLabel": "hinnang",
+				"ratingsLabelPlural": "hinnangut",
+				"viewsLabel": "vaatamist",
+				"viewsLabelPlural": "vaatamisi",
+				"commentsLabel": "kommentaar",
+				"commentsLabelPlural": "kommentaari",
+				"modifiedLabel": "Viimati muudetud",
+				"by": "autor:",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Leia asukoht",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Omanik:",
                 "switchBasemap": "Vaheta aluskaart",
-				"getMobileApp": "Hangi rakendus", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Hangi rakendus",
+				"constraintsHeading":"Kasuta piiranguid",
+				"createdLabel":"Loodud",
+				"noDescription":"Kirjeldus puudub.",
+				"detailsLabel":"Detailid"
+            },
+            "filterItems":{
+                "show": "Näita",
+                "all": "Kõik tulemused",
+                "maps": "Kaardid",
+                "layers": "Kihid",
+                "applications": "Rakendused",
+                "tools": "Töövahendid",
+                "files": "Failid"
             },
             "pagination": {
                 "previous": "Eelmine",

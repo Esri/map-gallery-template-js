@@ -3,13 +3,14 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Notīrīt"
+                "clearSearch": "Notīrīt",
+                "datePattern": "d.MMM.yyyy." // added 2.5.2013
             },
             "errors": {
                 "createMap": "Nevar izveidot karti",
                 "general": "Kļūda",
                 "bingError": "Šīs aplikācijas izvietošana prasa jūsu pašu Bing Maps taustiņu.",
-                "noLayers": "Nav darbības slāņu",
+                "noLayers": "Nav operatīvo slāņu",
                 "noSearchResults": "Atvainojiet, rezultāti netika atrasti.",
 				"noGroupResults": "Grupu nevar atrast.",
                 "noMatches": "Atbilstība netika atrasta.",
@@ -22,7 +23,7 @@
                 "legendButtonTitle": "Kartes leģenda",
                 "aboutButton": "Par",
                 "aboutButtonTitle": "Par Karti",
-                "message": "Nav darbības slāņu"
+                "message": "Nav operatīvo slāņu"
             },
             "groupPage": {
                 "showAllMaps": "Rādīt visas kartes",
@@ -35,47 +36,47 @@
                 "loadingText": "Ielādē kartes&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sortēt pēc", // new
-				"modified": "Datums", // new
-				"title": "Virsraksts", // new
-				"type": "Tips", // new
-				"numRatings": "Novērtējumi", // new
-				"avgRating": "Vid. novērtējums", // new
-				"numComments": "Komentāri", // new
-				"numViews": "Skati" // new
+				"sortBy": "Sortēt pēc",
+				"modified": "Datums",
+				"title": "Virsraksts",
+				"type": "Tips",
+				"numRatings": "Novērtējumi",
+				"avgRating": "Vid. novērtējums",
+				"numComments": "Komentāri",
+				"numViews": "Skati"
 			},
 			"comments":{
-				"commentsHeader": "Komentāri", // new
-				"posted": "Pasta sūtījums", // new
-				"by": "ar", // new
-				"deleteComment": "izdzēst", // new
-				"editComment": "rediģēt", // new
-				"noComments": "Nav komentāru", // new
-				"addCommentButton": "Pievienot komentāru", // new
-				"signIn": "Pierakstieties", // new
-				"register": "Reģistrēties", // new
-				"or": "vai", // new
-				"toPost": "lai sūtītu komentāru." // new
+				"commentsHeader": "Komentāri",
+				"posted": "Pasta sūtījums",
+				"by": "ar",
+				"deleteComment": "izdzēst",
+				"editComment": "rediģēt",
+				"noComments": "Nav komentāru",
+				"addCommentButton": "Pievienot komentāru",
+				"signIn": "Pierakstīties",
+				"register": "Reģistrēties",
+				"or": "vai",
+				"toPost": "lai sūtītu komentāru."
 			},
 			"buttons":{
-				"cancel": "Atcelt", // new
-				"submit": "Pakļauties" // new
+				"cancel": "Atcelt",
+				"submit": "Pakļauties"
 			},
 			"rating":{
-				"signIn": "Pierakstieties", // new
-				"toRate": "novērtēt." // new
+				"signIn": "Pierakstīties",
+				"toRate": "novērtēt."
 			},
 			"itemInfo":{
-				"createdLabel": "izveidots", // new
-				"ratingsLabel": "novērtējums", // new
-				"ratingsLabelPlural": "novērtējumi", // new
-				"viewsLabel": "skats", // new
-				"viewsLabelPlural": "skati", // new
-				"commentsLabel": "komentārs", // new
-				"commentsLabelPlural": "komentāri", // new
-				"modifiedLabel": "Pēdējā modificēšana", // new
-				"by": "ar", // new
-				"separator": "," // new
+				"createdLabel": "izveidots",
+				"ratingsLabel": "novērtējums",
+				"ratingsLabelPlural": "novērtējumi",
+				"viewsLabel": "skats",
+				"viewsLabelPlural": "skati",
+				"commentsLabel": "komentārs",
+				"commentsLabelPlural": "komentāri",
+				"modifiedLabel": "Pēdējā modificēšana",
+				"by": "ar",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Meklēt izvietojumu",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Īpašnieks:",
                 "switchBasemap": "Pārslēgt pamatkarti",
-				"getMobileApp": "Darbojas lietotne", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Darbojas lietotne",
+				"constraintsHeading":"Lietošanas ierobežojumi",
+				"createdLabel":"Izveidots",
+				"noDescription":"Bez apraksta.",
+				"detailsLabel":"Detaļas"
+            },
+            "filterItems":{
+                "show": "Parādīt",
+                "all": "Visi rezultāti",
+                "maps": "Kartes",
+                "layers": "Slāņi",
+                "applications": "Aplikācijas",
+                "tools": "Rīki",
+                "files": "Faili"
             },
             "pagination": {
                 "previous": "Iepriekšējs",

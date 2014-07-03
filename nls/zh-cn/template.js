@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "清除"
+                "clearSearch": "清除",
+                "datePattern": "yyyy 年 M 月 d 日" // added 2.5.2013
             },
             "errors": {
                 "createMap": "无法创建地图",
@@ -35,47 +36,47 @@
                 "loadingText": "正在加载地图&hellip;"
             },
 			"sortFields":{
-				"sortBy": "排序方式", // new
-				"modified": "日期", // new
-				"title": "标题", // new
-				"type": "类型", // new
-				"numRatings": "评级", // new
-				"avgRating": "平均评级", // new
-				"numComments": "评论次数", // new
-				"numViews": "查看次数" // new
+				"sortBy": "排序方式",
+				"modified": "日期",
+				"title": "标题",
+				"type": "类型",
+				"numRatings": "评级",
+				"avgRating": "平均评级",
+				"numComments": "评论次数",
+				"numViews": "查看次数"
 			},
 			"comments":{
-				"commentsHeader": "次评论", // new
-				"posted": "已发表", // new
-				"by": "修改者", // new
-				"deleteComment": "删除", // new
-				"editComment": "编辑", // new
-				"noComments": "无评论", // new
-				"addCommentButton": "添加评论", // new
-				"signIn": "登录", // new
-				"register": "注册", // new
-				"or": "或者", // new
-				"toPost": "以发表评论。" // new
+				"commentsHeader": "次评论",
+				"posted": "已发表",
+				"by": "修改者",
+				"deleteComment": "删除",
+				"editComment": "编辑",
+				"noComments": "无评论",
+				"addCommentButton": "添加评论",
+				"signIn": "登录",
+				"register": "注册",
+				"or": "或者",
+				"toPost": "以发表评论。"
 			},
 			"buttons":{
-				"cancel": "取消", // new
-				"submit": "提交" // new
+				"cancel": "取消",
+				"submit": "提交"
 			},
 			"rating":{
-				"signIn": "登录", // new
-				"toRate": "以进行评级。" // new
+				"signIn": "登录",
+				"toRate": "以进行评级。"
 			},
 			"itemInfo":{
-				"createdLabel": "已创建", // new
-				"ratingsLabel": "评级", // new
-				"ratingsLabelPlural": "次评级", // new
-				"viewsLabel": "浏览", // new
-				"viewsLabelPlural": "次浏览", // new
-				"commentsLabel": "评论", // new
-				"commentsLabelPlural": "次评论", // new
-				"modifiedLabel": "上次修改时间", // new
-				"by": "修改者", // new
-				"separator": "," // new
+				"createdLabel": "已创建",
+				"ratingsLabel": "评级",
+				"ratingsLabelPlural": "次评级",
+				"viewsLabel": "浏览",
+				"viewsLabelPlural": "次浏览",
+				"commentsLabel": "评论",
+				"commentsLabelPlural": "次评论",
+				"modifiedLabel": "上次修改时间",
+				"by": "修改者",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "查找位置",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "所有者:",
                 "switchBasemap": "切换底图",
-				"getMobileApp": "获取应用程序", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "获取应用程序",
+				"constraintsHeading":"使用限制",
+				"createdLabel":"创建时间",
+				"noDescription":"无描述。",
+				"detailsLabel":"详细信息"
+            },
+            "filterItems":{
+                "show": "显示",
+                "all": "所有结果",
+                "maps": "地图",
+                "layers": "图层",
+                "applications": "应用程序",
+                "tools": "工具",
+                "files": "文件"
             },
             "pagination": {
                 "previous": "上一页",

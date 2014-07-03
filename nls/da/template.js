@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Ryd"
+                "clearSearch": "Ryd",
+                "datePattern": "MMM d, åååå" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Kan ikke oprette kort",
@@ -35,47 +36,47 @@
                 "loadingText": "Indlæser kort&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sortér efter", // new
-				"modified": "Dato", // new
-				"title": "Titel", // new
-				"type": "Type", // new
-				"numRatings": "Vurderinger", // new
-				"avgRating": "Gnms. vurdering", // new
-				"numComments": "Kommentarer", // new
-				"numViews": "Visninger" // new
+				"sortBy": "Sortér efter",
+				"modified": "Dato",
+				"title": "Titel",
+				"type": "Type",
+				"numRatings": "Vurderinger",
+				"avgRating": "Gnms. vurdering",
+				"numComments": "Kommentarer",
+				"numViews": "Visninger"
 			},
 			"comments":{
-				"commentsHeader": "Kommentarer", // new
-				"posted": "Indsendt", // new
-				"by": "af", // new
-				"deleteComment": "slet", // new
-				"editComment": "redigér", // new
-				"noComments": "Ingen kommentarer", // new
-				"addCommentButton": "Tilføj kommentar", // new
-				"signIn": "Log ind", // new
-				"register": "Registrér", // new
-				"or": "eller", // new
-				"toPost": "at indsende en kommentar." // new
+				"commentsHeader": "Kommentarer",
+				"posted": "Indsendt",
+				"by": "af",
+				"deleteComment": "slet",
+				"editComment": "redigér",
+				"noComments": "Ingen kommentarer",
+				"addCommentButton": "Tilføj kommentar",
+				"signIn": "Log ind",
+				"register": "Registrér",
+				"or": "eller",
+				"toPost": "at indsende en kommentar."
 			},
 			"buttons":{
-				"cancel": "Annullér", // new
-				"submit": "Send" // new
+				"cancel": "Annullér",
+				"submit": "Send"
 			},
 			"rating":{
-				"signIn": "Log ind", // new
-				"toRate": "at vurdere." // new
+				"signIn": "Log ind",
+				"toRate": "at vurdere."
 			},
 			"itemInfo":{
-				"createdLabel": "oprettet", // new
-				"ratingsLabel": "vurdering", // new
-				"ratingsLabelPlural": "vurderinger", // new
-				"viewsLabel": "vis", // new
-				"viewsLabelPlural": "visninger", // new
-				"commentsLabel": "kommentar", // new
-				"commentsLabelPlural": "kommentarer", // new
-				"modifiedLabel": "Sidst ændret", // new
-				"by": "af", // new
-				"separator": "," // new
+				"createdLabel": "oprettet",
+				"ratingsLabel": "vurdering",
+				"ratingsLabelPlural": "vurderinger",
+				"viewsLabel": "vis",
+				"viewsLabelPlural": "visninger",
+				"commentsLabel": "kommentar",
+				"commentsLabelPlural": "kommentarer",
+				"modifiedLabel": "Sidst ændret",
+				"by": "af",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Find et sted",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Ejer:",
                 "switchBasemap": "Skift baggrundskort",
-				"getMobileApp": "Hent App", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Hent App",
+				"constraintsHeading":"Brug begrænsninger",
+				"createdLabel":"Oprettet",
+				"noDescription":"Ingen beskrivelse",
+				"detailsLabel":"Detaljer"
+            },
+            "filterItems":{
+                "show": "Vis",
+                "all": "Alle resultater",
+                "maps": "Kort",
+                "layers": "Lag",
+                "applications": "Applikationer",
+                "tools": "Værktøjer",
+                "files": "Filer"
             },
             "pagination": {
                 "previous": "Tidligere",

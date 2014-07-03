@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "مسح"
+                "clearSearch": "مسح",
+                "datePattern": "MMM d, yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "يتعذر إنشاء الخريطة",
@@ -35,47 +36,47 @@
                 "loadingText": "تحميل Maps&hellip;"
             },
 			"sortFields":{
-				"sortBy": "الفرز حسب", // new
-				"modified": "التاريخ", // new
-				"title": "العنوان", // new
-				"type": "نوع", // new
-				"numRatings": "تصنيفات", // new
-				"avgRating": "التصنيف المتوسط", // new
-				"numComments": "تعليقات", // new
-				"numViews": "المشاهدات" // new
+				"sortBy": "الفرز حسب",
+				"modified": "التاريخ",
+				"title": "العنوان",
+				"type": "نوع",
+				"numRatings": "تصنيفات",
+				"avgRating": "التصنيف المتوسط",
+				"numComments": "تعليقات",
+				"numViews": "المشاهدات"
 			},
 			"comments":{
-				"commentsHeader": "تعليقات", // new
-				"posted": "تم النشر", // new
-				"by": "حسب", // new
-				"deleteComment": "حذف", // new
-				"editComment": "تحرير", // new
-				"noComments": "لا توجد تعليقات", // new
-				"addCommentButton": "إضافة تعليق", // new
-				"signIn": "تسجيل الدخول", // new
-				"register": "تسجيل", // new
-				"or": "أو", // new
-				"toPost": "لنشر تعليق." // new
+				"commentsHeader": "تعليقات",
+				"posted": "تم النشر",
+				"by": "حسب",
+				"deleteComment": "حذف",
+				"editComment": "تحرير",
+				"noComments": "لا توجد تعليقات",
+				"addCommentButton": "إضافة تعليق",
+				"signIn": "تسجيل الدخول",
+				"register": "تسجيل",
+				"or": "أو",
+				"toPost": "لنشر تعليق."
 			},
 			"buttons":{
-				"cancel": "إلغاء الأمر", // new
-				"submit": "إرسال" // new
+				"cancel": "إلغاء الأمر",
+				"submit": "إرسال"
 			},
 			"rating":{
-				"signIn": "تسجيل الدخول", // new
-				"toRate": "للتصنيف" // new
+				"signIn": "تسجيل الدخول",
+				"toRate": "للتصنيف"
 			},
 			"itemInfo":{
-				"createdLabel": "تم إنشاء", // new
-				"ratingsLabel": "تصنيف", // new
-				"ratingsLabelPlural": "تصنيفات", // new
-				"viewsLabel": "عرض", // new
-				"viewsLabelPlural": "المشاهدات", // new
-				"commentsLabel": "تعليق", // new
-				"commentsLabelPlural": "تعليقات", // new
-				"modifiedLabel": "آخر تعديل", // new
-				"by": "حسب", // new
-				"separator": "," // new
+				"createdLabel": "تم إنشاء",
+				"ratingsLabel": "تصنيف",
+				"ratingsLabelPlural": "تصنيفات",
+				"viewsLabel": "عرض",
+				"viewsLabelPlural": "المشاهدات",
+				"commentsLabel": "تعليق",
+				"commentsLabelPlural": "تعليقات",
+				"modifiedLabel": "آخر تعديل",
+				"by": "حسب",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "العثور على موقع",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "المالك:",
                 "switchBasemap": "تبديل خريطة الأساس",
-				"getMobileApp": "الحصول على تطبيق", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "الحصول على تطبيق",
+				"constraintsHeading":"استخدام القيود",
+				"createdLabel":"تم الإنشاء",
+				"noDescription":"لا يوجد وصف.",
+				"detailsLabel":"تفاصيل"
+            },
+            "filterItems":{
+                "show": "إظهار",
+                "all": "جميع النتائج",
+                "maps": "خرائط",
+                "layers": "طبقات",
+                "applications": "التطبيقات",
+                "tools": "أدوات",
+                "files": "ملفات"
             },
             "pagination": {
                 "previous": "السابق",

@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Effacer"
+                "clearSearch": "Effacer",
+                "datePattern": "d MMM, yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Impossible de créer la carte",
@@ -35,47 +36,47 @@
                 "loadingText": "Chargement de Maps&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Trier par", // new
-				"modified": "Date", // new
-				"title": "Titre", // new
-				"type": "Type", // new
-				"numRatings": "Evaluations", // new
-				"avgRating": "Evaluation moyenne", // new
-				"numComments": "Commentaires", // new
-				"numViews": "Vues" // new
+				"sortBy": "Trier par",
+				"modified": "Date",
+				"title": "Titre",
+				"type": "Type",
+				"numRatings": "Evaluations",
+				"avgRating": "Evaluation moyenne",
+				"numComments": "Commentaires",
+				"numViews": "Vues"
 			},
 			"comments":{
-				"commentsHeader": "Commentaires", // new
-				"posted": "Publié(s)", // new
-				"by": "par", // new
-				"deleteComment": "supprimer", // new
-				"editComment": "modifier", // new
-				"noComments": "Aucun commentaire", // new
-				"addCommentButton": "Ajouter un commentaire", // new
-				"signIn": "Se connecter", // new
-				"register": "Inscription", // new
-				"or": "ou", // new
-				"toPost": "pour publier un commentaire." // new
+				"commentsHeader": "Commentaires",
+				"posted": "Publié(s)",
+				"by": "par",
+				"deleteComment": "supprimer",
+				"editComment": "modifier",
+				"noComments": "Aucun commentaire",
+				"addCommentButton": "Ajouter un commentaire",
+				"signIn": "Se connecter",
+				"register": "Enregistrement",
+				"or": "ou",
+				"toPost": "pour publier un commentaire."
 			},
 			"buttons":{
-				"cancel": "Annuler", // new
-				"submit": "Envoyer" // new
+				"cancel": "Annuler",
+				"submit": "Envoyer"
 			},
 			"rating":{
-				"signIn": "Se connecter", // new
-				"toRate": "pour laisser une évaluation." // new
+				"signIn": "Se connecter",
+				"toRate": "pour laisser une évaluation."
 			},
 			"itemInfo":{
-				"createdLabel": "créé(e)", // new
-				"ratingsLabel": "évaluation", // new
-				"ratingsLabelPlural": "évaluations", // new
-				"viewsLabel": "vue", // new
-				"viewsLabelPlural": "vues", // new
-				"commentsLabel": "commentaire", // new
-				"commentsLabelPlural": "commentaires", // new
-				"modifiedLabel": "Dernière modification", // new
-				"by": "par", // new
-				"separator": "," // new
+				"createdLabel": "créé(e)",
+				"ratingsLabel": "évaluation",
+				"ratingsLabelPlural": "évaluations",
+				"viewsLabel": "vue",
+				"viewsLabelPlural": "vues",
+				"commentsLabel": "commentaire",
+				"commentsLabelPlural": "commentaires",
+				"modifiedLabel": "Dernière modification",
+				"by": "par",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Rechercher un lieu",
@@ -84,7 +85,7 @@
                 "layersHeader": "Couches",
                 "enterFullscreen": "Affichage plein écran",
                 "exitFullscreen": "Quitter le plein écran",
-                "arcgisLink": "Détails des éléments",
+                "arcgisLink": "Détails de l'élément",
                 "moreInformation": "Plus d\'informations",
                 "geoLocateTitle": "Utiliser l\'emplacement actuel",
                 "openInMobile": "Ouvrir dans l\'application mobile",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Propriétaire :",
                 "switchBasemap": "Changer de fond de carte",
-				"getMobileApp": "Obtenir une application", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Obtenir une application",
+				"constraintsHeading":"Contraintes d\'utilisation",
+				"createdLabel":"Créé",
+				"noDescription":"Aucune description.",
+				"detailsLabel":"Détails"
+            },
+            "filterItems":{
+                "show": "Afficher",
+                "all": "Tous les résultats",
+                "maps": "Cartes",
+                "layers": "Couches",
+                "applications": "Applications",
+                "tools": "Outils",
+                "files": "Fichiers"
             },
             "pagination": {
                 "previous": "Précédent",

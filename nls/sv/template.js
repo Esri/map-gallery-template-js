@@ -3,7 +3,8 @@
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
-                "clearSearch": "Rensa"
+                "clearSearch": "Rensa",
+                "datePattern": "d MMM yyyy" // added 2.5.2013
             },
             "errors": {
                 "createMap": "Det går inte att skapa kartan",
@@ -35,47 +36,47 @@
                 "loadingText": "Läser in kartor&hellip;"
             },
 			"sortFields":{
-				"sortBy": "Sortera efter", // new
-				"modified": "Datum", // new
-				"title": "Titel", // new
-				"type": "Typ", // new
-				"numRatings": "Betyg", // new
-				"avgRating": "Snittbetyg", // new
-				"numComments": "Kommentarer", // new
-				"numViews": "Visningar" // new
+				"sortBy": "Sortera efter",
+				"modified": "Datum",
+				"title": "Titel",
+				"type": "Typ",
+				"numRatings": "Betyg",
+				"avgRating": "Snittbetyg",
+				"numComments": "Kommentarer",
+				"numViews": "Visningar"
 			},
 			"comments":{
-				"commentsHeader": "Kommentarer", // new
-				"posted": "Skickad", // new
-				"by": "av", // new
-				"deleteComment": "ta bort", // new
-				"editComment": "redigera", // new
-				"noComments": "Inga kommentarer", // new
-				"addCommentButton": "Lägg till kommentar", // new
-				"signIn": "Logga in", // new
-				"register": "Registrera", // new
-				"or": "eller", // new
-				"toPost": "för att skicka en kommentar." // new
+				"commentsHeader": "Kommentarer",
+				"posted": "Skickad",
+				"by": "av",
+				"deleteComment": "ta bort",
+				"editComment": "redigera",
+				"noComments": "Inga kommentarer",
+				"addCommentButton": "Lägg till kommentar",
+				"signIn": "Logga in",
+				"register": "Registrera",
+				"or": "eller",
+				"toPost": "för att skicka en kommentar."
 			},
 			"buttons":{
-				"cancel": "Avbryt", // new
-				"submit": "Utför" // new
+				"cancel": "Avbryt",
+				"submit": "Utför"
 			},
 			"rating":{
-				"signIn": "Logga in", // new
-				"toRate": "för att sätta betyg." // new
+				"signIn": "Logga in",
+				"toRate": "för att sätta betyg."
 			},
 			"itemInfo":{
-				"createdLabel": "skapad", // new
-				"ratingsLabel": "bedömning", // new
-				"ratingsLabelPlural": "bedömningar", // new
-				"viewsLabel": "vy", // new
-				"viewsLabelPlural": "vyer", // new
-				"commentsLabel": "kommentar", // new
-				"commentsLabelPlural": "kommentarer", // new
-				"modifiedLabel": "Senast ändrad", // new
-				"by": "av", // new
-				"separator": "," // new
+				"createdLabel": "skapad",
+				"ratingsLabel": "bedömning",
+				"ratingsLabelPlural": "bedömningar",
+				"viewsLabel": "vy",
+				"viewsLabelPlural": "vyer",
+				"commentsLabel": "kommentar",
+				"commentsLabelPlural": "kommentarer",
+				"modifiedLabel": "Senast ändrad",
+				"by": "av",
+				"separator": ","
 			},
             "mapPage": {
                 "findLocation": "Hitta en plats",
@@ -92,11 +93,20 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Ägare:",
                 "switchBasemap": "Byt baskarta",
-				"getMobileApp": "Hämta app", // new
-				"constraintsHeading":"Use Constraints", // new
-				"createdLabel":"Created", // new
-				"noDescription":"No description.", // new
-				"detailsLabel":"Details" // new
+				"getMobileApp": "Hämta app",
+				"constraintsHeading":"Användningsbegränsningar",
+				"createdLabel":"Skapad",
+				"noDescription":"Ingen beskrivning.",
+				"detailsLabel":"Information"
+            },
+            "filterItems":{
+                "show": "Visa",
+                "all": "Alla resultat",
+                "maps": "Kartor",
+                "layers": "Lager",
+                "applications": "Applikationer",
+                "tools": "Verktyg",
+                "files": "Filer"
             },
             "pagination": {
                 "previous": "Föregående",
