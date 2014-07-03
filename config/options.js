@@ -31,6 +31,7 @@ define([], function() {
         "showFooter": true,
         "showBasemapGallery": true,
         "showArcGISBasemaps": true,
+        "showFilterType": false,
         "basemapsGroup": {},
         "showGroupSearch": true,
         "showGroupSort": false,

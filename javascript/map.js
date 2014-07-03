@@ -817,7 +817,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                         // item page link
                         html += '<li>';
                         html += '<strong>' + i18n.viewer.mapPage.detailsLabel + '</strong><br />';
-                        html += '<a id="mapContentsLink" href="' + this.getViewerURL('item_page') + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
+                        html += '<a id="mapContentsLink" href="' + this.getViewerURL('item_page', this._options.webmap) + '" target="_blank">' + i18n.viewer.mapPage.arcgisLink + '</a>';
                         html += '</li>';
                     }
                     html += '</ul>';
@@ -855,6 +855,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                             attributionWidth: 0.40,
                             nav: false
                         },
+                        usePopupManager: true,
                         ignorePopups: false,
                         bingMapsKey: this._options.bingMapsKey,
                         geometryServiceURL: this._options.helperServices.geometry.url
