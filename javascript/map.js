@@ -23,13 +23,14 @@ define([
     "esri/dijit/BasemapGallery",
     "esri/dijit/Scalebar",
     "esri/dijit/Legend",
+    "esri/InfoTemplate",
     "dojo/keys",
     "esri/dijit/Geocoder",
     "esri/dijit/LocateButton",
     "esri/dijit/HomeButton",
     "esri/lang"
 ],
-function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, keys, Geocoder, LocateButton, HomeButton, esriLang) {
+function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, InfoTemplate, keys, Geocoder, LocateButton, HomeButton, esriLang) {
     return declare("application.map", [Common], {
         constructor: function() { /*------------------------------------*/
             // on dojo load
@@ -1038,6 +1039,7 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             var options = {
                 map: this.map,
                 theme: "simpleGeocoder",
+                highlightLocation: true,
                 autoComplete:hasEsri
             };
             //If the World geocoder is primary enable auto complete 
@@ -1063,6 +1065,22 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
             var options = this.createOptions();
             var gc = new Geocoder(options, "gc_search");
             gc.startup();
+            // geocoder point
+            if(gc){
+                on(gc, 'select', function(evt){
+                    // vars
+                    var f, it;
+                    // if feature exists
+                    if(evt.result && evt.result.feature){
+                        f = evt.result.feature;
+                    }
+                    if(f){
+                        // set template
+                        it = new InfoTemplate(i18n.viewer.groupPage.searchTitleShort, "${Match_addr}");
+                        f.setInfoTemplate(it);
+                    }
+                });
+            }
             // Set legend header
             var node = dom.byId('legendHeader');
             this.setNodeHTML(node, i18n.viewer.sidePanel.title);
