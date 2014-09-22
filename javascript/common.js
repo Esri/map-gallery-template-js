@@ -1045,7 +1045,7 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                 // portal mobile URL data
             case 'mobile':
                 if (this._options.agent_ios) {
-                    retUrl = this._options.mobilePortalUrl + '/sharing/rest/content/items/' + webmap + '/data' + '?token=' + token;;
+                    retUrl = this._options.mobilePortalUrl + '/sharing/rest/content/items/' + webmap + '/data' + '?token=' + token;
                 } else if (this._options.agent_android) {
                     retUrl = this._options.mobilePortalUrl + '?webmap=' + webmap;
                 }
