@@ -851,12 +851,12 @@ function(declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number,
                         mapOptions: {
                             slider: true,
                             sliderStyle: "small",
-                            editable: false,
                             wrapAround180: true,
                             showAttribution: this._options.showAttribution,
                             attributionWidth: 0.40,
                             nav: false
                         },
+                        editable: false,
                         usePopupManager: true,
                         ignorePopups: false,
                         bingMapsKey: this._options.bingMapsKey,
