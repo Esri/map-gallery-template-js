@@ -32,7 +32,7 @@
                 "searchPlaceholder": "חפש מפות",
                 "itemTitle": "צפה במפה",
                 "gridSwitch": "עבור לתצוגת רשת",
-                "listSwitch": "עבור למבט רשימה",
+                "listSwitch": "עבור לתצוגת רשימה",
                 "loadingText": "טוען מפות&hellip;"
             },
 			"sortFields":{
