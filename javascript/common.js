@@ -1016,6 +1016,9 @@ function(declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, d
                 // portal viewer link
             case 'cityengine':
                 return this._options.sharingurl + '/apps/CEWebViewer/viewer.html?3dWebScene=' + webmap;
+            case 'layers':
+                return this._options.sharingurl + '/home/webmap/viewer.html?layers=' + webmap;
+                // portal sign up link
             case 'arcgis':
                 return this._options.sharingurl + '/home/webmap/viewer.html?webmap=' + webmap;
                 // portal sign up link

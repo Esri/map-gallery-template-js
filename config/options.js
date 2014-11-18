@@ -33,6 +33,7 @@ define([], function() {
         "showArcGISBasemaps": true,
         "showFilterType": false,
         "basemapsGroup": {},
+        "openLayersInViewer": true,
         "showGroupSearch": true,
         "showGroupSort": false,
         "showMapSearch": true,

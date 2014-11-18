@@ -304,6 +304,22 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         }else if (this.ACObj[locNum].type === "CityEngine Web Scene") {
                             mapURL = this.getViewerURL('cityengine', this.ACObj[locNum].id);
                             externalLink = true;
+                        } else if (
+                            (
+                            this.ACObj[locNum].type === "Image Service" || 
+                            this.ACObj[locNum].type === "Map Service" ||
+                            this.ACObj[locNum].type === "Feature Service" ||
+                            this.ACObj[locNum].type === "KML" ||
+                            this.ACObj[locNum].type === "WMS" ||
+                            this.ACObj[locNum].type === "Feature Collection" ||
+                            this.ACObj[locNum].type === "Feature Collection Template" ||
+                            this.ACObj[locNum].type === "Geodata Service" ||
+                            this.ACObj[locNum].type === "Globe Service"
+                            )
+                            && this._options.openLayersInViewer
+                        ) {
+                            mapURL = this.getViewerURL('layers', this.ACObj[locNum].id);
+                            externalLink = true;
                         } else if (this.ACObj[locNum].url) {
                             mapURL = this.ACObj[locNum].url;
                             externalLink = true;
@@ -390,6 +406,22 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         externalLink = true;
                     } else if (data.results[i].type === "CityEngine Web Scene") {
                         itemURL = this.getViewerURL('cityengine', data.results[i].id);
+                        externalLink = true;
+                    } else if (
+                        (
+                        data.results[i].type === "Image Service" || 
+                        data.results[i].type === "Map Service" ||
+                        data.results[i].type === "Feature Service" ||
+                        data.results[i].type === "KML" ||
+                        data.results[i].type === "WMS" ||
+                        data.results[i].type === "Feature Collection" ||
+                        data.results[i].type === "Feature Collection Template" ||
+                        data.results[i].type === "Geodata Service" ||
+                        data.results[i].type === "Globe Service"
+                        )
+                        && this._options.openLayersInViewer
+                    ) {
+                        itemURL = this.getViewerURL('layers', data.results[i].id);
                         externalLink = true;
                     } else if (data.results[i].url) {
                         itemURL = data.results[i].url;
