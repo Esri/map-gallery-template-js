@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Diegiant šia aplikaciją reikalingas savas Bing Maps raktas.",
                 "noLayers": "Darbinių sluoksnių nėra",
                 "noSearchResults": "Deja, nieko nerasta.",
-				"noGroupResults": "Grupės nerasta.",
+                "noGroupResults": "Grupės nerasta.",
                 "noMatches": "Jokių atitikimų nerasta.",
                 "noMapsFound": "Jokių žemėlapių nerasta"
             },
             "sidePanel": {
                 "title": "Legenda",
                 "legendButton": "Legenda",
-				"layersButton": "Sluoksniai", // new
+                "layersButton": "Sluoksniai", // new
                 "legendButtonTitle": "Žemėlapio legenda",
                 "aboutButton": "Apie",
                 "aboutButtonTitle": "Apie žemėlapį",
@@ -35,49 +35,49 @@
                 "listSwitch": "Perjungti į vaizdavimą sąrašu",
                 "loadingText": "Įkeliami žemėlapiai&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Rūšiuoti pagal",
-				"modified": "Data",
-				"title": "Pavadinimas",
-				"type": "Tipas",
-				"numRatings": "Vertinimai",
-				"avgRating": "Vid. vertinimas",
-				"numComments": "Komentarai",
-				"numViews": "Peržiūros"
-			},
-			"comments":{
-				"commentsHeader": "Komentarai",
-				"posted": "Paskelbta",
-				"by": "sukūrė",
-				"deleteComment": "pašalinti",
-				"editComment": "redaguoti",
-				"noComments": "Komentarų nėra",
-				"addCommentButton": "Pridėti komentarą",
-				"signIn": "Prisijungti",
-				"register": "Registruoti",
-				"or": "or",
-				"toPost": "skelbti komentarą."
-			},
-			"buttons":{
-				"cancel": "Atšaukti",
-				"submit": "Pateikti"
-			},
-			"rating":{
-				"signIn": "Prisijungti",
-				"toRate": "vertinti."
-			},
-			"itemInfo":{
-				"createdLabel": "sukurtas",
-				"ratingsLabel": "įvertinimas",
-				"ratingsLabelPlural": "reitingai",
-				"viewsLabel": "peržiūra",
-				"viewsLabelPlural": "peržiūros",
-				"commentsLabel": "komentaras",
-				"commentsLabelPlural": "komentarai",
-				"modifiedLabel": "Pakeitimo data",
-				"by": "sukūrė",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Rūšiuoti pagal",
+                "modified": "Data",
+                "title": "Pavadinimas",
+                "type": "Tipas",
+                "numRatings": "Vertinimai",
+                "avgRating": "Vid. vertinimas",
+                "numComments": "Komentarai",
+                "numViews": "Peržiūros"
+            },
+            "comments": {
+                "commentsHeader": "Komentarai",
+                "posted": "Paskelbta",
+                "by": "pagal",
+                "deleteComment": "pašalinti",
+                "editComment": "redaguoti",
+                "noComments": "Komentarų nėra",
+                "addCommentButton": "Pridėti komentarą",
+                "signIn": "Prisijungti",
+                "register": "Registruoti",
+                "or": "or",
+                "toPost": "skelbti komentarą."
+            },
+            "buttons": {
+                "cancel": "Atšaukti",
+                "submit": "Pateikti"
+            },
+            "rating": {
+                "signIn": "Prisijungti",
+                "toRate": "vertinti."
+            },
+            "itemInfo": {
+                "createdLabel": "sukurtas",
+                "ratingsLabel": "įvertinimas",
+                "ratingsLabelPlural": "reitingai",
+                "viewsLabel": "peržiūra",
+                "viewsLabelPlural": "peržiūros",
+                "commentsLabel": "komentaras",
+                "commentsLabelPlural": "komentarai",
+                "modifiedLabel": "Pakeitimo data",
+                "by": "pagal",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Rasti vietą",
                 "findPlaceholder": "Rasti adresą",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Savininkas:",
                 "switchBasemap": "Pakeisti pagrindo žemėlapį",
-				"getMobileApp": "Gauti aplikaciją",
-				"constraintsHeading":"Naudojimo apribojimai",
-				"createdLabel":"Sukurtas",
-				"noDescription":"Aprašymo nėra.",
-				"detailsLabel":"Detali informacija"
+                "getMobileApp": "Gauti aplikaciją",
+                "constraintsHeading": "Naudojimo apribojimai",
+                "createdLabel": "Sukurtas",
+                "noDescription": "Aprašymo nėra.",
+                "detailsLabel": "Išsami informacija"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Rodyti",
                 "all": "Visi rezultatai",
                 "maps": "Žemėlapiai",

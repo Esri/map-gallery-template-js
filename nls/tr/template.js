@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "english",
@@ -12,14 +12,14 @@
                 "bingError": "Bu uygulamayı dağıtmak kendi Bing Haritalar anahtarınızı gerektirir.",
                 "noLayers": "Hiçbir operasyonel katman yok",
                 "noSearchResults": "Üzgünüz, hiçbir sonuç bulunamadı.",
-				"noGroupResults": "Grup bulunamadı.",
+                "noGroupResults": "Grup bulunamadı.",
                 "noMatches": "Hiçbir eşleşme bulunamadı.",
                 "noMapsFound": "Hiçbir harita bulunamadı."
             },
             "sidePanel": {
                 "title": "Gösterim",
                 "legendButton": "Gösterim",
-				"layersButton": "Katmanlar", // new
+                "layersButton": "Katmanlar", // new
                 "legendButtonTitle": "Harita Gösterimi",
                 "aboutButton": "Hakkında",
                 "aboutButtonTitle": "Harita Hakkında",
@@ -35,49 +35,49 @@
                 "listSwitch": "List Görünümüne Geç",
                 "loadingText": "Haritaları Yükle&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Şuna göre sırala:",
-				"modified": "Tarih",
-				"title": "Başlık",
-				"type": "Tür",
-				"numRatings": "Derecelendirmeler",
-				"avgRating": "Ort. Derecelendirme",
-				"numComments": "Yorumlar",
-				"numViews": "Görünümler"
-			},
-			"comments":{
-				"commentsHeader": "Yorumlar",
-				"posted": "Gönderen",
-				"by": "kişi",
-				"deleteComment": "sil",
-				"editComment": "düzenle",
-				"noComments": "Yorum yok",
-				"addCommentButton": "Yorum Ekle",
-				"signIn": "Oturum Aç",
-				"register": "Kaydettir",
-				"or": "veya",
-				"toPost": "yorum göndermek için."
-			},
-			"buttons":{
-				"cancel": "İptal",
-				"submit": "Gönder"
-			},
-			"rating":{
-				"signIn": "Oturum Aç",
-				"toRate": "derecelendirmek için."
-			},
-			"itemInfo":{
-				"createdLabel": "oluşturma",
-				"ratingsLabel": "derecelendirme",
-				"ratingsLabelPlural": "derecelendirme",
-				"viewsLabel": "görünüm",
-				"viewsLabelPlural": "görünüm",
-				"commentsLabel": "yorum",
-				"commentsLabelPlural": "yorum",
-				"modifiedLabel": "Son Değiştirme",
-				"by": "kişi",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Şuna göre sırala:",
+                "modified": "Tarih",
+                "title": "Başlık",
+                "type": "Tür",
+                "numRatings": "Derecelendirmeler",
+                "avgRating": "Ort. Derecelendirme",
+                "numComments": "Yorumlar",
+                "numViews": "Görünümler"
+            },
+            "comments": {
+                "commentsHeader": "Yorumlar",
+                "posted": "Gönderen",
+                "by": "kişi",
+                "deleteComment": "sil",
+                "editComment": "düzenle",
+                "noComments": "Yorum yok",
+                "addCommentButton": "Yorum Ekle",
+                "signIn": "Oturum Aç",
+                "register": "Kaydettir",
+                "or": "veya",
+                "toPost": "yorum göndermek için."
+            },
+            "buttons": {
+                "cancel": "İptal",
+                "submit": "Gönder"
+            },
+            "rating": {
+                "signIn": "Oturum Aç",
+                "toRate": "derecelendirmek için."
+            },
+            "itemInfo": {
+                "createdLabel": "oluşturma",
+                "ratingsLabel": "derecelendirme",
+                "ratingsLabelPlural": "derecelendirme",
+                "viewsLabel": "görünüm",
+                "viewsLabelPlural": "görünüm",
+                "commentsLabel": "yorum",
+                "commentsLabelPlural": "yorum",
+                "modifiedLabel": "Son Değiştirme",
+                "by": "kişi",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Konum bul",
                 "findPlaceholder": "Adres bul",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Sahibi:",
                 "switchBasemap": "Altlık Haritayı Değiştir",
-				"getMobileApp": "Uygulama Al",
-				"constraintsHeading":"Kısıtlama Kullan",
-				"createdLabel":"Oluşturma",
-				"noDescription":"Açıklama yok.",
-				"detailsLabel":"Ayrıntılar"
+                "getMobileApp": "Uygulama Al",
+                "constraintsHeading": "Kısıtlama Kullan",
+                "createdLabel": "Oluşturma",
+                "noDescription": "Açıklama yok.",
+                "detailsLabel": "Ayrıntılar"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Göster",
                 "all": "Tüm Sonuçlar",
                 "maps": "Haritalar",

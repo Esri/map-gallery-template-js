@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Для размещения этого приложения необходимо иметь собственный ключ Bing Map.",
                 "noLayers": "Нет рабочих слоев",
                 "noSearchResults": "Результаты не найдены.",
-				"noGroupResults": "Не удалось найти группу.",
+                "noGroupResults": "Не удалось найти группу.",
                 "noMatches": "Совпадения не найдены.",
                 "noMapsFound": "Карты не найдены."
             },
             "sidePanel": {
                 "title": "Легенда",
                 "legendButton": "Легенда",
-				"layersButton": "Слои", // new
+                "layersButton": "Слои", // new
                 "legendButtonTitle": "Легенда",
                 "aboutButton": "О",
                 "aboutButtonTitle": "О карте",
@@ -35,49 +35,49 @@
                 "listSwitch": "Переключить в вид списка",
                 "loadingText": "Загрузка карт&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Сортировать по",
-				"modified": "Дате",
-				"title": "Название",
-				"type": "Тип",
-				"numRatings": "Рейтингу",
-				"avgRating": "Усредненному рейтингу",
-				"numComments": "Комментарии",
-				"numViews": "Просмотров"
-			},
-			"comments":{
-				"commentsHeader": "Комментарии",
-				"posted": "Размещению",
-				"by": "от",
-				"deleteComment": "удалить",
-				"editComment": "редактировать",
-				"noComments": "Комментарии отсутствуют",
-				"addCommentButton": "Добавить комментарий",
-				"signIn": "Войти",
-				"register": "Регистрация",
-				"or": "или",
-				"toPost": "чтобы опубликовать комментарий."
-			},
-			"buttons":{
-				"cancel": "Отмена",
-				"submit": "Отправить"
-			},
-			"rating":{
-				"signIn": "Войти",
-				"toRate": "чтобы присвоить рейтинг."
-			},
-			"itemInfo":{
-				"createdLabel": "создано",
-				"ratingsLabel": "рейтинг",
-				"ratingsLabelPlural": "рейтинги",
-				"viewsLabel": "вид",
-				"viewsLabelPlural": "просмотров",
-				"commentsLabel": "комментарий",
-				"commentsLabelPlural": "комментарии",
-				"modifiedLabel": "Последние изменения",
-				"by": "от",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Сортировать по",
+                "modified": "Дата",
+                "title": "Заголовок",
+                "type": "Тип",
+                "numRatings": "Рейтингу",
+                "avgRating": "Усредненному рейтингу",
+                "numComments": "Комментарии",
+                "numViews": "Просмотров"
+            },
+            "comments": {
+                "commentsHeader": "Комментарии",
+                "posted": "Размещению",
+                "by": "от",
+                "deleteComment": "удалить",
+                "editComment": "редактировать",
+                "noComments": "Комментарии отсутствуют",
+                "addCommentButton": "Добавить комментарий",
+                "signIn": "Войти",
+                "register": "Регистрация",
+                "or": "или",
+                "toPost": "чтобы опубликовать комментарий."
+            },
+            "buttons": {
+                "cancel": "Отмена",
+                "submit": "Отправить"
+            },
+            "rating": {
+                "signIn": "Войти",
+                "toRate": "чтобы присвоить рейтинг."
+            },
+            "itemInfo": {
+                "createdLabel": "создано",
+                "ratingsLabel": "рейтинг",
+                "ratingsLabelPlural": "рейтинги",
+                "viewsLabel": "вид",
+                "viewsLabelPlural": "просмотров",
+                "commentsLabel": "комментарий",
+                "commentsLabelPlural": "комментарии",
+                "modifiedLabel": "Последние изменения",
+                "by": "от",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Найти местоположение",
                 "findPlaceholder": "Найти адрес",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Владелец:",
                 "switchBasemap": "Переключить базовую карту",
-				"getMobileApp": "Получить приложение",
-				"constraintsHeading":"Ограничения на использование",
-				"createdLabel":"Создано",
-				"noDescription":"Описание отсутствует.",
-				"detailsLabel":"Детали"
+                "getMobileApp": "Получить приложение",
+                "constraintsHeading": "Ограничения на использование",
+                "createdLabel": "Создано",
+                "noDescription": "Описание отсутствует.",
+                "detailsLabel": "Детали"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Показать",
                 "all": "Все результаты",
                 "maps": "Карты",

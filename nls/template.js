@@ -1,5 +1,5 @@
 define({
-    "root": ({
+    root: ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "english",

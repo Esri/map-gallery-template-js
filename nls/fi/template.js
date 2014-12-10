@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "english",
@@ -12,14 +12,14 @@
                 "bingError": "Tämän sovelluksen käyttöönotto edellyttää omaa Bing Maps -avaintasi.",
                 "noLayers": "Ei toiminnallisia karttatasoja",
                 "noSearchResults": "Tuloksia ei valitettavasti löytynyt.",
-				"noGroupResults": "Ryhmää ei löytynyt.",
+                "noGroupResults": "Ryhmää ei löytynyt.",
                 "noMatches": "Vastaavuuksia ei löytynyt.",
                 "noMapsFound": "Karttoja ei löytynyt."
             },
             "sidePanel": {
                 "title": "Selite",
                 "legendButton": "Selite",
-				"layersButton": "Karttatasot", // new
+                "layersButton": "Karttatasot", // new
                 "legendButtonTitle": "Kartan selite",
                 "aboutButton": "Tietoja",
                 "aboutButtonTitle": "Tietoja kartasta",
@@ -35,49 +35,49 @@
                 "listSwitch": "Vaihda luettelonäkymään",
                 "loadingText": "Ladataan karttoja&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Lajitteluperuste",
-				"modified": "Päivämäärä",
-				"title": "Otsikko",
-				"type": "Tyyppi",
-				"numRatings": "Arvioinnit",
-				"avgRating": "Keskimääräinen arviointi",
-				"numComments": "Kommentit",
-				"numViews": "Näkymät"
-			},
-			"comments":{
-				"commentsHeader": "Kommentit",
-				"posted": "Lähetetty",
-				"by": "peruste",
-				"deleteComment": "poista",
-				"editComment": "muokkaa",
-				"noComments": "Ei kommentteja",
-				"addCommentButton": "Lisää kommentti",
-				"signIn": "Kirjaudu sisään",
-				"register": "Rekisteröi",
-				"or": "tai",
-				"toPost": "lähettääksesi kommentin."
-			},
-			"buttons":{
-				"cancel": "Peruuta",
-				"submit": "Lähetä"
-			},
-			"rating":{
-				"signIn": "Kirjaudu sisään",
-				"toRate": "arvioimiseksi."
-			},
-			"itemInfo":{
-				"createdLabel": "luotu",
-				"ratingsLabel": "arviointi",
-				"ratingsLabelPlural": "arvioinnit",
-				"viewsLabel": "näytä",
-				"viewsLabelPlural": "Näkymät",
-				"commentsLabel": "kommentti",
-				"commentsLabelPlural": "kommentit",
-				"modifiedLabel": "Muokattu viimeksi",
-				"by": "peruste",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Lajitteluperuste",
+                "modified": "Päivämäärä",
+                "title": "Otsikko",
+                "type": "Tyyppi",
+                "numRatings": "Arvioinnit",
+                "avgRating": "Keskimääräinen arviointi",
+                "numComments": "Kommentit",
+                "numViews": "Katselukerrat"
+            },
+            "comments": {
+                "commentsHeader": "Kommentit",
+                "posted": "Lähetetty",
+                "by": "tekijältä",
+                "deleteComment": "poista",
+                "editComment": "muokkaa",
+                "noComments": "Ei kommentteja",
+                "addCommentButton": "Lisää kommentti",
+                "signIn": "Kirjaudu sisään",
+                "register": "Rekisteröi",
+                "or": "tai",
+                "toPost": "lähettääksesi kommentin."
+            },
+            "buttons": {
+                "cancel": "Peruuta",
+                "submit": "Lähetä"
+            },
+            "rating": {
+                "signIn": "Kirjaudu sisään",
+                "toRate": "arvioimiseksi."
+            },
+            "itemInfo": {
+                "createdLabel": "luotu",
+                "ratingsLabel": "arviointi",
+                "ratingsLabelPlural": "arvioinnit",
+                "viewsLabel": "näytä",
+                "viewsLabelPlural": "katselukerrat",
+                "commentsLabel": "kommentti",
+                "commentsLabelPlural": "kommentit",
+                "modifiedLabel": "Muokattu viimeksi",
+                "by": "tekijältä",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Etsi sijainti",
                 "findPlaceholder": "Etsi osoite",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Omistaja:",
                 "switchBasemap": "Vaihda taustakartta",
-				"getMobileApp": "Hanki sovellus",
-				"constraintsHeading":"Käyttörajoitukset",
-				"createdLabel":"Luotu",
-				"noDescription":"Ei kuvausta.",
-				"detailsLabel":"Yksityiskohdat"
+                "getMobileApp": "Hanki sovellus",
+                "constraintsHeading": "Käyttörajoitukset",
+                "createdLabel": "Luotu",
+                "noDescription": "Ei kuvausta.",
+                "detailsLabel": "Yksityiskohdat"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Näytä",
                 "all": "Kaikki tulokset",
                 "maps": "Kartat",

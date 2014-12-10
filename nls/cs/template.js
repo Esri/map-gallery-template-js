@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "K vydání této aplikace je nutný vlastní klíč Bing Maps.",
                 "noLayers": "Žádné operační vrstvy",
                 "noSearchResults": "Omlouváme se, nebyly nalezeny žádné výsledky.",
-				"noGroupResults": "Skupina nebyla nalezena.",
+                "noGroupResults": "Skupina nebyla nalezena.",
                 "noMatches": "Nebyly nalezeny žádné shody.",
                 "noMapsFound": "Nebyly nalezeny žádné mapy."
             },
             "sidePanel": {
                 "title": "Legenda",
                 "legendButton": "Legenda",
-				"layersButton": "Vrstvy", // new
+                "layersButton": "Vrstvy", // new
                 "legendButtonTitle": "Legenda mapy",
                 "aboutButton": "O aplikaci",
                 "aboutButtonTitle": "O mapě",
@@ -35,49 +35,49 @@
                 "listSwitch": "Přepnout na zobrazení seznamu",
                 "loadingText": "Načítám mapy&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Třídit podle",
-				"modified": "Datum",
-				"title": "Název",
-				"type": "Typ",
-				"numRatings": "Hodnocení",
-				"avgRating": "Prům. hodnocení",
-				"numComments": "Poznámky",
-				"numViews": "Zobrazení"
-			},
-			"comments":{
-				"commentsHeader": "Poznámky",
-				"posted": "Vystaveno",
-				"by": "podle",
-				"deleteComment": "smazat",
-				"editComment": "upravit",
-				"noComments": "Žádné komentáře",
-				"addCommentButton": "Přidat komentář",
-				"signIn": "Přihlásit",
-				"register": "Registrovat",
-				"or": "nebo",
-				"toPost": "pro přidání komentáře."
-			},
-			"buttons":{
-				"cancel": "Storno",
-				"submit": "Odeslat"
-			},
-			"rating":{
-				"signIn": "Přihlásit",
-				"toRate": "pro ohodnocení."
-			},
-			"itemInfo":{
-				"createdLabel": "vytvořeno",
-				"ratingsLabel": "hodnocení",
-				"ratingsLabelPlural": "hodnocení",
-				"viewsLabel": "zobrazení",
-				"viewsLabelPlural": "zobrazení",
-				"commentsLabel": "komentář",
-				"commentsLabelPlural": "komentáře",
-				"modifiedLabel": "Naposledy upraven",
-				"by": "podle",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Třídit podle",
+                "modified": "Datum",
+                "title": "Název",
+                "type": "Typ",
+                "numRatings": "Hodnocení",
+                "avgRating": "Prům. hodnocení",
+                "numComments": "Poznámky",
+                "numViews": "Zobrazení"
+            },
+            "comments": {
+                "commentsHeader": "Poznámky",
+                "posted": "Vystaveno",
+                "by": "podle",
+                "deleteComment": "smazat",
+                "editComment": "upravit",
+                "noComments": "Žádné komentáře",
+                "addCommentButton": "Přidat komentář",
+                "signIn": "Přihlásit",
+                "register": "Registrovat",
+                "or": "nebo",
+                "toPost": "pro přidání komentáře."
+            },
+            "buttons": {
+                "cancel": "Storno",
+                "submit": "Odeslat"
+            },
+            "rating": {
+                "signIn": "Přihlásit",
+                "toRate": "pro ohodnocení."
+            },
+            "itemInfo": {
+                "createdLabel": "vytvořeno",
+                "ratingsLabel": "hodnocení",
+                "ratingsLabelPlural": "hodnocení",
+                "viewsLabel": "zobrazení",
+                "viewsLabelPlural": "zobrazení",
+                "commentsLabel": "komentář",
+                "commentsLabelPlural": "komentáře",
+                "modifiedLabel": "Naposledy upraveno",
+                "by": "podle",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Najít umístění",
                 "findPlaceholder": "Vyhledat adresu",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Vlastník:",
                 "switchBasemap": "Přepnout podkladovou mapu",
-				"getMobileApp": "Stáhnout aplikaci",
-				"constraintsHeading":"Omezení použití",
-				"createdLabel":"Vytvořeno",
-				"noDescription":"Žádný popis.",
-				"detailsLabel":"Podrobnosti"
+                "getMobileApp": "Stáhnout aplikaci",
+                "constraintsHeading": "Omezení použití",
+                "createdLabel": "Vytvořeno",
+                "noDescription": "Bez popisu.",
+                "detailsLabel": "Podrobnosti"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Zobrazit",
                 "all": "Všechny výsledky",
                 "maps": "Mapy",

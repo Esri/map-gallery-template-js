@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Para desplegar esta aplicación necesitas tu propia llave de mapas bing.",
                 "noLayers": "Ninguna capa operativa",
                 "noSearchResults": "Lo sentimos, no se encontraron resultados.",
-				"noGroupResults": "No se pudo encontrar el grupo.",
+                "noGroupResults": "No se pudo encontrar el grupo.",
                 "noMatches": "No se encontraron coincidencias.",
                 "noMapsFound": "No se encontraron mapas."
             },
             "sidePanel": {
                 "title": "Leyenda",
                 "legendButton": "Leyenda",
-				"layersButton": "Capas", // new
+                "layersButton": "Capas", // new
                 "legendButtonTitle": "Leyenda del mapa",
                 "aboutButton": "Acerca de",
                 "aboutButtonTitle": "Acerca del mapa",
@@ -35,49 +35,49 @@
                 "listSwitch": "Cambiar a vista de lista",
                 "loadingText": "Cargando mapas&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Ordenar por",
-				"modified": "Fecha",
-				"title": "Título",
-				"type": "Tipo",
-				"numRatings": "Calificaciones",
-				"avgRating": "Clasificación media",
-				"numComments": "Comentarios",
-				"numViews": "Vistas"
-			},
-			"comments":{
-				"commentsHeader": "Comentarios",
-				"posted": "Publicado",
-				"by": "de",
-				"deleteComment": "eliminar",
-				"editComment": "editar",
-				"noComments": "Sin comentarios",
-				"addCommentButton": "Agregar comentario",
-				"signIn": "Iniciar sesión",
-				"register": "Registrarse",
-				"or": "o",
-				"toPost": "para publicar un comentario."
-			},
-			"buttons":{
-				"cancel": "Cancelar",
-				"submit": "Enviar"
-			},
-			"rating":{
-				"signIn": "Iniciar sesión",
-				"toRate": "para clasificar."
-			},
-			"itemInfo":{
-				"createdLabel": "creado",
-				"ratingsLabel": "calificación",
-				"ratingsLabelPlural": "calificaciones",
-				"viewsLabel": "vista",
-				"viewsLabelPlural": "vistas",
-				"commentsLabel": "comentario",
-				"commentsLabelPlural": "comentarios",
-				"modifiedLabel": "Última modificación",
-				"by": "de",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Ordenar por",
+                "modified": "Fecha",
+                "title": "Título",
+                "type": "Tipo",
+                "numRatings": "Calificaciones",
+                "avgRating": "Clasificación media",
+                "numComments": "Comentarios",
+                "numViews": "Vistas"
+            },
+            "comments": {
+                "commentsHeader": "Comentarios",
+                "posted": "Publicado",
+                "by": "de",
+                "deleteComment": "eliminar",
+                "editComment": "editar",
+                "noComments": "Sin comentarios",
+                "addCommentButton": "Agregar comentario",
+                "signIn": "Iniciar sesión",
+                "register": "Registrarse",
+                "or": "o",
+                "toPost": "para publicar un comentario."
+            },
+            "buttons": {
+                "cancel": "Cancelar",
+                "submit": "Enviar"
+            },
+            "rating": {
+                "signIn": "Iniciar sesión",
+                "toRate": "para clasificar."
+            },
+            "itemInfo": {
+                "createdLabel": "creado",
+                "ratingsLabel": "calificación",
+                "ratingsLabelPlural": "calificaciones",
+                "viewsLabel": "vista",
+                "viewsLabelPlural": "vistas",
+                "commentsLabel": "comentario",
+                "commentsLabelPlural": "comentarios",
+                "modifiedLabel": "Última modificación",
+                "by": "de",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Encontrar una ubicación",
                 "findPlaceholder": "Localizar una dirección",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Propietario:",
                 "switchBasemap": "Cambiar mapa base",
-				"getMobileApp": "Obtener aplicación",
-				"constraintsHeading":"Usar restricciones",
-				"createdLabel":"Creado",
-				"noDescription":"No hay ninguna descripción.",
-				"detailsLabel":"Detalles"
+                "getMobileApp": "Obtener aplicación",
+                "constraintsHeading": "Usar restricciones",
+                "createdLabel": "Creado",
+                "noDescription": "No hay descripción.",
+                "detailsLabel": "Detalles"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Mostrar",
                 "all": "Todos los resultados",
                 "maps": "Mapas",

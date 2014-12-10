@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Lansarea acestei aplicaţii necesită propria dvs. cheie de hărţi Bing.",
                 "noLayers": "Niciun strat tematic operaţional",
                 "noSearchResults": "Ne pare rău, nu a fost găsit niciun rezultat.",
-				"noGroupResults": "Grupul nu a putut fi găsit.",
+                "noGroupResults": "Grupul nu a putut fi găsit.",
                 "noMatches": "Nu au fost găsite concordanţe.",
                 "noMapsFound": "Nu a fost găsită nicio hartă."
             },
             "sidePanel": {
                 "title": "Legendă",
                 "legendButton": "Legendă",
-				"layersButton": "Straturi tematice", // new
+                "layersButton": "Straturi tematice", // new
                 "legendButtonTitle": "Legendă hartă",
                 "aboutButton": "Despre",
                 "aboutButtonTitle": "Despre hartă",
@@ -35,49 +35,49 @@
                 "listSwitch": "Comutare la Vizualizare listă",
                 "loadingText": "Încărcare hărţi&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sortare după",
-				"modified": "Dată",
-				"title": "Titlu",
-				"type": "Tip",
-				"numRatings": "Calificative",
-				"avgRating": "Calificativ mediu",
-				"numComments": "Comentarii",
-				"numViews": "Vizualizări"
-			},
-			"comments":{
-				"commentsHeader": "Comentarii",
-				"posted": "Postat",
-				"by": "de",
-				"deleteComment": "ştergere",
-				"editComment": "editare",
-				"noComments": "Niciun comentariu",
-				"addCommentButton": "Adăugare comentariu",
-				"signIn": "Autentificare",
-				"register": "Înregistrare",
-				"or": "sau",
-				"toPost": "pentru a posta un comentariu."
-			},
-			"buttons":{
-				"cancel": "Anulare",
-				"submit": "Trimitere"
-			},
-			"rating":{
-				"signIn": "Autentificare",
-				"toRate": "pentru a furniza un calificativ."
-			},
-			"itemInfo":{
-				"createdLabel": "creat",
-				"ratingsLabel": "calificativ",
-				"ratingsLabelPlural": "calificative",
-				"viewsLabel": "vizualizare",
-				"viewsLabelPlural": "vizualizări",
-				"commentsLabel": "comentariu",
-				"commentsLabelPlural": "comentarii",
-				"modifiedLabel": "Ultima modificare",
-				"by": "de",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sortare după",
+                "modified": "Dată",
+                "title": "Titlu",
+                "type": "Tip",
+                "numRatings": "Calificative",
+                "avgRating": "Calificativ mediu",
+                "numComments": "Comentarii",
+                "numViews": "Vizualizări"
+            },
+            "comments": {
+                "commentsHeader": "Comentarii",
+                "posted": "Postat",
+                "by": "de",
+                "deleteComment": "ştergere",
+                "editComment": "editare",
+                "noComments": "Niciun comentariu",
+                "addCommentButton": "Adăugare comentariu",
+                "signIn": "Autentificare",
+                "register": "Înregistrare",
+                "or": "sau",
+                "toPost": "pentru a posta un comentariu."
+            },
+            "buttons": {
+                "cancel": "Anulare",
+                "submit": "Trimitere"
+            },
+            "rating": {
+                "signIn": "Autentificare",
+                "toRate": "pentru a furniza un calificativ."
+            },
+            "itemInfo": {
+                "createdLabel": "creat",
+                "ratingsLabel": "calificativ",
+                "ratingsLabelPlural": "calificative",
+                "viewsLabel": "vizualizare",
+                "viewsLabelPlural": "vizualizări",
+                "commentsLabel": "comentariu",
+                "commentsLabelPlural": "comentarii",
+                "modifiedLabel": "Ultima modificare",
+                "by": "de",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Găsire locaţie",
                 "findPlaceholder": "Localizare adresă",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Proprietar:",
                 "switchBasemap": "Schimbare hartă fundal",
-				"getMobileApp": "Obţinere aplicaţie",
-				"constraintsHeading":"Utilizare restricţii",
-				"createdLabel":"Creat",
-				"noDescription":"Nicio descriere.",
-				"detailsLabel":"Detalii"
+                "getMobileApp": "Obţinere aplicaţie",
+                "constraintsHeading": "Utilizare restricţii",
+                "createdLabel": "Creat",
+                "noDescription": "Nicio descriere.",
+                "detailsLabel": "Detalii"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Afişare",
                 "all": "Toate rezultatele",
                 "maps": "Hărţi",

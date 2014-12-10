@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Le déploiement de cette application nécessite votre propre clé Bing Maps.",
                 "noLayers": "Aucune couche fonctionnelle",
                 "noSearchResults": "Aucun résultat n\'a été trouvé.",
-				"noGroupResults": "Le groupe est introuvable.",
+                "noGroupResults": "Le groupe est introuvable.",
                 "noMatches": "Aucun résultat n\'a été trouvé.",
                 "noMapsFound": "Aucune carte n\'a été trouvée."
             },
             "sidePanel": {
                 "title": "Légende",
                 "legendButton": "Légende",
-				"layersButton": "Couches", // new
+                "layersButton": "Couches", // new
                 "legendButtonTitle": "Légende de la carte",
                 "aboutButton": "A propos",
                 "aboutButtonTitle": "A propos de la carte",
@@ -35,49 +35,49 @@
                 "listSwitch": "Affichage Liste",
                 "loadingText": "Chargement de Maps&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Trier par",
-				"modified": "Date",
-				"title": "Titre",
-				"type": "Type",
-				"numRatings": "Evaluations",
-				"avgRating": "Evaluation moyenne",
-				"numComments": "Commentaires",
-				"numViews": "Vues"
-			},
-			"comments":{
-				"commentsHeader": "Commentaires",
-				"posted": "Publié(s)",
-				"by": "par",
-				"deleteComment": "supprimer",
-				"editComment": "modifier",
-				"noComments": "Aucun commentaire",
-				"addCommentButton": "Ajouter un commentaire",
-				"signIn": "Se connecter",
-				"register": "Enregistrement",
-				"or": "ou",
-				"toPost": "pour publier un commentaire."
-			},
-			"buttons":{
-				"cancel": "Annuler",
-				"submit": "Envoyer"
-			},
-			"rating":{
-				"signIn": "Se connecter",
-				"toRate": "pour laisser une évaluation."
-			},
-			"itemInfo":{
-				"createdLabel": "créé(e)",
-				"ratingsLabel": "évaluation",
-				"ratingsLabelPlural": "évaluations",
-				"viewsLabel": "vue",
-				"viewsLabelPlural": "vues",
-				"commentsLabel": "commentaire",
-				"commentsLabelPlural": "commentaires",
-				"modifiedLabel": "Dernière modification",
-				"by": "par",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Trier par",
+                "modified": "Date",
+                "title": "Titre",
+                "type": "Type",
+                "numRatings": "Evaluations",
+                "avgRating": "Evaluation moyenne",
+                "numComments": "Commentaires",
+                "numViews": "Vues"
+            },
+            "comments": {
+                "commentsHeader": "Commentaires",
+                "posted": "Publié(s)",
+                "by": "par",
+                "deleteComment": "supprimer",
+                "editComment": "modifier",
+                "noComments": "Aucun commentaire",
+                "addCommentButton": "Ajouter un commentaire",
+                "signIn": "Se connecter",
+                "register": "Enregistrement",
+                "or": "ou",
+                "toPost": "pour publier un commentaire."
+            },
+            "buttons": {
+                "cancel": "Annuler",
+                "submit": "Envoyer"
+            },
+            "rating": {
+                "signIn": "Se connecter",
+                "toRate": "pour laisser une évaluation."
+            },
+            "itemInfo": {
+                "createdLabel": "créé(e)",
+                "ratingsLabel": "évaluation",
+                "ratingsLabelPlural": "évaluations",
+                "viewsLabel": "vue",
+                "viewsLabelPlural": "vues",
+                "commentsLabel": "commentaire",
+                "commentsLabelPlural": "commentaires",
+                "modifiedLabel": "Dernière modification",
+                "by": "par",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Rechercher un lieu",
                 "findPlaceholder": "Localiser une adresse",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Propriétaire :",
                 "switchBasemap": "Changer de fond de carte",
-				"getMobileApp": "Obtenir une application",
-				"constraintsHeading":"Contraintes d\'utilisation",
-				"createdLabel":"Créé",
-				"noDescription":"Aucune description.",
-				"detailsLabel":"Détails"
+                "getMobileApp": "Obtenir une application",
+                "constraintsHeading": "Contraintes d\'utilisation",
+                "createdLabel": "Créé",
+                "noDescription": "Aucune description.",
+                "detailsLabel": "Détails"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Afficher",
                 "all": "Tous les résultats",
                 "maps": "Cartes",

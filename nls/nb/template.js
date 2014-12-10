@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Bruk av denne applikasjonen krever din egen Bing Maps-nøkkel.",
                 "noLayers": "Ingen funksjonelle lag",
                 "noSearchResults": "Fant dessverre ingen resultater.",
-				"noGroupResults": "Fant ikke gruppen.",
+                "noGroupResults": "Fant ikke gruppen.",
                 "noMatches": "Fant ingen treff.",
                 "noMapsFound": "Fant ingen kart."
             },
             "sidePanel": {
                 "title": "Tegnforklaring",
                 "legendButton": "Tegnforklaring",
-				"layersButton": "Lag", // new
+                "layersButton": "Lag", // new
                 "legendButtonTitle": "Tegnforklaring på kartet",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartet",
@@ -35,49 +35,49 @@
                 "listSwitch": "Bytt til listevisning",
                 "loadingText": "Laster inn kart&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sorter etter",
-				"modified": "Dato",
-				"title": "Tittel",
-				"type": "Type",
-				"numRatings": "Vurderinger",
-				"avgRating": "Gjennomsnitt Vurdering",
-				"numComments": "Kommentarer",
-				"numViews": "Visninger"
-			},
-			"comments":{
-				"commentsHeader": "Kommentarer",
-				"posted": "Postet",
-				"by": "ved",
-				"deleteComment": "slett",
-				"editComment": "rediger",
-				"noComments": "Ingen kommentarer",
-				"addCommentButton": "Legg til kommentar",
-				"signIn": "Logg på",
-				"register": "Registrer",
-				"or": "eller",
-				"toPost": "for å poste en kommentar."
-			},
-			"buttons":{
-				"cancel": "Avbryt",
-				"submit": "Send inn"
-			},
-			"rating":{
-				"signIn": "Logg på",
-				"toRate": "for å vurdere."
-			},
-			"itemInfo":{
-				"createdLabel": "opprettet",
-				"ratingsLabel": "vurdering",
-				"ratingsLabelPlural": "vurderinger",
-				"viewsLabel": "visning",
-				"viewsLabelPlural": "visninger",
-				"commentsLabel": "kommentar",
-				"commentsLabelPlural": "kommentarer",
-				"modifiedLabel": "Sist endret",
-				"by": "ved",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sorter etter",
+                "modified": "Dato",
+                "title": "Tittel",
+                "type": "Type",
+                "numRatings": "Vurderinger",
+                "avgRating": "Gjennomsnitt Vurdering",
+                "numComments": "Kommentarer",
+                "numViews": "Visninger"
+            },
+            "comments": {
+                "commentsHeader": "Kommentarer",
+                "posted": "Postet",
+                "by": "ved",
+                "deleteComment": "slett",
+                "editComment": "rediger",
+                "noComments": "Ingen kommentarer",
+                "addCommentButton": "Legg til kommentar",
+                "signIn": "Logg på",
+                "register": "Registrer",
+                "or": "eller",
+                "toPost": "for å poste en kommentar."
+            },
+            "buttons": {
+                "cancel": "Avbryt",
+                "submit": "Send inn"
+            },
+            "rating": {
+                "signIn": "Logg på",
+                "toRate": "for å vurdere."
+            },
+            "itemInfo": {
+                "createdLabel": "opprettet",
+                "ratingsLabel": "vurdering",
+                "ratingsLabelPlural": "vurderinger",
+                "viewsLabel": "visning",
+                "viewsLabelPlural": "visninger",
+                "commentsLabel": "kommentar",
+                "commentsLabelPlural": "kommentarer",
+                "modifiedLabel": "Sist endret",
+                "by": "ved",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Finn en lokasjon",
                 "findPlaceholder": "Finn en adresse",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Eier:",
                 "switchBasemap": "Bytt bakgrunnskart",
-				"getMobileApp": "Hent program",
-				"constraintsHeading":"Brukerbegrensninger",
-				"createdLabel":"Opprettet",
-				"noDescription":"Ingen beskrivelse.",
-				"detailsLabel":"Detaljer"
+                "getMobileApp": "Hent program",
+                "constraintsHeading": "Brukerbegrensninger",
+                "createdLabel": "Opprettet",
+                "noDescription": "Ingen beskrivelse.",
+                "detailsLabel": "Detaljer"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Vis",
                 "all": "Alle resultater",
                 "maps": "Kart",

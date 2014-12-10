@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Selle rakenduse rakendamiseks on vajalik Teie oma Bing Maps võti.",
                 "noLayers": "Puuduvad funktsioneerivad kihid",
                 "noSearchResults": "Vabandust, tulemusi ei leitud.",
-				"noGroupResults": "Gruppi ei leitud.",
+                "noGroupResults": "Gruppi ei leitud.",
                 "noMatches": "Ei leitud vastavusi.",
                 "noMapsFound": "Ei leitud kaarte."
             },
             "sidePanel": {
                 "title": "Legend",
                 "legendButton": "Legend",
-				"layersButton": "Kihid", // new
+                "layersButton": "Kihid", // new
                 "legendButtonTitle": "Kaardilegend",
                 "aboutButton": "Info",
                 "aboutButtonTitle": "Kaardi kohta",
@@ -35,49 +35,49 @@
                 "listSwitch": "Lülitu ümber loendi vaatele",
                 "loadingText": "Laen kaarte&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sorteeri:",
-				"modified": "Kuupäev",
-				"title": "Pealkiri",
-				"type": "Tüüp",
-				"numRatings": "Hinnangut",
-				"avgRating": "Keskm. hinnang",
-				"numComments": "Kommentaari",
-				"numViews": "Vaatamist"
-			},
-			"comments":{
-				"commentsHeader": "Kommentaari",
-				"posted": "Postitatud",
-				"by": "autor:",
-				"deleteComment": "kustuta",
-				"editComment": "redigeeri",
-				"noComments": "Kommentaarid puuduvad",
-				"addCommentButton": "Lisa kommentaar",
-				"signIn": "Logi sisse",
-				"register": "Registreeri",
-				"or": "või",
-				"toPost": "kommentaari postitamiseks."
-			},
-			"buttons":{
-				"cancel": "Tühista",
-				"submit": "Saada"
-			},
-			"rating":{
-				"signIn": "Logi sisse",
-				"toRate": "hindamiseks."
-			},
-			"itemInfo":{
-				"createdLabel": "loodud",
-				"ratingsLabel": "hinnang",
-				"ratingsLabelPlural": "hinnangut",
-				"viewsLabel": "vaatamist",
-				"viewsLabelPlural": "vaatamisi",
-				"commentsLabel": "kommentaar",
-				"commentsLabelPlural": "kommentaari",
-				"modifiedLabel": "Viimati muudetud",
-				"by": "autor:",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sorteeri:",
+                "modified": "Kuupäev",
+                "title": "Pealkiri",
+                "type": "Tüüp",
+                "numRatings": "Hinnangut",
+                "avgRating": "Keskm. hinnang",
+                "numComments": "Kommentaarid",
+                "numViews": "Vaatamist"
+            },
+            "comments": {
+                "commentsHeader": "Kommentaarid",
+                "posted": "Postitatud",
+                "by": "autor:",
+                "deleteComment": "kustuta",
+                "editComment": "redigeeri",
+                "noComments": "Kommentaarid puuduvad",
+                "addCommentButton": "Lisa kommentaar",
+                "signIn": "Logi sisse",
+                "register": "Registreeri",
+                "or": "või",
+                "toPost": "kommentaari postitamiseks."
+            },
+            "buttons": {
+                "cancel": "Tühista",
+                "submit": "Saada"
+            },
+            "rating": {
+                "signIn": "Logi sisse",
+                "toRate": "hindamiseks."
+            },
+            "itemInfo": {
+                "createdLabel": "loodud",
+                "ratingsLabel": "hinnang",
+                "ratingsLabelPlural": "hinnangut",
+                "viewsLabel": "vaatamine",
+                "viewsLabelPlural": "vaatamisi",
+                "commentsLabel": "kommentaar",
+                "commentsLabelPlural": "kommentaari",
+                "modifiedLabel": "Viimati muudetud",
+                "by": "autor:",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Leia asukoht",
                 "findPlaceholder": "Leia aadressi asukoht",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Omanik:",
                 "switchBasemap": "Vaheta aluskaart",
-				"getMobileApp": "Hangi rakendus",
-				"constraintsHeading":"Kasuta piiranguid",
-				"createdLabel":"Loodud",
-				"noDescription":"Kirjeldus puudub.",
-				"detailsLabel":"Detailid"
+                "getMobileApp": "Hangi rakendus",
+                "constraintsHeading": "Kasuta piiranguid",
+                "createdLabel": "Loodud",
+                "noDescription": "Kirjeldus puudub.",
+                "detailsLabel": "Detailid"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Näita",
                 "all": "Kõik tulemused",
                 "maps": "Kaardid",

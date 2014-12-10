@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Du måste ha en egen Bing Maps-nyckel för att starta den här applikationen.",
                 "noLayers": "Inga operativa lager",
                 "noSearchResults": "Tyvärr hittades inga resultat.",
-				"noGroupResults": "Det gick inte att hitta gruppen.",
+                "noGroupResults": "Det gick inte att hitta gruppen.",
                 "noMatches": "Inga matchningar hittades.",
                 "noMapsFound": "Inga kartor hittades."
             },
             "sidePanel": {
                 "title": "Teckenförklaring",
                 "legendButton": "Teckenförklaring",
-				"layersButton": "Lager", // new
+                "layersButton": "Lager", // new
                 "legendButtonTitle": "Kartteckenförklaring",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartan",
@@ -35,49 +35,49 @@
                 "listSwitch": "Växla till listvy",
                 "loadingText": "Läser in kartor&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sortera efter",
-				"modified": "Datum",
-				"title": "Titel",
-				"type": "Typ",
-				"numRatings": "Betyg",
-				"avgRating": "Snittbetyg",
-				"numComments": "Kommentarer",
-				"numViews": "Visningar"
-			},
-			"comments":{
-				"commentsHeader": "Kommentarer",
-				"posted": "Skickad",
-				"by": "av",
-				"deleteComment": "ta bort",
-				"editComment": "redigera",
-				"noComments": "Inga kommentarer",
-				"addCommentButton": "Lägg till kommentar",
-				"signIn": "Logga in",
-				"register": "Registrera",
-				"or": "eller",
-				"toPost": "för att skicka en kommentar."
-			},
-			"buttons":{
-				"cancel": "Avbryt",
-				"submit": "Utför"
-			},
-			"rating":{
-				"signIn": "Logga in",
-				"toRate": "för att sätta betyg."
-			},
-			"itemInfo":{
-				"createdLabel": "skapad",
-				"ratingsLabel": "bedömning",
-				"ratingsLabelPlural": "bedömningar",
-				"viewsLabel": "vy",
-				"viewsLabelPlural": "vyer",
-				"commentsLabel": "kommentar",
-				"commentsLabelPlural": "kommentarer",
-				"modifiedLabel": "Senast ändrad",
-				"by": "av",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sortera efter",
+                "modified": "Datum",
+                "title": "Titel",
+                "type": "Typ",
+                "numRatings": "Betyg",
+                "avgRating": "Snittbetyg",
+                "numComments": "Kommentarer",
+                "numViews": "Visningar"
+            },
+            "comments": {
+                "commentsHeader": "Kommentarer",
+                "posted": "Skickad",
+                "by": "av",
+                "deleteComment": "ta bort",
+                "editComment": "redigera",
+                "noComments": "Inga kommentarer",
+                "addCommentButton": "Lägg till kommentar",
+                "signIn": "Logga in",
+                "register": "Registrera",
+                "or": "eller",
+                "toPost": "för att skicka en kommentar."
+            },
+            "buttons": {
+                "cancel": "Avbryt",
+                "submit": "Utför"
+            },
+            "rating": {
+                "signIn": "Logga in",
+                "toRate": "för att sätta betyg."
+            },
+            "itemInfo": {
+                "createdLabel": "skapad",
+                "ratingsLabel": "bedömning",
+                "ratingsLabelPlural": "bedömningar",
+                "viewsLabel": "vy",
+                "viewsLabelPlural": "vyer",
+                "commentsLabel": "kommentar",
+                "commentsLabelPlural": "kommentarer",
+                "modifiedLabel": "Senast ändrad",
+                "by": "av",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Hitta en plats",
                 "findPlaceholder": "Hitta en adress",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Ägare:",
                 "switchBasemap": "Byt baskarta",
-				"getMobileApp": "Hämta app",
-				"constraintsHeading":"Användningsbegränsningar",
-				"createdLabel":"Skapad",
-				"noDescription":"Ingen beskrivning.",
-				"detailsLabel":"Information"
+                "getMobileApp": "Hämta app",
+                "constraintsHeading": "Användningsbegränsningar",
+                "createdLabel": "Skapad",
+                "noDescription": "Ingen beskrivning.",
+                "detailsLabel": "Information"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Visa",
                 "all": "Alla resultat",
                 "maps": "Kartor",

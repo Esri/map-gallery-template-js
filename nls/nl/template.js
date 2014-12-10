@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Het implementeren van deze applicatie vereist uw eigen code voor Bing Maps.",
                 "noLayers": "Geen operationele lagen",
                 "noSearchResults": "Er zijn geen resultaten gevonden.",
-				"noGroupResults": "De groep kan niet worden gevonden.",
+                "noGroupResults": "De groep kan niet worden gevonden.",
                 "noMatches": "Geen overeenkomsten gevonden.",
                 "noMapsFound": "Geen kaarten gevonden."
             },
             "sidePanel": {
                 "title": "Legenda",
                 "legendButton": "Legenda",
-				"layersButton": "Kaartlagen", // new
+                "layersButton": "Kaartlagen", // new
                 "legendButtonTitle": "Kaartlegenda",
                 "aboutButton": "Over",
                 "aboutButtonTitle": "Informatie over kaart",
@@ -35,49 +35,49 @@
                 "listSwitch": "Omschakelen naar Lijstweergave",
                 "loadingText": "Kaarten laden&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sorteren op",
-				"modified": "Datum",
-				"title": "Titel",
-				"type": "Type",
-				"numRatings": "Beoordelingen",
-				"avgRating": "Gemiddelde beoordeling",
-				"numComments": "Opmerkingen",
-				"numViews": "Weergaven"
-			},
-			"comments":{
-				"commentsHeader": "Opmerkingen",
-				"posted": "Geplaatst",
-				"by": "van",
-				"deleteComment": "verwijderen",
-				"editComment": "bewerken",
-				"noComments": "Geen opmerkingen",
-				"addCommentButton": "Opmerking toevoegen",
-				"signIn": "Aanmelden",
-				"register": "Registreren",
-				"or": "of",
-				"toPost": "om een opmerking te plaatsen."
-			},
-			"buttons":{
-				"cancel": "Annuleren",
-				"submit": "Verzenden"
-			},
-			"rating":{
-				"signIn": "Aanmelden",
-				"toRate": "om te beoordelen."
-			},
-			"itemInfo":{
-				"createdLabel": "gemaakt",
-				"ratingsLabel": "beoordeling",
-				"ratingsLabelPlural": "beoordelingen",
-				"viewsLabel": "weergave",
-				"viewsLabelPlural": "keer bekeken",
-				"commentsLabel": "opmerking",
-				"commentsLabelPlural": "opmerkingen",
-				"modifiedLabel": "Laatst gewijzigd",
-				"by": "van",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sorteren op",
+                "modified": "Datum",
+                "title": "Titel",
+                "type": "Type",
+                "numRatings": "Beoordelingen",
+                "avgRating": "Gemiddelde beoordeling",
+                "numComments": "Opmerkingen",
+                "numViews": "Weergaven"
+            },
+            "comments": {
+                "commentsHeader": "Opmerkingen",
+                "posted": "Geplaatst",
+                "by": "van",
+                "deleteComment": "verwijderen",
+                "editComment": "bewerken",
+                "noComments": "Geen opmerkingen",
+                "addCommentButton": "Opmerking toevoegen",
+                "signIn": "Aanmelden",
+                "register": "Registreren",
+                "or": "of",
+                "toPost": "om een opmerking te plaatsen."
+            },
+            "buttons": {
+                "cancel": "Annuleren",
+                "submit": "Verzenden"
+            },
+            "rating": {
+                "signIn": "Aanmelden",
+                "toRate": "om te beoordelen."
+            },
+            "itemInfo": {
+                "createdLabel": "gemaakt",
+                "ratingsLabel": "beoordeling",
+                "ratingsLabelPlural": "beoordelingen",
+                "viewsLabel": "weergave",
+                "viewsLabelPlural": "keer bekeken",
+                "commentsLabel": "opmerking",
+                "commentsLabelPlural": "opmerkingen",
+                "modifiedLabel": "Laatst gewijzigd",
+                "by": "van",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Een locatie zoeken",
                 "findPlaceholder": "Een adres zoeken",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Eigenaar:",
                 "switchBasemap": "Basiskaart wijzigen",
-				"getMobileApp": "App downloaden",
-				"constraintsHeading":"Gebruiksbeperkingen",
-				"createdLabel":"Gemaakt",
-				"noDescription":"Geen beschrijving.",
-				"detailsLabel":"Details"
+                "getMobileApp": "App downloaden",
+                "constraintsHeading": "Gebruiksbeperkingen",
+                "createdLabel": "Gemaakt",
+                "noDescription": "Geen beschrijving.",
+                "detailsLabel": "Details"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Weergeven",
                 "all": "Alle resultaten",
                 "maps": "Kaarten",

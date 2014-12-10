@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "Wdrożenie tej aplikacji wymaga własnego klucza map Bing.",
                 "noLayers": "Brak warstw operacyjnych",
                 "noSearchResults": "Nie znaleziono wyników.",
-				"noGroupResults": "Nie można znaleźć grupy.",
+                "noGroupResults": "Nie można znaleźć grupy.",
                 "noMatches": "Nie znaleziono dopasowań.",
                 "noMapsFound": "Nie znaleziono map."
             },
             "sidePanel": {
                 "title": "Legenda",
                 "legendButton": "Legenda",
-				"layersButton": "Warstwy", // new
+                "layersButton": "Warstwy", // new
                 "legendButtonTitle": "Legenda mapy",
                 "aboutButton": "Informacje o",
                 "aboutButtonTitle": "Informacje o mapie",
@@ -35,49 +35,49 @@
                 "listSwitch": "Przełącz do widoku listy",
                 "loadingText": "Wczytywanie Maps&hellip;"
             },
-			"sortFields":{
-				"sortBy": "Sortuj według",
-				"modified": "Data",
-				"title": "Tytuł",
-				"type": "Typ",
-				"numRatings": "Oceny",
-				"avgRating": "Średnia ocena",
-				"numComments": "Komentarze",
-				"numViews": "Liczba wyświetleń"
-			},
-			"comments":{
-				"commentsHeader": "Komentarze",
-				"posted": "Opublikowane",
-				"by": "utworzone przez",
-				"deleteComment": "usuń",
-				"editComment": "edytuj",
-				"noComments": "Brak komentarzy",
-				"addCommentButton": "Dodaj komentarz",
-				"signIn": "Zaloguj się",
-				"register": "Zarejestruj",
-				"or": "lub",
-				"toPost": "aby opublikować komentarz."
-			},
-			"buttons":{
-				"cancel": "Anuluj",
-				"submit": "Prześlij"
-			},
-			"rating":{
-				"signIn": "Zaloguj się",
-				"toRate": "aby ocenić."
-			},
-			"itemInfo":{
-				"createdLabel": "utworzone",
-				"ratingsLabel": "ocena",
-				"ratingsLabelPlural": "oceny",
-				"viewsLabel": "wyświetlenie",
-				"viewsLabelPlural": "liczba wyświetleń",
-				"commentsLabel": "komentarz",
-				"commentsLabelPlural": "komentarze/-y",
-				"modifiedLabel": "Ostatnia modyfikacja",
-				"by": "utworzone przez",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "Sortuj według",
+                "modified": "Data",
+                "title": "Tytuł",
+                "type": "Typ",
+                "numRatings": "Oceny",
+                "avgRating": "Średnia ocena",
+                "numComments": "Komentarze",
+                "numViews": "Liczba wyświetleń"
+            },
+            "comments": {
+                "commentsHeader": "Komentarze",
+                "posted": "Opublikowane",
+                "by": "utworzone przez",
+                "deleteComment": "usuń",
+                "editComment": "edytuj",
+                "noComments": "Brak komentarzy",
+                "addCommentButton": "Dodaj komentarz",
+                "signIn": "Zaloguj się",
+                "register": "Zarejestruj",
+                "or": "lub",
+                "toPost": "aby opublikować komentarz."
+            },
+            "buttons": {
+                "cancel": "Anuluj",
+                "submit": "Prześlij"
+            },
+            "rating": {
+                "signIn": "Zaloguj się",
+                "toRate": "aby ocenić."
+            },
+            "itemInfo": {
+                "createdLabel": "utworzone",
+                "ratingsLabel": "ocena",
+                "ratingsLabelPlural": "oceny",
+                "viewsLabel": "wyświetlenie",
+                "viewsLabelPlural": "liczba wyświetleń",
+                "commentsLabel": "komentarz",
+                "commentsLabelPlural": "komentarze/-y",
+                "modifiedLabel": "Ostatnia modyfikacja",
+                "by": "utworzone przez",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "Znajdź lokalizację",
                 "findPlaceholder": "Zlokalizuj adres",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "Właściciel:",
                 "switchBasemap": "Przełącz mapę bazową",
-				"getMobileApp": "Pobierz aplikację",
-				"constraintsHeading":"Używaj ograniczeń",
-				"createdLabel":"Utworzone",
-				"noDescription":"Brak opisu",
-				"detailsLabel":"Szczegóły"
+                "getMobileApp": "Pobierz aplikację",
+                "constraintsHeading": "Używaj ograniczeń",
+                "createdLabel": "Utworzone",
+                "noDescription": "Brak opisu",
+                "detailsLabel": "Szczegóły"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "Pokaż",
                 "all": "Wszystkie wyniki",
                 "maps": "Mapy",

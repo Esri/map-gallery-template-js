@@ -1,5 +1,5 @@
 ﻿define(
-({
+     ({
         "viewer": {
             "main": {
                 "scaleBarUnits": "metric",
@@ -12,14 +12,14 @@
                 "bingError": "يتطلب نشر هذا التطبيق مفتاح خرائط Bing.",
                 "noLayers": "لا توجد طبقات تشغيلية",
                 "noSearchResults": "عفوًا، لم يتم العثور على أي نتائج.",
-				"noGroupResults": "يتعذر العثور على هذه المجموعة.",
+                "noGroupResults": "يتعذر العثور على هذه المجموعة.",
                 "noMatches": "لم يتم العثور على تطابقات.",
                 "noMapsFound": "لم يتم العثور على أي خرائط."
             },
             "sidePanel": {
                 "title": "مفتاح الخريطة",
                 "legendButton": "مفتاح الخريطة",
-				"layersButton": "طبقات", // new
+                "layersButton": "طبقات", // new
                 "legendButtonTitle": "وسيلة إيضاح الخريطة",
                 "aboutButton": "نبذة عن",
                 "aboutButtonTitle": "نبذة عن الخريطة",
@@ -35,49 +35,49 @@
                 "listSwitch": "تحويل إلى عرض القائمة",
                 "loadingText": "تحميل Maps&hellip;"
             },
-			"sortFields":{
-				"sortBy": "الفرز حسب",
-				"modified": "التاريخ",
-				"title": "العنوان",
-				"type": "نوع",
-				"numRatings": "تصنيفات",
-				"avgRating": "التصنيف المتوسط",
-				"numComments": "تعليقات",
-				"numViews": "المشاهدات"
-			},
-			"comments":{
-				"commentsHeader": "تعليقات",
-				"posted": "تم النشر",
-				"by": "حسب",
-				"deleteComment": "حذف",
-				"editComment": "تحرير",
-				"noComments": "لا توجد تعليقات",
-				"addCommentButton": "إضافة تعليق",
-				"signIn": "تسجيل الدخول",
-				"register": "تسجيل",
-				"or": "أو",
-				"toPost": "لنشر تعليق."
-			},
-			"buttons":{
-				"cancel": "إلغاء الأمر",
-				"submit": "إرسال"
-			},
-			"rating":{
-				"signIn": "تسجيل الدخول",
-				"toRate": "للتصنيف"
-			},
-			"itemInfo":{
-				"createdLabel": "تم إنشاء",
-				"ratingsLabel": "تصنيف",
-				"ratingsLabelPlural": "تصنيفات",
-				"viewsLabel": "عرض",
-				"viewsLabelPlural": "المشاهدات",
-				"commentsLabel": "تعليق",
-				"commentsLabelPlural": "تعليقات",
-				"modifiedLabel": "آخر تعديل",
-				"by": "حسب",
-				"separator": ","
-			},
+            "sortFields": {
+                "sortBy": "الفرز حسب",
+                "modified": "التاريخ",
+                "title": "العنوان",
+                "type": "نوع",
+                "numRatings": "تصنيفات",
+                "avgRating": "التصنيف المتوسط",
+                "numComments": "تعليقات",
+                "numViews": "المشاهدات"
+            },
+            "comments": {
+                "commentsHeader": "تعليقات",
+                "posted": "تم النشر",
+                "by": "حسب",
+                "deleteComment": "حذف",
+                "editComment": "تحرير",
+                "noComments": "لا توجد تعليقات",
+                "addCommentButton": "إضافة تعليق",
+                "signIn": "تسجيل الدخول",
+                "register": "تسجيل",
+                "or": "أو",
+                "toPost": "لنشر تعليق."
+            },
+            "buttons": {
+                "cancel": "إلغاء الأمر",
+                "submit": "إرسال"
+            },
+            "rating": {
+                "signIn": "تسجيل الدخول",
+                "toRate": "للتصنيف"
+            },
+            "itemInfo": {
+                "createdLabel": "تم إنشاء",
+                "ratingsLabel": "تصنيف",
+                "ratingsLabelPlural": "تصنيفات",
+                "viewsLabel": "عرض",
+                "viewsLabelPlural": "المشاهدات",
+                "commentsLabel": "تعليق",
+                "commentsLabelPlural": "تعليقات",
+                "modifiedLabel": "آخر تعديل",
+                "by": "حسب",
+                "separator": ","
+            },
             "mapPage": {
                 "findLocation": "العثور على موقع",
                 "findPlaceholder": "تحديد عنوان",
@@ -93,13 +93,13 @@
                 "openInExplorer": "Explorer Online",
                 "ownerHeader": "المالك:",
                 "switchBasemap": "تبديل خريطة الأساس",
-				"getMobileApp": "الحصول على تطبيق",
-				"constraintsHeading":"استخدام القيود",
-				"createdLabel":"تم الإنشاء",
-				"noDescription":"لا يوجد وصف.",
-				"detailsLabel":"تفاصيل"
+                "getMobileApp": "الحصول على تطبيق",
+                "constraintsHeading": "استخدام القيود",
+                "createdLabel": "تم الإنشاء",
+                "noDescription": "لا يوجد وصف",
+                "detailsLabel": "التفاصيل"
             },
-            "filterItems":{
+            "filterItems": {
                 "show": "إظهار",
                 "all": "جميع النتائج",
                 "maps": "خرائط",
