@@ -170,14 +170,14 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
         // Insert Home Content
         /*------------------------------------*/
         insertHomeContent: function() {
-            var node;
+            var node, html;
             // Set home heading
             if (this._options.showFilterType) {
                 node = dom.byId('filterByType');
                 if(!this._options.customFilterType){
                     this._options.customFilterType = "";
                 }
-                var html = '<strong>' + i18n.viewer.filterItems.show + '</strong>';
+                html = '<strong>' + i18n.viewer.filterItems.show + '</strong>';
                 html += '<ul>';
                 html += '<li ' + this.getSelectedClass("") + ' data-type="">' + i18n.viewer.filterItems.all + '</li>';
                 html += '<li ' + this.getSelectedClass("Maps") + ' data-type="Maps">' + i18n.viewer.filterItems.maps + '</li>';
@@ -198,7 +198,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                 node = dom.byId('homeSnippet');
                 this.setNodeHTML(node, this._options.homeSnippet);
             }
-            var html = '';
+            html = '';
             // Set home right heading
             if (this._options.homeSideHeading) {
                 html += '<h2>' + this._options.homeSideHeading + '</h2>';
@@ -315,8 +315,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                             this.ACObj[locNum].type === "Feature Collection Template" ||
                             this.ACObj[locNum].type === "Geodata Service" ||
                             this.ACObj[locNum].type === "Globe Service"
-                            )
-                            && this._options.openLayersInViewer
+                            ) && this._options.openLayersInViewer
                         ) {
                             mapURL = this.getViewerURL('layers', this.ACObj[locNum].id);
                             externalLink = true;
@@ -418,8 +417,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                         data.results[i].type === "Feature Collection Template" ||
                         data.results[i].type === "Geodata Service" ||
                         data.results[i].type === "Globe Service"
-                        )
-                        && this._options.openLayersInViewer
+                        ) && this._options.openLayersInViewer
                     ) {
                         itemURL = this.getViewerURL('layers', data.results[i].id);
                         externalLink = true;
@@ -749,7 +747,7 @@ function(declare, lang, array, dom, on, query, i18n, domStyle, number, Options, 
                                 break;
                             default:
                                 filter = "";
-                        };
+                        }
                         // set filter options
                         this._options.customFilterType = value;
                         this._options.customFilter = filter;
