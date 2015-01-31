@@ -1,109 +1,112 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta charset="utf-8"/>
-<title></title>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-<meta name="Keywords" content="" />
-<meta name="Description" content="" />
-<!-- iOS -->
-<meta name="viewport" content="width=1024, user-scalable=yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<!-- END iOS -->
-<!-- Facebook -->
-<meta property="og:title" content="Public Map Gallery" />
-<meta property="og:image" content="images/defaultThumb.png" />
-<meta property="og:site_name" content="esri" />
-<!-- End Facebook -->
-<!-- STYLESHEETS -->
-<link rel="stylesheet"  href="//jsdev.arcgis.com/3.13/dijit/themes/claro/claro.css">
-<link rel="stylesheet"  href="//jsdev.arcgis.com/3.13/esri/css/esri.css">
-<link href="//jsdev.arcgis.com/3.13/dojox/form/resources/Rating.css" rel="stylesheet"/>
-<link href="css/reset.css" rel="stylesheet" type="text/css" />
-<link href="css/960.css" rel="stylesheet" type="text/css" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-<link href="css/themes.css" rel="stylesheet" type="text/css" />
-<!--[if gte IE 9]>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="Keywords" content="" />
+  <meta name="Description" content="" />
+  <!-- iOS -->
+  <meta name="viewport" content="width=1024, user-scalable=yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <!-- END iOS -->
+  <!-- Facebook -->
+  <meta property="og:title" content="Public Map Gallery" />
+  <meta property="og:image" content="images/defaultThumb.png" />
+  <meta property="og:site_name" content="esri" />
+  <!-- End Facebook -->
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//jsdev.arcgis.com/3.13/dijit/themes/claro/claro.css">
+  <link rel="stylesheet" href="//jsdev.arcgis.com/3.13/esri/css/esri.css">
+  <link href="//jsdev.arcgis.com/3.13/dojox/form/resources/Rating.css" rel="stylesheet" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/960.css" rel="stylesheet" type="text/css" />
+  <link href="css/common.css" rel="stylesheet" type="text/css" />
+  <link href="css/themes.css" rel="stylesheet" type="text/css" />
+  <!--[if gte IE 9]>
 <link href="css/ie9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
-<!-- END STYLESHEETS -->
+  <!-- END STYLESHEETS -->
 </head>
+
 <body id="galleryBody" class="claro mapPage">
-<div id="header">
-	<div class="container_12 headerContainer" id="topHeader">
-		<div class="grid_12">
-			<ul id="templateNav">
-			</ul>
-		</div>
-	</div>
-</div>
-<div id="content">
-	<div class="container_12">
-		<div id="mainPanel" class="grid_9">
-			<h1 class="mapHeader" id="title"></h1>
-			<div id="subtitle"></div>
-			<div id="addressContainer" class="addressContainer"></div>
-			<div class="clear"></div>
-			<div class="mapContainer">
-				<div id="map">
-    				<div id="mapButtonsLeft">
-        				<div id="homeButton"></div>
-        				<div id="locateButton"></div>
-    				</div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div class="clear"></div>
-			<div id="mapButtonCon">
-				<div class="grid_3 alpha">
-					<div id="socialHTML" class="socialButtons itemLeft"></div>
-					<div class="clear"></div>
-				</div>
-			</div>
-			<div class="grid_6 omega">
-				<div class="itemRight" id="mapButtons"></div>
-				<div class="clear"></div>
-			</div>
-			<div class="clear"></div>
-			<div class="grid_9 sigma" id="rating"></div>
-			<div class="grid_9 sigma" id="comments"></div>
-		</div>
-		<div id="sidePanel" class="grid_3">
-			<div id="tabMenu"></div>
-			<div id="legendMenu" class="tabMenu defaultMenu scrollHeight">
-				<div id="legendDiv">
-					<h2 id="legendHeader"></h2>
-					<div id="legendContent"></div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div id="aboutMenu" class="tabMenu scrollHeight">
-				<div id="description">
-					<div id="descriptionContent"></div>
-					<div id="licenseInfo"></div>
-					<div id="mapMoreInfo"></div>
-				</div>
-				<div class="clear"></div>
-			</div>
-			<div id="layersMenu" class="tabMenu scrollHeight">
-				<div id="mapLayersCon">
-					<div id="mapLayers"></div>
-				</div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
-<div id="footer"></div>
-<!-- JAVASCRIPT -->
-<script type="text/javascript" src="javascript/djConfig.js"></script>
-<script type="text/javascript" src="//jsdev.arcgis.com/3.13/"></script>
-<script type="text/javascript">
-require(["application/map"], function(App){
-    App();
-});
-</script>
-<!-- END JAVASCRIPT -->
+  <div id="header">
+    <div class="container_12 headerContainer" id="topHeader">
+      <div class="grid_12">
+        <ul id="templateNav">
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="container_12">
+      <div id="mainPanel" class="grid_9">
+        <h1 class="mapHeader" id="title"></h1>
+        <div id="subtitle"></div>
+        <div id="addressContainer" class="addressContainer"></div>
+        <div class="clear"></div>
+        <div class="mapContainer">
+          <div id="map">
+            <div id="mapButtonsLeft">
+              <div id="homeButton"></div>
+              <div id="locateButton"></div>
+            </div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div id="mapButtonCon">
+          <div class="grid_3 alpha">
+            <div id="socialHTML" class="socialButtons itemLeft"></div>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="grid_6 omega">
+          <div class="itemRight" id="mapButtons"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_9 sigma" id="rating"></div>
+        <div class="grid_9 sigma" id="comments"></div>
+      </div>
+      <div id="sidePanel" class="grid_3">
+        <div id="tabMenu"></div>
+        <div id="legendMenu" class="tabMenu defaultMenu scrollHeight">
+          <div id="legendDiv">
+            <h2 id="legendHeader"></h2>
+            <div id="legendContent"></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div id="aboutMenu" class="tabMenu scrollHeight">
+          <div id="description">
+            <div id="descriptionContent"></div>
+            <div id="licenseInfo"></div>
+            <div id="mapMoreInfo"></div>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <div id="layersMenu" class="tabMenu scrollHeight">
+          <div id="mapLayersCon">
+            <div id="mapLayers"></div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <!-- JAVASCRIPT -->
+  <script type="text/javascript" src="javascript/djConfig.js"></script>
+  <script type="text/javascript" src="//jsdev.arcgis.com/3.13/"></script>
+  <script type="text/javascript">
+    require(["application/map"], function (App) {
+      App();
+    });
+  </script>
+  <!-- END JAVASCRIPT -->
 </body>
+
 </html>

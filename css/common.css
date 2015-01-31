@@ -1,1686 +1,2045 @@
 /*-------------------------------------------------- */
 /* GENERAL */
 /*-------------------------------------------------- */
+
 html {
-	overflow-y: scroll;
+  overflow-y: scroll;
 }
-html.fullScreen{
-	overflow:hidden;
+
+html.fullScreen {
+  overflow: hidden;
 }
-html, body {
-	font-family:Arial, Helvetica, sans-serif;
-	font-size:14px;
-	line-height:18px;
-	text-align: left;
-	outline:0;
-}
+
+html,
 body {
-	color:#000;
-	background:#E5E5E5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 18px;
+  text-align: left;
+  outline: 0;
 }
-.esriRtl, .esriRtl body {
-	text-align: right;
+
+body {
+  color: #000;
+  background: #E5E5E5;
 }
+
+.esriRtl,
+.esriRtl body {
+  text-align: right;
+}
+
 .dialogContent {
-	margin-bottom:20px;
+  margin-bottom: 20px;
 }
+
 h1 {
-	font-size:44px;
-	text-shadow: 1px 1px 1px #ffffff; /* Text shadow for newer browsers */
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	line-height:52px;
-	color:#404040;
-	margin-bottom:10px;
-	margin:0;
+  font-size: 44px;
+  text-shadow: 1px 1px 1px #ffffff;
+  /* Text shadow for newer browsers */
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 52px;
+  color: #404040;
+  margin-bottom: 10px;
+  margin: 0;
 }
+
 .mapPage h1 {
-	font-size:24px;
-	line-height: 30px;
+  font-size: 24px;
+  line-height: 30px;
 }
+
 #homeSideContent {
-	zoom:1;
-	padding: 0 15px 20px 15px;
+  zoom: 1;
+  padding: 0 15px 20px 15px;
 }
-#homeSideContent img{
-	max-width:190px;
+
+#homeSideContent img {
+  max-width: 190px;
 }
-#homeSideContent h2{
-    padding-top:22px;
+
+#homeSideContent h2 {
+  padding-top: 22px;
 }
-h2, h2 a {
-	font-size:24px;
-	text-shadow: 1px 1px 3px #ffffff;
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	line-height:30px;
-	margin:0 0 5px 0;
-	padding:0;
-	text-decoration:none;
+
+h2,
+h2 a {
+  font-size: 24px;
+  text-shadow: 1px 1px 3px #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 30px;
+  margin: 0 0 5px 0;
+  padding: 0;
+  text-decoration: none;
 }
-h2 a:hover, h2 a:focus {
-	text-decoration:underline;
+
+h2 a:hover,
+h2 a:focus {
+  text-decoration: underline;
 }
-h3, h3 a {
-	font-size:21px;
-	text-shadow: 1px 1px 3px #ffffff;
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	line-height:25px;
-	margin:15px 0 4px 0;
-	text-decoration:none;
+
+h3,
+h3 a {
+  font-size: 21px;
+  text-shadow: 1px 1px 3px #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 25px;
+  margin: 15px 0 4px 0;
+  text-decoration: none;
 }
-h3 a:hover, h3 a:focus {
-	text-decoration:underline;
+
+h3 a:hover,
+h3 a:focus {
+  text-decoration: underline;
 }
-h4, h5, h6 {
-	padding:0;
-	margin:0;
+
+h4,
+h5,
+h6 {
+  padding: 0;
+  margin: 0;
 }
-#legendMenu h2, #aboutMenu h2, #layersMenu h2 {
-	margin:0px 0px 10px 0px;
+
+#legendMenu h2,
+#aboutMenu h2,
+#layersMenu h2 {
+  margin: 0px 0px 10px 0px;
 }
-#sidePanel{
-	height:auto !important;
+
+#sidePanel {
+  height: auto !important;
 }
+
 #mapLayerToggle {
-	margin:0;
-	padding:0;
-	border-collapse:collapse;
+  margin: 0;
+  padding: 0;
+  border-collapse: collapse;
 }
+
 #mapLayerToggle td {
-	vertical-align:top;
-	text-align:left;
-	padding: 0 0 2px 0;
+  vertical-align: top;
+  text-align: left;
+  padding: 0 0 2px 0;
 }
+
 .esriRtl #mapLayerToggle td {
-	text-align: right;
+  text-align: right;
 }
+
 #mapLayerToggle .checkColumn {
-	padding-right:4px;
+  padding-right: 4px;
 }
+
 .esriRtl #mapLayerToggle .checkColumn {
-	padding-right:0;
-	padding-left:4px;
+  padding-right: 0;
+  padding-left: 4px;
 }
+
 #mapLayerToggle .checkColumn .toggleLayers {
-	cursor:pointer;
+  cursor: pointer;
 }
+
 #mapLayerToggle label {
-	display:inline-block;
-	margin:2px 0;
+  display: inline-block;
+  margin: 2px 0;
 }
-.mapPage h2, .mapPage h2 a {
-	font-size:18px;
-	line-height:22px;
-	text-decoration:none;
+
+.mapPage h2,
+.mapPage h2 a {
+  font-size: 18px;
+  line-height: 22px;
+  text-decoration: none;
 }
-.mapPage h2 a:hover, .mapPage h2 a:focus {
-	text-decoration:underline;
+
+.mapPage h2 a:hover,
+.mapPage h2 a:focus {
+  text-decoration: underline;
 }
-.mapPage h3, .mapPage h3 a {
-	font-size:16px;
-	line-height:20px;
-	text-decoration:none;
+
+.mapPage h3,
+.mapPage h3 a {
+  font-size: 16px;
+  line-height: 20px;
+  text-decoration: none;
 }
-.mapPage h2 a:hover, .mapPage h2 a:focus {
-	text-decoration:underline;
+
+.mapPage h2 a:hover,
+.mapPage h2 a:focus {
+  text-decoration: underline;
 }
+
 ul {
-	list-style:none;
+  list-style: none;
 }
+
 ol {
-	padding-left:20px;
+  padding-left: 20px;
 }
+
 a {
-	text-decoration:none;
-	outline:0;
-	cursor:pointer;
+  text-decoration: none;
+  outline: 0;
+  cursor: pointer;
 }
-a:hover, a:focus {
-	color:#000;
-	text-decoration:underline;
-	cursor:pointer;
+
+a:hover,
+a:focus {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
 }
+
 p {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
+
 input[type=search] {
-	-webkit-appearance: none;
+  -webkit-appearance: none;
 }
-input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
- display: none;
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  display: none;
 }
+
 #mapLayers {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
+
 #descriptionContent {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
-#mapButtonsLeft{
-    position: absolute;
-    top: 95px;
-    left: 20px;
-    z-index: 50;
+
+#mapButtonsLeft {
+  position: absolute;
+  top: 95px;
+  left: 20px;
+  z-index: 50;
 }
-#homeButton{
-    margin-bottom: 10px;
+
+#homeButton {
+  margin-bottom: 10px;
 }
 /*-------------------------------------------------- */
 /* Filter by type */
 /*-------------------------------------------------- */
-#filterByType{
-    padding: 0 15px 20px 15px;
+
+#filterByType {
+  padding: 0 15px 20px 15px;
 }
-#filterByType ul{
-    list-style: none;
-    padding: 0;
-    margin: 10px 0 0 0;
+
+#filterByType ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0 0;
 }
-#filterByType li{
-    margin: 0;
-    padding: 5px 10px;
-    cursor: pointer;
-    -webkit-border-radius: 5px;
-	border-radius: 5px;
+
+#filterByType li {
+  margin: 0;
+  padding: 5px 10px;
+  cursor: pointer;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
-#filterByType li:hover{
-    background: #ddd;
-    -moz-box-shadow: inset 1px 1px 3px #ddd;
-	-webkit-box-shadow: inset 1px 1px 3px #ddd;
-	box-shadow: inset 1px 1px 3px #ddd;
+
+#filterByType li:hover {
+  background: #ddd;
+  -moz-box-shadow: inset 1px 1px 3px #ddd;
+  -webkit-box-shadow: inset 1px 1px 3px #ddd;
+  box-shadow: inset 1px 1px 3px #ddd;
 }
-#filterByType li.selected, #filterByType li.selected:hover{
-    cursor: default;
-    -moz-box-shadow: 1px 1px 3px #ccc;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
+
+#filterByType li.selected,
+#filterByType li.selected:hover {
+  cursor: default;
+  -moz-box-shadow: 1px 1px 3px #ccc;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
 }
 /*-------------------------------------------------- */
 /* Alerts */
 /*-------------------------------------------------- */
+
 .alert {
-	padding:10px;
-	border: 1px solid;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 1px 1px 3px #ccc;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
+  padding: 10px;
+  border: 1px solid;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 1px 1px 3px #ccc;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
 }
+
 .info {
-	color: #00529B;
-	background-color: #e6f2f8;
-	border-color:#9fc7db;
+  color: #00529B;
+  background-color: #e6f2f8;
+  border-color: #9fc7db;
 }
+
 .info a {
-	color: #00529B !important;
-	text-decoration: underline;
+  color: #00529B !important;
+  text-decoration: underline;
 }
+
 .success {
-	color: #4F8A10;
-	background-color: #eff7e2;
-	border-color:#adca7e;
+  color: #4F8A10;
+  background-color: #eff7e2;
+  border-color: #adca7e;
 }
+
 .success a {
-	color: #4F8A10 !important;
-	text-decoration: underline;
+  color: #4F8A10 !important;
+  text-decoration: underline;
 }
+
 .warning {
-	color: #9F6000;
-	background-color: #f9f1d5;
-	border-color:#d3bf70;
+  color: #9F6000;
+  background-color: #f9f1d5;
+  border-color: #d3bf70;
 }
+
 .warning a {
-	color: #9F6000 !important;
-	text-decoration: underline;
+  color: #9F6000 !important;
+  text-decoration: underline;
 }
+
 .error {
-	color: #D8000C;
-	background-color: #f8e1e1;
-	border-color:#e4a5a5;
+  color: #D8000C;
+  background-color: #f8e1e1;
+  border-color: #e4a5a5;
 }
+
 .error a {
-	color: #D8000C !important;
-	text-decoration: underline;
+  color: #D8000C !important;
+  text-decoration: underline;
 }
 /*-------------------------------------------------- */
 /* Header */
 /*-------------------------------------------------- */
-#header, #footer {
-	position:relative;
-	z-index:2;
+
+#header,
+#footer {
+  position: relative;
+  z-index: 2;
 }
+
 #header {
-	height:75px;
-	overflow:hidden;
-	color:#000;
-	display: none;
+  height: 75px;
+  overflow: hidden;
+  color: #000;
+  display: none;
 }
+
 #header .headerContainer {
-	height:75px;
-	max-height:75px;
-	overflow:hidden;
+  height: 75px;
+  max-height: 75px;
+  overflow: hidden;
 }
+
 #header ul {
-	list-style:none;
-	margin:0;
-	padding:0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 #header ul li {
-	display:block;
-	float:left;
-	margin:0;
-	padding:0;
-	background:none;
+  display: block;
+  float: left;
+  margin: 0;
+  padding: 0;
+  background: none;
 }
+
 .esriRtl #header ul li {
-	float:right;
+  float: right;
 }
+
 #header ul li a {
-	color:#fff;
-	font-size: 14px;
-	text-decoration:none;
-	text-align:left;
-	font-weight:bold;
-	font-family:Arial, Helvetica, sans-serif;
-	white-space:nowrap;
-	-moz-user-select: none;
-	-webkit-user-select:none;
-	user-select:none;
-	outline:0;
-	margin:0 10px;
-	padding:27px 20px 13px 20px;
-	display:inline-block;
-	line-height:35px;
-	max-height:75px;
-	overflow:hidden;
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  text-align: left;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+  white-space: nowrap;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: 0;
+  margin: 0 10px;
+  padding: 27px 20px 13px 20px;
+  display: inline-block;
+  line-height: 35px;
+  max-height: 75px;
+  overflow: hidden;
 }
+
 .esriRtl #header ul li a {
-	text-align: right;
+  text-align: right;
 }
-#header ul li a:hover, #header ul li a:focus {
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
+
+#header ul li a:hover,
+#header ul li a:focus {
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
 }
+
 #header ul li .activeLink {
-	background:url(../images/ui/activeLink.png) left bottom repeat-x;
-	_background:none;
+  background: url(../images/ui/activeLink.png) left bottom repeat-x;
+  _background: none;
 }
+
 #header ul #homeItem {
-	margin:0;
+  margin: 0;
 }
+
 #header ul #homeItem a {
-	display:inline-block;
-	background:none;
-	max-height:75px;
-	font-size:35px;
-	line-height:75px;
-	height:75px;
-	padding:0;
-	margin:0;
-	overflow:hidden;
-	text-shadow: 1px 1px 1px #000; /* Text shadow for newer browsers */
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	color:#fff;
+  display: inline-block;
+  background: none;
+  max-height: 75px;
+  font-size: 35px;
+  line-height: 75px;
+  height: 75px;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  text-shadow: 1px 1px 1px #000;
+  /* Text shadow for newer browsers */
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  color: #fff;
 }
+
 #header ul #homeItem a img {
-	display:inline-block;
-	margin:0;
-	padding:0;
-	max-height:75px;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  max-height: 75px;
 }
 /*-------------------------------------------------- */
 /* CONTENT */
 /*-------------------------------------------------- */
+
 #content {
-	background:#e5e5e5 url(../images/ui/contentBG.jpg) repeat-x top left;
-	color:#404040;
-	min-height:550px;
+  background: #e5e5e5 url(../images/ui/contentBG.jpg) repeat-x top left;
+  color: #404040;
+  min-height: 550px;
 }
+
 #content .contentLeft {
-	padding:30px 0 50px 0;
-	position:relative;
+  padding: 30px 0 50px 0;
+  position: relative;
 }
+
 .socialButtons {
-	margin-bottom:20px;
-	min-width: 158px;
-	min-height: 16px;
+  margin-bottom: 20px;
+  min-width: 158px;
+  min-height: 16px;
 }
+
 .itemLeft {
-	float:left;
+  float: left;
 }
+
 .itemRight {
-	float:right;
+  float: right;
 }
+
 .esriRtl .itemLeft {
-	float:right;
+  float: right;
 }
+
 .esriRtl .itemRight {
-	float:left;
+  float: left;
 }
 /*-------------------------------------------------- */
 /* FEATURED MAPS */
 /*-------------------------------------------------- */
+
 #featuredMaps {
-	margin:20px 0;
+  margin: 20px 0;
 }
+
 .featuredLoading {
-	margin:20px 0;
-	padding-left:21px;
-	height:16px;
-	background:url(../images/ui/ajax-loader.gif) no-repeat left center;
+  margin: 20px 0;
+  padding-left: 21px;
+  height: 16px;
+  background: url(../images/ui/ajax-loader.gif) no-repeat left center;
 }
 /*-------------------------------------------------- */
 /* LAYOUT TOGGLE */
 /*-------------------------------------------------- */
+
 #layoutAndSearch {
-	margin: 20px 0 0 0;
+  margin: 20px 0 0 0;
 }
+
 .toggleLayout li {
-	float:right;
+  float: right;
 }
+
 .esriRtl .toggleLayout li {
-	float:left;
+  float: left;
 }
+
 .toggleLayout .active {
-	font-weight:bold;
+  font-weight: bold;
 }
+
 .toggleLayout .gridView {
-	display:inline-block;
-	width:11px;
-	height:11px;
-	overflow:hidden;
-	background:url(../images/ui/uiSprite.png) no-repeat -96px 0;
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  overflow: hidden;
+  background: url(../images/ui/uiSprite.png) no-repeat -96px 0;
 }
+
 .toggleLayout .active .gridView {
-	background:url(../images/ui/uiSprite.png) no-repeat -128px 0;
+  background: url(../images/ui/uiSprite.png) no-repeat -128px 0;
 }
+
 .toggleLayout .listView {
-	display:inline-block;
-	width:13px;
-	height:11px;
-	overflow:hidden;
-	background:url(../images/ui/uiSprite.png) no-repeat -112px 0;
+  display: inline-block;
+  width: 13px;
+  height: 11px;
+  overflow: hidden;
+  background: url(../images/ui/uiSprite.png) no-repeat -112px 0;
 }
+
 .toggleLayout .active .listView {
-	background:url(../images/ui/uiSprite.png) no-repeat -144px 0;
+  background: url(../images/ui/uiSprite.png) no-repeat -144px 0;
 }
+
 .spinnerRemove {
-	margin:0 10px;
-	width:16px;
-	height: 26px;
-	display:inline-block;
+  margin: 0 10px;
+  width: 16px;
+  height: 26px;
+  display: inline-block;
 }
+
 .loadingAjax {
-	display:inline-block;
-	vertical-align:middle;
-	cursor:default;
-	border:0;
-	width:16px;
-	height: 26px;
-	margin:0;
-	background:url(../images/ui/ajax-loader.gif) no-repeat center center;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: default;
+  border: 0;
+  width: 16px;
+  height: 26px;
+  margin: 0;
+  background: url(../images/ui/ajax-loader.gif) no-repeat center center;
 }
+
 #resetGroupSearch {
-	cursor:pointer;
+  cursor: pointer;
 }
-#resetGroupSearch:hover, #resetGroupSearch:focus {
-	text-decoration:underline;
+
+#resetGroupSearch:hover,
+#resetGroupSearch:focus {
+  text-decoration: underline;
 }
+
 #groupSortOptions {
-	margin:20px 0 0 0;
+  margin: 20px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* MAPS GRID */
 /*-------------------------------------------------- */
+
 .mapsGrid .item {
-	width:200px;
-	margin: 0 7px 20px 7px;
-	background:#fff;
-	padding:3px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
-	display:block;
-	border:0;
-	text-decoration:none;
-	color:#404040;
-	outline:0;
-	cursor:pointer;
+  width: 200px;
+  margin: 0 7px 20px 7px;
+  background: #fff;
+  padding: 3px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
+  display: block;
+  border: 0;
+  text-decoration: none;
+  color: #404040;
+  outline: 0;
+  cursor: pointer;
 }
-.mapsGrid .item:hover, .mapsGrid .item:focus {
-	text-decoration:none;
-	-moz-box-shadow: 0px 0px 6px #999;
-	-webkit-box-shadow: 0px 0px 6px #999;
-	box-shadow: 0px 0px 6px #999;
-	-webkit-transition:-webkit-box-shadow 0.25s ease-in;
-	-moz-transition:-moz-box-shadow 0.25s ease-in;
-	-o-transition:box-shadow 0.25s ease-in;
-	transition:box-shadow 0.25s ease-in;
+
+.mapsGrid .item:hover,
+.mapsGrid .item:focus {
+  text-decoration: none;
+  -moz-box-shadow: 0px 0px 6px #999;
+  -webkit-box-shadow: 0px 0px 6px #999;
+  box-shadow: 0px 0px 6px #999;
+  -webkit-transition: -webkit-box-shadow 0.25s ease-in;
+  -moz-transition: -moz-box-shadow 0.25s ease-in;
+  -o-transition: box-shadow 0.25s ease-in;
+  transition: box-shadow 0.25s ease-in;
 }
+
 .mapsGrid .item .summaryHidden {
-	zoom:1;
-	position:absolute;
-	width:190px;
-	height:123px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-	filter: alpha(opacity=0);
-	-moz-opacity:0;
-	-khtml-opacity:0;
-	opacity:0;
-	padding:5px;
-	background:#fff;
-	z-index:4;
-	display:block;
-	overflow:hidden;
-	font-size:12px;
-	line-height:18px;
+  zoom: 1;
+  position: absolute;
+  width: 190px;
+  height: 123px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
+  padding: 5px;
+  background: #fff;
+  z-index: 4;
+  display: block;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 18px;
 }
+
 .mapsGrid .item .summaryHidden strong {
-	display:block;
-	line-height: 18px;
-	font-size: 12px;
-	margin: 0;
-	padding: 0;
-	width:190px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	-o-text-overflow: ellipsis;
-	-ms-text-overflow: ellipsis;
+  display: block;
+  line-height: 18px;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  width: 190px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+  -ms-text-overflow: ellipsis;
 }
-.mapsGrid .item:hover .summaryHidden, .mapsGrid .item:focus .summaryHidden {
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
-	filter: alpha(opacity=90);
-	-moz-opacity:0.9;
-	-khtml-opacity:0.9;
-	opacity:0.9;
+
+.mapsGrid .item:hover .summaryHidden,
+.mapsGrid .item:focus .summaryHidden {
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+  filter: alpha(opacity=90);
+  -moz-opacity: 0.9;
+  -khtml-opacity: 0.9;
+  opacity: 0.9;
 }
-.mapsGrid .item .itemCounts{
-	font-size:11px;
-	text-align:right;
-	display:block;
-	height:16px;
-	line-height:16px;
-	padding:6px 0 3px 0;
+
+.mapsGrid .item .itemCounts {
+  font-size: 11px;
+  text-align: right;
+  display: block;
+  height: 16px;
+  line-height: 16px;
+  padding: 6px 0 3px 0;
 }
-.esriRtl .mapsGrid .item .itemCounts{
-	text-align: left;
+
+.esriRtl .mapsGrid .item .itemCounts {
+  text-align: left;
 }
-.mapsGrid .item .itemCounts .iconCon{
-	display:inline-block;
-	margin:0 5px;
+
+.mapsGrid .item .itemCounts .iconCon {
+  display: inline-block;
+  margin: 0 5px;
 }
-.mapsGrid .item .itemCounts .icon{
-	display:inline-block;
-	width:16px;
-	height:16px;
-	vertical-align:middle;
-	margin:0 2px 0 0;
+
+.mapsGrid .item .itemCounts .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
 }
-.esriRtl .mapsGrid .item .itemCounts .icon{
-	margin: 0 0 0 2px;
+
+.esriRtl .mapsGrid .item .itemCounts .icon {
+  margin: 0 0 0 2px;
 }
-.mapsGrid .item .itemCounts .iconText{
-	display:inline-block;
-	vertical-align:middle;
-	color:#999;
+
+.mapsGrid .item .itemCounts .iconText {
+  display: inline-block;
+  vertical-align: middle;
+  color: #999;
 }
-.mapsGrid .item .itemCounts .external{
-	background:url(../images/ui/uiSprite.png) no-repeat -304px 0px;
+
+.mapsGrid .item .itemCounts .external {
+  background: url(../images/ui/uiSprite.png) no-repeat -304px 0px;
 }
-.mapsGrid .item .itemCounts .views{
-	background:url(../images/ui/uiSprite.png) no-repeat -256px 0px;
+
+.mapsGrid .item .itemCounts .views {
+  background: url(../images/ui/uiSprite.png) no-repeat -256px 0px;
 }
-.mapsGrid .item .itemCounts .ratings{
-	background:url(../images/ui/uiSprite.png) no-repeat -272px 0px;
+
+.mapsGrid .item .itemCounts .ratings {
+  background: url(../images/ui/uiSprite.png) no-repeat -272px 0px;
 }
-.mapsGrid .item .itemCounts .comments{
-	background:url(../images/ui/uiSprite.png) no-repeat -288px 0px;
+
+.mapsGrid .item .itemCounts .comments {
+  background: url(../images/ui/uiSprite.png) no-repeat -288px 0px;
 }
+
 .mapsGrid .alpha .item {
-	margin-right:14px;
-	margin-left:0;
+  margin-right: 14px;
+  margin-left: 0;
 }
+
 .mapsGrid .omega .item {
-	margin-right:0;
-	margin-left:14px;
+  margin-right: 0;
+  margin-left: 14px;
 }
+
 .esriRtl .mapsGrid .alpha .item {
-	margin-right:0;
-	margin-left:14px;
+  margin-right: 0;
+  margin-left: 14px;
 }
+
 .esriRtl .mapsGrid .omega .item {
-	margin-right:14px;
-	margin-left:0;
+  margin-right: 14px;
+  margin-left: 0;
 }
+
 .mapsGrid .item .gridImg {
-	width:200px;
-	height:133px;
-	display:block;
-	overflow:hidden;
-	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	-moz-opacity:1;
-	-khtml-opacity:1;
-	opacity:1;
+  width: 200px;
+  height: 133px;
+  display: block;
+  overflow: hidden;
+  background: #fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
 }
-.mapsGrid .item:hover .gridImg, .mapsGrid .item:focus .gridImg {
-	background-image:none;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
+
+.mapsGrid .item:hover .gridImg,
+.mapsGrid .item:focus .gridImg {
+  background-image: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
 }
 /*-------------------------------------------------- */
 /* MAPS LIST */
 /*-------------------------------------------------- */
+
 .mapsList .item {
-	background:#fff;
-	margin:0 0 10px 0;
-	padding:3px;
-	line-height: 18px;
-	font-size: 12px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
+  background: #fff;
+  margin: 0 0 10px 0;
+  padding: 3px;
+  line-height: 18px;
+  font-size: 12px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
 }
+
 .mapsList .item .block {
-	display:block;
-	float: left;
-	width:200px;
-	height:133px;
-	overflow:hidden;
-	text-decoration:none;
+  display: block;
+  float: left;
+  width: 200px;
+  height: 133px;
+  overflow: hidden;
+  text-decoration: none;
 }
+
 .esriRtl .mapsList .item .block {
-	float:right;
+  float: right;
 }
-.mapsList .item  .iconCon{
-	display:inline-block;
-	margin:0 5px;
+
+.mapsList .item .iconCon {
+  display: inline-block;
+  margin: 0 5px;
 }
-.mapsList .item  .icon{
-	display:inline-block;
-	width:16px;
-	height:16px;
-	vertical-align:middle;
-	margin:0 2px 0 0;
+
+.mapsList .item .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 2px 0 0;
 }
-.esriRtl .mapsList .item  .icon{
-	margin: 0 0 0 2px;
+
+.esriRtl .mapsList .item .icon {
+  margin: 0 0 0 2px;
 }
-.mapsList .item  .iconText{
-	display:inline-block;
-	vertical-align:middle;
-	color:#999;
+
+.mapsList .item .iconText {
+  display: inline-block;
+  vertical-align: middle;
+  color: #999;
 }
-.mapsList .item  .external{
-	background:url(../images/ui/uiSprite.png) no-repeat -304px 0px;
+
+.mapsList .item .external {
+  background: url(../images/ui/uiSprite.png) no-repeat -304px 0px;
 }
+
 .mapsList .item .itemInfo {
-	float:left;
-	width:474px;
-	margin: 0 0 0 10px;
+  float: left;
+  width: 474px;
+  margin: 0 0 0 10px;
 }
+
 .esriRtl .mapsList .item .itemInfo {
-	float:right;
-	margin: 0 10px 0 0;
+  float: right;
+  margin: 0 10px 0 0;
 }
+
 .mapsList .item .itemInfo a {
-	outline:0;
-	color:#404040;
+  outline: 0;
+  color: #404040;
 }
+
 .mapsList .item .itemInfo strong {
-	display:block;
+  display: block;
 }
+
 .mapsList .item .itemInfo strong a {
-	text-decoration:none;
+  text-decoration: none;
 }
+
 .mapsList .item .itemInfo p a {
-	text-decoration:underline;
+  text-decoration: underline;
 }
-.mapsList .item .itemInfo a:hover, .mapsList .item .itemInfo a:focus {
-	color:#999;
-	text-decoration:none;
+
+.mapsList .item .itemInfo a:hover,
+.mapsList .item .itemInfo a:focus {
+  color: #999;
+  text-decoration: none;
 }
+
 .mapsList .item .itemInfo p {
-	margin:0 0 6px 0;
+  margin: 0 0 6px 0;
 }
+
 .mapsList .item .block img {
-	width:200px;
-	height:133px;
-	display:block;
-	overflow: hidden;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	-moz-opacity:1;
-	-khtml-opacity:1;
-	opacity:1;
-	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+  width: 200px;
+  height: 133px;
+  display: block;
+  overflow: hidden;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+  background: #fff url(../images/ui/ajax-loader.gif) no-repeat center center;
 }
-.mapsList .block:hover img, .mapsList .block:focus img {
-	background-image:none;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
+
+.mapsList .block:hover img,
+.mapsList .block:focus img {
+  background-image: none;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
 }
+
 .mapsList .item .itemInfo .ratingCon {
-	color:#656565;
-	font-size: 11px;
-	line-height:16px;
-	margin-bottom:5px;
+  color: #656565;
+  font-size: 11px;
+  line-height: 16px;
+  margin-bottom: 5px;
 }
+
 .mapsList .item .itemInfo .dateInfo {
-	color:#656565;
-	font-size: 11px;
-	line-height:14px;
+  color: #656565;
+  font-size: 11px;
+  line-height: 14px;
 }
 /*-------------------------------------------------- */
 /* DATA LAYERS */
 /*-------------------------------------------------- */
+
 .dataLayers {
-	background:#f1f1f1 url(../images/ui/dataLayers.jpg) repeat-x top left;
-	padding:30px 0 50px 0;
-	-moz-box-shadow: 0px 1px 10px #999;
-	-webkit-box-shadow: 0px 1px 10px #999;
-	box-shadow: 0px 1px 10px #999;
-	position:relative;
+  background: #f1f1f1 url(../images/ui/dataLayers.jpg) repeat-x top left;
+  padding: 30px 0 50px 0;
+  -moz-box-shadow: 0px 1px 10px #999;
+  -webkit-box-shadow: 0px 1px 10px #999;
+  box-shadow: 0px 1px 10px #999;
+  position: relative;
 }
+
 .dataLayers ul li {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
+
 .dataLayers .moreInfoList {
-	margin:10px 0;
+  margin: 10px 0;
 }
+
 .dataLayers .moreInfoList li {
-	margin:0 0 5px 0;
+  margin: 0 0 5px 0;
 }
+
 .dataLayers ul li a {
-	text-decoration:none;
+  text-decoration: none;
 }
-.dataLayers ul li a:hover, .dataLayers ul li a:focus {
-	text-decoration:underline;
+
+.dataLayers ul li a:hover,
+.dataLayers ul li a:focus {
+  text-decoration: underline;
 }
+
 .dataLayers .dataLayersButton {
-	margin:30px 0;
+  margin: 30px 0;
 }
+
 .dataLayers .blackText {
-	color:#000;
+  color: #000;
 }
 /*-------------------------------------------------- */
 /* SEARCH */
 /*-------------------------------------------------- */
+
 #mapSearch {
-	width:190px;
+  width: 190px;
 }
+
 .searchList {
-	margin:0;
-	padding:0;
-	list-style:none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
 .searchList li {
-	float:left;
+  float: left;
 }
+
 .esriRtl .searchList li {
-	float:right;
+  float: right;
 }
+
 .searchList .iconInput {
-	display:inline-block;
-	vertical-align:middle;
-	position:relative;
-	height:24px;
-	background:#fff;
-	border-top:1px solid #eee;
-	border-bottom:1px solid #eee;
-	-webkit-border-radius: 5px 0 0 5px;
-	border-radius:5px 0 0 5px;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  height: 24px;
+  background: #fff;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  -webkit-border-radius: 5px 0 0 5px;
+  border-radius: 5px 0 0 5px;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
 }
+
 .esriRtl .searchList .iconInput {
-	-webkit-border-radius: 0 5px 5px 0;
-	border-radius:0 5px 5px 0;
+  -webkit-border-radius: 0 5px 5px 0;
+  border-radius: 0 5px 5px 0;
 }
+
 .autoCompleteOpen .iconInput {
-	-webkit-border-radius: 5px 0 0 0;
-	border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  border-radius: 5px 0 0 0;
 }
+
 .esriRtl .autoCompleteOpen .iconInput {
-	-webkit-border-radius: 0 5px 0 0;
-	border-radius:0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  border-radius: 0 5px 0 0;
 }
+
 .autoCompleteOpen #searchGoupButton {
-	-webkit-border-radius: 0 5px 0 0;
-	border-radius: 0 5px 0 0;
+  -webkit-border-radius: 0 5px 0 0;
+  border-radius: 0 5px 0 0;
 }
+
 .esriRtl .autoCompleteOpen #searchGoupButton {
-	-webkit-border-radius: 5px 0 0 0;
-	border-radius: 5px 0 0 0;
+  -webkit-border-radius: 5px 0 0 0;
+  border-radius: 5px 0 0 0;
 }
+
 .searchList .searchButton {
-	display:inline-block;
-	width:12px;
-	height:12px;
-	overflow:hidden;
-	background:url(../images/ui/uiSprite.png) no-repeat -82px -1px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  background: url(../images/ui/uiSprite.png) no-repeat -82px -1px;
 }
+
 .searchList .iconInput .iconReset {
-	display:none;
+  display: none;
 }
+
 .searchList .iconInput .resetActive {
-	display:block;
-	position:absolute;
-	right:5px;
-	top:3px;
-	width:16px;
-	height:16px;
-	z-index:2;
-	overflow:hidden;
-	cursor:pointer;
-	background:url(../images/ui/uiSprite.png) no-repeat -64px 0;
+  display: block;
+  position: absolute;
+  right: 5px;
+  top: 3px;
+  width: 16px;
+  height: 16px;
+  z-index: 2;
+  overflow: hidden;
+  cursor: pointer;
+  background: url(../images/ui/uiSprite.png) no-repeat -64px 0;
 }
+
 .esriRtl .searchList .iconInput .resetActive {
-	right:auto;
-	left:5px;
+  right: auto;
+  left: 5px;
 }
-.searchList .iconInput .resetActive:hover, .searchList .iconInput .resetActive:focus {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
+
+.searchList .iconInput .resetActive:hover,
+.searchList .iconInput .resetActive:focus {
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
 }
+
 .searchList .iconInput input {
-	width:159px;
-	outline:0;
-	display:inline-block;
-	border:0;
-	border-collapse:collapse;
-	vertical-align:middle;
-	font-size:12px;
-	line-height:14px;
-	font-weight:normal;
-	margin:0;
-	padding:5px 0;
-	height:14px;
-	position:absolute;
-	left:5px;
-	top:0;
-	color:#000;
-	text-align: left;
-	background:none;
+  width: 159px;
+  outline: 0;
+  display: inline-block;
+  border: 0;
+  border-collapse: collapse;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 14px;
+  font-weight: normal;
+  margin: 0;
+  padding: 5px 0;
+  height: 14px;
+  position: absolute;
+  left: 5px;
+  top: 0;
+  color: #000;
+  text-align: left;
+  background: none;
 }
+
 .esriRtl .searchList .iconInput input {
-	left:auto;
-	right:5px;
-	text-align: right;
+  left: auto;
+  right: 5px;
+  text-align: right;
 }
 /*-------------------------------------------------- */
 /* FOOTER */
 /*-------------------------------------------------- */
+
 #footer {
-	color:#fff;
+  color: #fff;
 }
+
 #footer #footerCon {
-	color:#fff;
-	background:#4d4d4d url(../images/ui/footerBG.jpg) repeat-x top left;
-	_background-image:none;
-	padding:20px 0;
+  color: #fff;
+  background: #4d4d4d url(../images/ui/footerBG.jpg) repeat-x top left;
+  _background-image: none;
+  padding: 20px 0;
 }
+
 #footer .Pad {
-	padding:20px 0;
+  padding: 20px 0;
 }
+
 #footer h2 {
-	font-size:24px;
-	text-shadow: 1px 1px 1px #333; /* Text shadow for newer browsers */
-	font-family:Arial, Helvetica, sans-serif;
-	font-weight: bold;
-	line-height:30px;
-	color:#dddddd;
+  font-size: 24px;
+  text-shadow: 1px 1px 1px #333;
+  /* Text shadow for newer browsers */
+  
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 30px;
+  color: #dddddd;
 }
+
 #footer .logoDiv {
-	padding:20px;
-	text-align:center;
+  padding: 20px;
+  text-align: center;
 }
+
 #footer .footBorder {
-	zoom:1;
-	background:url(../images/ui/logoBorder.jpg) repeat-y top left;
+  zoom: 1;
+  background: url(../images/ui/logoBorder.jpg) repeat-y top left;
 }
+
 .esriRtl #footer .footBorder {
-	background:url(../images/ui/logoBorderRTL.jpg) repeat-y top right;
+  background: url(../images/ui/logoBorderRTL.jpg) repeat-y top right;
 }
+
 #yourLogo {
-	display:inline-block;
-	zoom:1;
-	border:0;
-	margin-bottom:5px;
-	outline:0;
-	width:60px;
-	height:60px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-	filter: alpha(opacity=100);
-	-moz-opacity:1;
-	-khtml-opacity:1;
-	opacity:1;
+  display: inline-block;
+  zoom: 1;
+  border: 0;
+  margin-bottom: 5px;
+  outline: 0;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
 }
+
 #yourLogo:hover {
-	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
-	filter: alpha(opacity=75);
-	-moz-opacity:0.75;
-	-khtml-opacity:0.75;
-	opacity:0.75;
-	-webkit-transition:opacity 0.25s ease-in;
-	-moz-transition:opacity 0.25s ease-in;
-	-o-transition:opacity 0.25s ease-in;
-	transition:opacity 0.25s ease-in;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+  filter: alpha(opacity=75);
+  -moz-opacity: 0.75;
+  -khtml-opacity: 0.75;
+  opacity: 0.75;
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
 }
+
 #yourLogo img {
-	border:0;
-	margin:0;
-	outline:0;
-	display:inline-block;
-	zoom:1;
-	width:60px;
-	height:60px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
+  border: 0;
+  margin: 0;
+  outline: 0;
+  display: inline-block;
+  zoom: 1;
+  width: 60px;
+  height: 60px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
-#yourLogo:hover img, #yourLogo:focus img {
-	background-image:none;
+
+#yourLogo:hover img,
+#yourLogo:focus img {
+  background-image: none;
 }
+
 #footer a {
-	color:#fff;
-	text-decoration:underline;
+  color: #fff;
+  text-decoration: underline;
 }
-#footer a:hover, #footer a:active, #footer a:visited {
-	color:#fff;
+
+#footer a:hover,
+#footer a:active,
+#footer a:visited {
+  color: #fff;
 }
-#footer a:hover, #footer a:focus {
-	text-decoration:none;
+
+#footer a:hover,
+#footer a:focus {
+  text-decoration: none;
 }
 /*-------------------------------------------------- */
 /* MAP TEMPLATE */
 /*-------------------------------------------------- */
+
 .addressContainer {
-	display:block;
-	margin: 20px 0;
+  display: block;
+  margin: 20px 0;
 }
+
 #fullScreen {
-	display:block;
-	position:absolute;
-	top:20px;
-	right:20px;
-	z-index:30;
+  display: block;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 30;
 }
+
 .fullScreenButton {
-	display:inline-block;
-	width:12px;
-	height:12px;
-	overflow:hidden;
-	background:url(../images/ui/uiSprite.png) no-repeat -2px -2px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  background: url(../images/ui/uiSprite.png) no-repeat -2px -2px;
 }
+
 #subtitle {
-	margin-bottom:10px;
+  margin-bottom: 10px;
 }
+
 .basemapConRel {
-	position: relative;
-	z-index:31;
+  position: relative;
+  z-index: 31;
 }
+
 #basemapButton {
-	display: block;
-	float: right;
+  display: block;
+  float: right;
 }
+
 .esriRtl #basemapButton {
-	float:left;
+  float: left;
 }
+
 #basemapButton.open {
-	-webkit-border-radius: 5px 5px 0 0;
-	border-radius: 5px 5px 0 0;
-	cursor: pointer !important;
+  -webkit-border-radius: 5px 5px 0 0;
+  border-radius: 5px 5px 0 0;
+  cursor: pointer !important;
 }
+
 #basemapGallery {
-	display: none;
-	position:absolute;
-	z-index:31;
-	background: #fff;
-	top:100%;
-	right:0;
-	width: 265px;
-	height: 265px;
-	overflow: auto;
-	padding: 10px;
-	margin: 0;
-	-webkit-border-radius: 5px 0px 5px 5px;
-	border-radius: 5px 0px 5px 5px;
-	-moz-box-shadow: 1px 1px 3px #666;
-	-webkit-box-shadow: 1px 1px 3px #666;
-	box-shadow: 1px 1px 3px #666;
+  display: none;
+  position: absolute;
+  z-index: 31;
+  background: #fff;
+  top: 100%;
+  right: 0;
+  width: 265px;
+  height: 265px;
+  overflow: auto;
+  padding: 10px;
+  margin: 0;
+  -webkit-border-radius: 5px 0px 5px 5px;
+  border-radius: 5px 0px 5px 5px;
+  -moz-box-shadow: 1px 1px 3px #666;
+  -webkit-box-shadow: 1px 1px 3px #666;
+  box-shadow: 1px 1px 3px #666;
 }
+
 .esriRtl #basemapGallery {
-	right:auto;
-	left: 0;
-	-webkit-border-radius: 0 5px 5px 5px;
-	border-radius: 0 5px 5px 5px;
+  right: auto;
+  left: 0;
+  -webkit-border-radius: 0 5px 5px 5px;
+  border-radius: 0 5px 5px 5px;
 }
+
 .basemapArrowButton {
-	display:inline-block;
-	vertical-align:text-bottom;
-	width:12px;
-	height:12px;
-	overflow:hidden;
-	margin-right:2px;
-	background:url(../images/ui/uiSprite.png) no-repeat -194px -2px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  margin-right: 2px;
+  background: url(../images/ui/uiSprite.png) no-repeat -194px -2px;
 }
+
 .buttonSelected .basemapArrowButton {
-	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
+  background: url(../images/ui/uiSprite.png) no-repeat -178px -2px;
 }
+
 .esriRtl .basemapArrowButton {
-	margin-right:0;
-	margin-left:2px;
+  margin-right: 0;
+  margin-left: 2px;
 }
 /*-------------------------------------------------- */
 /* MAP TAB MENU*/
 /*-------------------------------------------------- */
+
 #tabMenu {
-	margin:0 15px 20px 15px;
+  margin: 0 15px 20px 15px;
 }
+
 #tabMenu .toggleButton {
-	float:left;
+  float: left;
 }
+
 .esriRtl #tabMenu .toggleButton {
-	float:right;
+  float: right;
 }
+
 .tabMenu {
-	display:none;
+  display: none;
 }
+
 .defaultMenu {
-	display:block;
+  display: block;
 }
-#legendMenu, #aboutMenu {
-	position:relative;
+
+#legendMenu,
+#aboutMenu {
+  position: relative;
 }
+
 #legendMenu .esriLegendLayerLabel {
-	font-weight:bold;
-	margin-bottom:2px;
+  font-weight: bold;
+  margin-bottom: 2px;
 }
-#tabMenu .icon{
-	display:inline-block;
-	width:16px;
-	height: 16px;
-	vertical-align: text-bottom;
-	overflow: hidden;
+
+#tabMenu .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+  overflow: hidden;
 }
-#showLegend .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat -32px -16px;
+
+#showLegend .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat -32px -16px;
 }
-#showLegend.buttonSelected .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat -48px -16px;
+
+#showLegend.buttonSelected .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat -48px -16px;
 }
-#showLayers .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat -64px -16px;
+
+#showLayers .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat -64px -16px;
 }
-#showLayers.buttonSelected .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat -80px -16px;
+
+#showLayers.buttonSelected .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat -80px -16px;
 }
-#showAbout .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat 0 -16px;
+
+#showAbout .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat 0 -16px;
 }
-#showAbout.buttonSelected .icon{
-	background:url(../images/ui/uiSprite.png) no-repeat -16px -16px;
+
+#showAbout.buttonSelected .icon {
+  background: url(../images/ui/uiSprite.png) no-repeat -16px -16px;
 }
 /*-------------------------------------------------- */
 /* MAP */
 /*-------------------------------------------------- */
+
 .mapContainer {
-	background:#fff;
-	padding:3px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	width: 694px;
-	height: 584px;
-	position:relative;
+  background: #fff;
+  padding: 3px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  width: 694px;
+  height: 584px;
+  position: relative;
 }
+
 #map {
-	direction: ltr;
-	text-align: left;
-	width:694px;
-	height:584px;
-	position:relative;
-	background:#fff url(../images/ui/ajax-loader.gif) no-repeat center center;
+  direction: ltr;
+  text-align: left;
+  width: 694px;
+  height: 584px;
+  position: relative;
+  background: #fff url(../images/ui/ajax-loader.gif) no-repeat center center;
 }
-.esriRtl #map .titlePane{
-    text-align: right;
+
+.esriRtl #map .titlePane {
+  text-align: right;
 }
+
 #map.mapLoaded {
-	background-image:none !important;
+  background-image: none !important;
 }
+
 .esriScalebar {
-	padding-left:15px;
+  padding-left: 15px;
 }
+
 .map .bingLogo-lg {
-	left:18px !important;
+  left: 18px !important;
 }
+
 #map .esriAttribution .esriAttributionList {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
-    line-height: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
 }
+
 #mapButtonCon {
-	margin:20px 0 0 0;
+  margin: 20px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* MAP PAGE */
 /*-------------------------------------------------- */
-#description, #legendDiv, #mapLayersCon {
-	padding: 0px 15px 20px 15px;
-	zoom:1;
+
+#description,
+#legendDiv,
+#mapLayersCon {
+  padding: 0px 15px 20px 15px;
+  zoom: 1;
 }
+
 #mapButtons .mapButton {
-	margin-left:10px;
+  margin-left: 10px;
 }
+
 .esriRtl #mapButtons .mapButton {
-	margin-left:0;
-	margin-right:10px;
+  margin-left: 0;
+  margin-right: 10px;
 }
-#mapMoreInfo{
-	margin:10px 0 0 0;
+
+#mapMoreInfo {
+  margin: 10px 0 0 0;
 }
-#licenseInfo{
-	margin:10px 0 0 0;
+
+#licenseInfo {
+  margin: 10px 0 0 0;
 }
 /*-------------------------------------------------- */
 /* BUTTONS  */
 /*-------------------------------------------------- */
-.silverButton, .pagination .disabled:hover, .pagination .disabled:focus {
-	zoom: 1;
-	display:inline-block;
-	vertical-align:middle;
-	font-size:12px;
-	line-height:14px;
-	height:14px;
-	margin:0;
-	padding:6px 10px;
-	color:#5f5f5f;
-	background: #ffffff;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjM2MzYzMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(50%, #e3e3e3), color-stop(100%, #c3c3c3));
-	background: -webkit-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
-	background: -o-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
-	background: -ms-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
-	background: linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c3c3c3', GradientType=0 );
-	text-decoration:none;
-	cursor:pointer;
-	font-weight:normal;
-	white-space:nowrap;
-	-moz-user-select: none;
-	-webkit-user-select:none;
-	user-select:none;
-	outline:0;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
+
+.silverButton,
+.pagination .disabled:hover,
+.pagination .disabled:focus {
+  zoom: 1;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 6px 10px;
+  color: #5f5f5f;
+  background: #ffffff;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjM2MzYzMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ffffff), color-stop(50%, #e3e3e3), color-stop(100%, #c3c3c3));
+  background: -webkit-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
+  background: -o-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
+  background: -ms-linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
+  background: linear-gradient(top, #ffffff 0%, #e3e3e3 50%, #c3c3c3 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#c3c3c3', GradientType=0);
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+  white-space: nowrap;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: 0;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
 }
-.pagination .disabled, .pagination .disabled:hover, .pagination .disabled:focus {
-	cursor: default;
+
+.pagination .disabled,
+.pagination .disabled:hover,
+.pagination .disabled:focus {
+  cursor: default;
 }
-.silverButton:hover, .silverButton:focus {
-	background: #c3c3c3;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2MzYzNjMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c3c3c3), color-stop(50%, #e3e3e3), color-stop(100%, #ffffff));
-	background: -webkit-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
-	background: -o-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
-	background: -ms-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
-	background: linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3c3c3', endColorstr='#ffffff', GradientType=0 );
+
+.silverButton:hover,
+.silverButton:focus {
+  background: #c3c3c3;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2MzYzNjMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iI2UzZTNlMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c3c3c3), color-stop(50%, #e3e3e3), color-stop(100%, #ffffff));
+  background: -webkit-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
+  background: -o-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
+  background: -ms-linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
+  background: linear-gradient(top, #c3c3c3 0%, #e3e3e3 50%, #ffffff 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#c3c3c3', endColorstr='#ffffff', GradientType=0);
 }
+
 .active .silverButton {
-	color:#fff;
-	cursor:default;
-	background: #5a5a5a;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhNWE1YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzY5Njk2OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjdiN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5a5a5a), color-stop(50%, #696969), color-stop(100%, #7b7b7b));
-	background: -webkit-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -o-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -ms-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', endColorstr='#7b7b7b', GradientType=0 );
+  color: #fff;
+  cursor: default;
+  background: #5a5a5a;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhNWE1YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzY5Njk2OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjdiN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5a5a5a), color-stop(50%, #696969), color-stop(100%, #7b7b7b));
+  background: -webkit-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -o-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -ms-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', endColorstr='#7b7b7b', GradientType=0);
 }
+
 .mapButton {
-	zoom: 1;
-	display:inline-block;
-	vertical-align:middle;
-	font-size:12px;
-	line-height:14px;
-	height:14px;
-	margin:0;
-	padding:6px 13px;
-	border:0;
-	color:#fff;
-	text-decoration:none;
-	cursor:pointer;
-	font-weight:normal;
-	white-space:nowrap;
-	-moz-user-select: none;
-	-webkit-user-select:none;
-	user-select:none;
-	outline:0;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
+  zoom: 1;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 6px 13px;
+  border: 0;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+  white-space: nowrap;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: 0;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
 }
-.mapButton:hover, .mapButton:focus {
-	text-decoration:none;
-	color:#fff;
+
+.mapButton:hover,
+.mapButton:focus {
+  text-decoration: none;
+  color: #fff;
 }
+
 .toggleButton {
-	display:inline-block;
-	vertical-align:middle;
-	font-size:12px;
-	line-height:16px;
-	height: 16px;
-	overflow: hidden;
-	margin:0;
-	padding:8px 16px;
-	border:0;
-	color:#000;
-	text-decoration:none;
-	cursor:pointer;
-	font-weight:normal;
-	white-space:nowrap;
-	-moz-user-select: none;
-	-webkit-user-select:none;
-	user-select:none;
-	outline:0;
-	background: #dbdbdb;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RiZGJkYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ0JSIgc3RvcC1jb2xvcj0iI2NiY2JjYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiOWI5YjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dbdbdb), color-stop(44%, #cbcbcb), color-stop(100%, #b9b9b9));
-	background: -webkit-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
-	background: -o-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
-	background: -ms-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
-	background: linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#b9b9b9', GradientType=0 );
-	border-top:1px solid #fff;
-	border-bottom:none;
-	-moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 12px;
+  line-height: 16px;
+  height: 16px;
+  overflow: hidden;
+  margin: 0;
+  padding: 8px 16px;
+  border: 0;
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: normal;
+  white-space: nowrap;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  outline: 0;
+  background: #dbdbdb;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2RiZGJkYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ0JSIgc3RvcC1jb2xvcj0iI2NiY2JjYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiOWI5YjkiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dbdbdb), color-stop(44%, #cbcbcb), color-stop(100%, #b9b9b9));
+  background: -webkit-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
+  background: -o-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
+  background: -ms-linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
+  background: linear-gradient(top, #dbdbdb 0%, #cbcbcb 44%, #b9b9b9 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#dbdbdb', endColorstr='#b9b9b9', GradientType=0);
+  border-top: 1px solid #fff;
+  border-bottom: none;
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
 }
-.toggleButton:hover, .toggleButton:focus {
-	border-top:none;
-	border-bottom:1px solid #fff;
-	background: #b9b9b9;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YjliOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iI2NiY2JjYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYmRiZGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b9b9b9), color-stop(56%, #cbcbcb), color-stop(100%, #dbdbdb));
-	background: -webkit-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
-	background: -o-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
-	background: -ms-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
-	background: linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', endColorstr='#dbdbdb', GradientType=0 );
+
+.toggleButton:hover,
+.toggleButton:focus {
+  border-top: none;
+  border-bottom: 1px solid #fff;
+  background: #b9b9b9;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I5YjliOSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjU2JSIgc3RvcC1jb2xvcj0iI2NiY2JjYiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNkYmRiZGIiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b9b9b9), color-stop(56%, #cbcbcb), color-stop(100%, #dbdbdb));
+  background: -webkit-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
+  background: -o-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
+  background: -ms-linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
+  background: linear-gradient(top, #b9b9b9 0%, #cbcbcb 56%, #dbdbdb 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#b9b9b9', endColorstr='#dbdbdb', GradientType=0);
 }
-.buttonSelected, .buttonSelected:hover, .buttonSelected:focus {
-	cursor:default;
-	border-bottom:none;
-	color:#fff !important;
+
+.buttonSelected,
+.buttonSelected:hover,
+.buttonSelected:focus {
+  cursor: default;
+  border-bottom: none;
+  color: #fff !important;
 }
+
 .buttonRight {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
+
 .buttonLeft {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0px 0px 5px;
 }
+
 .esriRtl .buttonRight {
-	-webkit-border-radius: 5px 0px 0px 5px;
-	border-radius: 5px 0px 0px 5px;
+  -webkit-border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0px 0px 5px;
 }
+
 .esriRtl .buttonLeft {
-	-webkit-border-radius: 0px 5px 5px 0px;
-	border-radius: 0px 5px 5px 0px;
+  -webkit-border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 5px 5px 0px;
 }
+
 .buttonSingle {
-	-webkit-border-radius: 5px;
-	border-radius:5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
 }
 /*-------------------------------------------------- */
 /* FULSCREEN */
 /*-------------------------------------------------- */
-.fullScreen, .fullScreen body {
-	width:100%;
-	height:100%;
-	min-width:100%;
+
+.fullScreen,
+.fullScreen body {
+  width: 100%;
+  height: 100%;
+  min-width: 100%;
 }
+
 .fullScreen #fullScreen {
-	right:252px;
+  right: 252px;
 }
+
 .fullScreen .fullScreenButton {
-	background:url(../images/ui/uiSprite.png) no-repeat -50px -2px;
+  background: url(../images/ui/uiSprite.png) no-repeat -50px -2px;
 }
+
 .fullScreen #geoButton {
-	right:290px;
+  right: 290px;
 }
-.fullScreen .container_12, .fullScreen #content, .fullScreen #content .contentLeft, .fullScreen .container_12 .grid_9, .fullScreen .container_12 .grid_12 {
-	width:100% !important;
-	height:100% !important;
-	padding:0 !important;
-	margin:0 !important;
-	display:block !important;
-	overflow:hidden !important;
-	background:none !important;
-	min-height:100% !important;
+
+.fullScreen .container_12,
+.fullScreen #content,
+.fullScreen #content .contentLeft,
+.fullScreen .container_12 .grid_9,
+.fullScreen .container_12 .grid_12 {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block !important;
+  overflow: hidden !important;
+  background: none !important;
+  min-height: 100% !important;
 }
-.fullScreen #header, .fullScreen #footer, .fullScreen .socialButtons {
-	display:none !important;
+
+.fullScreen #header,
+.fullScreen #footer,
+.fullScreen .socialButtons {
+  display: none !important;
 }
+
 .fullScreen .dataLayers {
-	position:static;
+  position: static;
 }
+
 .fullScreen #legendMenu {
-	display: block !important;
-	position:absolute;
-	z-index:38;
-	top:20px;
-	right:20px;
-	background:#F1F1F1;
+  display: block !important;
+  position: absolute;
+  z-index: 38;
+  top: 20px;
+  right: 20px;
+  background: #F1F1F1;
 }
+
 .fullScreen #aboutMenu {
-	display: none !important;
+  display: none !important;
 }
-.fullScreen #description, .fullScreen #legendDiv {
-	padding:15px;
+
+.fullScreen #description,
+.fullScreen #legendDiv {
+  padding: 15px;
 }
+
 .fullScreen .scrollHeight {
-	height: 500px !important;
-	max-height:500px !important;
-	zoom:1;
-	overflow:auto;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 1px 1px 3px #666;
-	-webkit-box-shadow: 1px 1px 3px #666;
-	box-shadow: 1px 1px 3px #666;
+  height: 500px !important;
+  max-height: 500px !important;
+  zoom: 1;
+  overflow: auto;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 1px 1px 3px #666;
+  -webkit-box-shadow: 1px 1px 3px #666;
+  box-shadow: 1px 1px 3px #666;
 }
+
 .fullScreen .mapContainer {
-	padding:0 !important;
-	margin:0 !important;
-	width:100% !important;
-	height:100% !important;
-	overflow:hidden !important;
-	-webkit-border-radius: 0 !important;
-	border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  -webkit-border-radius: 0 !important;
+  border-radius: 0 !important;
 }
+
 .fullScreen .searchListCon {
-	position:absolute;
-	z-index:38;
-	top:20px;
-	margin: 0;
-	left:75px;
-}
-.fullScreen #content .simpleGeocoder .esriGeocoder{
-    border:2px solid #666;
+  position: absolute;
+  z-index: 38;
+  top: 20px;
+  margin: 0;
+  left: 75px;
 }
 
-.fullScreen #content .simpleGeocoder .esriGeocoderResults{
-    border:2px solid #666;
-    border-top: 0;
+.fullScreen #content .simpleGeocoder .esriGeocoder {
+  border: 2px solid #666;
 }
 
-.fullScreen #content .simpleGeocoder .esriGeocoderActive, .fullScreen #content .simpleGeocoder .esriGeocoderMenuActive{
-    border-bottom: 0;
+.fullScreen #content .simpleGeocoder .esriGeocoderResults {
+  border: 2px solid #666;
+  border-top: 0;
 }
 
-.fullScreen .addressContainer, .fullScreen .searchList {
-	margin:0;
+.fullScreen #content .simpleGeocoder .esriGeocoderActive,
+.fullScreen #content .simpleGeocoder .esriGeocoderMenuActive {
+  border-bottom: 0;
 }
+
+.fullScreen .addressContainer,
+.fullScreen .searchList {
+  margin: 0;
+}
+
 .fullScreen #title {
-	display:none;
+  display: none;
 }
+
 .fullScreen #map {
-	padding:0 !important;
-	margin:0 !important;
-	width:100% !important;
-	height:100% !important;
-	overflow:hidden !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
 }
+
 .fullScreen #subtitle {
-	display:none;
+  display: none;
 }
+
 .fullScreen .basemapConRel {
-	position: absolute;
-	top:20px;
-	right:310px;
-	z-index:38;
+  position: absolute;
+  top: 20px;
+  right: 310px;
+  z-index: 38;
 }
 /*-------------------------------------------------- */
 /* Pagination */
 /*-------------------------------------------------- */
+
 .pagination {
-	margin:0 0 20px 0;
+  margin: 0 0 20px 0;
 }
+
 .pagination ul {
-	list-style:none;
-	margin:0;
-	padding:0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
+
 .pagination ul li {
-	float:left;
-	display:block;
-	font-size:12px;
-	line-height:14px;
-	margin:0;
+  float: left;
+  display: block;
+  font-size: 12px;
+  line-height: 14px;
+  margin: 0;
 }
+
 .esriRtl .pagination ul li {
-	float:right;
+  float: right;
 }
+
 .pagination ul .default {
-	display:inline-block;
-	padding:5px;
-	cursor:pointer;
-	background:#dadada;
-	border-top:1px solid #c4c4c4;
-	border-bottom:1px solid #c4c4c4;
-	min-width:35px;
-	text-align:center;
-	-moz-box-shadow: 6px 0px 6px #ccc;
-	-webkit-box-shadow: 6px 0px 6px #ccc;
-	box-shadow: 6px 0px 6px #ccc;
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+  background: #dadada;
+  border-top: 1px solid #c4c4c4;
+  border-bottom: 1px solid #c4c4c4;
+  min-width: 35px;
+  text-align: center;
+  -moz-box-shadow: 6px 0px 6px #ccc;
+  -webkit-box-shadow: 6px 0px 6px #ccc;
+  box-shadow: 6px 0px 6px #ccc;
 }
+
 .esriRtl .pagination ul .default {
-	-moz-box-shadow: -6px 0px 6px #ccc;
-	-webkit-box-shadow: -6px 0px 6px #ccc;
-	box-shadow: -6px 0px 6px #ccc;
+  -moz-box-shadow: -6px 0px 6px #ccc;
+  -webkit-box-shadow: -6px 0px 6px #ccc;
+  box-shadow: -6px 0px 6px #ccc;
 }
-.pagination ul .default:hover, .pagination ul .default:focus {
-	background-color:#ccc;
-	color:#333;
-	-webkit-transition:background-color 0.25s ease-in;
-	-moz-transition:background-color 0.25s ease-in;
-	-o-transition:background-color 0.25s ease-in;
-	transition:background-color 0.25s ease-in;
+
+.pagination ul .default:hover,
+.pagination ul .default:focus {
+  background-color: #ccc;
+  color: #333;
+  -webkit-transition: background-color 0.25s ease-in;
+  -moz-transition: background-color 0.25s ease-in;
+  -o-transition: background-color 0.25s ease-in;
+  transition: background-color 0.25s ease-in;
 }
-.pagination ul .selected, .pagination ul .selected:hover, .pagination ul .selected:focus {
-	cursor:default;
-	font-weight:bold;
-	color:#fff;
-	background: #5a5a5a;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhNWE1YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzY5Njk2OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjdiN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5a5a5a), color-stop(50%, #696969), color-stop(100%, #7b7b7b));
-	background: -webkit-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -o-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: -ms-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-	background: linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', endColorstr='#7b7b7b', GradientType=0 );
-	border-bottom:1px solid #6a6a6a;
-	border-top:1px solid #6a6a6a;
+
+.pagination ul .selected,
+.pagination ul .selected:hover,
+.pagination ul .selected:focus {
+  cursor: default;
+  font-weight: bold;
+  color: #fff;
+  background: #5a5a5a;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzVhNWE1YSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzY5Njk2OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM3YjdiN2IiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+  background: -moz-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #5a5a5a), color-stop(50%, #696969), color-stop(100%, #7b7b7b));
+  background: -webkit-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -o-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: -ms-linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  background: linear-gradient(top, #5a5a5a 0%, #696969 50%, #7b7b7b 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#5a5a5a', endColorstr='#7b7b7b', GradientType=0);
+  border-bottom: 1px solid #6a6a6a;
+  border-top: 1px solid #6a6a6a;
 }
+
 .pagination ul .next span {
-	display:inline-block;
-	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
-	height:12px;
-	width:12px;
-	overflow:hidden;
+  display: inline-block;
+  background: url(../images/ui/uiSprite.png) no-repeat -35px -1px;
+  height: 12px;
+  width: 12px;
+  overflow: hidden;
 }
+
 .pagination ul .previous span {
-	display:inline-block;
-	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
-	height:12px;
-	width:12px;
-	overflow:hidden;
+  display: inline-block;
+  background: url(../images/ui/uiSprite.png) no-repeat -18px -1px;
+  height: 12px;
+  width: 12px;
+  overflow: hidden;
 }
+
 .esriRtl .pagination ul .next span {
-	background:url(../images/ui/uiSprite.png) no-repeat -18px -1px;
+  background: url(../images/ui/uiSprite.png) no-repeat -18px -1px;
 }
+
 .esriRtl .pagination ul .previous span {
-	background:url(../images/ui/uiSprite.png) no-repeat -35px -1px;
+  background: url(../images/ui/uiSprite.png) no-repeat -35px -1px;
 }
 /*-------------------------------------------------- */
 /* AUTO COMPLETE LIST */
 /*-------------------------------------------------- */
+
 #acCon {
-	position:relative;
-	z-index:39;
+  position: relative;
+  z-index: 39;
 }
+
 .autoComplete {
-	width:190px;
-	position:absolute;
-	top:0;
-	left:0;
-	z-index:39;
-	background:#fff;
-	font-size:12px;
-	line-height:18px;
-	-webkit-box-shadow: 1px 1px 3px #999;
-	-moz-box-shadow: 1px 1px 3px #999;
-	box-shadow: 1px 1px 3px #999;
-	-webkit-border-radius: 0px 0px 8px 8px;
-	border-radius: 0px 0px 8px 8px;
-	display:none;
+  width: 190px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 39;
+  background: #fff;
+  font-size: 12px;
+  line-height: 18px;
+  -webkit-box-shadow: 1px 1px 3px #999;
+  -moz-box-shadow: 1px 1px 3px #999;
+  box-shadow: 1px 1px 3px #999;
+  -webkit-border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px 8px 8px;
+  display: none;
 }
+
 .esriRtl .autoComplete {
-	left:auto;
-	right:0;
+  left: auto;
+  right: 0;
 }
+
 .autoComplete p {
-	margin:6px 0;
-	padding:6px 10px;
+  margin: 6px 0;
+  padding: 6px 10px;
 }
+
 .autoComplete ul {
-	margin:6px 0;
+  margin: 6px 0;
 }
+
 .autoComplete li {
-	padding: 6px 10px;
-	cursor:pointer;
+  padding: 6px 10px;
+  cursor: pointer;
 }
+
 .autoComplete li span {
-	font-weight:bold;
+  font-weight: bold;
 }
 /*-------------------------------------------------- */
 /* Zebra stripes */
 /*-------------------------------------------------- */
+
 .zebraStripes .stripe {
-	background-color: #eee;
+  background-color: #eee;
 }
 /*-------------------------------------------------- */
 /* RTL */
 /*-------------------------------------------------- */
+
 .esriRtl {
-	direction: rtl;
+  direction: rtl;
 }
 /*-------------------------------------------------- */
 /* Sorting */
 /*-------------------------------------------------- */
+
 #sortGallery li {
-	float:left;
+  float: left;
 }
+
 .esriRtl #sortGallery li {
-	float:right;
+  float: right;
 }
+
 #sortGallery .active .silverButton {
-	cursor:pointer !important;
+  cursor: pointer !important;
 }
+
 #sortGallery .label {
-	margin-right:10px;
+  margin-right: 10px;
 }
+
 .esriRtl #sortGallery .label {
-	margin-right:0;
-	margin-left:10px;
+  margin-right: 0;
+  margin-left: 10px;
 }
+
 #sortGallery .label span {
-	display:inline-block;
-	vertical-align:center;
-	font-size:12px;
-	line-height:14px;
-	padding:6px 0;
+  display: inline-block;
+  vertical-align: center;
+  font-size: 12px;
+  line-height: 14px;
+  padding: 6px 0;
 }
+
 #sortGallery li .arrow {
-	display:inline-block;
-	vertical-align:text-bottom;
-	width:12px;
-	height:12px;
-	overflow:hidden;
-	margin-left:4px;
+  display: inline-block;
+  vertical-align: text-bottom;
+  width: 12px;
+  height: 12px;
+  overflow: hidden;
+  margin-left: 4px;
 }
+
 .esriRtl #sortGallery li .arrow {
-	margin-left:0;
-	margin-right:4px;
+  margin-left: 0;
+  margin-right: 4px;
 }
+
 #sortGallery .desc .arrow {
-	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
+  background: url(../images/ui/uiSprite.png) no-repeat -178px -2px;
 }
-#sortGallery .desc:hover .arrow, #sortGallery .desc:focus .arrow {
-	background:url(../images/ui/uiSprite.png) no-repeat -178px -2px;
+
+#sortGallery .desc:hover .arrow,
+#sortGallery .desc:focus .arrow {
+  background: url(../images/ui/uiSprite.png) no-repeat -178px -2px;
 }
+
 #sortGallery .asc .arrow {
-	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
+  background: url(../images/ui/uiSprite.png) no-repeat -242px -2px;
 }
-#sortGallery .asc:hover .arrow, #sortGallery .asc:focus .arrow {
-	background:url(../images/ui/uiSprite.png) no-repeat -242px -2px;
+
+#sortGallery .asc:hover .arrow,
+#sortGallery .asc:focus .arrow {
+  background: url(../images/ui/uiSprite.png) no-repeat -242px -2px;
 }
 /*-------------------------------------------------- */
 /* Comments */
 /*-------------------------------------------------- */
+
 #comments {
-	margin:20px 0 0 0;
+  margin: 20px 0 0 0;
 }
-#commentSpinner{
-	display: inline-block;
-	height: 26px;
-	vertical-align: middle;
+
+#commentSpinner {
+  display: inline-block;
+  height: 26px;
+  vertical-align: middle;
 }
+
 #comments h2 {
-	margin-bottom:10px;
-	line-height: 26px;
+  margin-bottom: 10px;
+  line-height: 26px;
 }
-#comments .addCommentBlock{
-	margin-bottom:20px;
-	padding-bottom:20px;
-	border-bottom:1px solid #ccc;
+
+#comments .addCommentBlock {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
 }
-#comments #commentText{
-	width:478px;
-	max-width:678px;
-	border:1px solid #ccc;
-	margin:0 0 5px 0;
-	padding:10px;
+
+#comments #commentText {
+  width: 478px;
+  max-width: 678px;
+  border: 1px solid #ccc;
+  margin: 0 0 5px 0;
+  padding: 10px;
 }
+
 #comments .comment {
-	background:#fff;
-	padding:10px;
-	margin-bottom:10px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	-moz-box-shadow: 1px 1px 3px #ccc;
-	-webkit-box-shadow: 1px 1px 3px #ccc;
-	box-shadow: 1px 1px 3px #ccc;
+  background: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  -moz-box-shadow: 1px 1px 3px #ccc;
+  -webkit-box-shadow: 1px 1px 3px #ccc;
+  box-shadow: 1px 1px 3px #ccc;
 }
-#comments .commentBodySpinner{
-	float:right;
-	width:36px;
-	height:26px;
+
+#comments .commentBodySpinner {
+  float: right;
+  width: 36px;
+  height: 26px;
 }
+
 #comments .comment .smallText {
-	color:#656565;
-	font-size: 11px;
-	line-height:16px;
+  color: #656565;
+  font-size: 11px;
+  line-height: 16px;
 }
 /*-------------------------------------------------- */
 /* Scroll Div */
 /*-------------------------------------------------- */
+
 .scrollHeight {
-	zoom:1;
-	margin:0;
-	padding:0;
-	width:220px;
-	overflow:hidden;
-}
-#content .simpleGeocoder .esriGeocoderContainer{
-    -moz-box-shadow: 0px 0px 6px #ccc;
-	-webkit-box-shadow: 0px 0px 6px #ccc;
-	box-shadow: 0px 0px 6px #ccc;
-	position: relative;
-	z-index: 999;
+  zoom: 1;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+  overflow: hidden;
 }
 
-#content .simpleGeocoder .esriGeocoder{
-    border: 0;
-}
-#content .simpleGeocoder .esriGeocoder input{
-    padding: 5px 0;
-}
-
-#content .simpleGeocoder .esriGeocoderIcon{
-    margin-top:5px;
-    margin-bottom: 5px;
+#content .simpleGeocoder .esriGeocoderContainer {
+  -moz-box-shadow: 0px 0px 6px #ccc;
+  -webkit-box-shadow: 0px 0px 6px #ccc;
+  box-shadow: 0px 0px 6px #ccc;
+  position: relative;
+  z-index: 999;
 }
 
-#content .simpleGeocoder .esriGeocoderResults{
-    border: 0;
-    -moz-box-shadow: 0px 3px 3px rgba(204,204,204, 0.7);
-	-webkit-box-shadow: 0px 3px 3px rgba(204,204,204, 0.7);
-	box-shadow: 0px 3px 3px rgba(204,204,204, 0.7);
+#content .simpleGeocoder .esriGeocoder {
+  border: 0;
 }
 
+#content .simpleGeocoder .esriGeocoder input {
+  padding: 5px 0;
+}
+
+#content .simpleGeocoder .esriGeocoderIcon {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+#content .simpleGeocoder .esriGeocoderResults {
+  border: 0;
+  -moz-box-shadow: 0px 3px 3px rgba(204, 204, 204, 0.7);
+  -webkit-box-shadow: 0px 3px 3px rgba(204, 204, 204, 0.7);
+  box-shadow: 0px 3px 3px rgba(204, 204, 204, 0.7);
+}
 /*-------------------------------------------------- */
 /* Media Queries */
 /*-------------------------------------------------- */
+
 @media only screen and (max-width: 940px) {
-.fullScreen .basemapConRel {
-	display: none !important;
+  .fullScreen .basemapConRel {
+    display: none !important;
+  }
 }
-}
+
 @media only screen and (max-width: 620px) {
-.fullScreen .searchListCon, .fullScreen .basemapConRel, .fullScreen #fullScreen, .fullScreen #geoButton {
-	display: none !important;
+  .fullScreen .searchListCon,
+  .fullScreen .basemapConRel,
+  .fullScreen #fullScreen,
+  .fullScreen #geoButton {
+    display: none !important;
+  }
 }
-}
+
 @media only screen and (max-width: 570px) {
-.fullScreen .searchListCon, .fullScreen .basemapConRel, .fullScreen #legendMenu, .fullScreen #fullScreen, .fullScreen #geoButton, #map .dijitSlider {
-	display: none !important;
-}
+  .fullScreen .searchListCon,
+  .fullScreen .basemapConRel,
+  .fullScreen #legendMenu,
+  .fullScreen #fullScreen,
+  .fullScreen #geoButton,
+  #map .dijitSlider {
+    display: none !important;
+  }
 }
 /*-------------------------------------------------- */
 /* END */

@@ -1,3 +1,13 @@
-.gradient, .disabled, .toggleButton, .silverButton, .mapButton, .buttonSelected, .buttonLeft, .buttonRight, .buttonSingle, .esriPopup .titlePane, .dj_ie7 .esriPopup .titlePane .title {
-	filter: none !important;
+.gradient,
+.disabled,
+.toggleButton,
+.silverButton,
+.mapButton,
+.buttonSelected,
+.buttonLeft,
+.buttonRight,
+.buttonSingle,
+.esriPopup .titlePane,
+.dj_ie7 .esriPopup .titlePane .title {
+  filter: none !important;
 }

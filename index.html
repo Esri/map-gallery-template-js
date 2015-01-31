@@ -1,80 +1,83 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
-<meta charset="utf-8" />
-<title></title>
-<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-<meta name="Keywords" content="" />
-<meta name="Description" content="" />
-<!-- iOS -->
-<meta name="viewport" content="width=1024, user-scalable=yes" />
-<meta name="apple-mobile-web-app-capable" content="yes" />
-<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-<!-- END iOS -->
-<!-- Facebook -->
-<meta property="og:title" content="Public Map Gallery" />
-<meta property="og:image" content="images/defaultThumb.png" />
-<meta property="og:site_name" content="esri" />
-<!-- End Facebook -->
-<!-- STYLESHEETS -->
-<link rel="stylesheet"  href="//jsdev.arcgis.com/3.13/dijit/themes/claro/claro.css">
-<link href="//jsdev.arcgis.com/3.13/dojox/form/resources/Rating.css" rel="stylesheet"/>
-<link href="css/reset.css" rel="stylesheet" type="text/css" />
-<link href="css/960.css" rel="stylesheet" type="text/css" />
-<link href="css/common.css" rel="stylesheet" type="text/css" />
-<link href="css/themes.css" rel="stylesheet" type="text/css" />
-<!--[if gte IE 9]>
+  <meta charset="utf-8" />
+  <title></title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+  <meta name="Keywords" content="" />
+  <meta name="Description" content="" />
+  <!-- iOS -->
+  <meta name="viewport" content="width=1024, user-scalable=yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <!-- END iOS -->
+  <!-- Facebook -->
+  <meta property="og:title" content="Public Map Gallery" />
+  <meta property="og:image" content="images/defaultThumb.png" />
+  <meta property="og:site_name" content="esri" />
+  <!-- End Facebook -->
+  <!-- STYLESHEETS -->
+  <link rel="stylesheet" href="//jsdev.arcgis.com/3.13/dijit/themes/claro/claro.css">
+  <link href="//jsdev.arcgis.com/3.13/dojox/form/resources/Rating.css" rel="stylesheet" />
+  <link href="css/reset.css" rel="stylesheet" type="text/css" />
+  <link href="css/960.css" rel="stylesheet" type="text/css" />
+  <link href="css/common.css" rel="stylesheet" type="text/css" />
+  <link href="css/themes.css" rel="stylesheet" type="text/css" />
+  <!--[if gte IE 9]>
 <link href="css/ie9.css" rel="stylesheet" type="text/css" />
 <![endif]-->
-<!-- END STYLESHEETS -->
+  <!-- END STYLESHEETS -->
 </head>
+
 <body id="galleryBody" class="claro">
-<div id="header">
-	<div class="container_12 headerContainer" id="topHeader">
-		<div class="grid_12">
-			<ul id="templateNav">
-			</ul>
-		</div>
-	</div>
-</div>
-<div id="content">
-	<div class="container_12">
-		<div id="mainPanel" class="grid_9">
-			<h1 id="homeHeading"></h1>
-			<p id="homeSnippet"></p>
-			<div id="layoutAndSearch"></div>
-			<div id="groupSortOptions"></div>
-			<div id="featuredMaps">
-				<p id="featuredLoading" class="featuredLoading"></p>
-			</div>
-			<div class="clear"></div>
-			<div class="grid_6 alpha">
-				<div id="maps_pagination" class="pagination"></div>
-			</div>
-			<div class="grid_3 omega">
-				<div id="socialHTML" class="socialButtons itemRight"></div>
-				<div class="clear"></div>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<div id="sidePanel" class="grid_3">
-			<div class="scrollHeight">
-                <div id="filterByType"></div>
-				<div id="homeSideContent"></div>
-			</div>
-		</div>
-		<div class="clear"></div>
-	</div>
-</div>
-<div id="footer"></div>
-<!-- JAVASCRIPT -->
-<script type="text/javascript" src="javascript/djConfig.js"></script>
-<script type="text/javascript" src="//jsdev.arcgis.com/3.13/"></script>
-<script type="text/javascript">
-require(["application/home"], function(App){
-    var myApp = App();
-});
-</script>
-<!-- END JAVASCRIPT -->
+  <div id="header">
+    <div class="container_12 headerContainer" id="topHeader">
+      <div class="grid_12">
+        <ul id="templateNav">
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="content">
+    <div class="container_12">
+      <div id="mainPanel" class="grid_9">
+        <h1 id="homeHeading"></h1>
+        <p id="homeSnippet"></p>
+        <div id="layoutAndSearch"></div>
+        <div id="groupSortOptions"></div>
+        <div id="featuredMaps">
+          <p id="featuredLoading" class="featuredLoading"></p>
+        </div>
+        <div class="clear"></div>
+        <div class="grid_6 alpha">
+          <div id="maps_pagination" class="pagination"></div>
+        </div>
+        <div class="grid_3 omega">
+          <div id="socialHTML" class="socialButtons itemRight"></div>
+          <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div id="sidePanel" class="grid_3">
+        <div class="scrollHeight">
+          <div id="filterByType"></div>
+          <div id="homeSideContent"></div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div id="footer"></div>
+  <!-- JAVASCRIPT -->
+  <script type="text/javascript" src="javascript/djConfig.js"></script>
+  <script type="text/javascript" src="//jsdev.arcgis.com/3.13/"></script>
+  <script type="text/javascript">
+    require(["application/home"], function (App) {
+      var myApp = App();
+    });
+  </script>
+  <!-- END JAVASCRIPT -->
 </body>
+
 </html>
