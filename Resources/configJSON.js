@@ -226,8 +226,8 @@
         {  
           "type":"string",
           "fieldName":"filterType",
-          "tooltip":"Only display this type of items",
-          "label":"Only display this type of items:",
+          "tooltip":"Only display items of this type",
+          "label":"Only display items of this type:",
           "options":[  
             {  
               "label":"All",
@@ -457,7 +457,7 @@
         },
         {  
           "type":"paragraph",
-          "value":"Shows a list allowing users to filter items by type."
+          "value":"Shows a list allowing users to filter items by type, if 'Only display items of this type' does not equal 'All' it will control the default item type selected in the filter."
         },
         {  
           "type":"boolean",
