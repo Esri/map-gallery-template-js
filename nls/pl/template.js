@@ -109,7 +109,7 @@
                 "files": "Pliki"
             },
             "pagination": {
-                "previous": "Wstecz",
+                "previous": "Powrót",
                 "next": "Dalej",
                 "first": "Pierwsza strona",
                 "last": "Ostatnia strona",

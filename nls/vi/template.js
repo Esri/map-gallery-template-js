@@ -110,7 +110,7 @@
             },
             "pagination": {
                 "previous": "Trước",
-                "next": "Tiếp",
+                "next": "Tiếp theo",
                 "first": "Trang đầu",
                 "last": "Trang cuối",
                 "helip": "&hellip;",

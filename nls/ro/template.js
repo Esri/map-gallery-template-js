@@ -7,7 +7,7 @@
                 "datePattern": "d. MMM yyyy" // added 2.5.2013
             },
             "errors": {
-                "createMap": "Imposibil de creat harta",
+                "createMap": "Nu se poate crea harta",
                 "general": "Eroare",
                 "bingError": "Lansarea acestei aplicaţii necesită propria dvs. cheie de hărţi Bing.",
                 "noLayers": "Niciun strat tematic operaţional",
