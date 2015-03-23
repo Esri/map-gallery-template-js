@@ -19,6 +19,8 @@ define([
     "dojo/dom-attr",
     "dojo/dom-class",
     "dojo/dom-construct",
+    "esri/tasks/locator",
+    "esri/layers/FeatureLayer",
     "esri/dijit/OverviewMap",
     "esri/dijit/BasemapGallery",
     "esri/dijit/Scalebar",
@@ -30,7 +32,7 @@ define([
     "esri/dijit/HomeButton",
     "esri/lang"
 ],
-  function (declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, InfoTemplate, keys, Search, LocateButton, HomeButton, esriLang) {
+  function (declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, Locator, FeatureLayer, OverviewMap, BasemapGallery, Scalebar, Legend, InfoTemplate, keys, Search, LocateButton, HomeButton, esriLang) {
     return declare("application.map", [Common], {
       constructor: function () { /*------------------------------------*/
         // on dojo load
@@ -868,6 +870,7 @@ define([
               this.map = response.map;
               // operation layers
               var layers = response.itemInfo.itemData.operationalLayers;
+              this._options.itemInfo = response.itemInfo;
               var html = '';
               var mapLayersNode = dom.byId('mapLayers');
               var lb = new LocateButton({
@@ -1010,7 +1013,77 @@ define([
           }
         }
       },
-
+      
+      _templateSearchOptions: function(w){
+        var sources = [];
+        var searchLayers;
+        //setup geocoders defined in common config 
+        if (this._options.helperServices.geocode) {
+          var geocoders = lang.clone(this._options.helperServices.geocode);
+          array.forEach(geocoders, lang.hitch(this, function(geocoder) {
+            if (geocoder.url.indexOf(".arcgis.com/arcgis/rest/services/World/GeocodeServer") > -1) {
+              // use the default esri locator from the search widget
+              geocoder = lang.clone(w.sources[0]);
+              geocoder.hasEsri = true;
+              sources.push(geocoder);
+            } else if (esriLang.isDefined(geocoder.singleLineFieldName)) {
+              //Add geocoders with a singleLineFieldName defined 
+              geocoder.locator = new Locator(geocoder.url);
+              sources.push(geocoder);
+            }
+          }));
+        }
+        //Add search layers defined on the web map item 
+        if (this._options.itemInfo.itemData && this._options.itemInfo.itemData.applicationProperties && this._options.itemInfo.itemData.applicationProperties.viewing && this._options.itemInfo.itemData.applicationProperties.viewing.search) {
+          var searchOptions = this._options.itemInfo.itemData.applicationProperties.viewing.search;
+          array.forEach(searchOptions.layers, lang.hitch(this, function(searchLayer) {
+            //we do this so we can get the title specified in the item
+            var operationalLayers = this._options.itemInfo.itemData.operationalLayers;
+            var layer = null;
+            array.some(operationalLayers, function(opLayer) {
+              if (opLayer.id === searchLayer.id) {
+                layer = opLayer;
+                return true;
+              }
+            });
+            if (layer && layer.url) {
+              var source = {};
+              var url = layer.url;
+              if (esriLang.isDefined(searchLayer.subLayer)) {
+                url = url + "/" + searchLayer.subLayer;
+                array.some(layer.layerObject.layerInfos, function(info) {
+                  if (info.id == searchLayer.subLayer) {
+                    return true;
+                  }
+                });
+              }
+              source.featureLayer = new FeatureLayer(url);
+              source.name = layer.title || layer.name;
+              source.exactMatch = searchLayer.field.exactMatch;
+              source.searchFields = [searchLayer.field.name];
+              source.placeholder = searchOptions.hintText;
+              sources.push(source);
+              searchLayers = true;
+            }
+          }));
+        }
+        //set the first non esri layer as active if search layers are defined. 
+        var activeIndex = 0;
+        if (searchLayers) {
+          array.some(sources, function(s, index) {
+            if (!s.hasEsri) {
+              activeIndex = index;
+              return true;
+            }
+          });
+        }
+        // get back the sources and active index
+        return {
+          sources: sources,
+          activeSourceIndex: activeIndex
+        };
+      },
+      
       /*------------------------------------*/
       // INIT UI
       /*------------------------------------*/
@@ -1019,6 +1092,9 @@ define([
           map: this.map
         };
         var gc = new Search(options, "gc_search");
+        var templateOptions = this._templateSearchOptions(gc);
+        gc.set("sources", templateOptions.sources);
+        gc.set("activeSourceIndex", templateOptions.activeSourceIndex);
         gc.startup();
         // Set legend header
         var node = dom.byId('legendHeader');
