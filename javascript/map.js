@@ -25,12 +25,12 @@ define([
     "esri/dijit/Legend",
     "esri/InfoTemplate",
     "dojo/keys",
-    "esri/dijit/Geocoder",
+    "esri/dijit/Search",
     "esri/dijit/LocateButton",
     "esri/dijit/HomeButton",
     "esri/lang"
 ],
-  function (declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, InfoTemplate, keys, Geocoder, LocateButton, HomeButton, esriLang) {
+  function (declare, lang, array, Deferred, dom, on, query, i18n, domStyle, number, arcgisUtils, Options, Dialog, Common, locale, ready, Rating, domAttr, domClass, domConstruct, OverviewMap, BasemapGallery, Scalebar, Legend, InfoTemplate, keys, Search, LocateButton, HomeButton, esriLang) {
     return declare("application.map", [Common], {
       constructor: function () { /*------------------------------------*/
         // on dojo load
@@ -1010,78 +1010,16 @@ define([
           }
         }
       },
-      createOptions: function () {
-        var hasEsri = false,
-          geocoders = lang.clone(this._options.helperServices.geocode);
-        array.forEach(geocoders, function (geocoder, index) {
-          if (geocoder.url.indexOf(".arcgis.com/arcgis/rest/services/World/GeocodeServer") > -1) {
-            hasEsri = true;
-            geocoder.name = "Esri World Geocoder";
-            geocoder.outFields = "Match_addr, stAddr, City";
-            geocoder.singleLineFieldName = "SingleLine";
-            geocoder.placeholder = i18n.viewer.mapPage.findPlaceholder;
-            geocoder.esri = true;
-            geocoder.placefinding = true;
-          }
-        });
-        //only use geocoders with a singleLineFieldName that allow placefinding
-        geocoders = array.filter(geocoders, function (geocoder) {
-          return (esriLang.isDefined(geocoder.singleLineFieldName) && esriLang.isDefined(geocoder.placefinding) && geocoder.placefinding);
-        });
-        var esriIdx;
-        if (hasEsri) {
-          for (var i = 0; i < geocoders.length; i++) {
-            if (esriLang.isDefined(geocoders[i].esri) && geocoders[i].esri === true) {
-              esriIdx = i;
-              break;
-            }
-          }
-        }
-        var options = {
-          map: this.map,
-          theme: "simpleGeocoder",
-          highlightLocation: true,
-          autoComplete: hasEsri
-        };
-        //If the World geocoder is primary enable auto complete 
-        if (hasEsri && esriIdx === 0) {
-          options.autoComplete = true;
-          options.minCharacters = 0;
-          options.maxLocations = 5;
-          options.searchDelay = 100;
-          options.arcgisGeocoder = geocoders.splice(0, 1)[0]; //geocoders[0];
-          if (geocoders.length > 0) {
-            options.geocoders = geocoders;
-          }
-        } else {
-          options.arcgisGeocoder = false;
-          options.geocoders = geocoders;
-        }
-        return options;
-      },
+
       /*------------------------------------*/
       // INIT UI
       /*------------------------------------*/
       initUI: function (response) {
-        var options = this.createOptions();
-        var gc = new Geocoder(options, "gc_search");
+        var options = {
+          map: this.map
+        };
+        var gc = new Search(options, "gc_search");
         gc.startup();
-        // geocoder point
-        if (gc) {
-          on(gc, 'select', function (evt) {
-            // vars
-            var f, it;
-            // if feature exists
-            if (evt.result && evt.result.feature) {
-              f = evt.result.feature;
-            }
-            if (f) {
-              // set template
-              it = new InfoTemplate(i18n.viewer.groupPage.searchTitleShort, "${Match_addr}");
-              f.setInfoTemplate(it);
-            }
-          });
-        }
         // Set legend header
         var node = dom.byId('legendHeader');
         this.setNodeHTML(node, i18n.viewer.sidePanel.title);
