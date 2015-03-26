@@ -568,7 +568,10 @@ define([
               if (!thumb) {
                 thumb = 'images/defaultThumb.png';
               }
+              html += '<div class="imgContainer">';
+              html += '<span class="titleBlock"><span class="titlePad">' + itemTitle + '</span></span>';
               html += '<img alt="' + itemTitle + '" class="gridImg" src="' + thumb + '" width="200" height="133" />';
+              html += '</div>';
               html += '<span class="itemCounts">';
               if (externalLink) {
                 html += '<span class="iconCon"><span class="icon external"></span>';

@@ -586,6 +586,31 @@ input[type="search"]::-webkit-search-cancel-button {
   transition: box-shadow 0.25s ease-in;
 }
 
+.mapsGrid .item .imgContainer {
+  position: relative;
+}
+
+.mapsGrid .item .titleBlock {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  opacity: 1;
+}
+
+.mapsGrid .item .titlePad {
+  display: block;
+  padding: 5px;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: bold;
+}
+
 .mapsGrid .item .summaryHidden {
   zoom: 1;
   position: absolute;
@@ -612,11 +637,19 @@ input[type="search"]::-webkit-search-cancel-button {
   margin: 0;
   padding: 0;
   width: 190px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  -ms-text-overflow: ellipsis;
+}
+
+.mapsGrid .item:hover .titleBlock,
+.mapsGrid .item:focus .titleBlock {
+  -webkit-transition: opacity 0.25s ease-in;
+  -moz-transition: opacity 0.25s ease-in;
+  -o-transition: opacity 0.25s ease-in;
+  transition: opacity 0.25s ease-in;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=90);
+  -moz-opacity: 0;
+  -khtml-opacity: 0;
+  opacity: 0;
 }
 
 .mapsGrid .item:hover .summaryHidden,
