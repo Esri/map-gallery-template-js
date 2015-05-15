@@ -295,7 +295,11 @@ define([
               if (this._options.mapViewer === "item_page") {
                 // url variable
                 mapURL = this.getViewerURL("item_page", this.ACObj[locNum].id);
-              } else if (this.ACObj[locNum].type === "Web Map") {
+              }
+              else if (this.ACObj[locNum].type === "Web Scene") {
+                mapURL = this.getViewerURL("web_scene", this.ACObj[locNum].id);
+              }
+              else if (this.ACObj[locNum].type === "Web Map") {
                 mapURL = this.getViewerURL(this._options.mapViewer, this.ACObj[locNum].id);
               } else if (this.ACObj[locNum].type === "Operation View") {
                 mapURL = this.getViewerURL('operation_view', this.ACObj[locNum].id);
@@ -395,7 +399,12 @@ define([
             if (this._options.mapViewer === "item_page") {
               // url variable
               itemURL = this.getViewerURL("item_page", data.results[i].id);
-            } else if (data.results[i].type === "Web Map") {
+            }
+            else if (data.results[i].type === "Web Scene") {
+              // url variable
+              itemURL = this.getViewerURL("web_scene", data.results[i].id);
+            }
+            else if (data.results[i].type === "Web Map") {
               // url variable
               itemURL = this.getViewerURL(this._options.mapViewer, data.results[i].id);
             } else if (data.results[i].type === "Operation View") {

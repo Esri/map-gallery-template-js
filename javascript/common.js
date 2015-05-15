@@ -1002,6 +1002,9 @@ define([
         }
         // return correct url
         switch (viewer) {
+        case 'web_scene':
+          // https://portalhostds.ags.esri.com/gis/home/webscene/viewer.html?webscene=
+          return this._options.sharingurl + '/home/webscene/viewer.html?webscene=' + webmap;
         case 'operation_view':
           // http://www.arcgis.com/apps/dashboard/index.html#/66c198533f724f1ca8be5f91fa0beab5
           return this._options.sharingurl + '/apps/dashboard/index.html#/' + webmap;
