@@ -538,7 +538,7 @@ define([
                 html += ' (' + rating + ')';
               }
               if (externalLink) {
-                html += '<span class="iconCon"><span class="icon external"></span>';
+                html += '<a ' + linkTarget + ' href="' + itemURL + '"><span class="iconCon"><span class="icon external"></span></a>';
               }
               html += '</div>';
               html += '</div>';
