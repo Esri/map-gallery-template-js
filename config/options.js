@@ -50,6 +50,7 @@ define([], function () {
     "showRatings": false,
     "showViews": false,
     "showMobileButtons": true,
+    "showThumbTitle": false,
     "openGalleryItemsNewWindow": false,
     "bannerBackground": "images/ui/banner.png",
     "proxyUrl": "",
