@@ -21,7 +21,7 @@ var dojoConfig = {
     location: path_location + '/config'
     }]
 };
-var urlLocale = location.search.match(/locale=([\w\-]+)/) ? RegExp.$1 : null;
-if(urlLocale){
-  dojoConfig.locale = urlLocale;
+// Have to handle a locale parameter before dojo is loaded
+if (location.search.match(/locale=([\w-]+)/)) {
+  dojoConfig.locale = RegExp.$1;
 }
