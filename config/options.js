@@ -5,6 +5,7 @@ define([], function () {
     "theme": "blueTheme",
     "siteTitle": "",
     "siteBannerImage": "",
+    "siteBannerUrl": "",
     "mapTitle": "",
     "mapSnippet": "",
     "mapItemDescription": "",

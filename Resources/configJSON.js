@@ -31,6 +31,17 @@
         },
         {
           "type": "string",
+          "fieldName": "siteBannerUrl",
+          "tooltip": "Navigation header link. If empty, Site's index page URL is used.",
+          "placeHolder": "http://www.mysite.com/",
+          "label": "Banner URL:"
+        },
+        {
+          "type": "paragraph",
+          "value": "Navigation header link. If empty, Site's index page URL is used."
+        },
+        {
+          "type": "string",
           "fieldName": "addThisProfileId",
           "label": "AddThis.com profile ID:",
           "tooltip": "Account ID for AddThis.com.",

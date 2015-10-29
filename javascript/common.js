@@ -1014,7 +1014,12 @@ define([
           return this._options.sharingurl + '/sharing/rest/content/items/' + webmap + "/data?token=" + token;
           // home page link
         case 'index_page':
-          retUrl = 'index.html' + queryString;
+          if (this._options.siteBannerUrl){
+            retUrl = this._options.siteBannerUrl;
+          }
+          else {
+            retUrl = 'index.html' + queryString;
+          }
           return retUrl;
           // portal viewer link
         case 'cityengine':
