@@ -10,7 +10,7 @@
                 "createMap": "Kan ikke opprette kart",
                 "general": "Feil",
                 "bingError": "Bruk av denne applikasjonen krever din egen Bing Maps-nøkkel.",
-                "noLayers": "Ingen funksjonelle lag",
+                "noLayers": "Ingen operasjonelle lag",
                 "noSearchResults": "Fant dessverre ingen resultater.",
                 "noGroupResults": "Fant ikke gruppen.",
                 "noMatches": "Fant ingen treff.",
@@ -23,7 +23,7 @@
                 "legendButtonTitle": "Tegnforklaring på kartet",
                 "aboutButton": "Om",
                 "aboutButtonTitle": "Om kartet",
-                "message": "Ingen funksjonelle lag"
+                "message": "Ingen operasjonelle lag"
             },
             "groupPage": {
                 "showAllMaps": "Vis alle kart",
