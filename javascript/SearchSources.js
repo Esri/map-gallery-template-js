@@ -1,19 +1,5 @@
-define([
-  "dojo/_base/declare",
-  "dojo/_base/lang",
-  "dojo/_base/array",
-  "dojo/dom-construct",
-  "esri/lang",
-  "esri/tasks/locator",
-  "esri/layers/FeatureLayer",
-  "esri/dijit/Search"
-], function (
-  declare, lang, array,
-  domConstruct,
-  esriLang,
-  Locator, FeatureLayer,
-  Search
-) {
+define(["dojo/_base/declare", "dojo/_base/lang", "dojo/_base/array", "dojo/_base/json", "dojo/dom-construct", "esri/lang", "esri/tasks/locator", "esri/layers/FeatureLayer", "esri/dijit/Search"], function (
+  declare, lang, array, dojoJson, domConstruct, esriLang, Locator, FeatureLayer, Search) {
   return declare(null, {
 
     constructor: function (parameters) {
@@ -26,6 +12,7 @@ define([
         //When true we restrict world locator to the map extent
         geocoders: [],
         esriSource: null,
+        enableSearchingAll: true,
         //Geocoders defined in helper services
         itemData: null,
         //web map item info includes operational layers and info about searches configured on web map
@@ -41,6 +28,7 @@ define([
       return {
         map: this.map,
         sources: this._createSources(),
+        enableSearchingAll: this.enableSearchingAll,
         activeSourceIndex: this._getActiveSource()
       };
     },
@@ -49,33 +37,42 @@ define([
 
     //optional array of additional search layers to configure from the application config process
     _createSources: function () {
-      //Create services from org helper services 
-      //Create locators defined in web map item
-      //Create configured services. 
-      this._createHelperServiceSources();
-      if (this.itemData) {
-        this._createWebMapItemSources();
+      if (this.applicationConfiguredSources) {
+        this._createAppConfigSources();
+      } else {
+        //Create services from org helper services 
+        //Create locators defined in web map item
+        //Create configured services. 
+        this._createHelperServiceSources();
+        if (this.itemData) {
+          this._createWebMapItemSources();
+        }
+        if (this.configuredSearchLayers.length > 0) {
+          this._createConfiguredSources();
+        }
       }
-      if (this.configuredSearchLayers.length > 0) {
-        this._createConfiguredSources();
-      }
+
       return this.sources;
     },
 
     _getActiveSource: function () {
       var activeIndex = 0;
-      if (this.sources && this.sources.length > 1) {
-        activeIndex = "all";
+      if (this.hasOwnProperty("activeSourceIndex")) {
+        activeIndex = this.activeSourceIndex;
       }
-      array.some(this.sources, function (s, index) {
-        if (!s.hasEsri && s.featureLayer) {
-          activeIndex = index;
-          return true;
+      else{
+        if (this.sources && this.enableSearchingAll && this.sources.length > 1) {
+          activeIndex = "all";
         }
-      });
+        array.some(this.sources, function (s, index) {
+          if (!s.hasEsri && s.featureLayer) {
+            activeIndex = index;
+            return true;
+          }
+        });
+      }
       return activeIndex;
     },
-
     _createHelperServiceSources: function () {
       var geocoders = lang.clone(this.geocoders);
       array.forEach(geocoders, lang.hitch(this, function (geocoder) {
@@ -130,10 +127,12 @@ define([
             }
             //Get existing layer or create new one
             var mapLayer = this.map.getLayer(layer.id);
-            if (mapLayer && mapLayer.type === "FeatureLayer") {
+            if (mapLayer && (mapLayer.type === "Feature Layer" || mapLayer.type === "FeatureLayer")) {
               source.featureLayer = mapLayer;
             } else {
-              source.featureLayer = new FeatureLayer(url);
+              source.featureLayer = new FeatureLayer(url, {
+                outFields: ["*"]
+              });
             }
             source.name = name;
             source.exactMatch = searchLayer.field.exactMatch;
@@ -146,8 +145,33 @@ define([
         }));
       }
     },
+    _createAppConfigSources: function () {
+      // Configured via the new Search Configuation widget
+      var configSource = lang.clone(this.applicationConfiguredSources);
+      array.forEach(configSource, lang.hitch(this, function (source) {
+        if (source.locator) {
+          source.locator = new Locator(source.url);
+        } else { //feature layer
+          var featureLayer = null;
+          if (source.flayerId) {
+            featureLayer = this.map.getLayer(source.flayerId);
+          }
+          if (!featureLayer && source.url) {
+            featureLayer = new FeatureLayer(source.url, {
+              outFields: ["*"]
+            });
+          }
+          source.featureLayer = featureLayer;
+        }
+        if (source.searchWithinMap) {
+          source.searchExtent = this.map.extent;
+        }
+        this.sources.push(source);
+      }));
 
+    },
     _createConfiguredSources: function () {
+      // Old configuration using layer/field picker 
       array.forEach(this.configuredSearchLayers, lang.hitch(this, function (layer) {
         var mapLayer = this.map.getLayer(layer.id);
         if (mapLayer) {

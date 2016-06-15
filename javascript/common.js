@@ -1,5 +1,6 @@
 define([
     "dojo/_base/declare",
+    "dojo/_base/kernel",
     "dojo/_base/lang",
     "dojo/_base/array",
     "dojo/Deferred",
@@ -24,7 +25,7 @@ define([
     "dojo/on",
     "esri/IdentityManager"
 ],
-  function (declare, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, domGeom, number, esriRequest, config, arcgisUtils, GeometryService, urlUtils, esriPortal, commonConfig, Dialog, domAttr, domClass, domConstruct, on, IdentityManager) {
+  function (declare, kernel, lang, array, Deferred, dom, query, i18n, ioScript, domStyle, domGeom, number, esriRequest, config, arcgisUtils, GeometryService, urlUtils, esriPortal, commonConfig, Dialog, domAttr, domClass, domConstruct, on, IdentityManager) {
     return declare(null, {
       orgRequest: function () {
         var deferred = new Deferred();
@@ -200,6 +201,9 @@ define([
       // Set default options for the template
       /*------------------------------------*/
       setDefaultOptions: function () {
+        
+        document.documentElement.lang = kernel.locale;
+        
         // set user agent
         this.setUserAgent();
         // set up params
