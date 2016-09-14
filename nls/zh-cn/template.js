@@ -68,7 +68,7 @@ define({
     "itemInfo": {
       "createdLabel": "已创建",
       "ratingsLabel": "评级",
-      "ratingsLabelPlural": "次评级",
+      "ratingsLabelPlural": "评级",
       "viewsLabel": "浏览",
       "viewsLabelPlural": "次浏览",
       "commentsLabel": "评论",

@@ -16,10 +16,10 @@ define({
       "noMapsFound": "Kartes netika atrastas."
     },
     "sidePanel": {
-      "title": "Leģenda",
-      "legendButton": "Leģenda",
+      "title": "Apzīmējumi",
+      "legendButton": "Apzīmējumi",
       "layersButton": "Slāņi",
-      "legendButtonTitle": "Kartes leģenda",
+      "legendButtonTitle": "Kartes apzīmējumi",
       "aboutButton": "Par",
       "aboutButtonTitle": "Par Karti",
       "message": "Nav operatīvo slāņu"
@@ -103,7 +103,7 @@ define({
       "all": "Visi rezultāti",
       "maps": "Kartes",
       "layers": "Slāņi",
-      "applications": "Aplikācijas",
+      "applications": "Lietotnes",
       "tools": "Rīki",
       "files": "Faili"
     },

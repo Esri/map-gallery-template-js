@@ -32,7 +32,7 @@ define({
       "itemTitle": "Karte anzeigen",
       "gridSwitch": "Zur Tabellenansicht wechseln",
       "listSwitch": "Zur Listenansicht wechseln",
-      "loadingText": "Karten&hellip; werden geladen"
+      "loadingText": "Karten werden geladen&hellip;"
     },
     "sortFields": {
       "sortBy": "Sortieren nach",
@@ -93,9 +93,9 @@ define({
       "ownerHeader": "Besitzer:",
       "switchBasemap": "Grundkarte wechseln",
       "getMobileApp": "Anwendung abrufen",
-      "constraintsHeading": "Use Constraints",
-      "createdLabel": "Created",
-      "noDescription": "No description.",
+      "constraintsHeading": "Nutzungsbeschränkungen",
+      "createdLabel": "Erstellt",
+      "noDescription": "Keine Beschreibung.",
       "detailsLabel": "Details"
     },
     "filterItems": {
