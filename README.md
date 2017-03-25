@@ -47,7 +47,7 @@ To prevent caching with a deployment you could either:
 "application/common?version=1.0", //After implementation
 ```  
 
-* **or** Implement [Dojo's cacheBurst](https://dojotoolkit.org/documentation/tutorials/1.10/dojo_config) (`cacheBust: true`) to the **[javascript/djConfig.js](/blob/master/javascript/djConfig.js)** file to avoid module caching:    
+* **or** Implement [Dojo's cacheBurst](https://dojotoolkit.org/documentation/tutorials/1.10/dojo_config) (`cacheBust: true`) to the **[javascript/djConfig.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/djConfig.js)** file to avoid module caching:    
 
 ```javascript
 // Dojo Config with cacheBust
