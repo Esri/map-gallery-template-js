@@ -30,7 +30,47 @@ The PMG template is also easily configurable. A complete list of features and en
   - For example: `"//webadaptor.domain.com/arcgis/jsapi/jsapi"` where `arcgis` is the name of your Web Adaptor.
 5. Copy a map or group ID from Portal/ArcGIS Online and replace the default web map ID in the application’s index.html page. You can now run the application on your web server or customize the application further.
 
-> **Note:** If your application edits features in a feature service, contains secure services or web maps that aren't shared publicly, or generate requests that exceed 200 characters, you may need to set up and use a proxy page. Common situations where you may exceed the URL length are using complex polygons as input to a task or specifying a spatial reference using well-known text (WKT). For details on installing and configuring a proxy page see [Using the proxy](https://developers.arcgis.com/javascript/jshelp/ags_proxy.html). If you do not have an Internet connection, you will need to access and deploy the ArcGIS API for JavaScript documentation from [developers.arcgis.com](https://developers.arcgis.com/).
+### Deployment Notes
+
+#### Secure feature services
+If your application edits features in a feature service, contains secure services or web maps that aren't shared publicly, or generate requests that exceed 200 characters, you may need to set up and use a proxy page. Common situations where you may exceed the URL length are using complex polygons as input to a task or specifying a spatial reference using well-known text (WKT). For details on installing and configuring a proxy page see [Using the proxy](https://developers.arcgis.com/javascript/jshelp/ags_proxy.html). If you do not have an Internet connection, you will need to access and deploy the ArcGIS API for JavaScript documentation from [developers.arcgis.com](https://developers.arcgis.com/).  
+
+#### Caching  
+After altering JavaScript files, you may encounter caching prohibiting you and/or users from seeing updates without refreshing the page multiple times.  
+
+To prevent caching with a deployment you could either:  
+
+* Implement versioning on individual JavaScript files in the **[javascript/home.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/home.js#L12)** and **[javascript/map.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/map.js#L14)** files:    
+
+```javascript
+//"application/common", //Current
+"application/common?version=1.0", //After implementation
+```  
+
+* **or** Implement [Dojo's cacheBurst](https://dojotoolkit.org/documentation/tutorials/1.10/dojo_config) (`cacheBust: true`) to the **[javascript/djConfig.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/djConfig.js)** file to avoid module caching:    
+
+```javascript
+// Dojo Config with cacheBust
+var dojoConfig = {
+  parseOnLoad: true,
+  cacheBust: true, //Add cacheBust and set to true
+  packages: [{
+    name: "esriTemplate",
+    location: path_location
+    }, {
+    name: "application",
+    location: path_location + '/javascript'
+    }, {
+    name: "templateConfig",
+    location: path_location_tc
+    }, {
+    name: "config",
+    location: path_location + '/config'
+    }]
+};
+```
+
+However, caching can be a good thing and speed up the initial load of an application, keep this in mind if you implement either option.
 
  [New to Github? Get started here.](https://github.com/)
 
