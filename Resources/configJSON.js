@@ -400,8 +400,8 @@
         {  
           "type":"boolean",
           "fieldName":"openGalleryItemsNewWindow",
-          "label":"Open items in new window",
-          "tooltip":"Open group items in a new window"
+          "label":"Open WebMaps in new window",
+          "tooltip":"Open WebMaps in a new window"
         },
         {  
           "type":"boolean",
@@ -466,14 +466,14 @@
         {  
           "type":"boolean",
           "fieldName":"showComments",
-          "label":"Shows comments for items and allows items to be commented on",
-          "tooltip":"Shows comments for items and allows items to be commented on"
+          "label":"Shows comments for maps and allows maps to be commented on",
+          "tooltip":"Shows comments for maps and allows maps to be commented on"
         },
         {  
           "type":"boolean",
           "fieldName":"showRatings",
-          "label":"Shows ratings for items and allows items to be rated",
-          "tooltip":"Shows ratings for items and allows items to be rated"
+          "label":"Shows ratings for maps and allows maps to be rated",
+          "tooltip":"Shows ratings for maps and allows maps to be rated"
         },
         {  
           "type":"boolean",

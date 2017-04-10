@@ -270,6 +270,11 @@ define([
           appLocation = location.pathname.indexOf("/home/");
         }
         this._options.isOrg = false;
+        
+        if (this._options.sharinghost) {
+          this._options.sharingurl = this._options.sharinghost;
+        }
+        
         if (this._options.sharingurl) { //sharing url specified 
           this._options.mobilePortalUrl = 'arcgis:' + '//' + location.host;
           //sharing url set in config file so use default services 
