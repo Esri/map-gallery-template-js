@@ -5,13 +5,13 @@ define(
       bingMapsKey: "ArAavTvIHoG3w9HwhroJuCFAzUttY_pQQvjdmHmZHQQfv6wahgxcyOiT3op-SCni",
       helperServices: {
         geometry: {
-          url: location.protocol + "//utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
+          url: "https://utility.arcgisonline.com/ArcGIS/rest/services/Geometry/GeometryServer"
         },
         printTask: {
-          url: location.protocol + "//utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
+          url: "https://utility.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task"
         },
         geocode: [{
-          url: location.protocol + "//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
+          url: "https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer"
        }]
       }
     };

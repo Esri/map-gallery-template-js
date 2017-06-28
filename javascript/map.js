@@ -481,8 +481,7 @@ define([
             var commentDate = new Date(this.globalComments[i].created);
             // date format for locale
             var dateLocale = locale.format(commentDate, {
-              selector: "date",
-              datePattern: i18n.viewer.main.datePattern
+              selector: "date"
             });
             html += i18n.viewer.comments.posted + ' ' + dateLocale;
             html += ' ' + i18n.viewer.comments.by + ' ';
@@ -796,8 +795,7 @@ define([
               d = new Date(itemInfo.item.created);
               // date format for locale
               dateLocale = locale.format(d, {
-                selector: "date",
-                datePattern: i18n.viewer.main.datePattern
+                selector: "date"
               });
               html += '<li><strong>' + i18n.viewer.mapPage.createdLabel + '</strong><br />' + dateLocale + '</li>';
             }
@@ -807,8 +805,7 @@ define([
               d = new Date(itemInfo.item.modified);
               // date format for locale
               dateLocale = locale.format(d, {
-                selector: "date",
-                datePattern: i18n.viewer.main.datePattern
+                selector: "date"
               });
               html += '<li><strong>' + i18n.viewer.itemInfo.modifiedLabel + '</strong><br />' + dateLocale + '</li>';
             }

@@ -24,53 +24,13 @@ The PMG template is also easily configurable. A complete list of features and en
 1. To deploy this application, download the template from Portal/ArcGIS Online and unzip it.
 2. Copy the unzipped folder containing the web app template files, such as index.html, to your web server. You can rename the folder to change the URL through which users will access the application. By default the URL to the app will be `http://<Your Web Server>/<app folder name>/index.html`
 3. Change the sharing host, found in options.js inside the config folder for the application, to the sharing URL for ArcGIS Online or Portal. For ArcGIS Online users, keep the default value of www.arcgis.com or specify the name of your organization.
-  - ArcGIS Online Example:  `"sharingurl": location.protocol + "//" + “<your organization name>.maps.arcgis.com`
-  - Portal Example where `arcgis` is the name of the Web Adaptor: `"sharingurl": location.protocol + "//" + "webadaptor.domain.com/arcgis"`
-4. If you are using Portal or a local install of the ArcGIS API for JavaScript, change all references to the ArcGIS API for JavaScript in index.html to refer to your local copy of the API. Search for the references containing `"//js.arcgis.com/3.20"` and replace this portion of the reference with the url to your local install.
-  - For example: `"//webadaptor.domain.com/arcgis/jsapi/jsapi"` where `arcgis` is the name of your Web Adaptor.
+  - ArcGIS Online Example:  `"sharingurl": "https://" + “<your organization name>.maps.arcgis.com`
+  - Portal Example where `arcgis` is the name of the Web Adaptor: `"sharingurl": "https://" + "webadaptor.domain.com/arcgis"`
+4. If you are using Portal or a local install of the ArcGIS API for JavaScript, change all references to the ArcGIS API for JavaScript in index.html to refer to your local copy of the API. Search for the references containing `"https://js.arcgis.com/3.21"` and replace this portion of the reference with the url to your local install.
+  - For example: `"https://webadaptor.domain.com/arcgis/jsapi/jsapi"` where `arcgis` is the name of your Web Adaptor.
 5. Copy a map or group ID from Portal/ArcGIS Online and replace the default web map ID in the application’s index.html page. You can now run the application on your web server or customize the application further.
 
-### Deployment Notes
-
-#### Secure feature services
-If your application edits features in a feature service, contains secure services or web maps that aren't shared publicly, or generate requests that exceed 200 characters, you may need to set up and use a proxy page. Common situations where you may exceed the URL length are using complex polygons as input to a task or specifying a spatial reference using well-known text (WKT). For details on installing and configuring a proxy page see [Using the proxy](https://developers.arcgis.com/javascript/jshelp/ags_proxy.html). If you do not have an Internet connection, you will need to access and deploy the ArcGIS API for JavaScript documentation from [developers.arcgis.com](https://developers.arcgis.com/).  
-
-#### Caching  
-After altering JavaScript files, you may encounter caching prohibiting you and/or users from seeing updates without refreshing the page multiple times.  
-
-To prevent caching with a deployment you could either:  
-
-* Implement versioning on individual JavaScript files in the **[javascript/home.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/home.js#L12)** and **[javascript/map.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/map.js#L14)** files:    
-
-```javascript
-//"application/common", //Current
-"application/common?version=1.0", //After implementation
-```  
-
-* **or** Implement [Dojo's cacheBurst](https://dojotoolkit.org/documentation/tutorials/1.10/dojo_config) (`cacheBust: true`) to the **[javascript/djConfig.js](https://github.com/Esri/map-gallery-template-js/blob/master/javascript/djConfig.js)** file to avoid module caching:    
-
-```javascript
-// Dojo Config with cacheBust
-var dojoConfig = {
-  parseOnLoad: true,
-  cacheBust: true, //Add cacheBust and set to true
-  packages: [{
-    name: "esriTemplate",
-    location: path_location
-    }, {
-    name: "application",
-    location: path_location + '/javascript'
-    }, {
-    name: "templateConfig",
-    location: path_location_tc
-    }, {
-    name: "config",
-    location: path_location + '/config'
-    }]
-};
-```
-
-However, caching can be a good thing and speed up the initial load of an application, keep this in mind if you implement either option.
+> **Note:** If your application edits features in a feature service, contains secure services or web maps that aren't shared publicly, or generate requests that exceed 200 characters, you may need to set up and use a proxy page. Common situations where you may exceed the URL length are using complex polygons as input to a task or specifying a spatial reference using well-known text (WKT). For details on installing and configuring a proxy page see [Using the proxy](https://developers.arcgis.com/javascript/jshelp/ags_proxy.html). If you do not have an Internet connection, you will need to access and deploy the ArcGIS API for JavaScript documentation from [developers.arcgis.com](https://developers.arcgis.com/).
 
  [New to Github? Get started here.](https://github.com/)
 
@@ -110,4 +70,3 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 A copy of the license is available in the repository's [license.txt](https://raw.github.com/Esri/map-gallery-template-js/master/license.txt) file.
-

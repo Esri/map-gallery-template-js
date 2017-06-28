@@ -70,8 +70,8 @@ define([
         }
         if (appLocation !== -1) { //hosted or portal  
           var instance = location.pathname.substr(0, appLocation);
-          this._options.sharingurl = location.protocol + "//" + location.host + instance;
-          this._options.proxyUrl = location.protocol + '//' + location.host + instance + "/sharing/proxy";
+          this._options.sharingurl = "https://" + location.host + instance;
+          this._options.proxyUrl = 'https://' + location.host + instance + "/sharing/proxy";
           //check sign-in status 
           IdentityManager.checkSignInStatus(this._options.sharingurl + "/sharing").then(
             lang.hitch(this, function (credential) {
@@ -276,16 +276,16 @@ define([
         }
         
         if (this._options.sharingurl) { //sharing url specified 
-          this._options.mobilePortalUrl = 'arcgis:' + '//' + location.host;
+          this._options.mobilePortalUrl = 'arcgis://' + location.host;
           //sharing url set in config file so use default services 
         } else if (appLocation !== -1) { //hosted or portal 
           this._options.isOrg = true;
           var instance = location.pathname.substr(0, appLocation);
-          this._options.sharingurl = location.protocol + "//" + location.host + instance;
-          this._options.proxyurl = location.protocol + '//' + location.host + instance + "/sharing/proxy";
-          this._options.mobilePortalUrl = 'arcgis:' + '//' + location.host;
+          this._options.sharingurl = "https://" + location.host + instance;
+          this._options.proxyurl = 'https://' + location.host + instance + "/sharing/proxy";
+          this._options.mobilePortalUrl = 'arcgis://' + location.host;
         } else { //default to arcgis.com 
-          this._options.sharingurl = location.protocol + "//" + "www.arcgis.com";
+          this._options.sharingurl = "https://www.arcgis.com";
           this._options.mobilePortalUrl = "arcgis://www.arcgis.com";
         }
         arcgisUtils.arcgisUrl = this._options.sharingurl + "/sharing/rest/content/items";
@@ -436,11 +436,7 @@ define([
           html += '<a class="addthis_counter addthis_bubble_style"></a>';
           html += '</div>';
           // addthis url
-          var addthisURL = "http://s7.addthis.com/js/250/addthis_widget.js#pubid=";
-          // https support
-          if (addthisURL && location.protocol === "https:") {
-            addthisURL = addthisURL.replace('http:', 'https:');
-          }
+          var addthisURL = "https://s7.addthis.com/js/250/addthis_widget.js#pubid=";
           // load share script
           ioScript.get({
             url: addthisURL + this._options.addThisProfileId

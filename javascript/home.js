@@ -465,8 +465,7 @@ define([
                 modifiedDate = new Date(data.results[i].modified);
                 // date format for locale
                 modifiedLocalized = locale.format(modifiedDate, {
-                  selector: "date",
-                  datePattern: i18n.viewer.main.datePattern
+                  selector: "date"
                 });
               }
               // html
